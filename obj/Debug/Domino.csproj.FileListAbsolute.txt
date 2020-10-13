@@ -1,0 +1,17 @@
+C:\Users\ricar\source\repos\Domino\obj\Debug\Domino.csprojAssemblyReference.cache
+C:\Users\ricar\source\repos\Domino\obj\Debug\MainWindow.g.cs
+C:\Users\ricar\source\repos\Domino\obj\Debug\App.g.cs
+C:\Users\ricar\source\repos\Domino\obj\Debug\Domino_MarkupCompile.cache
+C:\Users\ricar\source\repos\Domino\obj\Debug\Domino_MarkupCompile.lref
+C:\Users\ricar\source\repos\Domino\obj\Debug\Domino.exe
+C:\Users\ricar\source\repos\Domino\obj\Debug\Domino.pdb
+C:\Users\ricar\source\repos\Domino\bin\Debug\Domino.exe.config
+C:\Users\ricar\source\repos\Domino\bin\Debug\Domino.exe
+C:\Users\ricar\source\repos\Domino\bin\Debug\Domino.pdb
+C:\Users\ricar\source\repos\Domino\obj\Debug\MainWindow.baml
+C:\Users\ricar\source\repos\Domino\obj\Debug\Domino.g.resources
+C:\Users\ricar\source\repos\Domino\obj\Debug\Domino.Properties.Resources.resources
+C:\Users\ricar\source\repos\Domino\obj\Debug\Domino.csproj.GenerateResource.cache
+C:\Users\ricar\source\repos\Domino\obj\Debug\Domino.csproj.CoreCompileInputs.cache
+C:\Users\ricar\source\repos\Domino\obj\Debug\Registrarse.g.cs
+C:\Users\ricar\source\repos\Domino\obj\Debug\Registrarse.baml
