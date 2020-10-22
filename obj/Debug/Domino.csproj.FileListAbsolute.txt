@@ -15,3 +15,5 @@ C:\Users\ricar\source\repos\Domino\obj\Debug\Domino.csproj.GenerateResource.cach
 C:\Users\ricar\source\repos\Domino\obj\Debug\Domino.csproj.CoreCompileInputs.cache
 C:\Users\ricar\source\repos\Domino\obj\Debug\Registrarse.g.cs
 C:\Users\ricar\source\repos\Domino\obj\Debug\Registrarse.baml
+C:\Users\ricar\source\repos\Domino\obj\Debug\RecuperarContraseña.g.cs
+C:\Users\ricar\source\repos\Domino\obj\Debug\RecuperarContraseña.baml

@@ -11,34 +11,34 @@
 
     <Grid x:Name="Main">
 
-        <TextBox x:Name = "textBox1" HorizontalAlignment = "Left" Height = "23" 
+        <TextBox x:Name = "textBoxNombreUsuario" HorizontalAlignment = "Left" Height = "23" 
          Margin = "187,110,0,0" TextWrapping = "Wrap" VerticalAlignment = "Top" Width = "250"/>
 
-        <Label x:Name = "label1" Content = "{x:Static p:Resources.Username}" 
+        <Label x:Name = "labelNombreUsuario" Content = "{x:Static p:Resources.Username}" 
          HorizontalAlignment = "Left" Margin = "25,101,0,0" VerticalAlignment = "Top" Width = "157"/>
 
-        <TextBox x:Name = "textBox2" HorizontalAlignment = "Left" Height = "23" 
+        <TextBox x:Name = "textBoxCorreo" HorizontalAlignment = "Left" Height = "23" 
          Margin = "187,138,0,0" TextWrapping = "Wrap" VerticalAlignment = "Top" Width = "250"/>
 
-        <Label x:Name = "label2" Content = "{x:Static p:Resources.Correo}" 
+        <Label x:Name = "labelCorreo" Content = "{x:Static p:Resources.Correo}" 
          HorizontalAlignment = "Left" Margin = "25,132,0,0" VerticalAlignment = "Top" Width = "86"/>
 
-        <Label x:Name = "label3" Content = "{x:Static p:Resources.Contraseña}" 
+        <Label x:Name = "labelContraseña" Content = "{x:Static p:Resources.Contraseña}" 
          HorizontalAlignment = "Left" Margin = "25,163,0,0" VerticalAlignment = "Top" Width = "86"/>
 
-        <PasswordBox x:Name = "textBox3" HorizontalAlignment = "Left" Height = "23" 
+        <PasswordBox x:Name = "textBoxContraseña" HorizontalAlignment = "Left" Height = "23" 
          Margin = "187,166,0,0" Password = "" VerticalAlignment = "Top" Width = "250"/>
 
-        <Label x:Name = "label4" Content = "{x:Static p:Resources.ContraseñaConfirm}" 
+        <Label x:Name = "labelContraseñaConfirm" Content = "{x:Static p:Resources.ContraseñaConfirm}" 
          HorizontalAlignment = "Left" Margin = "25,191,0,0" VerticalAlignment = "Top" Width = "162"/>
 
-        <PasswordBox x:Name = "textBox4" HorizontalAlignment = "Left" Height = "23" 
+        <PasswordBox x:Name = "textBoxContraseñaConfirm" HorizontalAlignment = "Left" Height = "23" 
          Margin = "187,194,0,0" Password = "" VerticalAlignment = "Top" Width = "250"/>
 
-        <Button x:Name = "button" Content = "{x:Static p:Resources.Registrarse_Button}" 
+        <Button x:Name = "buttonRegistrarse" Content = "{x:Static p:Resources.Registrarse_Button}" 
          HorizontalAlignment = "Left" Margin = "362,231,0,0" VerticalAlignment = "Top" Width = "75" />
 
-        <Button x:Name = "button1" Content = "{x:Static p:Resources.Cancelar_Button}" 
+        <Button x:Name = "buttonCancelar" Content = "{x:Static p:Resources.Cancelar_Button}" 
          HorizontalAlignment = "Left" Margin = "267,231,0,0" VerticalAlignment = "Top" Width = "90" Click="Cancelar_Click"/>
 
     </Grid>

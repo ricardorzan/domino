@@ -37,5 +37,11 @@ namespace Domino
         {
             Content = content;
         }
+
+        private void recuperarContraseña_Click(object sender, MouseButtonEventArgs e)
+        {
+            RecuperarContraseña RecuperarContraseña = new RecuperarContraseña(this);
+            this.Content = RecuperarContraseña;
+        }
     }
 }

@@ -132,11 +132,17 @@
   <data name="IniciarSesion_Button" xml:space="preserve">
     <value>Iniciar sesión</value>
   </data>
+  <data name="Recuperar_Button" xml:space="preserve">
+    <value>Recuperar</value>
+  </data>
   <data name="Registrarse_Button" xml:space="preserve">
     <value>Registrarse</value>
   </data>
   <data name="TextoRecuperar" xml:space="preserve">
     <value>¿Olvidaste tu contraseña? Has clic aquí</value>
+  </data>
+  <data name="TextoRecupuerarContrasñea" xml:space="preserve">
+    <value>Ingresa tu correo con el que te registraste al cual te mandaremos tu contraseña</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Domino</value>

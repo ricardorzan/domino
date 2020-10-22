@@ -106,6 +106,15 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Recuperar.
+        /// </summary>
+        public static string Recuperar_Button {
+            get {
+                return ResourceManager.GetString("Recuperar_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Registrarse.
         /// </summary>
         public static string Registrarse_Button {
@@ -120,6 +129,15 @@ namespace Domino.Properties {
         public static string TextoRecuperar {
             get {
                 return ResourceManager.GetString("TextoRecuperar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ingresa tu correo con el que te registraste al cual te mandaremos tu contraseña.
+        /// </summary>
+        public static string TextoRecupuerarContrasñea {
+            get {
+                return ResourceManager.GetString("TextoRecupuerarContrasñea", resourceCulture);
             }
         }
         
