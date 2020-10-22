@@ -132,6 +132,12 @@
   <data name="IniciarSesion_Button" xml:space="preserve">
     <value>Iniciar sesión</value>
   </data>
+  <data name="JugarMultijugador_Button" xml:space="preserve">
+    <value>Jugar multijugador</value>
+  </data>
+  <data name="JugarSolo_Button" xml:space="preserve">
+    <value>Jugar solo</value>
+  </data>
   <data name="Recuperar_Button" xml:space="preserve">
     <value>Recuperar</value>
   </data>
@@ -149,5 +155,8 @@
   </data>
   <data name="Username" xml:space="preserve">
     <value>Nombre de usuario</value>
+  </data>
+  <data name="VerMarcadores_Button" xml:space="preserve">
+    <value>Ver marcadores</value>
   </data>
 </root>

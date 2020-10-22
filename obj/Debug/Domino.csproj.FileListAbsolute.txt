@@ -17,3 +17,5 @@ C:\Users\ricar\source\repos\Domino\obj\Debug\Registrarse.g.cs
 C:\Users\ricar\source\repos\Domino\obj\Debug\Registrarse.baml
 C:\Users\ricar\source\repos\Domino\obj\Debug\RecuperarContraseña.g.cs
 C:\Users\ricar\source\repos\Domino\obj\Debug\RecuperarContraseña.baml
+C:\Users\ricar\source\repos\Domino\obj\Debug\MainMenu.g.cs
+C:\Users\ricar\source\repos\Domino\obj\Debug\MainMenu.baml

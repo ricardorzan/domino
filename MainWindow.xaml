@@ -19,10 +19,10 @@
          Margin = "128,194,0,0" Password = "" VerticalAlignment = "Top" Width = "229"/>
 
         <Button x:Name = "buttonRegistrarse" Content = "{x:Static p:Resources.Registrarse_Button}" 
-         HorizontalAlignment = "Left" Margin = "187,231,0,0" VerticalAlignment = "Top" Width = "75" Click="registrarse_Click" />
+         HorizontalAlignment = "Left" Margin = "187,231,0,0" VerticalAlignment = "Top" Width = "75" Click="registrarse_Click"/>
 
         <Button x:Name = "buttonIniciarSesion" Content = "{x:Static p:Resources.IniciarSesion_Button}" 
-         HorizontalAlignment = "Left" Margin = "267,231,0,0" VerticalAlignment = "Top" Width = "90"/>
+         HorizontalAlignment = "Left" Margin = "267,231,0,0" VerticalAlignment = "Top" Width = "90" Click="iniciarSesion_Click"/>
 
         <Label x:Name = "labelRecuperarContraseña" Content = "{x:Static p:Resources.TextoRecuperar}" 
             HorizontalAlignment = "Left" Margin = "25,265,0,0" VerticalAlignment = "Top" Width = "237" MouseLeftButtonUp="recuperarContraseña_Click"/>

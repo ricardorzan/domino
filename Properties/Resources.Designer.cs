@@ -106,6 +106,24 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Jugar multijugador.
+        /// </summary>
+        public static string JugarMultijugador_Button {
+            get {
+                return ResourceManager.GetString("JugarMultijugador_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Jugar solo.
+        /// </summary>
+        public static string JugarSolo_Button {
+            get {
+                return ResourceManager.GetString("JugarSolo_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Recuperar.
         /// </summary>
         public static string Recuperar_Button {
@@ -156,6 +174,15 @@ namespace Domino.Properties {
         public static string Username {
             get {
                 return ResourceManager.GetString("Username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ver marcadores.
+        /// </summary>
+        public static string VerMarcadores_Button {
+            get {
+                return ResourceManager.GetString("VerMarcadores_Button", resourceCulture);
             }
         }
     }

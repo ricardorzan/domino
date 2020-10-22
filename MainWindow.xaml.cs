@@ -43,5 +43,11 @@ namespace Domino
             RecuperarContraseña RecuperarContraseña = new RecuperarContraseña(this);
             this.Content = RecuperarContraseña;
         }
+
+        private void iniciarSesion_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu MainMenu = new MainMenu(this);
+            this.Content = MainMenu;
+        }
     }
 }
