@@ -21,33 +21,44 @@ namespace Domino
     public partial class MainWindow : Window
     {
         private object content;
+
         public MainWindow()
         {
             InitializeComponent();
             content = Content;
         }
 
-        private void registrarse_Click(object sender, RoutedEventArgs e)
+        private void clickIniciarSesion(object sender, RoutedEventArgs e)
         {
-            Registrarse registrarse = new Registrarse(this);
-            this.Content = registrarse;
+            MenuWindow sesion = new MenuWindow();
+            sesion.Show();
+            this.Close();
+        }
+        private void clickRegistrar(object sender, RoutedEventArgs e)
+        {
+            RegistrarseWindow ventanaRegistrar = new RegistrarseWindow(this);
+            this.Content = ventanaRegistrar;
+            /*
+            RegistrarseWindow ventanaRegistrar = new RegistrarseWindow();
+            ventanaRegistrar.Show();
+            this.Close();
+            */
         }
 
-        public void GoBackToStartPage()
+        private void clickRecuperar(object sender, MouseButtonEventArgs e)
+        {
+            RecuperarContraseñaWindow ventanaRecuperar = new RecuperarContraseñaWindow(this);
+            this.Content = ventanaRecuperar;
+            /*
+            RecuperarContraseñaWindow ventanaRecuperar = new RecuperarContraseñaWindow();
+            ventanaRecuperar.Show();
+            this.Close();
+            */
+        }
+
+        public void regresar()
         {
             Content = content;
-        }
-
-        private void recuperarContraseña_Click(object sender, MouseButtonEventArgs e)
-        {
-            RecuperarContraseña RecuperarContraseña = new RecuperarContraseña(this);
-            this.Content = RecuperarContraseña;
-        }
-
-        private void iniciarSesion_Click(object sender, RoutedEventArgs e)
-        {
-            MainMenu MainMenu = new MainMenu(this);
-            this.Content = MainMenu;
         }
     }
 }

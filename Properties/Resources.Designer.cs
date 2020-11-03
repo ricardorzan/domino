@@ -61,6 +61,15 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Cambiar contraseña.
+        /// </summary>
+        public static string CambiarContraseña_Button {
+            get {
+                return ResourceManager.GetString("CambiarContraseña_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cancelar.
         /// </summary>
         public static string Cancelar_Button {
@@ -75,6 +84,15 @@ namespace Domino.Properties {
         public static string Contraseña {
             get {
                 return ResourceManager.GetString("Contraseña", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Contraseña actual.
+        /// </summary>
+        public static string ContraseñaActual {
+            get {
+                return ResourceManager.GetString("ContraseñaActual", resourceCulture);
             }
         }
         
@@ -124,6 +142,15 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Nueva contraseña.
+        /// </summary>
+        public static string NuevaContraseña {
+            get {
+                return ResourceManager.GetString("NuevaContraseña", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Recuperar.
         /// </summary>
         public static string Recuperar_Button {
@@ -153,9 +180,9 @@ namespace Domino.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a Ingresa tu correo con el que te registraste al cual te mandaremos tu contraseña.
         /// </summary>
-        public static string TextoRecupuerarContrasñea {
+        public static string TextoRecupuerarContraseña {
             get {
-                return ResourceManager.GetString("TextoRecupuerarContrasñea", resourceCulture);
+                return ResourceManager.GetString("TextoRecupuerarContraseña", resourceCulture);
             }
         }
         

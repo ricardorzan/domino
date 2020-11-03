@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\ricar\source\repos\Domino\obj\Debug\
+C:\Users\ricar\Documents\GitHub\domino\obj\Debug\
 Domino
 none
 false
 DEBUG;TRACE
-C:\Users\ricar\source\repos\Domino\App.xaml
-42009491935
+C:\Users\ricar\Documents\GitHub\domino\App.xaml
+7-1825321018
 
-91648332097
-13-1505183044
-MainMenu.xaml;MainWindow.xaml;RecuperarContraseña.xaml;Registrarse.xaml;
+121357255028
+15-329781930
+CambiarContraseñaWindow.xaml;JugarMultijugadorWindow.xaml;MainWindow.xaml;MarcadoresWindow.xaml;MenuWindow.xaml;RecuperarContraseñaWindow.xaml;RegistrarseWindow.xaml;
 
 True
 
