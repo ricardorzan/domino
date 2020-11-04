@@ -32,7 +32,7 @@ namespace Domino
         }
         private void clickCancelar(object sender, RoutedEventArgs e)
         {
-            mainWindow.regresar();
+            mainWindow.Regresar();
         }
 
         private void clickRecuperar(object sender, RoutedEventArgs e)

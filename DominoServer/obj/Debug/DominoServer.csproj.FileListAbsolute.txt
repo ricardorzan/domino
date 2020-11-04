@@ -1,0 +1,10 @@
+C:\Users\ricar\Documents\GitHub\domino\DominoServer\bin\Debug\DominoServer.exe.config
+C:\Users\ricar\Documents\GitHub\domino\DominoServer\bin\Debug\DominoServer.exe
+C:\Users\ricar\Documents\GitHub\domino\DominoServer\bin\Debug\DominoServer.pdb
+C:\Users\ricar\Documents\GitHub\domino\DominoServer\bin\Debug\DominoContracts.dll
+C:\Users\ricar\Documents\GitHub\domino\DominoServer\bin\Debug\DominoContracts.pdb
+C:\Users\ricar\Documents\GitHub\domino\DominoServer\obj\Debug\DominoServer.csprojAssemblyReference.cache
+C:\Users\ricar\Documents\GitHub\domino\DominoServer\obj\Debug\DominoServer.csproj.CoreCompileInputs.cache
+C:\Users\ricar\Documents\GitHub\domino\DominoServer\obj\Debug\DominoServer.csproj.CopyComplete
+C:\Users\ricar\Documents\GitHub\domino\DominoServer\obj\Debug\DominoServer.exe
+C:\Users\ricar\Documents\GitHub\domino\DominoServer\obj\Debug\DominoServer.pdb

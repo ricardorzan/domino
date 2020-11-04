@@ -1,6 +1,8 @@
-﻿using System;
+﻿using DominoContracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,35 +30,40 @@ namespace Domino
             content = Content;
         }
 
-        private void clickIniciarSesion(object sender, RoutedEventArgs e)
+        private void ClickIniciarSesion(object sender, RoutedEventArgs e)
         {
-            MenuWindow sesion = new MenuWindow();
-            sesion.Show();
-            this.Close();
+            Console.WriteLine("press any key to enter");
+            Console.ReadLine();
+            var uri = "net.tcp://localhost:4345/ProductService";
+            NetTcpBinding binding = new NetTcpBinding(SecurityMode.None);
+            var channel = new ChannelFactory<IProductService>(binding);
+            var endPoint = new EndpointAddress(uri);
+            var proxy = channel.CreateChannel(endPoint);
+            bool valido = proxy.validar(TextBoxCorreo.Text, TextBoxContraseña.Password);
+            Console.ReadLine();
+
+            if(valido)
+            {
+                MenuWindow sesion = new MenuWindow();
+                sesion.Show();
+                this.Close();
+            }
+
+            
         }
-        private void clickRegistrar(object sender, RoutedEventArgs e)
+        private void ClickRegistrar(object sender, RoutedEventArgs e)
         {
             RegistrarseWindow ventanaRegistrar = new RegistrarseWindow(this);
             this.Content = ventanaRegistrar;
-            /*
-            RegistrarseWindow ventanaRegistrar = new RegistrarseWindow();
-            ventanaRegistrar.Show();
-            this.Close();
-            */
         }
 
-        private void clickRecuperar(object sender, MouseButtonEventArgs e)
+        private void ClickRecuperar(object sender, MouseButtonEventArgs e)
         {
             RecuperarContraseñaWindow ventanaRecuperar = new RecuperarContraseñaWindow(this);
             this.Content = ventanaRecuperar;
-            /*
-            RecuperarContraseñaWindow ventanaRecuperar = new RecuperarContraseñaWindow();
-            ventanaRecuperar.Show();
-            this.Close();
-            */
         }
 
-        public void regresar()
+        public void Regresar()
         {
             Content = content;
         }

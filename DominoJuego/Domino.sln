@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domino", "Domino.csproj", "{E9F707ED-D899-4782-8CFB-8DAE24E763D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominoServer", "..\DominoServer\DominoServer.csproj", "{2748C278-BF1C-441A-9F66-922BF33740FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominoContracts", "..\DominoContracts\DominoContracts.csproj", "{0281F283-7A7A-48AD-B569-C95D94748153}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{E9F707ED-D899-4782-8CFB-8DAE24E763D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9F707ED-D899-4782-8CFB-8DAE24E763D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9F707ED-D899-4782-8CFB-8DAE24E763D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2748C278-BF1C-441A-9F66-922BF33740FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2748C278-BF1C-441A-9F66-922BF33740FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2748C278-BF1C-441A-9F66-922BF33740FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2748C278-BF1C-441A-9F66-922BF33740FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0281F283-7A7A-48AD-B569-C95D94748153}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0281F283-7A7A-48AD-B569-C95D94748153}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0281F283-7A7A-48AD-B569-C95D94748153}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0281F283-7A7A-48AD-B569-C95D94748153}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

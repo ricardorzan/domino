@@ -34,7 +34,7 @@ namespace Domino
 
         private void clickCancelar(object sender, RoutedEventArgs e)
         {
-            mainWindow.regresar();
+            mainWindow.Regresar();
             /*
             MainWindow mainWindowView = new MainWindow();
             mainWindowView.Show();

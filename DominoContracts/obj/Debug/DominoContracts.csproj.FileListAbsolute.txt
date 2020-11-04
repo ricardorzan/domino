@@ -1,0 +1,6 @@
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\bin\Debug\DominoContracts.dll
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\bin\Debug\DominoContracts.pdb
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\obj\Debug\DominoContracts.csprojAssemblyReference.cache
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\obj\Debug\DominoContracts.csproj.CoreCompileInputs.cache
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\obj\Debug\DominoContracts.dll
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\obj\Debug\DominoContracts.pdb
