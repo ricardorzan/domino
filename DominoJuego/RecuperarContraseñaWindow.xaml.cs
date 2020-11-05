@@ -37,7 +37,15 @@ namespace Domino
 
         private void clickRecuperar(object sender, RoutedEventArgs e)
         {
+            Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
+            bool valido = server.RecuperarContraseña(TextBoxCorreo.Text);
+            server.Close();
+            if (valido)
+            {
+                MessageBoxResult result = MessageBox.Show("Se ha enviado un correo a la dirección ingresada.");
 
+                mainWindow.Regresar();
+            }
         }
     }
 }

@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DominoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Juego">
+    <Key>
+      <PropertyRef Name="JuegoID" />
+    </Key>
+    <Property Name="Condicióndevictoria" Type="varchar" MaxLength="15" />
+    <Property Name="Duración" Type="time" Precision="7" />
+    <Property Name="Ganador" Type="varchar" MaxLength="15" />
+    <Property Name="JuegoID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Jugador">
+    <Key>
+      <PropertyRef Name="JugadorID" />
+    </Key>
+    <Property Name="Enturnobool" Type="bit" />
+    <Property Name="Fichasenmano" Type="int" />
+    <Property Name="Puntaje" Type="int" />
+    <Property Name="JugadorID" Type="int" Nullable="false" />
+    <Property Name="UsuarioID" Type="int" />
+    <Property Name="RondaID" Type="int" />
+  </EntityType>
+  <EntityType Name="Ronda">
+    <Key>
+      <PropertyRef Name="RondaID" />
+    </Key>
+    <Property Name="Ganador" Type="varchar" MaxLength="15" />
+    <Property Name="Valorfichaizquierda" Type="int" />
+    <Property Name="Valorfichaderecha" Type="int" />
+    <Property Name="RondaID" Type="int" Nullable="false" />
+    <Property Name="JuegoID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="UsuarioID" />
+    </Key>
+    <Property Name="Contraseña" Type="varchar" MaxLength="15" />
+    <Property Name="Correo" Type="varchar" MaxLength="25" />
+    <Property Name="Nombreusuario" Type="varchar" MaxLength="10" />
+    <Property Name="Puntajeacumulado" Type="int" />
+    <Property Name="UsuarioID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Jugador_Ronda">
+    <End Role="Ronda" Type="Self.Ronda" Multiplicity="0..1" />
+    <End Role="Jugador" Type="Self.Jugador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ronda">
+        <PropertyRef Name="RondaID" />
+      </Principal>
+      <Dependent Role="Jugador">
+        <PropertyRef Name="RondaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jugador_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Jugador" Type="Self.Jugador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="Jugador">
+        <PropertyRef Name="UsuarioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ronda_Juego">
+    <End Role="Juego" Type="Self.Juego" Multiplicity="1" />
+    <End Role="Ronda" Type="Self.Ronda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Juego">
+        <PropertyRef Name="JuegoID" />
+      </Principal>
+      <Dependent Role="Ronda">
+        <PropertyRef Name="JuegoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DominoModelStoreContainer">
+    <EntitySet Name="Juego" EntityType="Self.Juego" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Jugador" EntityType="Self.Jugador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ronda" EntityType="Self.Ronda" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Jugador_Ronda" Association="Self.FK_Jugador_Ronda">
+      <End Role="Ronda" EntitySet="Ronda" />
+      <End Role="Jugador" EntitySet="Jugador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jugador_Usuario" Association="Self.FK_Jugador_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Jugador" EntitySet="Jugador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ronda_Juego" Association="Self.FK_Ronda_Juego">
+      <End Role="Juego" EntitySet="Juego" />
+      <End Role="Ronda" EntitySet="Ronda" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

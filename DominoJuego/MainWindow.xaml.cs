@@ -20,7 +20,7 @@ namespace Domino
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+        public partial class MainWindow : Window
     {
         private object content;
 
@@ -32,24 +32,19 @@ namespace Domino
 
         private void ClickIniciarSesion(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("press any key to enter");
-            Console.ReadLine();
-            var uri = "net.tcp://localhost:4345/ProductService";
-            NetTcpBinding binding = new NetTcpBinding(SecurityMode.None);
-            var channel = new ChannelFactory<IProductService>(binding);
-            var endPoint = new EndpointAddress(uri);
-            var proxy = channel.CreateChannel(endPoint);
-            bool valido = proxy.validar(TextBoxCorreo.Text, TextBoxContraseña.Password);
-            Console.ReadLine();
-
+            //InstanceContext context = new InstanceContext(new MainWindow());
+            Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
+            bool valido = server.Validar(TextBoxCorreo.Text, TextBoxContraseña.Password);
+            server.Close();
             if(valido)
             {
                 MenuWindow sesion = new MenuWindow();
                 sesion.Show();
                 this.Close();
+            } else
+            {
+                LabelAlert.Visibility = Visibility.Visible;
             }
-
-            
         }
         private void ClickRegistrar(object sender, RoutedEventArgs e)
         {
@@ -65,6 +60,9 @@ namespace Domino
 
         public void Regresar()
         {
+            TextBoxCorreo.Clear();
+            TextBoxContraseña.Clear();
+            LabelAlert.Visibility = Visibility.Hidden;
             Content = content;
         }
     }

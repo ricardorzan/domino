@@ -35,14 +35,28 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DominoModelo.DominoContext.datasource" />
+    <None Include="Properties\DataSources\DominoModelo.Juego.datasource" />
+    <None Include="Properties\DataSources\DominoModelo.Jugador.datasource" />
+    <None Include="Properties\DataSources\DominoModelo.Ronda.datasource" />
+    <None Include="Properties\DataSources\DominoModelo.sysdiagram.datasource" />
+    <None Include="Properties\DataSources\DominoModelo.Usuario.datasource" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProductService.cs" />
+    <Compile Include="LoginService.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\DominoJuego\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\DominoJuego\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\Domino.Cliente\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
       <Private>True</Private>
@@ -54,6 +68,10 @@
     <ProjectReference Include="..\DominoContracts\DominoContracts.csproj">
       <Project>{0281F283-7A7A-48AD-B569-C95D94748153}</Project>
       <Name>DominoContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DominoModelo\DominoModelo.csproj">
+      <Project>{A7790F62-9179-411B-BA1B-4306C5B0A1FF}</Project>
+      <Name>DominoModelo</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

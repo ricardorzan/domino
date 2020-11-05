@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominoServer", "..\DominoSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominoContracts", "..\DominoContracts\DominoContracts.csproj", "{0281F283-7A7A-48AD-B569-C95D94748153}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominoModelo", "..\DominoModelo\DominoModelo.csproj", "{A7790F62-9179-411B-BA1B-4306C5B0A1FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0281F283-7A7A-48AD-B569-C95D94748153}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0281F283-7A7A-48AD-B569-C95D94748153}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0281F283-7A7A-48AD-B569-C95D94748153}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7790F62-9179-411B-BA1B-4306C5B0A1FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7790F62-9179-411B-BA1B-4306C5B0A1FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7790F62-9179-411B-BA1B-4306C5B0A1FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7790F62-9179-411B-BA1B-4306C5B0A1FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

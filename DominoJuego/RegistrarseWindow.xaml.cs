@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domino.Proxy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,16 +36,19 @@ namespace Domino
         private void clickCancelar(object sender, RoutedEventArgs e)
         {
             mainWindow.Regresar();
-            /*
-            MainWindow mainWindowView = new MainWindow();
-            mainWindowView.Show();
-            this.Close();
-            */
         }
 
         private void clickRegistrar(object sender, RoutedEventArgs e)
         {
+            Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
+            bool valido = server.Registrar(TextBoxUsername.Text, TextBoxCorreo.Text, TextBoxContraseña.Password, TextBoxConfirmacionContraseña.Password);
+            server.Close();
+            if (valido)
+            {
+                MessageBoxResult result = MessageBox.Show("Has sido registrado " + TextBoxUsername.Text, "Confirmación");
 
+                mainWindow.Regresar(); 
+            }
         }
     }
 }

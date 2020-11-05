@@ -4,3 +4,9 @@ C:\Users\ricar\Documents\GitHub\domino\DominoContracts\obj\Debug\DominoContracts
 C:\Users\ricar\Documents\GitHub\domino\DominoContracts\obj\Debug\DominoContracts.csproj.CoreCompileInputs.cache
 C:\Users\ricar\Documents\GitHub\domino\DominoContracts\obj\Debug\DominoContracts.dll
 C:\Users\ricar\Documents\GitHub\domino\DominoContracts\obj\Debug\DominoContracts.pdb
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\bin\Debug\DominoModelo.exe
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\bin\Debug\EntityFramework.dll
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\bin\Debug\DominoModelo.pdb
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\bin\Debug\DominoModelo.exe.config
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\bin\Debug\EntityFramework.xml
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\obj\Debug\DominoContracts.csproj.CopyComplete

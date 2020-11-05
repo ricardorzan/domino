@@ -1,0 +1,12 @@
+C:\Users\ricar\Documents\GitHub\domino\DominoModelo\bin\Debug\DominoModelo.exe.config
+C:\Users\ricar\Documents\GitHub\domino\DominoModelo\bin\Debug\DominoModelo.exe
+C:\Users\ricar\Documents\GitHub\domino\DominoModelo\bin\Debug\DominoModelo.pdb
+C:\Users\ricar\Documents\GitHub\domino\DominoModelo\bin\Debug\EntityFramework.dll
+C:\Users\ricar\Documents\GitHub\domino\DominoModelo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ricar\Documents\GitHub\domino\DominoModelo\bin\Debug\EntityFramework.xml
+C:\Users\ricar\Documents\GitHub\domino\DominoModelo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ricar\Documents\GitHub\domino\DominoModelo\obj\Debug\DominoModelo.csprojAssemblyReference.cache
+C:\Users\ricar\Documents\GitHub\domino\DominoModelo\obj\Debug\DominoModelo.csproj.CoreCompileInputs.cache
+C:\Users\ricar\Documents\GitHub\domino\DominoModelo\obj\Debug\DominoModelo.csproj.CopyComplete
+C:\Users\ricar\Documents\GitHub\domino\DominoModelo\obj\Debug\DominoModelo.exe
+C:\Users\ricar\Documents\GitHub\domino\DominoModelo\obj\Debug\DominoModelo.pdb
