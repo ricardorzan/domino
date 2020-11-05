@@ -15,28 +15,30 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <materialDesign:PackIcon Kind="User" Grid.Column="0" Grid.Row="1" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Width="25" Height="25"></materialDesign:PackIcon>
-        <TextBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Margin="10 5 5 10" materialDesign:HintAssist.Hint="{x:Static p:Resources.Username}" Name="TextBoxUsername"></TextBox>
+        <TextBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Margin="10 5 5 10" materialDesign:HintAssist.Hint="{x:Static p:Resources.Username}" Name="TextBoxUsername" MaxLength="14"></TextBox>
 
         <materialDesign:PackIcon Kind="Email" Grid.Column="0" Grid.Row="2" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Width="25" Height="25"></materialDesign:PackIcon>
         <TextBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Margin="10 5 5 10" materialDesign:HintAssist.Hint="{x:Static p:Resources.Correo}" Name="TextBoxCorreo"></TextBox>
 
         <materialDesign:PackIcon Kind="Lock" Grid.Column="0" Grid.Row="3" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Width="25" Height="25"></materialDesign:PackIcon>
-        <PasswordBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Margin="10 5 5 10" materialDesign:HintAssist.Hint="{x:Static p:Resources.Contraseña}" Name="TextBoxContraseña"></PasswordBox>
+        <PasswordBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Margin="10 5 5 10" materialDesign:HintAssist.Hint="{x:Static p:Resources.Contraseña}" Name="TextBoxContraseña" MaxLength="14"></PasswordBox>
 
         <materialDesign:PackIcon Kind="LockCheck" Grid.Column="0" Grid.Row="4" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Width="25" Height="25"></materialDesign:PackIcon>
-        <PasswordBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" Margin="10 5 5 10" materialDesign:HintAssist.Hint="{x:Static p:Resources.ContraseñaConfirm}" Name="TextBoxConfirmacionContraseña"></PasswordBox>
+        <PasswordBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" Margin="10 5 5 10" materialDesign:HintAssist.Hint="{x:Static p:Resources.ContraseñaConfirm}" Name="TextBoxConfirmacionContraseña" MaxLength="14"></PasswordBox>
 
-        <Button Grid.Column="2" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.Registrarse_Button}" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Click="clickRegistrar"></Button>
+        <Button Grid.Column="2" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.Registrarse_Button}" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Click="ClickRegistrar"></Button>
 
-        <Button Grid.Column="1" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.Cancelar_Button}" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Click="clickCancelar"></Button>
+        <Button Grid.Column="1" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.Cancelar_Button}" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Click="ClickCancelar"></Button>
+
+        <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="3" HorizontalAlignment="Right" VerticalAlignment="Center" Content="" Name="LabelAlert"/>
     </Grid>
 </Page>

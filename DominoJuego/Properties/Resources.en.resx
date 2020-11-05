@@ -118,7 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CambiarContraseña_Button" xml:space="preserve">
-    <value>Change Password</value>
+    <value>Change password</value>
+  </data>
+  <data name="CamposVacios" xml:space="preserve">
+    <value>Please fill in all the gaps</value>
   </data>
   <data name="Cancelar_Button" xml:space="preserve">
     <value>Cancel</value>
@@ -130,10 +133,25 @@
     <value>Current password</value>
   </data>
   <data name="ContraseñaConfirm" xml:space="preserve">
-    <value>Password Confirmation</value>
+    <value>Password confirmation</value>
+  </data>
+  <data name="ContraseñasNoCoinciden" xml:space="preserve">
+    <value>The passwords do not match</value>
   </data>
   <data name="Correo" xml:space="preserve">
     <value>Email</value>
+  </data>
+  <data name="CorreoEnviado" xml:space="preserve">
+    <value>An email with your password has been sent to you</value>
+  </data>
+  <data name="CorreoExistente" xml:space="preserve">
+    <value>There is already a registered user with that email</value>
+  </data>
+  <data name="CorreoInvalido" xml:space="preserve">
+    <value>Introduce a valid email</value>
+  </data>
+  <data name="CuentaNoEncontrada" xml:space="preserve">
+    <value>An account associated with that email was not found</value>
   </data>
   <data name="IniciarSesion_Button" xml:space="preserve">
     <value>Log in</value>
@@ -152,6 +170,12 @@
   </data>
   <data name="Registrarse_Button" xml:space="preserve">
     <value>Sing in</value>
+  </data>
+  <data name="RegistroExitoso" xml:space="preserve">
+    <value>You have been registered</value>
+  </data>
+  <data name="SinCoincidencia" xml:space="preserve">
+    <value>Your login credentials do not match an account in our system</value>
   </data>
   <data name="TextoRecuperar" xml:space="preserve">
     <value>Did you forget your password? Click here</value>

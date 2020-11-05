@@ -22,10 +22,10 @@ namespace Domino.Proxy {
         System.Threading.Tasks.Task<bool> ValidarAsync(string correo, string contraseña);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/Registrar", ReplyAction="http://tempuri.org/ILoginService/RegistrarResponse")]
-        bool Registrar(string username, string correo, string contraseña, string contraseñaConfirm);
+        bool Registrar(string username, string correo, string contraseña);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/Registrar", ReplyAction="http://tempuri.org/ILoginService/RegistrarResponse")]
-        System.Threading.Tasks.Task<bool> RegistrarAsync(string username, string correo, string contraseña, string contraseñaConfirm);
+        System.Threading.Tasks.Task<bool> RegistrarAsync(string username, string correo, string contraseña);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/RecuperarContraseña", ReplyAction="http://tempuri.org/ILoginService/RecuperarContraseñaResponse")]
         bool RecuperarContraseña(string correo);
@@ -69,12 +69,12 @@ namespace Domino.Proxy {
             return base.Channel.ValidarAsync(correo, contraseña);
         }
         
-        public bool Registrar(string username, string correo, string contraseña, string contraseñaConfirm) {
-            return base.Channel.Registrar(username, correo, contraseña, contraseñaConfirm);
+        public bool Registrar(string username, string correo, string contraseña) {
+            return base.Channel.Registrar(username, correo, contraseña);
         }
         
-        public System.Threading.Tasks.Task<bool> RegistrarAsync(string username, string correo, string contraseña, string contraseñaConfirm) {
-            return base.Channel.RegistrarAsync(username, correo, contraseña, contraseñaConfirm);
+        public System.Threading.Tasks.Task<bool> RegistrarAsync(string username, string correo, string contraseña) {
+            return base.Channel.RegistrarAsync(username, correo, contraseña);
         }
         
         public bool RecuperarContraseña(string correo) {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,20 +33,37 @@ namespace Domino
 
         private void ClickIniciarSesion(object sender, RoutedEventArgs e)
         {
-            //InstanceContext context = new InstanceContext(new MainWindow());
-            Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
-            bool valido = server.Validar(TextBoxCorreo.Text, TextBoxContraseña.Password);
-            server.Close();
-            if(valido)
+            string correo = TextBoxCorreo.Text;
+            if (!correo.Equals("") && !TextBoxContraseña.Password.Equals(""))
             {
-                MenuWindow sesion = new MenuWindow();
-                sesion.Show();
-                this.Close();
+                String sFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+                if (Regex.IsMatch(correo, sFormato))
+                {
+                    //InstanceContext context = new InstanceContext(new MainWindow());
+                    Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
+                    bool valido = server.Validar(TextBoxCorreo.Text, TextBoxContraseña.Password);
+                    server.Close();
+                    if (valido)
+                    {
+                        MenuWindow sesion = new MenuWindow();
+                        sesion.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        LabelAlert.Content = Properties.Resources.SinCoincidencia;
+                    }
+                } else
+                {
+                    LabelAlert.Content = Properties.Resources.CorreoInvalido;
+                }
+                    
             } else
             {
-                LabelAlert.Visibility = Visibility.Visible;
-            }
+                LabelAlert.Content = Properties.Resources.CamposVacios;
+            }   
         }
+
         private void ClickRegistrar(object sender, RoutedEventArgs e)
         {
             RegistrarseWindow ventanaRegistrar = new RegistrarseWindow(this);
@@ -62,7 +80,7 @@ namespace Domino
         {
             TextBoxCorreo.Clear();
             TextBoxContraseña.Clear();
-            LabelAlert.Visibility = Visibility.Hidden;
+            LabelAlert.Content = "";
             Content = content;
         }
     }

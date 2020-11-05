@@ -21,7 +21,6 @@
         <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="contraseña" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="contraseñaConfirm" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

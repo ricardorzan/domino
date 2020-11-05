@@ -14,7 +14,7 @@ namespace DominoContracts
         bool Validar(string correo, string contraseña);
 
         [OperationContract]
-        bool Registrar(string username, string correo, string contraseña, string contraseñaConfirm);
+        bool Registrar(string username, string correo, string contraseña);
 
         [OperationContract]
         bool RecuperarContraseña(string correo);

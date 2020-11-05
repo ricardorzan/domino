@@ -9,19 +9,19 @@
           <Key>
             <PropertyRef Name="JuegoID" />
           </Key>
-          <Property Name="Condicióndevictoria" Type="varchar" MaxLength="15" />
+          <Property Name="Condicióndevictoria" Type="varchar" MaxLength="20" />
           <Property Name="Duración" Type="time" Precision="7" />
           <Property Name="Ganador" Type="varchar" MaxLength="15" />
-          <Property Name="JuegoID" Type="int" Nullable="false" />
+          <Property Name="JuegoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Jugador">
           <Key>
             <PropertyRef Name="JugadorID" />
           </Key>
-          <Property Name="Enturnobool" Type="bit" />
+          <Property Name="Enturno" Type="bit" />
           <Property Name="Fichasenmano" Type="int" />
           <Property Name="Puntaje" Type="int" />
-          <Property Name="JugadorID" Type="int" Nullable="false" />
+          <Property Name="JugadorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UsuarioID" Type="int" />
           <Property Name="RondaID" Type="int" />
         </EntityType>
@@ -32,7 +32,7 @@
           <Property Name="Ganador" Type="varchar" MaxLength="15" />
           <Property Name="Valorfichaizquierda" Type="int" />
           <Property Name="Valorfichaderecha" Type="int" />
-          <Property Name="RondaID" Type="int" Nullable="false" />
+          <Property Name="RondaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="JuegoID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -51,9 +51,9 @@
           </Key>
           <Property Name="Contraseña" Type="varchar" MaxLength="15" />
           <Property Name="Correo" Type="varchar" MaxLength="25" />
-          <Property Name="Nombreusuario" Type="varchar" MaxLength="10" />
+          <Property Name="Nombreusuario" Type="varchar" MaxLength="15" />
           <Property Name="Puntajeacumulado" Type="int" />
-          <Property Name="UsuarioID" Type="int" Nullable="false" />
+          <Property Name="UsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <Association Name="FK_Jugador_Ronda">
           <End Role="Ronda" Type="Self.Ronda" Multiplicity="0..1" />
@@ -119,20 +119,20 @@
           <Key>
             <PropertyRef Name="JuegoID" />
           </Key>
-          <Property Name="Condicióndevictoria" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Condicióndevictoria" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Duración" Type="Time" Precision="7" />
           <Property Name="Ganador" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="JuegoID" Type="Int32" Nullable="false" />
+          <Property Name="JuegoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Rondas" Relationship="Self.FK_Ronda_Juego" FromRole="Juego" ToRole="Ronda" />
         </EntityType>
         <EntityType Name="Jugador">
           <Key>
             <PropertyRef Name="JugadorID" />
           </Key>
-          <Property Name="Enturnobool" Type="Boolean" />
+          <Property Name="Enturno" Type="Boolean" />
           <Property Name="Fichasenmano" Type="Int32" />
           <Property Name="Puntaje" Type="Int32" />
-          <Property Name="JugadorID" Type="Int32" Nullable="false" />
+          <Property Name="JugadorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UsuarioID" Type="Int32" />
           <Property Name="RondaID" Type="Int32" />
           <NavigationProperty Name="Ronda" Relationship="Self.FK_Jugador_Ronda" FromRole="Jugador" ToRole="Ronda" />
@@ -145,7 +145,7 @@
           <Property Name="Ganador" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Valorfichaizquierda" Type="Int32" />
           <Property Name="Valorfichaderecha" Type="Int32" />
-          <Property Name="RondaID" Type="Int32" Nullable="false" />
+          <Property Name="RondaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="JuegoID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Juego" Relationship="Self.FK_Ronda_Juego" FromRole="Ronda" ToRole="Juego" />
           <NavigationProperty Name="Jugadors" Relationship="Self.FK_Jugador_Ronda" FromRole="Ronda" ToRole="Jugador" />
@@ -166,9 +166,9 @@
           </Key>
           <Property Name="Contraseña" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Correo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="Nombreusuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Nombreusuario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Puntajeacumulado" Type="Int32" />
-          <Property Name="UsuarioID" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Jugadors" Relationship="Self.FK_Jugador_Usuario" FromRole="Usuario" ToRole="Jugador" />
         </EntityType>
         <Association Name="FK_Ronda_Juego">
@@ -245,7 +245,7 @@
           <EntitySetMapping Name="Jugadors">
             <EntityTypeMapping TypeName="DominoModel.Jugador">
               <MappingFragment StoreEntitySet="Jugador">
-                <ScalarProperty Name="Enturnobool" ColumnName="Enturnobool" />
+                <ScalarProperty Name="Enturno" ColumnName="Enturno" />
                 <ScalarProperty Name="Fichasenmano" ColumnName="Fichasenmano" />
                 <ScalarProperty Name="Puntaje" ColumnName="Puntaje" />
                 <ScalarProperty Name="JugadorID" ColumnName="JugadorID" />

@@ -97,19 +97,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="DominoModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DominoModel.Context.cs</LastGenOutput>
       <DependentUpon>DominoModel.edmx</DependentUpon>
+      <LastGenOutput>DominoModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="DominoModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DominoModel.edmx</DependentUpon>
       <LastGenOutput>DominoModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,7 +14,7 @@
     <EntitySetMapping Name="Jugadors">
       <EntityTypeMapping TypeName="DominoModel.Jugador">
         <MappingFragment StoreEntitySet="Jugador">
-          <ScalarProperty Name="Enturnobool" ColumnName="Enturnobool" />
+          <ScalarProperty Name="Enturno" ColumnName="Enturno" />
           <ScalarProperty Name="Fichasenmano" ColumnName="Fichasenmano" />
           <ScalarProperty Name="Puntaje" ColumnName="Puntaje" />
           <ScalarProperty Name="JugadorID" ColumnName="JugadorID" />

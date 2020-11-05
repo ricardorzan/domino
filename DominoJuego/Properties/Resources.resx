@@ -120,6 +120,9 @@
   <data name="CambiarContraseña_Button" xml:space="preserve">
     <value>Cambiar contraseña</value>
   </data>
+  <data name="CamposVacios" xml:space="preserve">
+    <value>Por favor llene todos los campos</value>
+  </data>
   <data name="Cancelar_Button" xml:space="preserve">
     <value>Cancelar</value>
   </data>
@@ -132,8 +135,23 @@
   <data name="ContraseñaConfirm" xml:space="preserve">
     <value>Confrimación de contraseña</value>
   </data>
+  <data name="ContraseñasNoCoinciden" xml:space="preserve">
+    <value>Las contraseñas no coinciden</value>
+  </data>
   <data name="Correo" xml:space="preserve">
     <value>Correo</value>
+  </data>
+  <data name="CorreoEnviado" xml:space="preserve">
+    <value>Se te ha enviado un correo con tu contraseña</value>
+  </data>
+  <data name="CorreoExistente" xml:space="preserve">
+    <value>Ya hay un usuario registrado con ese correo</value>
+  </data>
+  <data name="CorreoInvalido" xml:space="preserve">
+    <value>Introduce un correo valido</value>
+  </data>
+  <data name="CuentaNoEncontrada" xml:space="preserve">
+    <value>No se ha encontrado una cuenta asociada a ese correo</value>
   </data>
   <data name="IniciarSesion_Button" xml:space="preserve">
     <value>Iniciar sesión</value>
@@ -152,6 +170,12 @@
   </data>
   <data name="Registrarse_Button" xml:space="preserve">
     <value>Registrarse</value>
+  </data>
+  <data name="RegistroExitoso" xml:space="preserve">
+    <value>Has sido registrado </value>
+  </data>
+  <data name="SinCoincidencia" xml:space="preserve">
+    <value>Tus credenciales de inicio de sesión no coinciden con una cuenta en nuestro sistema</value>
   </data>
   <data name="TextoRecuperar" xml:space="preserve">
     <value>¿Olvidaste tu contraseña? Has clic aquí</value>

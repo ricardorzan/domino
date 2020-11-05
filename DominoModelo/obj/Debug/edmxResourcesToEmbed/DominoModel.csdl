@@ -4,20 +4,20 @@
     <Key>
       <PropertyRef Name="JuegoID" />
     </Key>
-    <Property Name="Condicióndevictoria" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Condicióndevictoria" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="Duración" Type="Time" Precision="7" />
     <Property Name="Ganador" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="JuegoID" Type="Int32" Nullable="false" />
+    <Property Name="JuegoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="Rondas" Relationship="Self.FK_Ronda_Juego" FromRole="Juego" ToRole="Ronda" />
   </EntityType>
   <EntityType Name="Jugador">
     <Key>
       <PropertyRef Name="JugadorID" />
     </Key>
-    <Property Name="Enturnobool" Type="Boolean" />
+    <Property Name="Enturno" Type="Boolean" />
     <Property Name="Fichasenmano" Type="Int32" />
     <Property Name="Puntaje" Type="Int32" />
-    <Property Name="JugadorID" Type="Int32" Nullable="false" />
+    <Property Name="JugadorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UsuarioID" Type="Int32" />
     <Property Name="RondaID" Type="Int32" />
     <NavigationProperty Name="Ronda" Relationship="Self.FK_Jugador_Ronda" FromRole="Jugador" ToRole="Ronda" />
@@ -30,7 +30,7 @@
     <Property Name="Ganador" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="Valorfichaizquierda" Type="Int32" />
     <Property Name="Valorfichaderecha" Type="Int32" />
-    <Property Name="RondaID" Type="Int32" Nullable="false" />
+    <Property Name="RondaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="JuegoID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Juego" Relationship="Self.FK_Ronda_Juego" FromRole="Ronda" ToRole="Juego" />
     <NavigationProperty Name="Jugadors" Relationship="Self.FK_Jugador_Ronda" FromRole="Ronda" ToRole="Jugador" />
@@ -51,9 +51,9 @@
     </Key>
     <Property Name="Contraseña" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="Correo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Nombreusuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Nombreusuario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="Puntajeacumulado" Type="Int32" />
-    <Property Name="UsuarioID" Type="Int32" Nullable="false" />
+    <Property Name="UsuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="Jugadors" Relationship="Self.FK_Jugador_Usuario" FromRole="Usuario" ToRole="Jugador" />
   </EntityType>
   <Association Name="FK_Ronda_Juego">

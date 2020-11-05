@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,14 +38,32 @@ namespace Domino
 
         private void clickRecuperar(object sender, RoutedEventArgs e)
         {
-            Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
-            bool valido = server.RecuperarContraseña(TextBoxCorreo.Text);
-            server.Close();
-            if (valido)
+            string correo = TextBoxCorreo.Text;
+            if (!correo.Equals(""))
             {
-                MessageBoxResult result = MessageBox.Show("Se ha enviado un correo a la dirección ingresada.");
-
-                mainWindow.Regresar();
+                String sFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+                if (Regex.IsMatch(correo, sFormato))
+                {
+                    Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
+                    bool valido = server.RecuperarContraseña(correo);
+                    server.Close();
+                    if (valido)
+                    {
+                        MessageBoxResult result = MessageBox.Show(Properties.Resources.CorreoEnviado + correo);
+                        mainWindow.Regresar();
+                    } else
+                    {
+                        LabelAlert.Content = Properties.Resources.CuentaNoEncontrada;
+                    }
+                }
+                else
+                {
+                    LabelAlert.Content = Properties.Resources.CorreoInvalido;
+                }
+            }
+            else
+            {
+                LabelAlert.Content = Properties.Resources.CamposVacios;
             }
         }
     }

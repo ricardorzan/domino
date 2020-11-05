@@ -70,6 +70,15 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Por favor llene todos los campos.
+        /// </summary>
+        public static string CamposVacios {
+            get {
+                return ResourceManager.GetString("CamposVacios", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cancelar.
         /// </summary>
         public static string Cancelar_Button {
@@ -106,11 +115,56 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Las contraseñas no coinciden.
+        /// </summary>
+        public static string ContraseñasNoCoinciden {
+            get {
+                return ResourceManager.GetString("ContraseñasNoCoinciden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Correo.
         /// </summary>
         public static string Correo {
             get {
                 return ResourceManager.GetString("Correo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Se te ha enviado un correo con tu contraseña.
+        /// </summary>
+        public static string CorreoEnviado {
+            get {
+                return ResourceManager.GetString("CorreoEnviado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ya hay un usuario registrado con ese correo.
+        /// </summary>
+        public static string CorreoExistente {
+            get {
+                return ResourceManager.GetString("CorreoExistente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Introduce un correo valido.
+        /// </summary>
+        public static string CorreoInvalido {
+            get {
+                return ResourceManager.GetString("CorreoInvalido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No se ha encontrado una cuenta asociada a ese correo.
+        /// </summary>
+        public static string CuentaNoEncontrada {
+            get {
+                return ResourceManager.GetString("CuentaNoEncontrada", resourceCulture);
             }
         }
         
@@ -165,6 +219,24 @@ namespace Domino.Properties {
         public static string Registrarse_Button {
             get {
                 return ResourceManager.GetString("Registrarse_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Has sido registrado .
+        /// </summary>
+        public static string RegistroExitoso {
+            get {
+                return ResourceManager.GetString("RegistroExitoso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Tus credenciales de inicio de sesión no coinciden con una cuenta en nuestro sistema.
+        /// </summary>
+        public static string SinCoincidencia {
+            get {
+                return ResourceManager.GetString("SinCoincidencia", resourceCulture);
             }
         }
         

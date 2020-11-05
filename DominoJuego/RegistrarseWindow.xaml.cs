@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -33,21 +34,51 @@ namespace Domino
             this.mainWindow = mainWindow;
         }
 
-        private void clickCancelar(object sender, RoutedEventArgs e)
+        private void ClickCancelar(object sender, RoutedEventArgs e)
         {
             mainWindow.Regresar();
         }
 
-        private void clickRegistrar(object sender, RoutedEventArgs e)
+        private void ClickRegistrar(object sender, RoutedEventArgs e)
         {
-            Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
-            bool valido = server.Registrar(TextBoxUsername.Text, TextBoxCorreo.Text, TextBoxContraseña.Password, TextBoxConfirmacionContraseña.Password);
-            server.Close();
-            if (valido)
-            {
-                MessageBoxResult result = MessageBox.Show("Has sido registrado " + TextBoxUsername.Text, "Confirmación");
+            string username = TextBoxUsername.Text;
+            string correo = TextBoxCorreo.Text;
+            string contraseña = TextBoxContraseña.Password;
+            string confirmacionContraseña = TextBoxConfirmacionContraseña.Password;
 
-                mainWindow.Regresar(); 
+            if (!username.Equals("") && !correo.Equals("") && !contraseña.Equals("") && !confirmacionContraseña.Equals(""))
+            {
+                String sFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+                if (Regex.IsMatch(correo, sFormato))
+                {
+                    if (contraseña.Equals(confirmacionContraseña))
+                    {
+                        Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
+                        bool valido = server.Registrar(username, correo, contraseña);
+                        server.Close();
+                        if (valido)
+                        {
+                            MessageBoxResult result = MessageBox.Show(Properties.Resources.RegistroExitoso + username);
+                            mainWindow.Regresar();
+                        }
+                        else
+                        {
+                            LabelAlert.Content = Properties.Resources.CorreoExistente;
+                        }
+                    }
+                    else
+                    {
+                        LabelAlert.Content = Properties.Resources.ContraseñasNoCoinciden;
+                    }
+                }
+                else
+                {
+                    LabelAlert.Content = Properties.Resources.CorreoInvalido;
+                }
+            }
+            else
+            {
+                LabelAlert.Content = Properties.Resources.CamposVacios;
             }
         }
     }
