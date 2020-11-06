@@ -24,10 +24,10 @@
         </Grid.RowDefinitions>
 
         <materialDesign:PackIcon Kind="LockReset" Grid.Column="0" Grid.Row="1" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Width="25" Height="25"></materialDesign:PackIcon>
-        <PasswordBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Margin="10 5 5 10" materialDesign:HintAssist.Hint="{x:Static p:Resources.ContraseñaActual}" Name="TextBoxCorreo"></PasswordBox>
+        <PasswordBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Margin="10 5 5 10" materialDesign:HintAssist.Hint="{x:Static p:Resources.ContraseñaActual}" Name="TextBoxContraseñaActual"></PasswordBox>
 
         <materialDesign:PackIcon Kind="Lock" Grid.Column="0" Grid.Row="3" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Width="25" Height="25"></materialDesign:PackIcon>
-        <PasswordBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Margin="10 5 5 10" materialDesign:HintAssist.Hint="{x:Static p:Resources.NuevaContraseña}" Name="TextBoxContraseña"></PasswordBox>
+        <PasswordBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Margin="10 5 5 10" materialDesign:HintAssist.Hint="{x:Static p:Resources.NuevaContraseña}" Name="TextBoxContraseñaNueva"></PasswordBox>
 
         <materialDesign:PackIcon Kind="LockCheck" Grid.Column="0" Grid.Row="4" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Width="25" Height="25"></materialDesign:PackIcon>
         <PasswordBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" Margin="10 5 5 10" materialDesign:HintAssist.Hint="{x:Static p:Resources.ContraseñaConfirm}" Name="TextBoxConfirmacionContraseña"></PasswordBox>

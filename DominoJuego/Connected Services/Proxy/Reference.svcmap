@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="be389ef0-741e-4bd1-b2e3-4bdbfb4098ef" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0259e3b6-1d6c-4270-b5ab-3f9a292e50bf" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,12 +19,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:4345/LoginService?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:4345/DominoService" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="LoginService.wsdl" MetadataType="Wsdl" ID="1648bb52-b8b5-48c6-adbc-b68f7dd6113e" SourceId="1" SourceUrl="http://localhost:4345/LoginService?wsdl" />
-    <MetadataFile FileName="LoginService.xsd" MetadataType="Schema" ID="3ea5fb2f-1f1f-4803-ab92-c936d688d4c4" SourceId="1" SourceUrl="http://localhost:4345/LoginService?xsd=xsd0" />
-    <MetadataFile FileName="LoginService1.xsd" MetadataType="Schema" ID="7971f843-ff23-4e05-b70f-7f1aa42294a5" SourceId="1" SourceUrl="http://localhost:4345/LoginService?xsd=xsd1" />
+    <MetadataFile FileName="DominoService.xsd" MetadataType="Schema" ID="0809476d-7646-499f-b7dd-22a240d8d0d3" SourceId="1" SourceUrl="http://localhost:4345/DominoService?xsd=xsd1" />
+    <MetadataFile FileName="DominoService.disco" MetadataType="Disco" ID="2fb3e7b9-58b0-4d15-8ee6-f20ac24f8360" SourceId="1" SourceUrl="http://localhost:4345/DominoService?disco" />
+    <MetadataFile FileName="DominoService.wsdl" MetadataType="Wsdl" ID="a42518e5-fa82-4862-b0ab-0fb893252d1f" SourceId="1" SourceUrl="http://localhost:4345/DominoService?wsdl" />
+    <MetadataFile FileName="DominoService1.xsd" MetadataType="Schema" ID="b07f9de0-399d-485c-b11b-7a6b063c0fe5" SourceId="1" SourceUrl="http://localhost:4345/DominoService?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

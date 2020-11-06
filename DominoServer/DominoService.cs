@@ -16,8 +16,33 @@ using System.Net.Security;
 namespace DominoServer
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
-    public class LoginService : ILoginService
+    public partial class DominoService : ILoginService, IMenuService
     {
+        public bool CambiarContraseña(int usuario, string contraseñaActual, string contraseñaNueva)
+        {
+            try
+            {
+                using (DominoContext context = new DominoContext())
+                {
+                    var user = context.Usuarios.FirstOrDefault(u => u.UsuarioID == usuario);
+                    if (user != null)
+                    {
+                        if (user.Contraseña.Equals(contraseñaActual))
+                        {
+                            user.Contraseña = contraseñaNueva;
+                            context.SaveChanges();
+                            return true;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+            return false;
+        }
+
         public bool RecuperarContraseña(string correo)
         {
             try
@@ -89,7 +114,7 @@ namespace DominoServer
             return false;
         }
 
-        public bool Validar(string correo, string contraseña)
+        public int Validar(string correo, string contraseña)
         {
             try
             {
@@ -101,7 +126,7 @@ namespace DominoServer
                         if (usuario.Contraseña == contraseña)
                         {
                             Console.WriteLine("The user " + usuario.Nombreusuario + " has just connected");
-                            return true;
+                            return usuario.UsuarioID;
                         }
                     }
                 }
@@ -110,7 +135,7 @@ namespace DominoServer
             {
                 throw new Exception(ex.Message);
             }
-            return false;
+            return 0;
         }
     }
 }

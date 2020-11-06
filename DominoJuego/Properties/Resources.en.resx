@@ -132,8 +132,14 @@
   <data name="ContraseñaActual" xml:space="preserve">
     <value>Current password</value>
   </data>
+  <data name="ContraseñaCambiada" xml:space="preserve">
+    <value>Password changed successfully</value>
+  </data>
   <data name="ContraseñaConfirm" xml:space="preserve">
     <value>Password confirmation</value>
+  </data>
+  <data name="ContraseñaIncorrecta" xml:space="preserve">
+    <value>The current password is wrong</value>
   </data>
   <data name="ContraseñasNoCoinciden" xml:space="preserve">
     <value>The passwords do not match</value>

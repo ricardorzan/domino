@@ -16,10 +16,10 @@ namespace Domino.Proxy {
     public interface ILoginService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/Validar", ReplyAction="http://tempuri.org/ILoginService/ValidarResponse")]
-        bool Validar(string correo, string contraseña);
+        int Validar(string correo, string contraseña);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/Validar", ReplyAction="http://tempuri.org/ILoginService/ValidarResponse")]
-        System.Threading.Tasks.Task<bool> ValidarAsync(string correo, string contraseña);
+        System.Threading.Tasks.Task<int> ValidarAsync(string correo, string contraseña);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/Registrar", ReplyAction="http://tempuri.org/ILoginService/RegistrarResponse")]
         bool Registrar(string username, string correo, string contraseña);
@@ -61,11 +61,11 @@ namespace Domino.Proxy {
                 base(binding, remoteAddress) {
         }
         
-        public bool Validar(string correo, string contraseña) {
+        public int Validar(string correo, string contraseña) {
             return base.Channel.Validar(correo, contraseña);
         }
         
-        public System.Threading.Tasks.Task<bool> ValidarAsync(string correo, string contraseña) {
+        public System.Threading.Tasks.Task<int> ValidarAsync(string correo, string contraseña) {
             return base.Channel.ValidarAsync(correo, contraseña);
         }
         
@@ -83,6 +83,53 @@ namespace Domino.Proxy {
         
         public System.Threading.Tasks.Task<bool> RecuperarContraseñaAsync(string correo) {
             return base.Channel.RecuperarContraseñaAsync(correo);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Proxy.IMenuService")]
+    public interface IMenuService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/CambiarContraseña", ReplyAction="http://tempuri.org/IMenuService/CambiarContraseñaResponse")]
+        bool CambiarContraseña(int usuario, string contraseñaActual, string contraseñaNueva);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/CambiarContraseña", ReplyAction="http://tempuri.org/IMenuService/CambiarContraseñaResponse")]
+        System.Threading.Tasks.Task<bool> CambiarContraseñaAsync(int usuario, string contraseñaActual, string contraseñaNueva);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IMenuServiceChannel : Domino.Proxy.IMenuService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class MenuServiceClient : System.ServiceModel.ClientBase<Domino.Proxy.IMenuService>, Domino.Proxy.IMenuService {
+        
+        public MenuServiceClient() {
+        }
+        
+        public MenuServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public MenuServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public MenuServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public MenuServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public bool CambiarContraseña(int usuario, string contraseñaActual, string contraseñaNueva) {
+            return base.Channel.CambiarContraseña(usuario, contraseñaActual, contraseñaNueva);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CambiarContraseñaAsync(int usuario, string contraseñaActual, string contraseñaNueva) {
+            return base.Channel.CambiarContraseñaAsync(usuario, contraseñaActual, contraseñaNueva);
         }
     }
 }

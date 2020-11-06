@@ -11,7 +11,7 @@
   <xs:element name="ValidarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ValidarResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="ValidarResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -42,6 +42,22 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="RecuperarContraseñaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CambiarContraseña">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="usuario" type="xs:int" />
+        <xs:element minOccurs="0" name="contraseñaActual" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="contraseñaNueva" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CambiarContraseñaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CambiarContraseñaResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -43,7 +43,7 @@
     <None Include="Properties\DataSources\DominoModelo.Usuario.datasource" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LoginService.cs" />
+    <Compile Include="DominoService.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +63,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Discovery" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DominoContracts\DominoContracts.csproj">

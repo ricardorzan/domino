@@ -20,11 +20,13 @@ namespace Domino
     public partial class MenuWindow : Window
     {
         private object content;
+        private int usuario;
 
-        public MenuWindow()
+        public MenuWindow(int usuarioID)
         {
             InitializeComponent();
             content = Content;
+            usuario = usuarioID;
         }
         private void clickJugar(object sender, RoutedEventArgs e)
         {
@@ -38,7 +40,7 @@ namespace Domino
 
         private void clickCambiarContraseña(object sender, RoutedEventArgs e)
         {
-            CambiarContraseñaWindow cambiarContraseña = new CambiarContraseñaWindow(this);
+            CambiarContraseñaWindow cambiarContraseña = new CambiarContraseñaWindow(this, usuario);
             this.Content = cambiarContraseña;
         }
 

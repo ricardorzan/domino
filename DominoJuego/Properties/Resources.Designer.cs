@@ -106,11 +106,29 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Contraseña cambiada con éxito.
+        /// </summary>
+        public static string ContraseñaCambiada {
+            get {
+                return ResourceManager.GetString("ContraseñaCambiada", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Confrimación de contraseña.
         /// </summary>
         public static string ContraseñaConfirm {
             get {
                 return ResourceManager.GetString("ContraseñaConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La contraseña actual esta mal.
+        /// </summary>
+        public static string ContraseñaIncorrecta {
+            get {
+                return ResourceManager.GetString("ContraseñaIncorrecta", resourceCulture);
             }
         }
         

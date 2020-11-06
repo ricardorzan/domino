@@ -41,11 +41,11 @@ namespace Domino
                 {
                     //InstanceContext context = new InstanceContext(new MainWindow());
                     Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
-                    bool valido = server.Validar(TextBoxCorreo.Text, TextBoxContraseña.Password);
+                    int valido = server.Validar(TextBoxCorreo.Text, TextBoxContraseña.Password);
                     server.Close();
-                    if (valido)
+                    if (valido != 0)
                     {
-                        MenuWindow sesion = new MenuWindow();
+                        MenuWindow sesion = new MenuWindow(valido);
                         sesion.Show();
                         this.Close();
                     }

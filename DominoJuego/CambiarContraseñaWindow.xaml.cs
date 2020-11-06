@@ -21,15 +21,18 @@ namespace Domino
     public partial class CambiarContraseñaWindow : Page
     {
         private MenuWindow menuWindow;
+        private int usuarioID;
+
         public CambiarContraseñaWindow()
         {
             InitializeComponent();
         }
 
-        public CambiarContraseñaWindow(MenuWindow menuWindow)
+        public CambiarContraseñaWindow(MenuWindow menuWindow, int usuario)
         {
             InitializeComponent();
             this.menuWindow = menuWindow;
+            usuarioID = usuario;
         }
         private void clickCancelar(object sender, RoutedEventArgs e)
         {
@@ -37,7 +40,35 @@ namespace Domino
         }
         private void clickCambiarContraseña(object sender, RoutedEventArgs e)
         {
-            menuWindow.regresar();
+            string contraseñaActual = TextBoxContraseñaActual.Password;
+            string contraseñaNueva = TextBoxContraseñaNueva.Password;
+            string confirmacion = TextBoxConfirmacionContraseña.Password;
+            if (!contraseñaActual.Equals("") && !contraseñaNueva.Equals("") && !confirmacion.Equals(""))
+            {
+                if (contraseñaNueva.Equals(confirmacion))
+                {
+                    Proxy.MenuServiceClient server = new Proxy.MenuServiceClient();
+                    bool contraseñaCambiada = server.CambiarContraseña(usuarioID, contraseñaActual, contraseñaNueva);
+                    server.Close();
+                    if (contraseñaCambiada)
+                    {
+                        MessageBoxResult result = MessageBox.Show(Properties.Resources.ContraseñaCambiada);
+                        menuWindow.regresar();
+                    }
+                    else
+                    {
+                        LabelAlert.Content = Properties.Resources.ContraseñaIncorrecta;
+                    }
+                }
+                else
+                {
+                    LabelAlert.Content = Properties.Resources.ContraseñasNoCoinciden;
+                }
+            }
+            else
+            {
+                LabelAlert.Content = Properties.Resources.CamposVacios;
+            }
         }
     }
 }

@@ -159,11 +159,11 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\Proxy\LoginService.wsdl" />
-    <None Include="Connected Services\Proxy\LoginService.xsd">
+    <None Include="Connected Services\Proxy\DominoService.wsdl" />
+    <None Include="Connected Services\Proxy\DominoService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\Proxy\LoginService1.xsd">
+    <None Include="Connected Services\Proxy\DominoService1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -194,6 +194,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\Proxy\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Proxy\DominoService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\Proxy\configuration91.svcinfo" />
