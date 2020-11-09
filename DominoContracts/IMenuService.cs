@@ -11,6 +11,9 @@ namespace DominoContracts
     public interface IMenuService
     {
         [OperationContract]
-        bool CambiarContraseña(int usuario, string contraseñaActual, string contraseñaNueva);
+        bool CambiarContraseña(string usuario, string contraseñaActual, string contraseñaNueva);
     }
+
+    
+
 }

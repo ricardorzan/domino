@@ -15,16 +15,39 @@ using System.Net.Security;
 
 namespace DominoServer
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
-    public partial class DominoService : ILoginService, IMenuService
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, InstanceContextMode = InstanceContextMode.Single)]
+    public partial class DominoService : ILoginService, IMenuService, IChatService
     {
-        public bool CambiarContraseña(int usuario, string contraseñaActual, string contraseñaNueva)
+            Dictionary<IChatClient, string> _users = new Dictionary<IChatClient, string>();
+            public void Join(string username)
+            {
+                var connection = OperationContext.Current.GetCallbackChannel<IChatClient>();
+                _users[connection] = username;
+            }
+
+            public void SendMessage(string message)
+            {
+                var connection = OperationContext.Current.GetCallbackChannel<IChatClient>();
+                string user;
+                if (!_users.TryGetValue(connection, out user))
+                    return;
+                foreach (var other in _users.Keys)
+                {
+                    if (other == connection)
+                        continue;
+                    other.ReciveMessage(user, message);
+                }
+            }
+        
+
+
+        public bool CambiarContraseña(string usuario, string contraseñaActual, string contraseñaNueva)
         {
             try
             {
                 using (DominoContext context = new DominoContext())
                 {
-                    var user = context.Usuarios.FirstOrDefault(u => u.UsuarioID == usuario);
+                    var user = context.Usuarios.FirstOrDefault(u => u.Nombreusuario == usuario);
                     if (user != null)
                     {
                         if (user.Contraseña.Equals(contraseñaActual))
@@ -114,7 +137,7 @@ namespace DominoServer
             return false;
         }
 
-        public int Validar(string correo, string contraseña)
+        public string Validar(string correo, string contraseña)
         {
             try
             {
@@ -126,7 +149,7 @@ namespace DominoServer
                         if (usuario.Contraseña == contraseña)
                         {
                             Console.WriteLine("The user " + usuario.Nombreusuario + " has just connected");
-                            return usuario.UsuarioID;
+                            return usuario.Nombreusuario;
                         }
                     }
                 }
@@ -135,7 +158,7 @@ namespace DominoServer
             {
                 throw new Exception(ex.Message);
             }
-            return 0;
+            return ("");
         }
     }
 }

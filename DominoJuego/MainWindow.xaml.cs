@@ -41,9 +41,9 @@ namespace Domino
                 {
                     //InstanceContext context = new InstanceContext(new MainWindow());
                     Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
-                    int valido = server.Validar(TextBoxCorreo.Text, TextBoxContraseña.Password);
+                    string valido = server.Validar(TextBoxCorreo.Text, TextBoxContraseña.Password);
                     server.Close();
-                    if (valido != 0)
+                    if (!(valido).Equals(""))
                     {
                         MenuWindow sesion = new MenuWindow(valido);
                         sesion.Show();

@@ -4,7 +4,7 @@
    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
    xmlns:local = "clr-namespace:Domino" 
    xmlns:p = "clr-namespace:Domino.Properties"
-   Title = "{x:Static p:Resources.Title}" Height = "400" Width = "600" WindowStartupLocation="CenterScreen">
+   Title = "{x:Static p:Resources.Title}" Height = "400" Width = "600" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
 
     <Grid Margin="20 10">
         <Grid.ColumnDefinitions>
@@ -30,6 +30,14 @@
         <Button Grid.Row="3" Grid.Column="3" Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Content="{x:Static p:Resources.VerMarcadores_Button}" Margin="10" Click="clickVerMarcadores"></Button>
 
         <Button Grid.Row="4" Grid.Column="3" Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Content="{x:Static p:Resources.CambiarContraseña_Button}" Margin="10" Click="clickCambiarContraseña"></Button>
+
+        <TextBox Name="TextBoxChat" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="1"  Margin="10 10" materialDesign:HintAssist.Hint="Escribe algo en el chat" Height="Auto" Width="Auto" KeyDown="IsEnter" MaxLength="50"></TextBox>
+
+        <materialDesign:PackIcon Kind="Chat" Grid.Column="1" Grid.Row="4" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Width="35" Height="35" Name="ButtonChat" MouseLeftButtonDown="ClickIconChat"/>
+
+        <ScrollViewer x:Name="ScrollViewer" ScrollChanged="ScrollViewer_OnScrollChanged" Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Height="100" Width="350">
+            <TextBox x:Name="ChatBox" IsReadOnly="True"/>
+        </ScrollViewer>
 
     </Grid>
 </Window>       

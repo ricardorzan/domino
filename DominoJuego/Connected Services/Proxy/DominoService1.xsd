@@ -11,7 +11,7 @@
   <xs:element name="ValidarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ValidarResult" type="xs:int" />
+        <xs:element minOccurs="0" name="ValidarResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -48,7 +48,7 @@
   <xs:element name="CambiarContraseña">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="usuario" type="xs:int" />
+        <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="contraseñaActual" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="contraseñaNueva" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -58,6 +58,28 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="CambiarContraseñaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Join">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReciveMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

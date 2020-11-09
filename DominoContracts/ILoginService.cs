@@ -12,7 +12,7 @@ namespace DominoContracts
     public interface ILoginService
     {
         [OperationContract]
-        int Validar(string correo, string contraseña);
+        string Validar(string correo, string contraseña);
 
         [OperationContract]
         bool Registrar(string username, string correo, string contraseña);

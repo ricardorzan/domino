@@ -16,10 +16,10 @@ namespace Domino.Proxy {
     public interface ILoginService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/Validar", ReplyAction="http://tempuri.org/ILoginService/ValidarResponse")]
-        int Validar(string correo, string contraseña);
+        string Validar(string correo, string contraseña);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/Validar", ReplyAction="http://tempuri.org/ILoginService/ValidarResponse")]
-        System.Threading.Tasks.Task<int> ValidarAsync(string correo, string contraseña);
+        System.Threading.Tasks.Task<string> ValidarAsync(string correo, string contraseña);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/Registrar", ReplyAction="http://tempuri.org/ILoginService/RegistrarResponse")]
         bool Registrar(string username, string correo, string contraseña);
@@ -61,11 +61,11 @@ namespace Domino.Proxy {
                 base(binding, remoteAddress) {
         }
         
-        public int Validar(string correo, string contraseña) {
+        public string Validar(string correo, string contraseña) {
             return base.Channel.Validar(correo, contraseña);
         }
         
-        public System.Threading.Tasks.Task<int> ValidarAsync(string correo, string contraseña) {
+        public System.Threading.Tasks.Task<string> ValidarAsync(string correo, string contraseña) {
             return base.Channel.ValidarAsync(correo, contraseña);
         }
         
@@ -91,10 +91,10 @@ namespace Domino.Proxy {
     public interface IMenuService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/CambiarContraseña", ReplyAction="http://tempuri.org/IMenuService/CambiarContraseñaResponse")]
-        bool CambiarContraseña(int usuario, string contraseñaActual, string contraseñaNueva);
+        bool CambiarContraseña(string usuario, string contraseñaActual, string contraseñaNueva);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/CambiarContraseña", ReplyAction="http://tempuri.org/IMenuService/CambiarContraseñaResponse")]
-        System.Threading.Tasks.Task<bool> CambiarContraseñaAsync(int usuario, string contraseñaActual, string contraseñaNueva);
+        System.Threading.Tasks.Task<bool> CambiarContraseñaAsync(string usuario, string contraseñaActual, string contraseñaNueva);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -124,12 +124,81 @@ namespace Domino.Proxy {
                 base(binding, remoteAddress) {
         }
         
-        public bool CambiarContraseña(int usuario, string contraseñaActual, string contraseñaNueva) {
+        public bool CambiarContraseña(string usuario, string contraseñaActual, string contraseñaNueva) {
             return base.Channel.CambiarContraseña(usuario, contraseñaActual, contraseñaNueva);
         }
         
-        public System.Threading.Tasks.Task<bool> CambiarContraseñaAsync(int usuario, string contraseñaActual, string contraseñaNueva) {
+        public System.Threading.Tasks.Task<bool> CambiarContraseñaAsync(string usuario, string contraseñaActual, string contraseñaNueva) {
             return base.Channel.CambiarContraseñaAsync(usuario, contraseñaActual, contraseñaNueva);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Proxy.IChatService", CallbackContract=typeof(Domino.Proxy.IChatServiceCallback))]
+    public interface IChatService {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/Join")]
+        void Join(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/Join")]
+        System.Threading.Tasks.Task JoinAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/SendMessage")]
+        void SendMessage(string message);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/SendMessage")]
+        System.Threading.Tasks.Task SendMessageAsync(string message);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IChatServiceCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/ReciveMessage")]
+        void ReciveMessage(string user, string message);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IChatServiceChannel : Domino.Proxy.IChatService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ChatServiceClient : System.ServiceModel.DuplexClientBase<Domino.Proxy.IChatService>, Domino.Proxy.IChatService {
+        
+        public ChatServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public ChatServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public ChatServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ChatServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ChatServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void Join(string username) {
+            base.Channel.Join(username);
+        }
+        
+        public System.Threading.Tasks.Task JoinAsync(string username) {
+            return base.Channel.JoinAsync(username);
+        }
+        
+        public void SendMessage(string message) {
+            base.Channel.SendMessage(message);
+        }
+        
+        public System.Threading.Tasks.Task SendMessageAsync(string message) {
+            return base.Channel.SendMessageAsync(message);
         }
     }
 }

@@ -21,18 +21,18 @@ namespace Domino
     public partial class CambiarContraseñaWindow : Page
     {
         private MenuWindow menuWindow;
-        private int usuarioID;
+        private string usuario;
 
         public CambiarContraseñaWindow()
         {
             InitializeComponent();
         }
 
-        public CambiarContraseñaWindow(MenuWindow menuWindow, int usuario)
+        public CambiarContraseñaWindow(MenuWindow menuWindow, string nombreUsuario)
         {
             InitializeComponent();
             this.menuWindow = menuWindow;
-            usuarioID = usuario;
+            usuario = nombreUsuario;
         }
         private void clickCancelar(object sender, RoutedEventArgs e)
         {
@@ -48,7 +48,7 @@ namespace Domino
                 if (contraseñaNueva.Equals(confirmacion))
                 {
                     Proxy.MenuServiceClient server = new Proxy.MenuServiceClient();
-                    bool contraseñaCambiada = server.CambiarContraseña(usuarioID, contraseñaActual, contraseñaNueva);
+                    bool contraseñaCambiada = server.CambiarContraseña(usuario, contraseñaActual, contraseñaNueva);
                     server.Close();
                     if (contraseñaCambiada)
                     {

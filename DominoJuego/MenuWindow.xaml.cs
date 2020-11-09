@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,28 +15,45 @@ using System.Windows.Shapes;
 
 namespace Domino
 {
+
     /// <summary>
     /// Lógica de interacción para MenuWindow.xaml
     /// </summary>
-    public partial class MenuWindow : Window
+    public partial class MenuWindow : Window, Proxy.IChatServiceCallback
     {
         private object content;
-        private int usuario;
+        private string usuario;
+        private Proxy.ChatServiceClient server = null;
+        private InstanceContext context = null;
 
-        public MenuWindow(int usuarioID)
+
+        public MenuWindow(string nombreUsuario)
         {
             InitializeComponent();
             content = Content;
-            usuario = usuarioID;
+            usuario = nombreUsuario;
+            context = new InstanceContext(this);
+            server = new Proxy.ChatServiceClient(context);
+            server.Join(usuario);
         }
+
+        public void ReciveMessage(string user, string message)
+        {
+            string format = "\n " + user + ": " + message;
+            ChatBox.AppendText(format);
+            ChatBox.ScrollToEnd();
+
+            //LabelChat.Text += "\n " + user + ": " + message;
+        }
+
         private void clickJugar(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void clickVerMarcadores(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void clickCambiarContraseña(object sender, RoutedEventArgs e)
@@ -46,7 +64,42 @@ namespace Domino
 
         public void regresar()
         {
+            TextBoxChat.Clear();
+            ChatBox.Clear();
             Content = content;
+        }
+
+        private void ClickIconChat(object sender, EventArgs e)
+        {
+            string message = TextBoxChat.Text;
+            server.SendMessage(message);
+
+            string format = "\n Tu: " + message;
+            ChatBox.AppendText(format);
+            ChatBox.ScrollToEnd();
+            TextBoxChat.Clear();
+        }
+
+        private void IsEnter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                ClickIconChat(this, new EventArgs());
+            }
+        }
+
+        private bool _autoScroll = true;
+        private void ScrollViewer_OnScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            if (e.ExtentHeightChange == 0)
+            {
+                _autoScroll = ScrollViewer.VerticalOffset == ScrollViewer.ScrollableHeight;
+            }
+
+            if (_autoScroll && e.ExtentHeightChange != 0)
+            {
+                ScrollViewer.ScrollToVerticalOffset(ScrollViewer.ExtentHeight);
+            }
         }
     }
 }
