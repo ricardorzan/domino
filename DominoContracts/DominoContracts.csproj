@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IChatClient.cs" />
+    <Compile Include="ILobbyClient.cs" />
     <Compile Include="ILoginService.cs" />
     <Compile Include="IMenuService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

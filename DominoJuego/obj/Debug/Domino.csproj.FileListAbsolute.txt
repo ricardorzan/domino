@@ -133,3 +133,5 @@ C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\EntityFramework.dll
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\DominoModelo.pdb
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\DominoModelo.exe.config
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\EntityFramework.xml
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\VerMarcadoresWindow.g.cs
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\VerMarcadoresWindow.baml

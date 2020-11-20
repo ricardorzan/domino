@@ -32,9 +32,9 @@
         <materialDesign:PackIcon Kind="LockCheck" Grid.Column="0" Grid.Row="4" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Width="25" Height="25"></materialDesign:PackIcon>
         <PasswordBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" Margin="10 5 5 10" materialDesign:HintAssist.Hint="{x:Static p:Resources.ContraseñaConfirm}" Name="TextBoxConfirmacionContraseña"></PasswordBox>
 
-        <Button Grid.Column="2" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.CambiarContraseña_Button}" Click="clickCambiarContraseña"></Button>
+        <Button Grid.Column="2" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.CambiarContraseña_Button}" Click="clickCambiarContraseña" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3"></Button>
 
-        <Button Grid.Column="1" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.Cancelar_Button}" Click="clickCancelar"></Button>
+        <Button Grid.Column="1" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.Cancelar_Button}" Click="clickCancelar" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3"></Button>
 
         <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="3" HorizontalAlignment="Right" VerticalAlignment="Center" Content="" Name="LabelAlert"/>
     </Grid>

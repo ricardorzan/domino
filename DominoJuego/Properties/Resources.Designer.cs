@@ -61,6 +61,15 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Abandonar partida.
+        /// </summary>
+        public static string AbandonarPartida_Button {
+            get {
+                return ResourceManager.GetString("AbandonarPartida_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cambiar contraseña.
         /// </summary>
         public static string CambiarContraseña_Button {
@@ -84,6 +93,15 @@ namespace Domino.Properties {
         public static string Cancelar_Button {
             get {
                 return ResourceManager.GetString("Cancelar_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Confirmación.
+        /// </summary>
+        public static string Confirmacion {
+            get {
+                return ResourceManager.GetString("Confirmacion", resourceCulture);
             }
         }
         
@@ -178,11 +196,47 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Crear partida.
+        /// </summary>
+        public static string CrearPartida_Button {
+            get {
+                return ResourceManager.GetString("CrearPartida_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a No se ha encontrado una cuenta asociada a ese correo.
         /// </summary>
         public static string CuentaNoEncontrada {
             get {
                 return ResourceManager.GetString("CuentaNoEncontrada", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Estas a punto de deshacer la partida, ¿Deseas continuar?.
+        /// </summary>
+        public static string DeshacerJuego {
+            get {
+                return ResourceManager.GetString("DeshacerJuego", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El dueño de la partida te ha expulsado.
+        /// </summary>
+        public static string Expulsado {
+            get {
+                return ResourceManager.GetString("Expulsado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Iniciar partida.
+        /// </summary>
+        public static string IniciarPartida_Button {
+            get {
+                return ResourceManager.GetString("IniciarPartida_Button", resourceCulture);
             }
         }
         
@@ -223,6 +277,24 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a El dueño ha deshecho la partida.
+        /// </summary>
+        public static string PartidaDeshecha {
+            get {
+                return ResourceManager.GetString("PartidaDeshecha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Posición.
+        /// </summary>
+        public static string Posicion {
+            get {
+                return ResourceManager.GetString("Posicion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Recuperar.
         /// </summary>
         public static string Recuperar_Button {
@@ -246,6 +318,15 @@ namespace Domino.Properties {
         public static string RegistroExitoso {
             get {
                 return ResourceManager.GetString("RegistroExitoso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Regresar.
+        /// </summary>
+        public static string Regresar_Button {
+            get {
+                return ResourceManager.GetString("Regresar_Button", resourceCulture);
             }
         }
         
@@ -282,6 +363,24 @@ namespace Domino.Properties {
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Tu.
+        /// </summary>
+        public static string Tu {
+            get {
+                return ResourceManager.GetString("Tu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Unirse a partida.
+        /// </summary>
+        public static string UnirseAPartida_Button {
+            get {
+                return ResourceManager.GetString("UnirseAPartida_Button", resourceCulture);
             }
         }
         

@@ -22,10 +22,12 @@
     <MetadataSource Address="http://localhost:4345/DominoService" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="DominoService.xsd" MetadataType="Schema" ID="0809476d-7646-499f-b7dd-22a240d8d0d3" SourceId="1" SourceUrl="http://localhost:4345/DominoService?xsd=xsd1" />
-    <MetadataFile FileName="DominoService.disco" MetadataType="Disco" ID="2fb3e7b9-58b0-4d15-8ee6-f20ac24f8360" SourceId="1" SourceUrl="http://localhost:4345/DominoService?disco" />
-    <MetadataFile FileName="DominoService.wsdl" MetadataType="Wsdl" ID="a42518e5-fa82-4862-b0ab-0fb893252d1f" SourceId="1" SourceUrl="http://localhost:4345/DominoService?wsdl" />
     <MetadataFile FileName="DominoService1.xsd" MetadataType="Schema" ID="b07f9de0-399d-485c-b11b-7a6b063c0fe5" SourceId="1" SourceUrl="http://localhost:4345/DominoService?xsd=xsd0" />
+    <MetadataFile FileName="DominoService.wsdl" MetadataType="Wsdl" ID="a42518e5-fa82-4862-b0ab-0fb893252d1f" SourceId="1" SourceUrl="http://localhost:4345/DominoService?wsdl" />
+    <MetadataFile FileName="DominoService.xsd" MetadataType="Schema" ID="0809476d-7646-499f-b7dd-22a240d8d0d3" SourceId="1" SourceUrl="http://localhost:4345/DominoService?xsd=xsd1" />
+    <MetadataFile FileName="DominoService3.xsd" MetadataType="Schema" ID="24507fd0-b012-4a54-ab1f-8bca16d5a60b" SourceId="1" SourceUrl="http://localhost:4345/DominoService?xsd=xsd3" />
+    <MetadataFile FileName="DominoService2.xsd" MetadataType="Schema" ID="c4d6029c-fdb8-47fa-9728-8881d86119ad" SourceId="1" SourceUrl="http://localhost:4345/DominoService?xsd=xsd2" />
+    <MetadataFile FileName="DominoService.disco" MetadataType="Disco" ID="2fb3e7b9-58b0-4d15-8ee6-f20ac24f8360" SourceId="1" SourceUrl="http://localhost:4345/DominoService?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

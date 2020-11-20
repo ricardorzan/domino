@@ -42,18 +42,18 @@ namespace Domino
             string format = "\n " + user + ": " + message;
             ChatBox.AppendText(format);
             ChatBox.ScrollToEnd();
-
-            //LabelChat.Text += "\n " + user + ": " + message;
         }
 
         private void clickJugar(object sender, RoutedEventArgs e)
         {
-
+            JugarMultijugadorWindow jugarMultijugadorWindow = new JugarMultijugadorWindow(this, usuario);
+            this.Content = jugarMultijugadorWindow;
         }
 
         private void clickVerMarcadores(object sender, RoutedEventArgs e)
         {
-
+            VerMarcadoresWindow verMarcadores = new VerMarcadoresWindow(this, usuario);
+            this.Content = verMarcadores;
         }
 
         private void clickCambiarContraseña(object sender, RoutedEventArgs e)
@@ -74,7 +74,7 @@ namespace Domino
             string message = TextBoxChat.Text;
             server.SendMessage(message);
 
-            string format = "\n Tu: " + message;
+            string format = "\n" + Properties.Resources.Tu + ": " + message;
             ChatBox.AppendText(format);
             ChatBox.ScrollToEnd();
             TextBoxChat.Clear();

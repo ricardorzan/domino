@@ -34,10 +34,12 @@ namespace Domino
             this.menuWindow = menuWindow;
             usuario = nombreUsuario;
         }
+
         private void clickCancelar(object sender, RoutedEventArgs e)
         {
             menuWindow.regresar();
         }
+
         private void clickCambiarContraseña(object sender, RoutedEventArgs e)
         {
             string contraseñaActual = TextBoxContraseñaActual.Password;

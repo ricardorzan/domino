@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DominoService.cs" />
+    <Compile Include="GameInfo.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>

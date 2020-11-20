@@ -12,34 +12,150 @@ using System.Net.Mail;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
+using System.Collections.ObjectModel;
 
 namespace DominoServer
 {
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, InstanceContextMode = InstanceContextMode.Single)]
-    public partial class DominoService : ILoginService, IMenuService, IChatService
+    public partial class DominoService : ILoginService, IMenuService, IChatService, ILobbyService
     {
-            Dictionary<IChatClient, string> _users = new Dictionary<IChatClient, string>();
-            public void Join(string username)
+        Dictionary<ILobbyClient, string> _lobbies = new Dictionary<ILobbyClient, string>();
+        public void JoinLobby(string propietario)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<ILobbyClient>();
+            _lobbies[connection] = propietario;
+        }
+
+        public void SolicitarJuegos()
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<ILobbyClient>();
+            foreach (var other in _games.Keys)
             {
-                var connection = OperationContext.Current.GetCallbackChannel<IChatClient>();
-                _users[connection] = username;
+                connection.ReciveGame(other);
+            }
+        }
+
+        Dictionary<string, Dictionary<ILobbyClient, string>> _games = new Dictionary<string, Dictionary<ILobbyClient, string>>();
+        public void CreateGame(string nombreJuego)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<ILobbyClient>();
+            Dictionary<ILobbyClient, string> _members = new Dictionary<ILobbyClient, string>(); 
+            _games.Add(nombreJuego, _members);
+
+            string propietario;
+            if (!_lobbies.TryGetValue(connection, out propietario))
+                return;
+
+            ((Dictionary<ILobbyClient, string>)_games[nombreJuego]).Add(connection, propietario);
+
+            foreach (var other in _lobbies.Keys)
+            {
+                if (other == connection)
+                    continue;
+                other.ReciveGame(nombreJuego);
+            }
+        }
+
+        public void JoinGame(string nombreJuego)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<ILobbyClient>();
+            string nuevoIntegrante;
+            if (!_lobbies.TryGetValue(connection, out nuevoIntegrante))
+                return;
+
+            Dictionary<ILobbyClient, string> _members;
+            if (!_games.TryGetValue(nombreJuego, out _members))
+                return;
+
+            //string integrantes;
+            //if (!_members.TryGetValue(connection, out integrantes))
+            //    return;
+
+            int siguienteIntegrante = 0;
+            string[] integrantes = new string[_members.Count];
+            foreach (var other in _members.Keys)
+            {
+                if (other == connection)
+                    continue;
+                integrantes[siguienteIntegrante] = other.EnviarNombreUsuario();
+                siguienteIntegrante++;
+                other.ReciveMember(nuevoIntegrante);
             }
 
-            public void SendMessage(string message)
-            {
-                var connection = OperationContext.Current.GetCallbackChannel<IChatClient>();
-                string user;
-                if (!_users.TryGetValue(connection, out user))
-                    return;
-                foreach (var other in _users.Keys)
-                {
-                    if (other == connection)
-                        continue;
-                    other.ReciveMessage(user, message);
-                }
-            }
-        
+            ((Dictionary<ILobbyClient, string>)_games[nombreJuego]).Add(connection, nuevoIntegrante);
+            connection.RecibirIntegrantes(integrantes);
+        }
 
+        public void DeshacerJuego(string nombreJuego)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<ILobbyClient>();
+            string usuario;
+            if (!_lobbies.TryGetValue(connection, out usuario))
+                return;
+
+            Dictionary<ILobbyClient, string> _members;
+            if (!_games.TryGetValue(nombreJuego, out _members))
+                return;
+
+            foreach (var other in _members.Keys)
+            {
+                if (other == connection)
+                    continue;
+                bool expulasdo = false;
+                other.AbandonarJuego(expulasdo);
+            }
+
+            _games.Remove(nombreJuego);
+
+            foreach (var other in _lobbies.Keys)
+            {
+                if (other == connection)
+                    continue;
+                other.ActualizarJuegos();
+            }
+        }
+
+        public void IntegranteAbandonaJuego(string nombreJuego)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<ILobbyClient>();
+            string integranteDesertor;
+            if (!_lobbies.TryGetValue(connection, out integranteDesertor))
+                return;
+
+            ((Dictionary<ILobbyClient, string>)_games[nombreJuego]).Remove(connection);
+
+            Dictionary<ILobbyClient, string> _members;
+            if (!_games.TryGetValue(nombreJuego, out _members))
+                return;
+
+            foreach (var other in _members.Keys)
+            {
+                if (other == connection)
+                    continue;
+                other.EliminarIntegrante(integranteDesertor);
+            }
+        }
+
+        Dictionary<IChatClient, string> _users = new Dictionary<IChatClient, string>();
+        public void Join(string username)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<IChatClient>();
+            _users[connection] = username;
+        }
+
+        public void SendMessage(string message)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<IChatClient>();
+            string user;
+            if (!_users.TryGetValue(connection, out user))
+                return;
+            foreach (var other in _users.Keys)
+            {
+                if (other == connection)
+                    continue;
+                other.ReciveMessage(user, message);
+            }
+        }
 
         public bool CambiarContraseña(string usuario, string contraseñaActual, string contraseñaNueva)
         {
@@ -64,6 +180,41 @@ namespace DominoServer
 
             }
             return false;
+        }
+
+        public ObservableCollection<UsuarioPuntajes> SolicitarPuntajes()
+        {
+            ObservableCollection<UsuarioPuntajes> usuarioPuntajes = new ObservableCollection<UsuarioPuntajes>();
+            try
+            {
+                using (DominoContext context = new DominoContext())
+                {
+                    var usuarios = context.Usuarios.OrderByDescending(p => p.Puntajeacumulado);
+                    int lugar = 1;
+                    foreach (Usuario u in usuarios)
+                    {
+                        if (u != null)
+                        {
+                            if(u.Puntajeacumulado != null)
+                            {
+                                usuarioPuntajes.Add(new UsuarioPuntajes(lugar, u.Nombreusuario, (int)u.Puntajeacumulado));
+                            }
+                        }
+                        else
+                            return usuarioPuntajes;
+                        lugar++;
+                        if (lugar == 6)
+                        {
+                            return usuarioPuntajes;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return usuarioPuntajes;
         }
 
         public bool RecuperarContraseña(string correo)
@@ -122,6 +273,7 @@ namespace DominoServer
                             usuario.Nombreusuario = username;
                             usuario.Correo = correo;
                             usuario.Contraseña = contraseña;
+                            usuario.Puntajeacumulado = 0;
                             context.Usuarios.Add(usuario);
                             context.SaveChanges();
                             Console.WriteLine("The user " + username + " has just been registered with the correo: " + correo);
@@ -160,5 +312,6 @@ namespace DominoServer
             }
             return ("");
         }
+
     }
 }

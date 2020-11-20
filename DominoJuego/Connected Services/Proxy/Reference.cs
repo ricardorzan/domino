@@ -95,6 +95,12 @@ namespace Domino.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/CambiarContraseña", ReplyAction="http://tempuri.org/IMenuService/CambiarContraseñaResponse")]
         System.Threading.Tasks.Task<bool> CambiarContraseñaAsync(string usuario, string contraseñaActual, string contraseñaNueva);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/SolicitarPuntajes", ReplyAction="http://tempuri.org/IMenuService/SolicitarPuntajesResponse")]
+        DominoContracts.UsuarioPuntajes[] SolicitarPuntajes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuService/SolicitarPuntajes", ReplyAction="http://tempuri.org/IMenuService/SolicitarPuntajesResponse")]
+        System.Threading.Tasks.Task<DominoContracts.UsuarioPuntajes[]> SolicitarPuntajesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -130,6 +136,14 @@ namespace Domino.Proxy {
         
         public System.Threading.Tasks.Task<bool> CambiarContraseñaAsync(string usuario, string contraseñaActual, string contraseñaNueva) {
             return base.Channel.CambiarContraseñaAsync(usuario, contraseñaActual, contraseñaNueva);
+        }
+        
+        public DominoContracts.UsuarioPuntajes[] SolicitarPuntajes() {
+            return base.Channel.SolicitarPuntajes();
+        }
+        
+        public System.Threading.Tasks.Task<DominoContracts.UsuarioPuntajes[]> SolicitarPuntajesAsync() {
+            return base.Channel.SolicitarPuntajesAsync();
         }
     }
     
@@ -199,6 +213,149 @@ namespace Domino.Proxy {
         
         public System.Threading.Tasks.Task SendMessageAsync(string message) {
             return base.Channel.SendMessageAsync(message);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Proxy.ILobbyService", CallbackContract=typeof(Domino.Proxy.ILobbyServiceCallback))]
+    public interface ILobbyService {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/JoinLobby")]
+        void JoinLobby(string propietario);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/JoinLobby")]
+        System.Threading.Tasks.Task JoinLobbyAsync(string propietario);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/SolicitarJuegos")]
+        void SolicitarJuegos();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/SolicitarJuegos")]
+        System.Threading.Tasks.Task SolicitarJuegosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/CreateGame")]
+        void CreateGame(string nombreJuego);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/CreateGame")]
+        System.Threading.Tasks.Task CreateGameAsync(string nombreJuego);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/JoinGame")]
+        void JoinGame(string nombreJuego);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/JoinGame")]
+        System.Threading.Tasks.Task JoinGameAsync(string nombreJuego);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/DeshacerJuego")]
+        void DeshacerJuego(string nombreJuego);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/DeshacerJuego")]
+        System.Threading.Tasks.Task DeshacerJuegoAsync(string nombreJuego);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/IntegranteAbandonaJuego")]
+        void IntegranteAbandonaJuego(string nombreJuego);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/IntegranteAbandonaJuego")]
+        System.Threading.Tasks.Task IntegranteAbandonaJuegoAsync(string nombreJuego);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ILobbyServiceCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/ReciveGame")]
+        void ReciveGame(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/ReciveMember")]
+        void ReciveMember(string nuevoIntegrante);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyService/EnviarNombreUsuario", ReplyAction="http://tempuri.org/ILobbyService/EnviarNombreUsuarioResponse")]
+        string EnviarNombreUsuario();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/RecibirIntegrantes")]
+        void RecibirIntegrantes(string[] integrantes);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/AbandonarJuego")]
+        void AbandonarJuego(bool razon);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/EliminarIntegrante")]
+        void EliminarIntegrante(string integranteDesertor);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/ActualizarJuegos")]
+        void ActualizarJuegos();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ILobbyServiceChannel : Domino.Proxy.ILobbyService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class LobbyServiceClient : System.ServiceModel.DuplexClientBase<Domino.Proxy.ILobbyService>, Domino.Proxy.ILobbyService {
+        
+        public LobbyServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public LobbyServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public LobbyServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LobbyServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LobbyServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void JoinLobby(string propietario) {
+            base.Channel.JoinLobby(propietario);
+        }
+        
+        public System.Threading.Tasks.Task JoinLobbyAsync(string propietario) {
+            return base.Channel.JoinLobbyAsync(propietario);
+        }
+        
+        public void SolicitarJuegos() {
+            base.Channel.SolicitarJuegos();
+        }
+        
+        public System.Threading.Tasks.Task SolicitarJuegosAsync() {
+            return base.Channel.SolicitarJuegosAsync();
+        }
+        
+        public void CreateGame(string nombreJuego) {
+            base.Channel.CreateGame(nombreJuego);
+        }
+        
+        public System.Threading.Tasks.Task CreateGameAsync(string nombreJuego) {
+            return base.Channel.CreateGameAsync(nombreJuego);
+        }
+        
+        public void JoinGame(string nombreJuego) {
+            base.Channel.JoinGame(nombreJuego);
+        }
+        
+        public System.Threading.Tasks.Task JoinGameAsync(string nombreJuego) {
+            return base.Channel.JoinGameAsync(nombreJuego);
+        }
+        
+        public void DeshacerJuego(string nombreJuego) {
+            base.Channel.DeshacerJuego(nombreJuego);
+        }
+        
+        public System.Threading.Tasks.Task DeshacerJuegoAsync(string nombreJuego) {
+            return base.Channel.DeshacerJuegoAsync(nombreJuego);
+        }
+        
+        public void IntegranteAbandonaJuego(string nombreJuego) {
+            base.Channel.IntegranteAbandonaJuego(nombreJuego);
+        }
+        
+        public System.Threading.Tasks.Task IntegranteAbandonaJuegoAsync(string nombreJuego) {
+            return base.Channel.IntegranteAbandonaJuegoAsync(nombreJuego);
         }
     }
 }

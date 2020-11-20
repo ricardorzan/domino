@@ -54,6 +54,7 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -100,6 +101,9 @@
     <Compile Include="RegistrarseWindow.xaml.cs">
       <DependentUpon>RegistrarseWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VerMarcadoresWindow.xaml.cs">
+      <DependentUpon>VerMarcadoresWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="CambiarContraseñaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -136,6 +140,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="VerMarcadoresWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -166,6 +174,13 @@
     <None Include="Connected Services\Proxy\DominoService1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\Proxy\DominoService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Proxy\DominoService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DominoContracts.UsuarioPuntajes2.datasource" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
