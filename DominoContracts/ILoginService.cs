@@ -13,11 +13,13 @@ namespace DominoContracts
     {
         [OperationContract]
         string Validar(string correo, string contraseña);
-
         [OperationContract]
         bool Registrar(string username, string correo, string contraseña);
-
         [OperationContract]
         bool RecuperarContraseña(string correo);
+        [OperationContract]
+        bool VerificarUsuario(string nombreusuario, string token);
+        [OperationContract]
+        bool EstaVerificado(string nombreusuario);
     }
 }

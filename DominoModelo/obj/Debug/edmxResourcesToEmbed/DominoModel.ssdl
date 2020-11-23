@@ -4,21 +4,21 @@
     <Key>
       <PropertyRef Name="JuegoID" />
     </Key>
-    <Property Name="Condicióndevictoria" Type="varchar" MaxLength="20" />
+    <Property Name="Condicióndevictoria" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Duración" Type="time" Precision="7" />
-    <Property Name="Ganador" Type="varchar" MaxLength="15" />
+    <Property Name="Ganador" Type="varchar" MaxLength="50" />
     <Property Name="JuegoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="Jugador">
     <Key>
       <PropertyRef Name="JugadorID" />
     </Key>
-    <Property Name="Enturno" Type="bit" />
+    <Property Name="Enturno" Type="int" Nullable="false" />
     <Property Name="Fichasenmano" Type="int" />
     <Property Name="Puntaje" Type="int" />
     <Property Name="JugadorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="UsuarioID" Type="int" />
-    <Property Name="RondaID" Type="int" />
+    <Property Name="UsuarioID" Type="int" Nullable="false" />
+    <Property Name="RondaID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Ronda">
     <Key>
@@ -30,28 +30,20 @@
     <Property Name="RondaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="JuegoID" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="Usuario">
     <Key>
       <PropertyRef Name="UsuarioID" />
     </Key>
-    <Property Name="Contraseña" Type="varchar" MaxLength="15" />
-    <Property Name="Correo" Type="varchar" MaxLength="25" />
-    <Property Name="Nombreusuario" Type="varchar" MaxLength="15" />
-    <Property Name="Puntajeacumulado" Type="int" />
+    <Property Name="Contraseña" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Estatus" Type="int" Nullable="false" />
+    <Property Name="Nombreusuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Puntajeacumulado" Type="int" Nullable="false" />
+    <Property Name="Token" Type="varchar" MaxLength="50" />
     <Property Name="UsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <Association Name="FK_Jugador_Ronda">
-    <End Role="Ronda" Type="Self.Ronda" Multiplicity="0..1" />
+    <End Role="Ronda" Type="Self.Ronda" Multiplicity="1" />
     <End Role="Jugador" Type="Self.Jugador" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Ronda">
@@ -63,7 +55,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Jugador_Usuario">
-    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Jugador" Type="Self.Jugador" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuario">
@@ -90,7 +82,6 @@
     <EntitySet Name="Juego" EntityType="Self.Juego" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Jugador" EntityType="Self.Jugador" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Ronda" EntityType="Self.Ronda" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Jugador_Ronda" Association="Self.FK_Jugador_Ronda">
       <End Role="Ronda" EntitySet="Ronda" />

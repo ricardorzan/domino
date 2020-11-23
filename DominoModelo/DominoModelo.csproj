@@ -78,9 +78,6 @@
     <Compile Include="Ronda.cs">
       <DependentUpon>DominoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>DominoModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Usuario.cs">
       <DependentUpon>DominoModel.tt</DependentUpon>
     </Compile>

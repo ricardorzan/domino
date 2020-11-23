@@ -17,7 +17,7 @@ namespace DominoModelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Ronda()
         {
-            this.Jugadors = new ObservableCollection<Jugador>();
+            this.Jugador = new ObservableCollection<Jugador>();
         }
     
         public string Ganador { get; set; }
@@ -28,6 +28,6 @@ namespace DominoModelo
     
         public virtual Juego Juego { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableCollection<Jugador> Jugadors { get; set; }
+        public virtual ObservableCollection<Jugador> Jugador { get; set; }
     }
 }

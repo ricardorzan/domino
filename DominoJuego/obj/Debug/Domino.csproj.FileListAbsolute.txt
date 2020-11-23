@@ -101,7 +101,6 @@ C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\Domino.csprojAssemb
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\CambiarContraseñaWindow.g.cs
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\JugarMultijugadorWindow.g.cs
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\MainWindow.g.cs
-C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\MarcadoresWindow.g.cs
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\MenuWindow.g.cs
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\RecuperarContraseñaWindow.g.cs
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\RegistrarseWindow.g.cs
@@ -112,7 +111,6 @@ C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\App.baml
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\CambiarContraseñaWindow.baml
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\JugarMultijugadorWindow.baml
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\MainWindow.baml
-C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\MarcadoresWindow.baml
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\MenuWindow.baml
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\RecuperarContraseñaWindow.baml
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\RegistrarseWindow.baml
@@ -135,3 +133,5 @@ C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\DominoModelo.exe.co
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\EntityFramework.xml
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\VerMarcadoresWindow.g.cs
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\VerMarcadoresWindow.baml
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\VerficacionWindow.g.cs
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\VerficacionWindow.baml

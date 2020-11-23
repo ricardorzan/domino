@@ -1,27 +1,15 @@
-﻿using DominoContracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel;
-using System.Text;
+﻿using System;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Domino
 {
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
-        public partial class MainWindow : Window
+    public partial class MainWindow : Window
     {
         private object content;
 
@@ -31,57 +19,57 @@ namespace Domino
             content = Content;
         }
 
-        private void ClickIniciarSesion(object sender, RoutedEventArgs e)
+        private void ClickLogIn(object sender, RoutedEventArgs e)
         {
-            string correo = TextBoxCorreo.Text;
-            if (!correo.Equals("") && !TextBoxContraseña.Password.Equals(""))
+            string email = TextBoxEmail.Text;
+            string password = TextBoxPassword.Password;
+            if (!email.Equals("") && !password.Equals(""))
             {
                 String sFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-                if (Regex.IsMatch(correo, sFormato))
+                if (Regex.IsMatch(email, sFormato))
                 {
-                    //InstanceContext context = new InstanceContext(new MainWindow());
                     Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
-                    string valido = server.Validar(TextBoxCorreo.Text, TextBoxContraseña.Password);
+                    string isValid = server.Validar(email, password);
                     server.Close();
-                    if (!(valido).Equals(""))
+                    if (!(isValid).Equals(""))
                     {
-                        MenuWindow sesion = new MenuWindow(valido);
+                        MenuWindow sesion = new MenuWindow(isValid);
                         sesion.Show();
                         this.Close();
                     }
                     else
-                    {
-                        LabelAlert.Content = Properties.Resources.SinCoincidencia;
-                    }
-                } else
-                {
-                    LabelAlert.Content = Properties.Resources.CorreoInvalido;
+                        LabelAlert.Content = Properties.Resources.NoMatch;
                 }
-                    
-            } else
-            {
-                LabelAlert.Content = Properties.Resources.CamposVacios;
-            }   
+                else
+                    LabelAlert.Content = Properties.Resources.InvalidEmail;
+            }
+            else
+                LabelAlert.Content = Properties.Resources.EmptyFields;
         }
 
-        private void ClickRegistrar(object sender, RoutedEventArgs e)
+        private void ClickSignUp(object sender, RoutedEventArgs e)
         {
-            RegistrarseWindow ventanaRegistrar = new RegistrarseWindow(this);
-            this.Content = ventanaRegistrar;
+            RegistrarseWindow registerWindow = new RegistrarseWindow(this);
+            Navegate(registerWindow);
         }
 
-        private void ClickRecuperar(object sender, MouseButtonEventArgs e)
+        private void ClickRecover(object sender, MouseButtonEventArgs e)
         {
-            RecuperarContraseñaWindow ventanaRecuperar = new RecuperarContraseñaWindow(this);
-            this.Content = ventanaRecuperar;
+            RecuperarContraseñaWindow recoverWindow = new RecuperarContraseñaWindow(this);
+            Navegate(recoverWindow);
         }
 
         public void Regresar()
         {
-            TextBoxCorreo.Clear();
-            TextBoxContraseña.Clear();
+            TextBoxEmail.Clear();
+            TextBoxPassword.Clear();
             LabelAlert.Content = "";
             Content = content;
+        }
+
+        public void Navegate(Page page)
+        {
+            this.Content = page;
         }
     }
 }

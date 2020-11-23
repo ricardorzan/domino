@@ -39,7 +39,7 @@ namespace DominoServer
         public void CreateGame(string nombreJuego)
         {
             var connection = OperationContext.Current.GetCallbackChannel<ILobbyClient>();
-            Dictionary<ILobbyClient, string> _members = new Dictionary<ILobbyClient, string>(); 
+            Dictionary<ILobbyClient, string> _members = new Dictionary<ILobbyClient, string>();
             _games.Add(nombreJuego, _members);
 
             string propietario;
@@ -163,7 +163,7 @@ namespace DominoServer
             {
                 using (DominoContext context = new DominoContext())
                 {
-                    var user = context.Usuarios.FirstOrDefault(u => u.Nombreusuario == usuario);
+                    var user = context.Usuario.FirstOrDefault(u => u.Nombreusuario == usuario);
                     if (user != null)
                     {
                         if (user.Contraseña.Equals(contraseñaActual))
@@ -189,16 +189,13 @@ namespace DominoServer
             {
                 using (DominoContext context = new DominoContext())
                 {
-                    var usuarios = context.Usuarios.OrderByDescending(p => p.Puntajeacumulado);
+                    var usuarios = context.Usuario.OrderByDescending(p => p.Puntajeacumulado);
                     int lugar = 1;
                     foreach (Usuario u in usuarios)
                     {
                         if (u != null)
                         {
-                            if(u.Puntajeacumulado != null)
-                            {
-                                usuarioPuntajes.Add(new UsuarioPuntajes(lugar, u.Nombreusuario, (int)u.Puntajeacumulado));
-                            }
+                            usuarioPuntajes.Add(new UsuarioPuntajes(lugar, u.Nombreusuario, (int)u.Puntajeacumulado));
                         }
                         else
                             return usuarioPuntajes;
@@ -223,26 +220,11 @@ namespace DominoServer
             {
                 using (DominoContext context = new DominoContext())
                 {
-                    var usuario = context.Usuarios.FirstOrDefault(u => u.Correo == correo);
+                    var usuario = context.Usuario.FirstOrDefault(u => u.Correo == correo);
                     if (usuario != null)
                     {
-                        MailMessage mensaje = new MailMessage();
-                        mensaje.From = new MailAddress("domino.juego.re@gmail.com", "Domino Juego", System.Text.Encoding.UTF8);//Correo de salida
-                        mensaje.To.Add(correo); //Correo destino?
-                        mensaje.Subject = "Domino: Recuperación de contraseña"; //Asunto
-                        mensaje.Body = "¡Hola " + usuario.Nombreusuario + "! Al parecer olvidaste tu contraseña, anotala bien porque es: " +
-                            usuario.Contraseña + ". Puedes cambiarla dentro del juego una vez que inicies sesión."; //Mensaje del correo
-                        mensaje.IsBodyHtml = true;
-                        mensaje.Priority = MailPriority.Normal;
+                        EnviarCorreo(usuario, false);
 
-                        SmtpClient smtp = new SmtpClient();
-                        smtp.UseDefaultCredentials = false;
-                        smtp.Host = "smtp.gmail.com"; //Host del servidor de correo
-                        smtp.Port = 25; //Puerto de salida
-                        smtp.Credentials = new System.Net.NetworkCredential("domino.juego.re@gmail.com", "gatodeportivo");//Cuenta de correo
-                        ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
-                        smtp.EnableSsl = true;//True si el servidor de correo permite ssl
-                        smtp.Send(mensaje);
                         return true;
                     }
                     else
@@ -263,10 +245,10 @@ namespace DominoServer
             {
                 using (DominoContext context = new DominoContext())
                 {
-                    var usuarioExistente = context.Usuarios.FirstOrDefault(u => u.Correo == correo);
+                    var usuarioExistente = context.Usuario.FirstOrDefault(u => u.Correo == correo);
                     if (usuarioExistente == null)
                     {
-                        usuarioExistente = context.Usuarios.FirstOrDefault(u => u.Nombreusuario == username);
+                        usuarioExistente = context.Usuario.FirstOrDefault(u => u.Nombreusuario == username);
                         if (usuarioExistente == null)
                         {
                             var usuario = new Usuario();
@@ -274,11 +256,71 @@ namespace DominoServer
                             usuario.Correo = correo;
                             usuario.Contraseña = contraseña;
                             usuario.Puntajeacumulado = 0;
-                            context.Usuarios.Add(usuario);
+                            usuario.Estatus = 0;
+                            usuario.Token = Guid.NewGuid().ToString();
+                            context.Usuario.Add(usuario);
                             context.SaveChanges();
+
+                            EnviarCorreo(usuario, true);
+
                             Console.WriteLine("The user " + username + " has just been registered with the correo: " + correo);
                             return true;
                         }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return false;
+        }
+
+        public bool VerificarUsuario(string nombreusuario, string token)
+        {
+            try
+            {
+                using (DominoContext context = new DominoContext())
+                {
+                    var usuario = context.Usuario.FirstOrDefault(u => u.Nombreusuario == nombreusuario);
+                    if (usuario != null)
+                    {
+                        if (!EstaVerificado(usuario.Nombreusuario))
+                        {
+                            if (usuario.Token == token)
+                            {
+                                usuario.Estatus = 1;
+                                context.SaveChanges();
+                                return true;
+                            }
+                            else
+                                return false;
+                        }
+                        else
+                            return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return false;
+        }
+
+        public bool EstaVerificado(string nombreusuario)
+        {
+            try
+            {
+                using (DominoContext context = new DominoContext())
+                {
+                    var usuario = context.Usuario.FirstOrDefault(u => u.Nombreusuario == nombreusuario);
+                    if (usuario != null)
+                    {
+                        if (usuario.Estatus == 1)                        
+                            return true;
+                        else
+                            return false;
                     }
                 }
             }
@@ -295,22 +337,54 @@ namespace DominoServer
             {
                 using (DominoContext context = new DominoContext())
                 {
-                    var usuario = context.Usuarios.FirstOrDefault(u => u.Correo == correo);
+                    var usuario = context.Usuario.FirstOrDefault(u => u.Correo == correo);
                     if (usuario != null)
                     {
                         if (usuario.Contraseña == contraseña)
                         {
                             Console.WriteLine("The user " + usuario.Nombreusuario + " has just connected");
                             return usuario.Nombreusuario;
+
                         }
                     }
+                    return ("");
                 }
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-            return ("");
+        }
+
+        private bool EnviarCorreo(Usuario usuario, bool esRegistro)
+        {
+            MailMessage mensaje = new MailMessage();
+            mensaje.From = new MailAddress("domino.juego.re@gmail.com", "Domino Juego", System.Text.Encoding.UTF8);//Correo de salida
+            mensaje.To.Add(usuario.Correo); //Correo destino?
+            if (esRegistro)
+            {
+                mensaje.Subject = "Domino: Verificación de cuenta"; //Asunto
+                mensaje.Body = "¡Hola " + usuario.Nombreusuario + "! Gracias por registrarte, tu clave de verificación es: " +
+                    usuario.Token + "."; //Mensaje del correo
+            }
+            else
+            {
+                mensaje.Subject = "Domino: Recuperación de contraseña"; //Asunto
+                mensaje.Body = "¡Hola " + usuario.Nombreusuario + "! Al parecer olvidaste tu contraseña, anotala bien porque es: " +
+                    usuario.Contraseña + ". Puedes cambiarla dentro del juego una vez que inicies sesión."; //Mensaje del correo
+            }
+            mensaje.IsBodyHtml = true;
+            mensaje.Priority = MailPriority.Normal;
+            SmtpClient smtp = new SmtpClient();
+            smtp.UseDefaultCredentials = false;
+            smtp.Host = "smtp.gmail.com"; //Host del servidor de correo
+            smtp.Port = 25; //Puerto de salida
+            smtp.Credentials = new System.Net.NetworkCredential("domino.juego.re@gmail.com", "gatodeportivo");//Cuenta de correo
+            ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
+            smtp.EnableSsl = true;//True si el servidor de correo permite ssl
+            smtp.Send(mensaje);
+
+            return true;
         }
 
     }

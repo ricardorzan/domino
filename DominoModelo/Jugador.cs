@@ -14,12 +14,12 @@ namespace DominoModelo
     
     public partial class Jugador
     {
-        public Nullable<bool> Enturno { get; set; }
+        public int Enturno { get; set; }
         public Nullable<int> Fichasenmano { get; set; }
         public Nullable<int> Puntaje { get; set; }
         public int JugadorID { get; set; }
-        public Nullable<int> UsuarioID { get; set; }
-        public Nullable<int> RondaID { get; set; }
+        public int UsuarioID { get; set; }
+        public int RondaID { get; set; }
     
         public virtual Ronda Ronda { get; set; }
         public virtual Usuario Usuario { get; set; }

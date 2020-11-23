@@ -34,7 +34,18 @@ namespace Domino
             usuario = nombreUsuario;
             context = new InstanceContext(this);
             server = new Proxy.ChatServiceClient(context);
-            server.Join(usuario);
+
+            Proxy.LoginServiceClient verificador = new Proxy.LoginServiceClient();
+            
+            if (verificador.EstaVerificado(usuario))
+            {
+                server.Join(usuario);
+            }
+            else
+            {
+                UsuarioNoVerificado();
+            }
+            verificador.Close();
         }
 
         public void ReciveMessage(string user, string message)
@@ -69,6 +80,13 @@ namespace Domino
             Content = content;
         }
 
+        private void ClickSalir(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+
         private void ClickIconChat(object sender, EventArgs e)
         {
             string message = TextBoxChat.Text;
@@ -99,6 +117,42 @@ namespace Domino
             if (_autoScroll && e.ExtentHeightChange != 0)
             {
                 ScrollViewer.ScrollToVerticalOffset(ScrollViewer.ExtentHeight);
+            }
+        }
+
+        private void UsuarioNoVerificado()
+        {
+            ButtonChat.IsEnabled = false;
+            TextBoxChat.IsEnabled = false;
+            ButtonVerMarcadores.IsEnabled = false;
+            ButtonCambiarContraseña.IsEnabled = false;
+            ButtonJugar.IsEnabled = false;
+
+            TextBoxToken.Visibility = Visibility.Visible;
+            IconToken.Visibility = Visibility.Visible;
+            ButtonValidar.Visibility = Visibility.Visible;
+            LabelAlert.Content = "Tu cuenta no ha sido verificada";
+        }
+
+        private void ClickValidar(object sender, EventArgs e)
+        {
+            Proxy.LoginServiceClient verificador = new Proxy.LoginServiceClient();
+            bool verificado = verificador.VerificarUsuario(usuario, TextBoxToken.Text);
+            verificador.Close();
+            if (verificado)
+            {
+                ButtonChat.IsEnabled = true;
+                TextBoxChat.IsEnabled = true;
+                ButtonVerMarcadores.IsEnabled = true;
+                ButtonCambiarContraseña.IsEnabled = true;
+                ButtonJugar.IsEnabled = true;
+
+                TextBoxToken.Visibility = Visibility.Collapsed;
+                IconToken.Visibility = Visibility.Collapsed;
+                ButtonValidar.Visibility = Visibility.Collapsed;
+                LabelAlert.Content = "Tu cuenta ha sido verificada";
+
+                server.Join(usuario);
             }
         }
     }

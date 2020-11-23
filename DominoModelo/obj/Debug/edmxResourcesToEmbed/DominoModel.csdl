@@ -4,22 +4,22 @@
     <Key>
       <PropertyRef Name="JuegoID" />
     </Key>
-    <Property Name="Condicióndevictoria" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Condicióndevictoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Duración" Type="Time" Precision="7" />
-    <Property Name="Ganador" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Ganador" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="JuegoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <NavigationProperty Name="Rondas" Relationship="Self.FK_Ronda_Juego" FromRole="Juego" ToRole="Ronda" />
+    <NavigationProperty Name="Ronda" Relationship="Self.FK_Ronda_Juego" FromRole="Juego" ToRole="Ronda" />
   </EntityType>
   <EntityType Name="Jugador">
     <Key>
       <PropertyRef Name="JugadorID" />
     </Key>
-    <Property Name="Enturno" Type="Boolean" />
+    <Property Name="Enturno" Type="Int32" Nullable="false" />
     <Property Name="Fichasenmano" Type="Int32" />
     <Property Name="Puntaje" Type="Int32" />
     <Property Name="JugadorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UsuarioID" Type="Int32" />
-    <Property Name="RondaID" Type="Int32" />
+    <Property Name="UsuarioID" Type="Int32" Nullable="false" />
+    <Property Name="RondaID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Ronda" Relationship="Self.FK_Jugador_Ronda" FromRole="Jugador" ToRole="Ronda" />
     <NavigationProperty Name="Usuario" Relationship="Self.FK_Jugador_Usuario" FromRole="Jugador" ToRole="Usuario" />
   </EntityType>
@@ -33,28 +33,20 @@
     <Property Name="RondaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="JuegoID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Juego" Relationship="Self.FK_Ronda_Juego" FromRole="Ronda" ToRole="Juego" />
-    <NavigationProperty Name="Jugadors" Relationship="Self.FK_Jugador_Ronda" FromRole="Ronda" ToRole="Jugador" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Jugador" Relationship="Self.FK_Jugador_Ronda" FromRole="Ronda" ToRole="Jugador" />
   </EntityType>
   <EntityType Name="Usuario">
     <Key>
       <PropertyRef Name="UsuarioID" />
     </Key>
-    <Property Name="Contraseña" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="Correo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Nombreusuario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="Puntajeacumulado" Type="Int32" />
+    <Property Name="Contraseña" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estatus" Type="Int32" Nullable="false" />
+    <Property Name="Nombreusuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Puntajeacumulado" Type="Int32" Nullable="false" />
+    <Property Name="Token" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UsuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <NavigationProperty Name="Jugadors" Relationship="Self.FK_Jugador_Usuario" FromRole="Usuario" ToRole="Jugador" />
+    <NavigationProperty Name="Jugador" Relationship="Self.FK_Jugador_Usuario" FromRole="Usuario" ToRole="Jugador" />
   </EntityType>
   <Association Name="FK_Ronda_Juego">
     <End Role="Juego" Type="Self.Juego" Multiplicity="1" />
@@ -69,7 +61,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Jugador_Ronda">
-    <End Role="Ronda" Type="Self.Ronda" Multiplicity="0..1" />
+    <End Role="Ronda" Type="Self.Ronda" Multiplicity="1" />
     <End Role="Jugador" Type="Self.Jugador" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Ronda">
@@ -81,7 +73,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Jugador_Usuario">
-    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
     <End Role="Jugador" Type="Self.Jugador" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Usuario">
@@ -93,22 +85,21 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="DominoContext" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Juegoes" EntityType="Self.Juego" />
-    <EntitySet Name="Jugadors" EntityType="Self.Jugador" />
-    <EntitySet Name="Rondas" EntityType="Self.Ronda" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-    <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+    <EntitySet Name="Juego" EntityType="Self.Juego" />
+    <EntitySet Name="Jugador" EntityType="Self.Jugador" />
+    <EntitySet Name="Ronda" EntityType="Self.Ronda" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
     <AssociationSet Name="FK_Ronda_Juego" Association="Self.FK_Ronda_Juego">
-      <End Role="Juego" EntitySet="Juegoes" />
-      <End Role="Ronda" EntitySet="Rondas" />
+      <End Role="Juego" EntitySet="Juego" />
+      <End Role="Ronda" EntitySet="Ronda" />
     </AssociationSet>
     <AssociationSet Name="FK_Jugador_Ronda" Association="Self.FK_Jugador_Ronda">
-      <End Role="Ronda" EntitySet="Rondas" />
-      <End Role="Jugador" EntitySet="Jugadors" />
+      <End Role="Ronda" EntitySet="Ronda" />
+      <End Role="Jugador" EntitySet="Jugador" />
     </AssociationSet>
     <AssociationSet Name="FK_Jugador_Usuario" Association="Self.FK_Jugador_Usuario">
-      <End Role="Usuario" EntitySet="Usuarios" />
-      <End Role="Jugador" EntitySet="Jugadors" />
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Jugador" EntitySet="Jugador" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

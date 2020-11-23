@@ -69,7 +69,7 @@ namespace Domino
             }
             else
             {
-                LabelAlert.Content = Properties.Resources.CamposVacios;
+                LabelAlert.Content = Properties.Resources.EmptyFields;
             }
         }
     }

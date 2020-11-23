@@ -58,12 +58,12 @@ namespace Domino
                 }
                 else
                 {
-                    LabelAlert.Content = Properties.Resources.CorreoInvalido;
+                    LabelAlert.Content = Properties.Resources.InvalidEmail;
                 }
             }
             else
             {
-                LabelAlert.Content = Properties.Resources.CamposVacios;
+                LabelAlert.Content = Properties.Resources.EmptyFields;
             }
         }
     }

@@ -12,6 +12,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Domino
@@ -58,28 +59,20 @@ namespace Domino
                         server.Close();
                         if (valido)
                         {
-                            MessageBoxResult result = MessageBox.Show(Properties.Resources.RegistroExitoso + username);
-                            mainWindow.Regresar();
+                            VerficacionWindow verficacionWindow = new VerficacionWindow(mainWindow, username);
+                            (Application.Current.MainWindow as MainWindow).Navegate(verficacionWindow);
                         }
                         else
-                        {
                             LabelAlert.Content = Properties.Resources.CorreoExistente;
-                        }
                     }
                     else
-                    {
                         LabelAlert.Content = Properties.Resources.ContraseñasNoCoinciden;
-                    }
                 }
                 else
-                {
-                    LabelAlert.Content = Properties.Resources.CorreoInvalido;
-                }
+                    LabelAlert.Content = Properties.Resources.InvalidEmail;
             }
             else
-            {
-                LabelAlert.Content = Properties.Resources.CamposVacios;
-            }
+                LabelAlert.Content = Properties.Resources.EmptyFields;
         }
     }
 }

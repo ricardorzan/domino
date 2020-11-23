@@ -61,7 +61,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Abandonar partida.
+        ///   Busca una cadena traducida similar a Leave game.
         /// </summary>
         public static string AbandonarPartida_Button {
             get {
@@ -70,7 +70,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Cambiar contraseña.
+        ///   Busca una cadena traducida similar a Change password.
         /// </summary>
         public static string CambiarContraseña_Button {
             get {
@@ -79,16 +79,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Por favor llene todos los campos.
-        /// </summary>
-        public static string CamposVacios {
-            get {
-                return ResourceManager.GetString("CamposVacios", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Cancelar.
+        ///   Busca una cadena traducida similar a Cancel.
         /// </summary>
         public static string Cancelar_Button {
             get {
@@ -97,7 +88,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Confirmación.
+        ///   Busca una cadena traducida similar a Confirmation.
         /// </summary>
         public static string Confirmacion {
             get {
@@ -106,7 +97,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Contraseña.
+        ///   Busca una cadena traducida similar a Password.
         /// </summary>
         public static string Contraseña {
             get {
@@ -115,7 +106,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Contraseña actual.
+        ///   Busca una cadena traducida similar a Current password.
         /// </summary>
         public static string ContraseñaActual {
             get {
@@ -124,7 +115,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Contraseña cambiada con éxito.
+        ///   Busca una cadena traducida similar a Password changed successfully.
         /// </summary>
         public static string ContraseñaCambiada {
             get {
@@ -133,7 +124,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Confrimación de contraseña.
+        ///   Busca una cadena traducida similar a Password confirmation.
         /// </summary>
         public static string ContraseñaConfirm {
             get {
@@ -142,7 +133,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a La contraseña actual esta mal.
+        ///   Busca una cadena traducida similar a The current password is wrong.
         /// </summary>
         public static string ContraseñaIncorrecta {
             get {
@@ -151,7 +142,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Las contraseñas no coinciden.
+        ///   Busca una cadena traducida similar a The passwords do not match.
         /// </summary>
         public static string ContraseñasNoCoinciden {
             get {
@@ -160,7 +151,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Correo.
+        ///   Busca una cadena traducida similar a Email.
         /// </summary>
         public static string Correo {
             get {
@@ -169,7 +160,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Se te ha enviado un correo con tu contraseña.
+        ///   Busca una cadena traducida similar a An email with your password has been sent to you.
         /// </summary>
         public static string CorreoEnviado {
             get {
@@ -178,7 +169,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ya hay un usuario registrado con ese correo.
+        ///   Busca una cadena traducida similar a There is already a registered user with that email.
         /// </summary>
         public static string CorreoExistente {
             get {
@@ -187,16 +178,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Introduce un correo valido.
-        /// </summary>
-        public static string CorreoInvalido {
-            get {
-                return ResourceManager.GetString("CorreoInvalido", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Crear partida.
+        ///   Busca una cadena traducida similar a Create game.
         /// </summary>
         public static string CrearPartida_Button {
             get {
@@ -205,7 +187,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a No se ha encontrado una cuenta asociada a ese correo.
+        ///   Busca una cadena traducida similar a An account associated with that email was not found.
         /// </summary>
         public static string CuentaNoEncontrada {
             get {
@@ -214,7 +196,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Estas a punto de deshacer la partida, ¿Deseas continuar?.
+        ///   Busca una cadena traducida similar a You are about to undo the game, do you want to continue?.
         /// </summary>
         public static string DeshacerJuego {
             get {
@@ -223,7 +205,25 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a El dueño de la partida te ha expulsado.
+        ///   Busca una cadena traducida similar a Please fill in all the gaps.
+        /// </summary>
+        public static string EmptyFields {
+            get {
+                return ResourceManager.GetString("EmptyFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Another time.
+        /// </summary>
+        public static string EnOtroMomento_Button {
+            get {
+                return ResourceManager.GetString("EnOtroMomento_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The owner of the game kicked you out.
         /// </summary>
         public static string Expulsado {
             get {
@@ -232,7 +232,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Iniciar partida.
+        ///   Busca una cadena traducida similar a Start game.
         /// </summary>
         public static string IniciarPartida_Button {
             get {
@@ -241,16 +241,16 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Iniciar sesión.
+        ///   Busca una cadena traducida similar a Introduce a valid email.
         /// </summary>
-        public static string IniciarSesion_Button {
+        public static string InvalidEmail {
             get {
-                return ResourceManager.GetString("IniciarSesion_Button", resourceCulture);
+                return ResourceManager.GetString("InvalidEmail", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Jugar multijugador.
+        ///   Busca una cadena traducida similar a Play multiplayer.
         /// </summary>
         public static string JugarMultijugador_Button {
             get {
@@ -259,7 +259,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Jugar solo.
+        ///   Busca una cadena traducida similar a Solo play.
         /// </summary>
         public static string JugarSolo_Button {
             get {
@@ -268,7 +268,25 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Nueva contraseña.
+        ///   Busca una cadena traducida similar a Log in.
+        /// </summary>
+        public static string LogIn_Button {
+            get {
+                return ResourceManager.GetString("LogIn_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Your login credentials do not match an account in our system.
+        /// </summary>
+        public static string NoMatch {
+            get {
+                return ResourceManager.GetString("NoMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a New Password.
         /// </summary>
         public static string NuevaContraseña {
             get {
@@ -277,7 +295,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a El dueño ha deshecho la partida.
+        ///   Busca una cadena traducida similar a The owner has undone the game.
         /// </summary>
         public static string PartidaDeshecha {
             get {
@@ -286,7 +304,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Posición.
+        ///   Busca una cadena traducida similar a Position.
         /// </summary>
         public static string Posicion {
             get {
@@ -295,7 +313,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Recuperar.
+        ///   Busca una cadena traducida similar a Recover.
         /// </summary>
         public static string Recuperar_Button {
             get {
@@ -304,16 +322,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Registrarse.
-        /// </summary>
-        public static string Registrarse_Button {
-            get {
-                return ResourceManager.GetString("Registrarse_Button", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Has sido registrado .
+        ///   Busca una cadena traducida similar a You have been registered.
         /// </summary>
         public static string RegistroExitoso {
             get {
@@ -322,7 +331,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Regresar.
+        ///   Busca una cadena traducida similar a Back.
         /// </summary>
         public static string Regresar_Button {
             get {
@@ -331,29 +340,38 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Tus credenciales de inicio de sesión no coinciden con una cuenta en nuestro sistema.
+        ///   Busca una cadena traducida similar a Sing up.
         /// </summary>
-        public static string SinCoincidencia {
+        public static string SignUp_Button {
             get {
-                return ResourceManager.GetString("SinCoincidencia", resourceCulture);
+                return ResourceManager.GetString("SignUp_Button", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a ¿Olvidaste tu contraseña? Has clic aquí.
-        /// </summary>
-        public static string TextoRecuperar {
-            get {
-                return ResourceManager.GetString("TextoRecuperar", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Ingresa tu correo con el que te registraste al cual te mandaremos tu contraseña.
+        ///   Busca una cadena traducida similar a Enter your email with which you registered to which we will send you your password.
         /// </summary>
         public static string TextoRecupuerarContraseña {
             get {
                 return ResourceManager.GetString("TextoRecupuerarContraseña", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter the password sent to your email to complete your registration and be able to play.
+        /// </summary>
+        public static string TextoValidar {
+            get {
+                return ResourceManager.GetString("TextoValidar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Did you forget your password? Click here.
+        /// </summary>
+        public static string TextRecover {
+            get {
+                return ResourceManager.GetString("TextRecover", resourceCulture);
             }
         }
         
@@ -367,7 +385,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Tu.
+        ///   Busca una cadena traducida similar a You.
         /// </summary>
         public static string Tu {
             get {
@@ -376,7 +394,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Unirse a partida.
+        ///   Busca una cadena traducida similar a Join game.
         /// </summary>
         public static string UnirseAPartida_Button {
             get {
@@ -385,7 +403,16 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Nombre de usuario.
+        ///   Busca una cadena traducida similar a Join game.
+        /// </summary>
+        public static string UnirseAPatida_Button {
+            get {
+                return ResourceManager.GetString("UnirseAPatida_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Username.
         /// </summary>
         public static string Username {
             get {
@@ -394,7 +421,25 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ver marcadores.
+        ///   Busca una cadena traducida similar a Validate.
+        /// </summary>
+        public static string Validar_Button {
+            get {
+                return ResourceManager.GetString("Validar_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Your account has been verified, log in to play.
+        /// </summary>
+        public static string VerificacionExitosa {
+            get {
+                return ResourceManager.GetString("VerificacionExitosa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a View scores.
         /// </summary>
         public static string VerMarcadores_Button {
             get {

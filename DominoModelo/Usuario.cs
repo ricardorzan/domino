@@ -17,16 +17,18 @@ namespace DominoModelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Usuario()
         {
-            this.Jugadors = new ObservableCollection<Jugador>();
+            this.Jugador = new ObservableCollection<Jugador>();
         }
     
         public string Contraseña { get; set; }
         public string Correo { get; set; }
+        public int Estatus { get; set; }
         public string Nombreusuario { get; set; }
-        public Nullable<int> Puntajeacumulado { get; set; }
+        public int Puntajeacumulado { get; set; }
+        public string Token { get; set; }
         public int UsuarioID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableCollection<Jugador> Jugadors { get; set; }
+        public virtual ObservableCollection<Jugador> Jugador { get; set; }
     }
 }

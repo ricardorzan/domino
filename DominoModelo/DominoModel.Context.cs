@@ -25,10 +25,9 @@ namespace DominoModelo
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Juego> Juegoes { get; set; }
-        public virtual DbSet<Jugador> Jugadors { get; set; }
-        public virtual DbSet<Ronda> Rondas { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<Juego> Juego { get; set; }
+        public virtual DbSet<Jugador> Jugador { get; set; }
+        public virtual DbSet<Ronda> Ronda { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
     }
 }

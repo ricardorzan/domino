@@ -32,6 +32,18 @@ namespace Domino.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/RecuperarContraseña", ReplyAction="http://tempuri.org/ILoginService/RecuperarContraseñaResponse")]
         System.Threading.Tasks.Task<bool> RecuperarContraseñaAsync(string correo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/VerificarUsuario", ReplyAction="http://tempuri.org/ILoginService/VerificarUsuarioResponse")]
+        bool VerificarUsuario(string nombreusuario, string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/VerificarUsuario", ReplyAction="http://tempuri.org/ILoginService/VerificarUsuarioResponse")]
+        System.Threading.Tasks.Task<bool> VerificarUsuarioAsync(string nombreusuario, string token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/EstaVerificado", ReplyAction="http://tempuri.org/ILoginService/EstaVerificadoResponse")]
+        bool EstaVerificado(string nombreusuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/EstaVerificado", ReplyAction="http://tempuri.org/ILoginService/EstaVerificadoResponse")]
+        System.Threading.Tasks.Task<bool> EstaVerificadoAsync(string nombreusuario);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,6 +95,22 @@ namespace Domino.Proxy {
         
         public System.Threading.Tasks.Task<bool> RecuperarContraseñaAsync(string correo) {
             return base.Channel.RecuperarContraseñaAsync(correo);
+        }
+        
+        public bool VerificarUsuario(string nombreusuario, string token) {
+            return base.Channel.VerificarUsuario(nombreusuario, token);
+        }
+        
+        public System.Threading.Tasks.Task<bool> VerificarUsuarioAsync(string nombreusuario, string token) {
+            return base.Channel.VerificarUsuarioAsync(nombreusuario, token);
+        }
+        
+        public bool EstaVerificado(string nombreusuario) {
+            return base.Channel.EstaVerificado(nombreusuario);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EstaVerificadoAsync(string nombreusuario) {
+            return base.Channel.EstaVerificadoAsync(nombreusuario);
         }
     }
     
