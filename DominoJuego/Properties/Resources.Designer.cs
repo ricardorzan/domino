@@ -61,146 +61,110 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Leave game.
+        ///   Busca una cadena traducida similar a Your account not been verified.
         /// </summary>
-        public static string AbandonarPartida_Button {
+        public static string AccountHasBeenVerifiedText {
             get {
-                return ResourceManager.GetString("AbandonarPartida_Button", resourceCulture);
+                return ResourceManager.GetString("AccountHasBeenVerifiedText", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Change password.
+        ///   Busca una cadena traducida similar a Your account has not been verified.
         /// </summary>
-        public static string CambiarContraseña_Button {
+        public static string AccountHasNotBeenVerifiedText {
             get {
-                return ResourceManager.GetString("CambiarContraseña_Button", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Cancel.
-        /// </summary>
-        public static string Cancelar_Button {
-            get {
-                return ResourceManager.GetString("Cancelar_Button", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Confirmation.
-        /// </summary>
-        public static string Confirmacion {
-            get {
-                return ResourceManager.GetString("Confirmacion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Password.
-        /// </summary>
-        public static string Contraseña {
-            get {
-                return ResourceManager.GetString("Contraseña", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Current password.
-        /// </summary>
-        public static string ContraseñaActual {
-            get {
-                return ResourceManager.GetString("ContraseñaActual", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Password changed successfully.
-        /// </summary>
-        public static string ContraseñaCambiada {
-            get {
-                return ResourceManager.GetString("ContraseñaCambiada", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Password confirmation.
-        /// </summary>
-        public static string ContraseñaConfirm {
-            get {
-                return ResourceManager.GetString("ContraseñaConfirm", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a The current password is wrong.
-        /// </summary>
-        public static string ContraseñaIncorrecta {
-            get {
-                return ResourceManager.GetString("ContraseñaIncorrecta", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a The passwords do not match.
-        /// </summary>
-        public static string ContraseñasNoCoinciden {
-            get {
-                return ResourceManager.GetString("ContraseñasNoCoinciden", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Email.
-        /// </summary>
-        public static string Correo {
-            get {
-                return ResourceManager.GetString("Correo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a An email with your password has been sent to you.
-        /// </summary>
-        public static string CorreoEnviado {
-            get {
-                return ResourceManager.GetString("CorreoEnviado", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a There is already a registered user with that email.
-        /// </summary>
-        public static string CorreoExistente {
-            get {
-                return ResourceManager.GetString("CorreoExistente", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Create game.
-        /// </summary>
-        public static string CrearPartida_Button {
-            get {
-                return ResourceManager.GetString("CrearPartida_Button", resourceCulture);
+                return ResourceManager.GetString("AccountHasNotBeenVerifiedText", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a An account associated with that email was not found.
         /// </summary>
-        public static string CuentaNoEncontrada {
+        public static string AccountNotFound {
             get {
-                return ResourceManager.GetString("CuentaNoEncontrada", resourceCulture);
+                return ResourceManager.GetString("AccountNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Another time.
+        /// </summary>
+        public static string AnotherTime_Button {
+            get {
+                return ResourceManager.GetString("AnotherTime_Button", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a You are about to undo the game, do you want to continue?.
         /// </summary>
-        public static string DeshacerJuego {
+        public static string BreakGame {
             get {
-                return ResourceManager.GetString("DeshacerJuego", resourceCulture);
+                return ResourceManager.GetString("BreakGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cancel.
+        /// </summary>
+        public static string Cancel_Button {
+            get {
+                return ResourceManager.GetString("Cancel_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Change password.
+        /// </summary>
+        public static string ChangePassword_Button {
+            get {
+                return ResourceManager.GetString("ChangePassword_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Confirmation.
+        /// </summary>
+        public static string Confirmation {
+            get {
+                return ResourceManager.GetString("Confirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Create game.
+        /// </summary>
+        public static string CreateGame_Button {
+            get {
+                return ResourceManager.GetString("CreateGame_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Current password.
+        /// </summary>
+        public static string CurrentPassword {
+            get {
+                return ResourceManager.GetString("CurrentPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Email.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An email with your password has been sent to you.
+        /// </summary>
+        public static string EmailSent {
+            get {
+                return ResourceManager.GetString("EmailSent", resourceCulture);
             }
         }
         
@@ -214,29 +178,56 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Another time.
+        ///   Busca una cadena traducida similar a There is already a registered user with that email.
         /// </summary>
-        public static string EnOtroMomento_Button {
+        public static string ExistingMail {
             get {
-                return ResourceManager.GetString("EnOtroMomento_Button", resourceCulture);
+                return ResourceManager.GetString("ExistingMail", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a The owner of the game kicked you out.
+        ///   Busca una cadena traducida similar a The owner has undone the game.
         /// </summary>
-        public static string Expulsado {
+        public static string GameBroke {
             get {
-                return ResourceManager.GetString("Expulsado", resourceCulture);
+                return ResourceManager.GetString("GameBroke", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Start game.
+        ///   Busca una cadena traducida similar a Game.
         /// </summary>
-        public static string IniciarPartida_Button {
+        public static string GameText {
             get {
-                return ResourceManager.GetString("IniciarPartida_Button", resourceCulture);
+                return ResourceManager.GetString("GameText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Back.
+        /// </summary>
+        public static string GoBack_Button {
+            get {
+                return ResourceManager.GetString("GoBack_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The current password is wrong.
+        /// </summary>
+        public static string IncorrectPassword {
+            get {
+                return ResourceManager.GetString("IncorrectPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter the key sent to your email.
+        /// </summary>
+        public static string InsertTokenText {
+            get {
+                return ResourceManager.GetString("InsertTokenText", resourceCulture);
             }
         }
         
@@ -250,20 +241,29 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Play multiplayer.
+        ///   Busca una cadena traducida similar a Join game.
         /// </summary>
-        public static string JugarMultijugador_Button {
+        public static string JoinGame_Button {
             get {
-                return ResourceManager.GetString("JugarMultijugador_Button", resourceCulture);
+                return ResourceManager.GetString("JoinGame_Button", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Solo play.
+        ///   Busca una cadena traducida similar a The owner of the game kicked you out.
         /// </summary>
-        public static string JugarSolo_Button {
+        public static string KickedOut {
             get {
-                return ResourceManager.GetString("JugarSolo_Button", resourceCulture);
+                return ResourceManager.GetString("KickedOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Leave game.
+        /// </summary>
+        public static string LeaveGame_Button {
+            get {
+                return ResourceManager.GetString("LeaveGame_Button", resourceCulture);
             }
         }
         
@@ -277,6 +277,24 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Log out.
+        /// </summary>
+        public static string LogOut_Button {
+            get {
+                return ResourceManager.GetString("LogOut_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a New password.
+        /// </summary>
+        public static string NewPassword {
+            get {
+                return ResourceManager.GetString("NewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Your login credentials do not match an account in our system.
         /// </summary>
         public static string NoMatch {
@@ -286,56 +304,101 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a New Password.
+        ///   Busca una cadena traducida similar a Password.
         /// </summary>
-        public static string NuevaContraseña {
+        public static string Password {
             get {
-                return ResourceManager.GetString("NuevaContraseña", resourceCulture);
+                return ResourceManager.GetString("Password", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a The owner has undone the game.
+        ///   Busca una cadena traducida similar a Password changed successfully.
         /// </summary>
-        public static string PartidaDeshecha {
+        public static string PasswordChanged {
             get {
-                return ResourceManager.GetString("PartidaDeshecha", resourceCulture);
+                return ResourceManager.GetString("PasswordChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Password confirmation.
+        /// </summary>
+        public static string PasswordConfirmation {
+            get {
+                return ResourceManager.GetString("PasswordConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The passwords do not match.
+        /// </summary>
+        public static string PasswordsDoNotMatch {
+            get {
+                return ResourceManager.GetString("PasswordsDoNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Player.
+        /// </summary>
+        public static string PlayerText {
+            get {
+                return ResourceManager.GetString("PlayerText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Play multiplayer.
+        /// </summary>
+        public static string PlayMultiplayer_Button {
+            get {
+                return ResourceManager.GetString("PlayMultiplayer_Button", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Position.
         /// </summary>
-        public static string Posicion {
+        public static string PositionText {
             get {
-                return ResourceManager.GetString("Posicion", resourceCulture);
+                return ResourceManager.GetString("PositionText", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Recover.
         /// </summary>
-        public static string Recuperar_Button {
+        public static string Recover_Button {
             get {
-                return ResourceManager.GetString("Recuperar_Button", resourceCulture);
+                return ResourceManager.GetString("Recover_Button", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a You have been registered.
+        ///   Busca una cadena traducida similar a Enter your email with which you registered to which we will send you your password.
         /// </summary>
-        public static string RegistroExitoso {
+        public static string RecoverPasswordText {
             get {
-                return ResourceManager.GetString("RegistroExitoso", resourceCulture);
+                return ResourceManager.GetString("RecoverPasswordText", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Back.
+        ///   Busca una cadena traducida similar a Score.
         /// </summary>
-        public static string Regresar_Button {
+        public static string ScoreText {
             get {
-                return ResourceManager.GetString("Regresar_Button", resourceCulture);
+                return ResourceManager.GetString("ScoreText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a See scores.
+        /// </summary>
+        public static string SeeScores_Button {
+            get {
+                return ResourceManager.GetString("SeeScores_Button", resourceCulture);
             }
         }
         
@@ -349,20 +412,29 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Enter your email with which you registered to which we will send you your password.
+        ///   Busca una cadena traducida similar a Start game.
         /// </summary>
-        public static string TextoRecupuerarContraseña {
+        public static string StartGame_Button {
             get {
-                return ResourceManager.GetString("TextoRecupuerarContraseña", resourceCulture);
+                return ResourceManager.GetString("StartGame_Button", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Enter the password sent to your email to complete your registration and be able to play.
+        ///   Busca una cadena traducida similar a You have been registered.
         /// </summary>
-        public static string TextoValidar {
+        public static string SuccessfulRegistration {
             get {
-                return ResourceManager.GetString("TextoValidar", resourceCulture);
+                return ResourceManager.GetString("SuccessfulRegistration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Your account has been verified, log in to play.
+        /// </summary>
+        public static string SuccessfulVerification {
+            get {
+                return ResourceManager.GetString("SuccessfulVerification", resourceCulture);
             }
         }
         
@@ -385,29 +457,11 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a You.
+        ///   Busca una cadena traducida similar a Unsuccessful verification, wrong key.
         /// </summary>
-        public static string Tu {
+        public static string UnsuccessfulVerification {
             get {
-                return ResourceManager.GetString("Tu", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Join game.
-        /// </summary>
-        public static string UnirseAPartida_Button {
-            get {
-                return ResourceManager.GetString("UnirseAPartida_Button", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Join game.
-        /// </summary>
-        public static string UnirseAPatida_Button {
-            get {
-                return ResourceManager.GetString("UnirseAPatida_Button", resourceCulture);
+                return ResourceManager.GetString("UnsuccessfulVerification", resourceCulture);
             }
         }
         
@@ -423,27 +477,36 @@ namespace Domino.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a Validate.
         /// </summary>
-        public static string Validar_Button {
+        public static string Validate_Button {
             get {
-                return ResourceManager.GetString("Validar_Button", resourceCulture);
+                return ResourceManager.GetString("Validate_Button", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Your account has been verified, log in to play.
+        ///   Busca una cadena traducida similar a Enter the key sent to your email to complete your registration and be able to play.
         /// </summary>
-        public static string VerificacionExitosa {
+        public static string ValidateText {
             get {
-                return ResourceManager.GetString("VerificacionExitosa", resourceCulture);
+                return ResourceManager.GetString("ValidateText", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a View scores.
+        ///   Busca una cadena traducida similar a Write something in the chat.
         /// </summary>
-        public static string VerMarcadores_Button {
+        public static string WriteInChatText {
             get {
-                return ResourceManager.GetString("VerMarcadores_Button", resourceCulture);
+                return ResourceManager.GetString("WriteInChatText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You.
+        /// </summary>
+        public static string You {
+            get {
+                return ResourceManager.GetString("You", resourceCulture);
             }
         }
     }

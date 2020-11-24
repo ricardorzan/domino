@@ -11,7 +11,7 @@ namespace Domino
     /// </summary>
     public partial class MainWindow : Window
     {
-        private object content;
+        private readonly object content;
 
         public MainWindow()
         {
@@ -25,11 +25,11 @@ namespace Domino
             string password = TextBoxPassword.Password;
             if (!email.Equals("") && !password.Equals(""))
             {
-                String sFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-                if (Regex.IsMatch(email, sFormato))
+                String emailFormat = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+                if (Regex.IsMatch(email, emailFormat))
                 {
                     Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
-                    string isValid = server.Validar(email, password);
+                    string isValid = server.LogIn(email, password);
                     server.Close();
                     if (!(isValid).Equals(""))
                     {
@@ -59,7 +59,7 @@ namespace Domino
             Navegate(recoverWindow);
         }
 
-        public void Regresar()
+        public void GoBack()
         {
             TextBoxEmail.Clear();
             TextBoxPassword.Clear();

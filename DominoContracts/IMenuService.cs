@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DominoContracts
 {
@@ -13,26 +8,26 @@ namespace DominoContracts
     public interface IMenuService
     {
         [OperationContract]
-        bool CambiarContraseña(string usuario, string contraseñaActual, string contraseñaNueva);
+        bool ChangePassword(string username, string currentPassword, string newPassword);
         [OperationContract]
-        ObservableCollection<UsuarioPuntajes> SolicitarPuntajes();
+        ObservableCollection<UsuarioPuntajes> GetScores();
     }
 
     [DataContract]
     public class UsuarioPuntajes
     {
         [DataMember]
-        public int posicion;
+        public int position;
         [DataMember]
-        public string nombre;
+        public string username;
         [DataMember]
-        public int puntaje;
+        public int score;
 
-        public UsuarioPuntajes(int lugar, string nombreusuario, int puntajeacumulado)
+        public UsuarioPuntajes(int place, string username, int score)
         {
-            posicion = lugar;
-            nombre = nombreusuario;
-            puntaje = puntajeacumulado;
+            position = place;
+            this.username = username;
+            this.score = score;
         }
     }
 }

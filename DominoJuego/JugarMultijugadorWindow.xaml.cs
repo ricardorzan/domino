@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System.Collections.ObjectModel;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Domino
 {
@@ -22,187 +11,182 @@ namespace Domino
     /// </summary>
     public partial class JugarMultijugadorWindow : Page, Proxy.ILobbyServiceCallback
     {
-        private MenuWindow menuWindow;
-        private string usuario;
-        private string nombreJuego;
-        private bool creadorDePartida = false;
+        private readonly MenuWindow menuWindow;
+        private readonly string username;
+        private string gameName;
+        private bool isHost = false;
 
-        private Proxy.LobbyServiceClient server = null;
-        private InstanceContext context = null;
+        private readonly Proxy.LobbyServiceClient server = null;
+        private readonly InstanceContext context = null;
 
-        public ObservableCollection<string> games { get; private set; }
-        public ObservableCollection<string> players { get; private set; }
+        public ObservableCollection<string> Games { get; private set; }
+        public ObservableCollection<string> Players { get; private set; }
 
         public JugarMultijugadorWindow()
         {
             InitializeComponent();
         }
 
-        public JugarMultijugadorWindow(MenuWindow menuWindow, string nombreUsuario)
+        public JugarMultijugadorWindow(MenuWindow menuWindow, string username)
         {
             InitializeComponent();
             this.menuWindow = menuWindow;
-            usuario = nombreUsuario;
+            this.username = username;
 
-            games = new ObservableCollection<string>();
-            players = new ObservableCollection<string>();
+            Games = new ObservableCollection<string>();
+            Players = new ObservableCollection<string>();
             DataContext = this;
 
-            ListPlayers.Visibility = Visibility.Hidden;
+            PlayersList.Visibility = Visibility.Hidden;
 
             context = new InstanceContext(this);
             server = new Proxy.LobbyServiceClient(context);
-            server.JoinLobby(usuario);
-            server.SolicitarJuegos();
+            server.JoinLobby(username);
+            server.GetGames();
         }
 
-        private void ClickRegresar(object sender, RoutedEventArgs e)
+        private void ClickGoBack(object sender, RoutedEventArgs e)
         {
-            menuWindow.regresar();
+            menuWindow.GoBack();
         }
 
-        private void ClickCrearPartida(object sender, RoutedEventArgs e)
+        private void ClickCreateGame(object sender, RoutedEventArgs e)
         {
-            creadorDePartida = true;
-            AjustarComponentes(creadorDePartida);
+            isHost = true;
+            AdjustComponents(isHost);
 
-            players.Insert(0, usuario);
+            Players.Insert(0, username);
             DataContext = this;
 
-            nombreJuego = "Partida de " + usuario; // Esto debe cambiar cuando se implemente que el propietario pueda ponerle nombre a su partida
-            server.CreateGame(nombreJuego);
+            gameName = "Partida de " + username; // Esto debe cambiar cuando se implemente que el propietario pueda ponerle nombre a su partida
+            server.CreateGame(gameName);
 
         }
 
-        private void ClickUnirseAPartida(object sender, RoutedEventArgs e)
+        private void ClickJoinGame(object sender, RoutedEventArgs e)
         {
-            nombreJuego = (string)ListGames.SelectedItem;
-            server.JoinGame(nombreJuego);
+            gameName = (string)GamesList.SelectedItem;
+            server.JoinGame(gameName);
         }
 
-        private void ClickAbandonarPartida(object sender, RoutedEventArgs e)
+        private void ClickLeaveGame(object sender, RoutedEventArgs e)
         {
-            if (creadorDePartida == true)
+            if (isHost == true)
             {
-                if (MessageBox.Show(Properties.Resources.DeshacerJuego, Properties.Resources.Confirmacion, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (MessageBox.Show(Properties.Resources.BreakGame, Properties.Resources.Confirmation, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    server.DeshacerJuego(nombreJuego);
-                    ReajustarComponentes();
+                    server.BreakGame(gameName);
+                    ResetComponents();
                 }
             }
             else
             {
-                server.IntegranteAbandonaJuego(nombreJuego);
-                ReajustarComponentes();
+                server.MemberLeftGame(gameName);
+                ResetComponents();
             }
         }
 
-        private void ClickIniciarPartida(object sender, RoutedEventArgs e)
+        private void ClickStartGame(object sender, RoutedEventArgs e)
         {
             //  implementa el juego
         }
 
-        public void ReciveGame(string nombreJuego)
+        public void ReciveGame(string gameName)
         {
-            games.Insert(0, nombreJuego);
+            Games.Insert(0, gameName);
             DataContext = this;
         }
 
-        public void ReciveMember(string nuevoIntegrante)
+        public void ReciveMember(string newMember)
         {
-            players.Add(nuevoIntegrante);
+            Players.Add(newMember);
             DataContext = this;
         }
 
-        public string EnviarNombreUsuario()
+        public string SendUsername()
         {
-            return usuario;
+            return username;
         }
 
-        public void RecibirIntegrantes(string[] integrantes)
+        public void ReciveMembers(string[] members)
         {
-            creadorDePartida = false;
-            AjustarComponentes(creadorDePartida);
+            isHost = false;
+            AdjustComponents(isHost);
 
-            for (int i = 0; i < integrantes.Length; i++)
+            for (int i = 0; i < members.Length; i++)
             {
-                players.Add(integrantes[i]);
+                Players.Add(members[i]);
             }
-            players.Add(usuario);
+            Players.Add(username);
             DataContext = this;
         }
 
-        public void AbandonarJuego(bool razon)
+        public void LeaveGame(bool isKickedOut)
         {
-            if (razon)
-            {
-                MessageBoxResult result = MessageBox.Show(Properties.Resources.Expulsado);
-            }
+            if (isKickedOut)
+                MessageBox.Show(Properties.Resources.KickedOut);
             else
-            {
-                MessageBoxResult result = MessageBox.Show(Properties.Resources.PartidaDeshecha);
-            }
-            ReajustarComponentes();
+                MessageBox.Show(Properties.Resources.GameBroke);
+            ResetComponents();
         }
 
-        public void EliminarIntegrante(string integranteDesertor)
+        public void SomeoneLeftGame(string memberWhoLeft)
         {
-            players.Remove(integranteDesertor);
+            Players.Remove(memberWhoLeft);
             DataContext = this;
         }
 
-        public void ActualizarJuegos()
+        public void UpdateGames()
         {
-            games.Clear();
-            server.SolicitarJuegos();
+            Games.Clear();
+            server.GetGames();
         }
 
-        public void AjustarComponentes(bool esDueño)
+        public void AdjustComponents(bool esDueño)
         {
-            RegresarButton.IsEnabled = false;
+            GoBackButton.IsEnabled = false;
 
-            ListGames.Visibility = Visibility.Hidden;
-            CrearPartidaButton.Visibility = Visibility.Hidden;
-            UnirseAPartidaButton.Visibility = Visibility.Hidden;
+            GamesList.Visibility = Visibility.Hidden;
+            CreateGameButton.Visibility = Visibility.Hidden;
+            JoinGameButton.Visibility = Visibility.Hidden;
 
-            ListPlayers.Visibility = Visibility.Visible;
-            AbandonarPartidaButton.Visibility = Visibility.Visible;
+            PlayersList.Visibility = Visibility.Visible;
+            LeaveGameButton.Visibility = Visibility.Visible;
+
             if (esDueño)
+                StartGameButton.Visibility = Visibility.Visible;
+        }
+
+        public void ResetComponents()
+        {
+            GoBackButton.IsEnabled = true;
+
+            GamesList.Visibility = Visibility.Visible;
+            CreateGameButton.Visibility = Visibility.Visible;
+            JoinGameButton.Visibility = Visibility.Visible;
+            JoinGameButton.IsEnabled = false;
+            Games.Clear();
+            server.GetGames();
+
+            PlayersList.Visibility = Visibility.Hidden;
+            StartGameButton.Visibility = Visibility.Hidden;
+            LeaveGameButton.Visibility = Visibility.Hidden;
+            Players.Clear();
+        }
+
+        private void GamesList_IsDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ClickJoinGame(this, new RoutedEventArgs());
+        }
+
+        private void GamesList_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.GamesList.SelectedItems.Count == 0)
             {
-                IniciarPartidaButton.Visibility = Visibility.Visible;
-            }
-        }
-
-        public void ReajustarComponentes()
-        {
-            RegresarButton.IsEnabled = true;
-
-            ListGames.Visibility = Visibility.Visible;
-            CrearPartidaButton.Visibility = Visibility.Visible;
-            UnirseAPartidaButton.Visibility = Visibility.Visible;
-            UnirseAPartidaButton.IsEnabled = false;
-            games.Clear();
-            server.SolicitarJuegos();
-
-            ListPlayers.Visibility = Visibility.Hidden;
-            IniciarPartidaButton.Visibility = Visibility.Hidden;
-            AbandonarPartidaButton.Visibility = Visibility.Hidden;
-            players.Clear();
-        }
-
-        private void ListGames_IsDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            ClickUnirseAPartida(this, new RoutedEventArgs());
-        }
-
-        private void ListGames_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (this.ListGames.SelectedItems.Count == 0)
-            {
-                UnirseAPartidaButton.IsEnabled = false;
+                JoinGameButton.IsEnabled = false;
                 return;
             }
-            UnirseAPartidaButton.IsEnabled = true;
+            JoinGameButton.IsEnabled = true;
         }
     }
 }

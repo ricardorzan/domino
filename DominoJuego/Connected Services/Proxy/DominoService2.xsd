@@ -8,9 +8,9 @@
   <xs:element name="ArrayOfUsuarioPuntajes" nillable="true" type="tns:ArrayOfUsuarioPuntajes" />
   <xs:complexType name="UsuarioPuntajes">
     <xs:sequence>
-      <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="posicion" type="xs:int" />
-      <xs:element minOccurs="0" name="puntaje" type="xs:int" />
+      <xs:element minOccurs="0" name="position" type="xs:int" />
+      <xs:element minOccurs="0" name="score" type="xs:int" />
+      <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UsuarioPuntajes" nillable="true" type="tns:UsuarioPuntajes" />

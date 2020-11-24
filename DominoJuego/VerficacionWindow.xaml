@@ -23,11 +23,11 @@
         </Grid.RowDefinitions>
 
         <materialDesign:PackIcon Kind="AccountKey" Grid.Column="0" Grid.Row="3" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Width="25" Height="25"></materialDesign:PackIcon>
-        <TextBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Margin="10 5 5 10" materialDesign:HintAssist.Hint="{x:Static p:Resources.TextoValidar}" Name="TextBoxToken"></TextBox>
+        <TextBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Margin="10 5 5 10" materialDesign:HintAssist.Hint="{x:Static p:Resources.ValidateText}" Name="TextBoxToken"></TextBox>
 
-        <Button Grid.Column="2" Grid.Row="5" Margin="20 5" Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Content="{x:Static p:Resources.Validar_Button}" Click="ClickValidar"></Button>
+        <Button Grid.Column="2" Grid.Row="5" Margin="20 5" Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Content="{x:Static p:Resources.Validate_Button}" Click="ClickValidate"></Button>
 
-        <Button Grid.Column="1" Grid.Row="5" Margin="20 5" Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Content="{x:Static p:Resources.EnOtroMomento_Button}" Click="ClickEnOtroMomento"></Button>
+        <Button Grid.Column="1" Grid.Row="5" Margin="20 5" Style="{StaticResource MaterialDesignRaisedButton}" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Content="{x:Static p:Resources.AnotherTime_Button}" Click="ClickAnotherTime"></Button>
 
         <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="3" HorizontalAlignment="Right" VerticalAlignment="Center" Content="" Name="LabelAlert"/>
     </Grid>

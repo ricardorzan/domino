@@ -11,36 +11,36 @@ namespace DominoContracts
     public interface ILobbyClient
     {
         [OperationContract(IsOneWay = true)]
-        void ReciveGame(string user);
+        void ReciveGame(string username);
         [OperationContract(IsOneWay = true)]
-        void ReciveMember(string nuevoIntegrante);
+        void ReciveMember(string newMember);
         [OperationContract]
-        string EnviarNombreUsuario();
+        string SendUsername();
         [OperationContract(IsOneWay = true)]
-        void RecibirIntegrantes(string[] integrantes);
+        void ReciveMembers(string[] members);
         [OperationContract(IsOneWay = true)]
-        void AbandonarJuego(bool razon);
+        void LeaveGame(bool reason);
         [OperationContract(IsOneWay = true)]
-        void EliminarIntegrante(string integranteDesertor);
+        void SomeoneLeftGame(string member);
         [OperationContract(IsOneWay = true)]
-        void ActualizarJuegos();
+        void UpdateGames();
     }
 
     [ServiceContract(CallbackContract = typeof(ILobbyClient))]
     public interface ILobbyService
     {
         [OperationContract(IsOneWay = true)]
-        void JoinLobby(string propietario);
+        void JoinLobby(string username);
         [OperationContract(IsOneWay = true)]
-        void SolicitarJuegos();
+        void GetGames();
         [OperationContract(IsOneWay = true)]
-        void CreateGame(string nombreJuego);
+        void CreateGame(string gameName);
         [OperationContract(IsOneWay = true)]
-        void JoinGame(string nombreJuego);
+        void JoinGame(string gameName);
         [OperationContract(IsOneWay = true)]
-        void DeshacerJuego(string nombreJuego);
+        void BreakGame(string gameName);
         [OperationContract(IsOneWay = true)]
-        void IntegranteAbandonaJuego(string nombreJuego);
+        void MemberLeftGame(string gameName);
 
     }
 }

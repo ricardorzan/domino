@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Security;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ServiceModel;
 
 namespace DominoContracts
 {
@@ -12,14 +6,14 @@ namespace DominoContracts
     public interface ILoginService
     {
         [OperationContract]
-        string Validar(string correo, string contraseña);
+        string LogIn(string email, string password);
         [OperationContract]
-        bool Registrar(string username, string correo, string contraseña);
+        bool SignUp(string username, string email, string password);
         [OperationContract]
-        bool RecuperarContraseña(string correo);
+        bool RecoverPassword(string email);
         [OperationContract]
-        bool VerificarUsuario(string nombreusuario, string token);
+        bool VerificateUser(string username, string token);
         [OperationContract]
-        bool EstaVerificado(string nombreusuario);
+        bool IsVerified(string username);
     }
 }

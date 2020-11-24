@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Domino
 {
@@ -20,7 +10,7 @@ namespace Domino
     /// </summary>
     public partial class RecuperarContraseñaWindow : Page
     {
-        private MainWindow mainWindow;
+        private readonly MainWindow mainWindow;
 
         public RecuperarContraseñaWindow()
         {
@@ -31,40 +21,34 @@ namespace Domino
             InitializeComponent();
             this.mainWindow = mainWindow;
         }
-        private void clickCancelar(object sender, RoutedEventArgs e)
+        private void ClickCancel(object sender, RoutedEventArgs e)
         {
-            mainWindow.Regresar();
+            mainWindow.GoBack();
         }
 
-        private void clickRecuperar(object sender, RoutedEventArgs e)
+        private void ClickRecover(object sender, RoutedEventArgs e)
         {
-            string correo = TextBoxCorreo.Text;
-            if (!correo.Equals(""))
+            string email = TextBoxEmail.Text;
+            if (!email.Equals(""))
             {
-                String sFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-                if (Regex.IsMatch(correo, sFormato))
+                String emailFormat = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+                if (Regex.IsMatch(email, emailFormat))
                 {
                     Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
-                    bool valido = server.RecuperarContraseña(correo);
+                    bool isValid = server.RecoverPassword(email);
                     server.Close();
-                    if (valido)
+                    if (isValid)
                     {
-                        MessageBoxResult result = MessageBox.Show(Properties.Resources.CorreoEnviado + correo);
-                        mainWindow.Regresar();
+                        MessageBox.Show(Properties.Resources.EmailSent + email);
+                        mainWindow.GoBack();
                     } else
-                    {
-                        LabelAlert.Content = Properties.Resources.CuentaNoEncontrada;
-                    }
+                        LabelAlert.Content = Properties.Resources.AccountNotFound;
                 }
                 else
-                {
                     LabelAlert.Content = Properties.Resources.InvalidEmail;
-                }
             }
             else
-            {
                 LabelAlert.Content = Properties.Resources.EmptyFields;
-            }
         }
     }
 }

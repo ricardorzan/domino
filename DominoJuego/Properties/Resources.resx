@@ -117,107 +117,131 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AbandonarPartida_Button" xml:space="preserve">
-    <value>Leave game</value>
+  <data name="AccountHasBeenVerifiedText" xml:space="preserve">
+    <value>Your account not been verified</value>
   </data>
-  <data name="CambiarContraseña_Button" xml:space="preserve">
-    <value>Change password</value>
+  <data name="AccountHasNotBeenVerifiedText" xml:space="preserve">
+    <value>Your account has not been verified</value>
   </data>
-  <data name="Cancelar_Button" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="Confirmacion" xml:space="preserve">
-    <value>Confirmation</value>
-  </data>
-  <data name="Contraseña" xml:space="preserve">
-    <value>Password</value>
-  </data>
-  <data name="ContraseñaActual" xml:space="preserve">
-    <value>Current password</value>
-  </data>
-  <data name="ContraseñaCambiada" xml:space="preserve">
-    <value>Password changed successfully</value>
-  </data>
-  <data name="ContraseñaConfirm" xml:space="preserve">
-    <value>Password confirmation</value>
-  </data>
-  <data name="ContraseñaIncorrecta" xml:space="preserve">
-    <value>The current password is wrong</value>
-  </data>
-  <data name="ContraseñasNoCoinciden" xml:space="preserve">
-    <value>The passwords do not match</value>
-  </data>
-  <data name="Correo" xml:space="preserve">
-    <value>Email</value>
-  </data>
-  <data name="CorreoEnviado" xml:space="preserve">
-    <value>An email with your password has been sent to you</value>
-  </data>
-  <data name="CorreoExistente" xml:space="preserve">
-    <value>There is already a registered user with that email</value>
-  </data>
-  <data name="CrearPartida_Button" xml:space="preserve">
-    <value>Create game</value>
-  </data>
-  <data name="CuentaNoEncontrada" xml:space="preserve">
+  <data name="AccountNotFound" xml:space="preserve">
     <value>An account associated with that email was not found</value>
   </data>
-  <data name="DeshacerJuego" xml:space="preserve">
+  <data name="AnotherTime_Button" xml:space="preserve">
+    <value>Another time</value>
+  </data>
+  <data name="BreakGame" xml:space="preserve">
     <value>You are about to undo the game, do you want to continue?</value>
+  </data>
+  <data name="Cancel_Button" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ChangePassword_Button" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="CreateGame_Button" xml:space="preserve">
+    <value>Create game</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Current password</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailSent" xml:space="preserve">
+    <value>An email with your password has been sent to you</value>
   </data>
   <data name="EmptyFields" xml:space="preserve">
     <value>Please fill in all the gaps</value>
   </data>
-  <data name="EnOtroMomento_Button" xml:space="preserve">
-    <value>Another time</value>
+  <data name="ExistingMail" xml:space="preserve">
+    <value>There is already a registered user with that email</value>
   </data>
-  <data name="Expulsado" xml:space="preserve">
-    <value>The owner of the game kicked you out</value>
+  <data name="GameBroke" xml:space="preserve">
+    <value>The owner has undone the game</value>
   </data>
-  <data name="IniciarPartida_Button" xml:space="preserve">
-    <value>Start game</value>
+  <data name="GameText" xml:space="preserve">
+    <value>Game</value>
+  </data>
+  <data name="GoBack_Button" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="IncorrectPassword" xml:space="preserve">
+    <value>The current password is wrong</value>
+  </data>
+  <data name="InsertTokenText" xml:space="preserve">
+    <value>Enter the key sent to your email</value>
   </data>
   <data name="InvalidEmail" xml:space="preserve">
     <value>Introduce a valid email</value>
   </data>
-  <data name="JugarMultijugador_Button" xml:space="preserve">
-    <value>Play multiplayer</value>
+  <data name="JoinGame_Button" xml:space="preserve">
+    <value>Join game</value>
   </data>
-  <data name="JugarSolo_Button" xml:space="preserve">
-    <value>Solo play</value>
+  <data name="KickedOut" xml:space="preserve">
+    <value>The owner of the game kicked you out</value>
+  </data>
+  <data name="LeaveGame_Button" xml:space="preserve">
+    <value>Leave game</value>
   </data>
   <data name="LogIn_Button" xml:space="preserve">
     <value>Log in</value>
   </data>
+  <data name="LogOut_Button" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
   <data name="NoMatch" xml:space="preserve">
     <value>Your login credentials do not match an account in our system</value>
   </data>
-  <data name="NuevaContraseña" xml:space="preserve">
-    <value>New Password</value>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
   </data>
-  <data name="PartidaDeshecha" xml:space="preserve">
-    <value>The owner has undone the game</value>
+  <data name="PasswordChanged" xml:space="preserve">
+    <value>Password changed successfully</value>
   </data>
-  <data name="Posicion" xml:space="preserve">
+  <data name="PasswordConfirmation" xml:space="preserve">
+    <value>Password confirmation</value>
+  </data>
+  <data name="PasswordsDoNotMatch" xml:space="preserve">
+    <value>The passwords do not match</value>
+  </data>
+  <data name="PlayerText" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="PlayMultiplayer_Button" xml:space="preserve">
+    <value>Play multiplayer</value>
+  </data>
+  <data name="PositionText" xml:space="preserve">
     <value>Position</value>
   </data>
-  <data name="Recuperar_Button" xml:space="preserve">
+  <data name="RecoverPasswordText" xml:space="preserve">
+    <value>Enter your email with which you registered to which we will send you your password</value>
+  </data>
+  <data name="Recover_Button" xml:space="preserve">
     <value>Recover</value>
   </data>
-  <data name="RegistroExitoso" xml:space="preserve">
-    <value>You have been registered</value>
+  <data name="ScoreText" xml:space="preserve">
+    <value>Score</value>
   </data>
-  <data name="Regresar_Button" xml:space="preserve">
-    <value>Back</value>
+  <data name="SeeScores_Button" xml:space="preserve">
+    <value>See scores</value>
   </data>
   <data name="SignUp_Button" xml:space="preserve">
     <value>Sing up</value>
   </data>
-  <data name="TextoRecupuerarContraseña" xml:space="preserve">
-    <value>Enter your email with which you registered to which we will send you your password</value>
+  <data name="StartGame_Button" xml:space="preserve">
+    <value>Start game</value>
   </data>
-  <data name="TextoValidar" xml:space="preserve">
-    <value>Enter the password sent to your email to complete your registration and be able to play</value>
+  <data name="SuccessfulRegistration" xml:space="preserve">
+    <value>You have been registered</value>
+  </data>
+  <data name="SuccessfulVerification" xml:space="preserve">
+    <value>Your account has been verified, log in to play</value>
   </data>
   <data name="TextRecover" xml:space="preserve">
     <value>Did you forget your password? Click here</value>
@@ -225,25 +249,22 @@
   <data name="Title" xml:space="preserve">
     <value>Domino</value>
   </data>
-  <data name="Tu" xml:space="preserve">
-    <value>You</value>
-  </data>
-  <data name="UnirseAPartida_Button" xml:space="preserve">
-    <value>Join game</value>
-  </data>
-  <data name="UnirseAPatida_Button" xml:space="preserve">
-    <value>Join game</value>
+  <data name="UnsuccessfulVerification" xml:space="preserve">
+    <value>Unsuccessful verification, wrong key</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>
   </data>
-  <data name="Validar_Button" xml:space="preserve">
+  <data name="ValidateText" xml:space="preserve">
+    <value>Enter the key sent to your email to complete your registration and be able to play</value>
+  </data>
+  <data name="Validate_Button" xml:space="preserve">
     <value>Validate</value>
   </data>
-  <data name="VerificacionExitosa" xml:space="preserve">
-    <value>Your account has been verified, log in to play</value>
+  <data name="WriteInChatText" xml:space="preserve">
+    <value>Write something in the chat</value>
   </data>
-  <data name="VerMarcadores_Button" xml:space="preserve">
-    <value>View scores</value>
+  <data name="You" xml:space="preserve">
+    <value>You</value>
   </data>
 </root>

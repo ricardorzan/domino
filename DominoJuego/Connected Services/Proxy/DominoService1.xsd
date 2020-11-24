@@ -2,109 +2,109 @@
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:4345/DominoService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DominoContracts" />
   <xs:import schemaLocation="http://localhost:4345/DominoService?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:element name="Validar">
+  <xs:element name="LogIn">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="contraseña" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ValidarResponse">
+  <xs:element name="LogInResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ValidarResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LogInResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Registrar">
+  <xs:element name="SignUp">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="contraseña" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RegistrarResponse">
+  <xs:element name="SignUpResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="RegistrarResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SignUpResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RecuperarContraseña">
+  <xs:element name="RecoverPassword">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RecuperarContraseñaResponse">
+  <xs:element name="RecoverPasswordResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="RecuperarContraseñaResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="RecoverPasswordResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="VerificarUsuario">
+  <xs:element name="VerificateUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="nombreusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="VerificarUsuarioResponse">
+  <xs:element name="VerificateUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="VerificarUsuarioResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="VerificateUserResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="EstaVerificado">
+  <xs:element name="IsVerified">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="nombreusuario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="EstaVerificadoResponse">
+  <xs:element name="IsVerifiedResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="EstaVerificadoResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="IsVerifiedResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="CambiarContraseña">
+  <xs:element name="ChangePassword">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="contraseñaActual" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="contraseñaNueva" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="currentPassword" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="newPassword" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="CambiarContraseñaResponse">
+  <xs:element name="ChangePasswordResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="CambiarContraseñaResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="ChangePasswordResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SolicitarPuntajes">
+  <xs:element name="GetScores">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="SolicitarPuntajesResponse">
+  <xs:element name="GetScoresResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DominoContracts" minOccurs="0" name="SolicitarPuntajesResult" nillable="true" type="q1:ArrayOfUsuarioPuntajes" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DominoContracts" minOccurs="0" name="GetScoresResult" nillable="true" type="q1:ArrayOfUsuarioPuntajes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Join">
+  <xs:element name="JoinChat">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
@@ -121,7 +121,7 @@
   <xs:element name="ReciveMessage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -129,11 +129,11 @@
   <xs:element name="JoinLobby">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="propietario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SolicitarJuegos">
+  <xs:element name="GetGames">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
@@ -141,79 +141,79 @@
   <xs:element name="CreateGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="nombreJuego" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="gameName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="JoinGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="nombreJuego" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="gameName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="DeshacerJuego">
+  <xs:element name="BreakGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="nombreJuego" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="gameName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="IntegranteAbandonaJuego">
+  <xs:element name="MemberLeftGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="nombreJuego" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="gameName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ReciveGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ReciveMember">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="nuevoIntegrante" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="newMember" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="EnviarNombreUsuario">
+  <xs:element name="SendUsername">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="EnviarNombreUsuarioResponse">
+  <xs:element name="SendUsernameResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="EnviarNombreUsuarioResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SendUsernameResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RecibirIntegrantes">
+  <xs:element name="ReciveMembers">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="integrantes" nillable="true" type="q2:ArrayOfstring" />
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="members" nillable="true" type="q2:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AbandonarJuego">
+  <xs:element name="LeaveGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="razon" type="xs:boolean" />
+        <xs:element minOccurs="0" name="reason" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="EliminarIntegrante">
+  <xs:element name="SomeoneLeftGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="integranteDesertor" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="member" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ActualizarJuegos">
+  <xs:element name="UpdateGames">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

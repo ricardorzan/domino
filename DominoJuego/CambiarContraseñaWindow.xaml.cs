@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Domino
 {
@@ -20,57 +8,51 @@ namespace Domino
     /// </summary>
     public partial class CambiarContraseñaWindow : Page
     {
-        private MenuWindow menuWindow;
-        private string usuario;
+        private readonly MenuWindow menuWindow;
+        private readonly string username;
 
         public CambiarContraseñaWindow()
         {
             InitializeComponent();
         }
 
-        public CambiarContraseñaWindow(MenuWindow menuWindow, string nombreUsuario)
+        public CambiarContraseñaWindow(MenuWindow menuWindow, string username)
         {
             InitializeComponent();
             this.menuWindow = menuWindow;
-            usuario = nombreUsuario;
+            this.username = username;
         }
 
-        private void clickCancelar(object sender, RoutedEventArgs e)
+        private void ClickCancel(object sender, RoutedEventArgs e)
         {
-            menuWindow.regresar();
+            menuWindow.GoBack();
         }
 
-        private void clickCambiarContraseña(object sender, RoutedEventArgs e)
+        private void ClickChangePassword(object sender, RoutedEventArgs e)
         {
-            string contraseñaActual = TextBoxContraseñaActual.Password;
-            string contraseñaNueva = TextBoxContraseñaNueva.Password;
-            string confirmacion = TextBoxConfirmacionContraseña.Password;
-            if (!contraseñaActual.Equals("") && !contraseñaNueva.Equals("") && !confirmacion.Equals(""))
+            string currentPassword = TextBoxCurrentPassword.Password;
+            string newPassword = TextBoxNewPassword.Password;
+            string confirmation = TextBoxConfirmation.Password;
+            if (!currentPassword.Equals("") && !newPassword.Equals("") && !confirmation.Equals(""))
             {
-                if (contraseñaNueva.Equals(confirmacion))
+                if (newPassword.Equals(confirmation))
                 {
                     Proxy.MenuServiceClient server = new Proxy.MenuServiceClient();
-                    bool contraseñaCambiada = server.CambiarContraseña(usuario, contraseñaActual, contraseñaNueva);
+                    bool isPasswordChanged = server.ChangePassword(username, currentPassword, newPassword);
                     server.Close();
-                    if (contraseñaCambiada)
+                    if (isPasswordChanged)
                     {
-                        MessageBoxResult result = MessageBox.Show(Properties.Resources.ContraseñaCambiada);
-                        menuWindow.regresar();
+                        MessageBox.Show(Properties.Resources.PasswordChanged);
+                        menuWindow.GoBack();
                     }
                     else
-                    {
-                        LabelAlert.Content = Properties.Resources.ContraseñaIncorrecta;
-                    }
+                        LabelAlert.Content = Properties.Resources.IncorrectPassword;
                 }
                 else
-                {
-                    LabelAlert.Content = Properties.Resources.ContraseñasNoCoinciden;
-                }
+                    LabelAlert.Content = Properties.Resources.PasswordsDoNotMatch;
             }
             else
-            {
                 LabelAlert.Content = Properties.Resources.EmptyFields;
-            }
         }
     }
 }

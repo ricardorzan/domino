@@ -22,15 +22,20 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="RegresarButton" Grid.Column="0" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.Regresar_Button}" Click="ClickRegresar" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3"></Button>
+        <Button x:Name="GoBackButton" Grid.Column="0" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.GoBack_Button}" Click="ClickGoBack" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3"></Button>
         
-        <Button x:Name="CrearPartidaButton" Grid.Column="1" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.CrearPartida_Button}" Click="ClickCrearPartida" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3"></Button>
-        <Button x:Name="UnirseAPartidaButton" Grid.Column="2" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.UnirseAPartida_Button}" Click="ClickUnirseAPartida" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" IsEnabled="False"/>
+        <Button x:Name="CreateGameButton" Grid.Column="1" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.CreateGame_Button}" Click="ClickCreateGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3"></Button>
+        <Button x:Name="JoinGameButton" Grid.Column="2" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.JoinGame_Button}" Click="ClickJoinGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" IsEnabled="False"/>
 
-        <Button x:Name="AbandonarPartidaButton" Grid.Column="1" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.AbandonarPartida_Button}" Click="ClickAbandonarPartida" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Visibility="Hidden"></Button>
-        <Button x:Name="IniciarPartidaButton" Grid.Column="2" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.IniciarPartida_Button}" Click="ClickIniciarPartida" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Visibility="Hidden"></Button>
+        <Button x:Name="LeaveGameButton" Grid.Column="1" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.LeaveGame_Button}" Click="ClickLeaveGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Visibility="Hidden"></Button>
+        <Button x:Name="StartGameButton" Grid.Column="2" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.StartGame_Button}" Click="ClickStartGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Visibility="Hidden"></Button>
 
-        <ListView x:Name="ListGames" Grid.RowSpan="5" Grid.ColumnSpan="3" ItemsSource="{Binding games}" Margin="20,20,20,20" MouseDoubleClick="ListGames_IsDoubleClick" SelectionChanged="ListGames_SelectedIndexChanged">
+        <ListView x:Name="GamesList" Grid.RowSpan="5" Grid.ColumnSpan="3" ItemsSource="{Binding games}" Margin="20,20,20,20" MouseDoubleClick="GamesList_IsDoubleClick" SelectionChanged="GamesList_SelectedIndexChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="{x:Static p:Resources.GameText}"/>
+                </GridView>
+            </ListView.View>
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem" BasedOn="{StaticResource MaterialDesignListBoxItem}">
                     <Setter Property="Background" Value="MediumPurple">
@@ -40,7 +45,7 @@
             </ListView.ItemContainerStyle>
         </ListView>
 
-        <ListView x:Name="ListPlayers" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" Margin="20,20,20,20" ItemsSource="{Binding players}">
+        <ListView x:Name="PlayersList" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" Margin="20,20,20,20" ItemsSource="{Binding players}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="" Width="50">
@@ -50,7 +55,7 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Jugador" />
+                    <GridViewColumn Header="{x:Static p:Resources.PlayerText}" />
                     <GridViewColumn Header="" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -61,7 +66,5 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
-
     </Grid>
 </Page>

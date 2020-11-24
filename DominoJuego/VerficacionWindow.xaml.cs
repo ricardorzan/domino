@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Domino
 {
@@ -20,9 +8,8 @@ namespace Domino
     /// </summary>
     public partial class VerficacionWindow : Page
     {
-
-        private MainWindow mainWindow;
-        private string username;
+        private readonly MainWindow mainWindow;
+        private readonly string username;
 
         public VerficacionWindow()
         {
@@ -36,25 +23,30 @@ namespace Domino
             this.mainWindow = mainWindow;
         }
 
-        private void ClickEnOtroMomento(object sender, RoutedEventArgs e)
+        private void ClickAnotherTime(object sender, RoutedEventArgs e)
         {
-            mainWindow.Regresar();
+            mainWindow.GoBack();
         }
 
-        private void ClickValidar(object sender, RoutedEventArgs e)
+        private void ClickValidate(object sender, RoutedEventArgs e)
         {
             string token = TextBoxToken.Text;
             if (!token.Equals(""))
             {
                 Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
-                bool verificado = server.VerificarUsuario(username, token);
+                bool isVerified = server.VerificateUser(username, token);
                 server.Close();
-                if (verificado)
+
+                if (isVerified)
                 {
-                    MessageBoxResult result = MessageBox.Show(Properties.Resources.VerificacionExitosa);
-                    mainWindow.Regresar();
+                    MessageBox.Show(Properties.Resources.SuccessfulVerification);
+                    mainWindow.GoBack();
                 }
+                else
+                    LabelAlert.Content = Properties.Resources.UnsuccessfulVerification;
             }
+            else
+                LabelAlert.Content = Properties.Resources.EmptyFields;
         }
     }
 }

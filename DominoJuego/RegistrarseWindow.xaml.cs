@@ -1,19 +1,7 @@
-﻿using Domino.Proxy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Domino
 {
@@ -22,7 +10,7 @@ namespace Domino
     /// </summary>
     public partial class RegistrarseWindow : Page
     {
-        private MainWindow mainWindow;
+        private readonly MainWindow mainWindow;
 
         public RegistrarseWindow()
         {
@@ -35,38 +23,38 @@ namespace Domino
             this.mainWindow = mainWindow;
         }
 
-        private void ClickCancelar(object sender, RoutedEventArgs e)
+        private void ClickCancel(object sender, RoutedEventArgs e)
         {
-            mainWindow.Regresar();
+            mainWindow.GoBack();
         }
 
-        private void ClickRegistrar(object sender, RoutedEventArgs e)
+        private void ClickRegister(object sender, RoutedEventArgs e)
         {
             string username = TextBoxUsername.Text;
-            string correo = TextBoxCorreo.Text;
-            string contraseña = TextBoxContraseña.Password;
-            string confirmacionContraseña = TextBoxConfirmacionContraseña.Password;
+            string email = TextBoxEmail.Text;
+            string password = TextBoxPassword.Password;
+            string passwordConfirmation = TextBoxPasswordConfirmation.Password;
 
-            if (!username.Equals("") && !correo.Equals("") && !contraseña.Equals("") && !confirmacionContraseña.Equals(""))
+            if (!username.Equals("") && !email.Equals("") && !password.Equals("") && !passwordConfirmation.Equals(""))
             {
                 String sFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-                if (Regex.IsMatch(correo, sFormato))
+                if (Regex.IsMatch(email, sFormato))
                 {
-                    if (contraseña.Equals(confirmacionContraseña))
+                    if (password.Equals(passwordConfirmation))
                     {
                         Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
-                        bool valido = server.Registrar(username, correo, contraseña);
+                        bool isValid = server.SignUp(username, email, password);
                         server.Close();
-                        if (valido)
+                        if (isValid)
                         {
-                            VerficacionWindow verficacionWindow = new VerficacionWindow(mainWindow, username);
-                            (Application.Current.MainWindow as MainWindow).Navegate(verficacionWindow);
+                            VerficacionWindow verficationWindow = new VerficacionWindow(mainWindow, username);
+                            (Application.Current.MainWindow as MainWindow).Navegate(verficationWindow);
                         }
                         else
-                            LabelAlert.Content = Properties.Resources.CorreoExistente;
+                            LabelAlert.Content = Properties.Resources.ExistingMail;
                     }
                     else
-                        LabelAlert.Content = Properties.Resources.ContraseñasNoCoinciden;
+                        LabelAlert.Content = Properties.Resources.PasswordsDoNotMatch;
                 }
                 else
                     LabelAlert.Content = Properties.Resources.InvalidEmail;

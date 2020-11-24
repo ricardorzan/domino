@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ServiceModel;
 
 namespace DominoContracts
 {
@@ -11,13 +6,13 @@ namespace DominoContracts
     public interface IChatClient
     {
         [OperationContract(IsOneWay = true)]
-        void ReciveMessage(string user, string message);
+        void ReciveMessage(string username, string message);
     }
     [ServiceContract(CallbackContract = typeof(IChatClient))]
     public interface IChatService
     {
         [OperationContract(IsOneWay = true)]
-        void Join(string username);
+        void JoinChat(string username);
         [OperationContract(IsOneWay = true)]
         void SendMessage(string message);
     }
