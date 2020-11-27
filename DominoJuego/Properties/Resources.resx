@@ -162,6 +162,9 @@
   <data name="GameBroke" xml:space="preserve">
     <value>The owner has undone the game</value>
   </data>
+  <data name="GameOf" xml:space="preserve">
+    <value>Game of</value>
+  </data>
   <data name="GameText" xml:space="preserve">
     <value>Game</value>
   </data>

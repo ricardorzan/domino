@@ -53,6 +53,12 @@ namespace Domino
             Navegate(registerWindow);
         }
 
+        private void IsEnter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                ClickLogIn(this, new RoutedEventArgs());
+        }
+
         private void ClickRecover(object sender, MouseButtonEventArgs e)
         {
             RecuperarContraseñaWindow recoverWindow = new RecuperarContraseñaWindow(this);

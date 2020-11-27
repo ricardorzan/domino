@@ -297,8 +297,14 @@ namespace Domino.Proxy {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyService/SendUsername", ReplyAction="http://tempuri.org/ILobbyService/SendUsernameResponse")]
         string SendUsername();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyService/SendNumberOfPlayers", ReplyAction="http://tempuri.org/ILobbyService/SendNumberOfPlayersResponse")]
+        int SendNumberOfPlayers(out int numberOfPlayers);
+        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/ReciveMembers")]
         void ReciveMembers(string[] members);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/GameFull")]
+        void GameFull();
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/LeaveGame")]
         void LeaveGame(bool reason);

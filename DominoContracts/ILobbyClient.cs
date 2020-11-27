@@ -16,8 +16,12 @@ namespace DominoContracts
         void ReciveMember(string newMember);
         [OperationContract]
         string SendUsername();
+        [OperationContract]
+        int SendNumberOfPlayers(out int numberOfPlayers);
         [OperationContract(IsOneWay = true)]
         void ReciveMembers(string[] members);
+        [OperationContract(IsOneWay = true)]
+        void GameFull();
         [OperationContract(IsOneWay = true)]
         void LeaveGame(bool reason);
         [OperationContract(IsOneWay = true)]

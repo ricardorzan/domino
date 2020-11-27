@@ -5,10 +5,8 @@ using System.ServiceModel;
 using DominoContracts;
 using DominoModelo;
 using System.Net.Mail;
-using System.Net;
-using System.Security.Cryptography.X509Certificates;
-using System.Net.Security;
 using System.Collections.ObjectModel;
+using shortid;
 
 namespace DominoServer
 {
@@ -60,19 +58,36 @@ namespace DominoServer
             if (!_games.TryGetValue(gameName, out Dictionary<ILobbyClient, string> _members))
                 return;
 
-            int nextMember = 0;
-            string[] members = new string[_members.Count];
+            int numberOfPlayers = 0;
+            bool canEnter = false;
+
             foreach (var other in _members.Keys)
             {
-                if (other == connection)
-                    continue;
-                members[nextMember] = other.SendUsername();
-                nextMember++;
-                other.ReciveMember(newMember);
+                other.SendNumberOfPlayers(out numberOfPlayers);
+                if (numberOfPlayers != 0)
+                    break;
             }
 
-            ((Dictionary<ILobbyClient, string>)_games[gameName]).Add(connection, newMember);
-            connection.ReciveMembers(members);
+            if (numberOfPlayers > _members.Count)
+                canEnter = true;
+
+            if (canEnter)
+            {
+                int nextMember = 0;
+                string[] members = new string[_members.Count];
+                foreach (var other in _members.Keys)
+                {
+                    if (other == connection)
+                        continue;
+                    members[nextMember] = other.SendUsername();
+                    nextMember++;
+                    other.ReciveMember(newMember);
+                }
+                ((Dictionary<ILobbyClient, string>)_games[gameName]).Add(connection, newMember);
+                connection.ReciveMembers(members);
+            }
+            else
+                connection.GameFull();
         }
 
         public void BreakGame(string gameName)
@@ -217,6 +232,7 @@ namespace DominoServer
             }
         }
 
+        [Obsolete]
         public bool SignUp(string username, string email, string password)
         {
             try
@@ -236,7 +252,7 @@ namespace DominoServer
                                 Contraseña = password,
                                 Puntajeacumulado = 0,
                                 Estatus = 0,
-                                Token = Guid.NewGuid().ToString()
+                                Token = ShortId.Generate().Trim()
                             };
                             context.Usuario.Add(user);
                             context.SaveChanges();
@@ -297,7 +313,7 @@ namespace DominoServer
                     var user = context.Usuario.FirstOrDefault(u => u.Nombreusuario == username);
                     if (user != null)
                     {
-                        if (user.Estatus == 1)                        
+                        if (user.Estatus == 1)
                             return true;
                         else
                             return false;
@@ -338,38 +354,36 @@ namespace DominoServer
 
         private bool SendEmail(Usuario user, bool isSignUp)
         {
-            MailMessage mensaje = new MailMessage
+            try
             {
-                From = new MailAddress("domino.juego.re@gmail.com", "Domino Juego", System.Text.Encoding.UTF8)//Correo de salida
-            };
-            mensaje.To.Add(user.Correo); //Correo destino?
-            if (isSignUp)
-            {
-                mensaje.Subject = "Domino: Verificación de cuenta"; //Asunto
-                mensaje.Body = "¡Hola " + user.Nombreusuario + "! Gracias por registrarte, tu clave de verificación es: " +
-                    user.Token + "."; //Mensaje del correo
-            }
-            else
-            {
-                mensaje.Subject = "Domino: Recuperación de contraseña"; //Asunto
-                mensaje.Body = "¡Hola " + user.Nombreusuario + "! Al parecer olvidaste tu contraseña, anotala bien porque es: " +
-                    user.Contraseña + ". Puedes cambiarla dentro del juego una vez que inicies sesión."; //Mensaje del correo
-            }
-            mensaje.IsBodyHtml = true;
-            mensaje.Priority = MailPriority.Normal;
-            SmtpClient smtp = new SmtpClient
-            {
-                UseDefaultCredentials = false,
-                Host = "smtp.gmail.com", //Host del servidor de correo
-                Port = 25, //Puerto de salida
-                Credentials = new System.Net.NetworkCredential("domino.juego.re@gmail.com", "gatodeportivo")//Cuenta de correo
-            };
-            ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
-            smtp.EnableSsl = true;//True si el servidor de correo permite ssl
-            smtp.Send(mensaje);
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
 
-            return true;
+                mail.From = new MailAddress("domino.juego.re@gmail.com", "Domino Juego", System.Text.Encoding.UTF8);
+                mail.To.Add(user.Correo);
+                if (isSignUp)
+                {
+                    mail.Subject = "Domino: Verificación de cuenta"; //Asunto
+                    mail.Body = "¡Hola " + user.Nombreusuario + "! Gracias por registrarte, tu clave de verificación es: " +
+                        user.Token + "."; //Mensaje del correo
+                }
+                else
+                {
+                    mail.Subject = "Domino: Recuperación de contraseña"; //Asunto
+                    mail.Body = "¡Hola " + user.Nombreusuario + "! Al parecer olvidaste tu contraseña, anotala bien porque es: " +
+                        user.Contraseña + ". Puedes cambiarla dentro del juego una vez que inicies sesión."; //Mensaje del correo
+                }
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("domino.juego.re@gmail.com", "gatodeportivo");
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Send(mail);
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
-
     }
 }

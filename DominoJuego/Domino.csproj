@@ -180,7 +180,7 @@
     <None Include="Connected Services\Proxy\DominoService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="DominoContracts.UsuarioPuntajes2.datasource" />
+    <None Include="DominoContracts.UsuarioPuntajes4.datasource" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

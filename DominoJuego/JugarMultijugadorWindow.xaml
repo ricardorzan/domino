@@ -9,7 +9,8 @@
     <Grid Margin="20 10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -23,14 +24,16 @@
         </Grid.RowDefinitions>
 
         <Button x:Name="GoBackButton" Grid.Column="0" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.GoBack_Button}" Click="ClickGoBack" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3"></Button>
-        
-        <Button x:Name="CreateGameButton" Grid.Column="1" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.CreateGame_Button}" Click="ClickCreateGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3"></Button>
-        <Button x:Name="JoinGameButton" Grid.Column="2" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.JoinGame_Button}" Click="ClickJoinGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" IsEnabled="False"/>
+
+        <TextBox x:Name="TextBoxGameName" Grid.Column="2" Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Right" materialDesign:HintAssist.Hint="Insert the name of your game"/>
+        <ComboBox x:Name="NumberOfPlayersComboBox" Grid.Column="2" Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Right" materialDesign:HintAssist.Hint="Max players" ItemsSource="{Binding NumPlayers}" SelectionChanged="ComboBox_SelectedIndexChanged"/>
+        <Button x:Name="CreateGameButton" Grid.Column="3" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.CreateGame_Button}" Click="ClickCreateGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3"  IsEnabled="False"/>
+        <Button x:Name="JoinGameButton" Grid.Column="1" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.JoinGame_Button}" Click="ClickJoinGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" IsEnabled="False"/>
 
         <Button x:Name="LeaveGameButton" Grid.Column="1" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.LeaveGame_Button}" Click="ClickLeaveGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Visibility="Hidden"></Button>
         <Button x:Name="StartGameButton" Grid.Column="2" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.StartGame_Button}" Click="ClickStartGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Visibility="Hidden"></Button>
 
-        <ListView x:Name="GamesList" Grid.RowSpan="5" Grid.ColumnSpan="3" ItemsSource="{Binding games}" Margin="20,20,20,20" MouseDoubleClick="GamesList_IsDoubleClick" SelectionChanged="GamesList_SelectedIndexChanged">
+        <ListView x:Name="GamesList" Grid.RowSpan="5" Grid.ColumnSpan="4" ItemsSource="{Binding Games}" Margin="20,20,20,20" MouseDoubleClick="GamesList_IsDoubleClick" SelectionChanged="GamesList_SelectedIndexChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="{x:Static p:Resources.GameText}"/>
@@ -41,17 +44,17 @@
                     <Setter Property="Background" Value="MediumPurple">
 
                     </Setter>
-                 </Style>
+                </Style>
             </ListView.ItemContainerStyle>
         </ListView>
 
-        <ListView x:Name="PlayersList" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" Margin="20,20,20,20" ItemsSource="{Binding players}">
+        <ListView x:Name="PlayersList" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="5" Margin="20,20,20,20" ItemsSource="{Binding Players}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="" Width="50">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <materialDesign:PackIcon Kind="Output" Margin="0,0,10,0" />
+                                <materialDesign:PackIcon IsEnabled="False" Kind="Output" Margin="0,0,10,0" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -59,7 +62,9 @@
                     <GridViewColumn Header="" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <CheckBox IsChecked="False" Content="¿Listo?"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox x:Name="CheckBoxReady" Content="Ready?" IsEnabled="False" IsChecked="{Binding isReady}"/>
+                                </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

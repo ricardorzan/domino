@@ -15,12 +15,15 @@ namespace Domino
         private readonly string username;
         private string gameName;
         private bool isHost = false;
+        private int numberOfPlayers = 0;
+        private bool isReady = false;
 
         private readonly Proxy.LobbyServiceClient server = null;
         private readonly InstanceContext context = null;
 
         public ObservableCollection<string> Games { get; private set; }
         public ObservableCollection<string> Players { get; private set; }
+        public ObservableCollection<int> NumPlayers { get; private set; }
 
         public JugarMultijugadorWindow()
         {
@@ -41,6 +44,9 @@ namespace Domino
 
             context = new InstanceContext(this);
             server = new Proxy.LobbyServiceClient(context);
+
+            NumPlayers = new ObservableCollection<int> { 2, 3, 4 };
+
             server.JoinLobby(username);
             server.GetGames();
         }
@@ -58,7 +64,11 @@ namespace Domino
             Players.Insert(0, username);
             DataContext = this;
 
-            gameName = "Partida de " + username; // Esto debe cambiar cuando se implemente que el propietario pueda ponerle nombre a su partida
+            gameName = TextBoxGameName.Text;
+            if (gameName.Equals(""))
+                gameName = Properties.Resources.GameOf + username;
+
+            numberOfPlayers = int.Parse(NumberOfPlayersComboBox.SelectedItem.ToString());
             server.CreateGame(gameName);
 
         }
@@ -101,12 +111,15 @@ namespace Domino
         {
             Players.Add(newMember);
             DataContext = this;
+            
         }
 
         public string SendUsername()
         {
             return username;
         }
+
+        public int SendNumberOfPlayers(out int numberOfPlayers) => numberOfPlayers = this.numberOfPlayers;
 
         public void ReciveMembers(string[] members)
         {
@@ -119,6 +132,11 @@ namespace Domino
             }
             Players.Add(username);
             DataContext = this;
+        }
+
+        public void GameFull()
+        {
+            MessageBox.Show("La sala esta llena");
         }
 
         public void LeaveGame(bool isKickedOut)
@@ -149,6 +167,8 @@ namespace Domino
             GamesList.Visibility = Visibility.Hidden;
             CreateGameButton.Visibility = Visibility.Hidden;
             JoinGameButton.Visibility = Visibility.Hidden;
+            NumberOfPlayersComboBox.Visibility = Visibility.Hidden;
+            TextBoxGameName.Visibility = Visibility.Hidden;
 
             PlayersList.Visibility = Visibility.Visible;
             LeaveGameButton.Visibility = Visibility.Visible;
@@ -163,8 +183,13 @@ namespace Domino
 
             GamesList.Visibility = Visibility.Visible;
             CreateGameButton.Visibility = Visibility.Visible;
+            CreateGameButton.IsEnabled = false;
             JoinGameButton.Visibility = Visibility.Visible;
             JoinGameButton.IsEnabled = false;
+            NumberOfPlayersComboBox.Visibility = Visibility.Visible;
+            NumberOfPlayersComboBox.SelectedIndex = -1;
+            TextBoxGameName.Visibility = Visibility.Visible;
+            TextBoxGameName.Clear();
             Games.Clear();
             server.GetGames();
 
@@ -172,6 +197,10 @@ namespace Domino
             StartGameButton.Visibility = Visibility.Hidden;
             LeaveGameButton.Visibility = Visibility.Hidden;
             Players.Clear();
+
+            gameName = null;
+            isHost = false;
+            numberOfPlayers = 0;
         }
 
         private void GamesList_IsDoubleClick(object sender, MouseButtonEventArgs e)
@@ -187,6 +216,16 @@ namespace Domino
                 return;
             }
             JoinGameButton.IsEnabled = true;
+        }
+
+        private void ComboBox_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.NumberOfPlayersComboBox.SelectedIndex == -1)
+            {
+                CreateGameButton.IsEnabled = false;
+                return;
+            }
+            CreateGameButton.IsEnabled = true;
         }
     }
 }

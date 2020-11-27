@@ -15,3 +15,4 @@ C:\Users\ricar\Documents\GitHub\domino\DominoServer\bin\Debug\DominoModelo.pdb
 C:\Users\ricar\Documents\GitHub\domino\DominoServer\bin\Debug\DominoModelo.exe.config
 C:\Users\ricar\Documents\GitHub\domino\DominoServer\bin\Debug\EntityFramework.xml
 C:\Users\ricar\Documents\GitHub\domino\DominoServer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ricar\Documents\GitHub\domino\DominoServer\bin\Debug\shortid.dll

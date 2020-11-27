@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IChatClient.cs" />
+    <Compile Include="IGameClient.cs" />
     <Compile Include="ILobbyClient.cs" />
     <Compile Include="ILoginService.cs" />
     <Compile Include="IMenuService.cs" />

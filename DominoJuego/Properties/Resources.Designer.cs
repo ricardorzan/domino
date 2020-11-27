@@ -196,6 +196,15 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Game of.
+        /// </summary>
+        public static string GameOf {
+            get {
+                return ResourceManager.GetString("GameOf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Game.
         /// </summary>
         public static string GameText {
