@@ -136,3 +136,5 @@ C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\VerMarcadoresWindow
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\VerficacionWindow.g.cs
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\VerficacionWindow.baml
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\shortid.dll
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\GameWindow.g.cs
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\GameWindow.baml

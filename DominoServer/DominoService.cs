@@ -134,6 +134,100 @@ namespace DominoServer
             }
         }
 
+        public void KickPlayer(string username, string gameName)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<ILobbyClient>();
+            if (!_games.TryGetValue(gameName, out Dictionary<ILobbyClient, string> _members))
+                return;
+            bool kickedOut = true;
+            foreach (var other in _members.Keys)
+            {
+                if (other == connection)
+                    continue;
+                if (!_members.TryGetValue(other, out string member))
+                    return;
+                if (member == username)
+                {
+                    other.LeaveGame(kickedOut);
+                    break;
+                }
+            }
+        }
+
+        public void PlayerChangedHisReady(string gameName)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<ILobbyClient>();
+            if (!_lobbies.TryGetValue(connection, out string memberWhoChangedHisReady))
+                return;
+
+            if (!_games.TryGetValue(gameName, out Dictionary<ILobbyClient, string> _members))
+                return;
+
+            foreach (var other in _members.Keys)
+            {
+                if (other == connection)
+                    continue;
+                other.SomeoneChangedHisReady(memberWhoChangedHisReady);
+            }
+
+        }
+
+        public void StartGame(string gameName)
+        {
+            try
+            {
+                using (DominoContext context = new DominoContext())
+                {
+                    if (!_games.TryGetValue(gameName, out Dictionary<ILobbyClient, string> _members))
+                        return;
+
+                    var game = new Juego
+                    {
+                        Condicióndevictoria = "FirstToWin",
+                        Duración = null,
+                        Ganador = null,
+                    };
+                    context.Juego.Add(game);
+                    context.SaveChanges();
+                    //int idGame = game.JuegoID;
+
+                    var round = new Ronda
+                    {
+                        Ganador = null,
+                        Valorfichaderecha = null,
+                        Valorfichaizquierda = null,
+                        Juego = game,
+                    };
+                    context.Ronda.Add(round);
+                    context.SaveChanges();
+                    //int idRound = round.RondaID;
+
+                    foreach (var other in _members.Keys)
+                    {
+                        if (!_members.TryGetValue(other, out string username))
+                            return;
+                        var user = context.Usuario.FirstOrDefault(u => u.Nombreusuario == username);
+                        var player = new Jugador
+                        {
+                            Enturno = 1,
+                            Fichasenmano = 0,
+                            Puntaje = 0,
+                            Usuario = user,
+                            Ronda = round,
+                        };
+                        context.Jugador.Add(player);
+                        context.SaveChanges();
+
+                        other.StartRound(gameName);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         readonly Dictionary<IChatClient, string> _users = new Dictionary<IChatClient, string>();
         public void JoinChat(string username)
         {
@@ -365,7 +459,7 @@ namespace DominoServer
                 {
                     mail.Subject = "Domino: Verificación de cuenta"; //Asunto
                     mail.Body = "¡Hola " + user.Nombreusuario + "! Gracias por registrarte, tu clave de verificación es: " +
-                        user.Token + "."; //Mensaje del correo
+                        user.Token; //Mensaje del correo
                 }
                 else
                 {
@@ -380,9 +474,9 @@ namespace DominoServer
                 return true;
 
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return false;
+                throw new Exception(ex.Message);
             }
         }
     }

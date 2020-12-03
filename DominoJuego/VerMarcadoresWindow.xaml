@@ -22,27 +22,16 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="PositionList" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="5" Margin="20,10,0,20">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="{x:Static p:Resources.PositionText}" Width="Auto"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <ListView x:Name="PlayerList" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="5" Margin="0,10,0,20">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="{x:Static p:Resources.PlayerText}" Width="Auto"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <ListView x:Name="ScoreList" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="5" Margin="0,10,20,20">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="{x:Static p:Resources.ScoreText}" Width="Auto"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <DataGrid Name="PlayersGrid" AutoGenerateColumns = "False" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="False"
+                  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="5" Margin="20,20,20,20"
+                  BorderThickness="3" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" 
+                  CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{x:Static p:Resources.PositionText}" Binding="{Binding Path=Position}"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.PlayerText}" Binding="{Binding Path=Username}"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.ScoreText}" Binding="{Binding Path=Score}"/>
+            </DataGrid.Columns>
+        </DataGrid>
         
         <Button Grid.Column="2" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.GoBack_Button}" Click="ClickRegresar" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3"></Button>
 

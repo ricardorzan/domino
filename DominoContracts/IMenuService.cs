@@ -17,17 +17,17 @@ namespace DominoContracts
     public class UsuarioPuntajes
     {
         [DataMember]
-        public int position;
+        public int Position { get; set; }
         [DataMember]
-        public string username;
+        public string Username { get; set; }
         [DataMember]
-        public int score;
+        public int Score { get; set; }
 
         public UsuarioPuntajes(int place, string username, int score)
         {
-            position = place;
-            this.username = username;
-            this.score = score;
+            Position = place;
+            Username = username;
+            Score = score;
         }
     }
 }

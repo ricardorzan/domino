@@ -24,15 +24,7 @@ namespace Domino
             var playersList = server.GetScores();
             server.Close();
 
-            int maximumScores = 5;
-            if (playersList.Length < maximumScores)
-                maximumScores = playersList.Length;
-            for (int i = 0; i < maximumScores; i++){
-                PositionList.Items.Add(playersList[i].position);
-                PlayerList.Items.Add(playersList[i].username);
-                ScoreList.Items.Add(playersList[i].score);
-            }
-            DataContext = this;
+            DataContext = playersList;
         }
 
         private void ClickRegresar(object sender, RoutedEventArgs e)

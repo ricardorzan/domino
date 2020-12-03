@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ServiceModel;
 
 namespace DominoContracts
 {
@@ -28,6 +23,10 @@ namespace DominoContracts
         void SomeoneLeftGame(string member);
         [OperationContract(IsOneWay = true)]
         void UpdateGames();
+        [OperationContract(IsOneWay = true)]
+        void SomeoneChangedHisReady(string username);
+        [OperationContract(IsOneWay = true)]
+        void StartRound(string gameName);
     }
 
     [ServiceContract(CallbackContract = typeof(ILobbyClient))]
@@ -45,6 +44,11 @@ namespace DominoContracts
         void BreakGame(string gameName);
         [OperationContract(IsOneWay = true)]
         void MemberLeftGame(string gameName);
-
+        [OperationContract(IsOneWay = true)]
+        void KickPlayer(string username, string gameName);
+        [OperationContract(IsOneWay = true)]
+        void PlayerChangedHisReady(string gameName);
+        [OperationContract(IsOneWay = true)]
+        void StartGame(string gameName);
     }
 }

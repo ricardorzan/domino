@@ -283,6 +283,24 @@ namespace Domino.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/MemberLeftGame")]
         System.Threading.Tasks.Task MemberLeftGameAsync(string gameName);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/KickPlayer")]
+        void KickPlayer(string username, string gameName);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/KickPlayer")]
+        System.Threading.Tasks.Task KickPlayerAsync(string username, string gameName);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/PlayerChangedHisReady")]
+        void PlayerChangedHisReady(string gameName);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/PlayerChangedHisReady")]
+        System.Threading.Tasks.Task PlayerChangedHisReadyAsync(string gameName);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/StartGame")]
+        void StartGame(string gameName);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/StartGame")]
+        System.Threading.Tasks.Task StartGameAsync(string gameName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -314,6 +332,12 @@ namespace Domino.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/UpdateGames")]
         void UpdateGames();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/SomeoneChangedHisReady")]
+        void SomeoneChangedHisReady(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/StartRound")]
+        void StartRound(string gameName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -390,6 +414,30 @@ namespace Domino.Proxy {
         
         public System.Threading.Tasks.Task MemberLeftGameAsync(string gameName) {
             return base.Channel.MemberLeftGameAsync(gameName);
+        }
+        
+        public void KickPlayer(string username, string gameName) {
+            base.Channel.KickPlayer(username, gameName);
+        }
+        
+        public System.Threading.Tasks.Task KickPlayerAsync(string username, string gameName) {
+            return base.Channel.KickPlayerAsync(username, gameName);
+        }
+        
+        public void PlayerChangedHisReady(string gameName) {
+            base.Channel.PlayerChangedHisReady(gameName);
+        }
+        
+        public System.Threading.Tasks.Task PlayerChangedHisReadyAsync(string gameName) {
+            return base.Channel.PlayerChangedHisReadyAsync(gameName);
+        }
+        
+        public void StartGame(string gameName) {
+            base.Channel.StartGame(gameName);
+        }
+        
+        public System.Threading.Tasks.Task StartGameAsync(string gameName) {
+            return base.Channel.StartGameAsync(gameName);
         }
     }
 }

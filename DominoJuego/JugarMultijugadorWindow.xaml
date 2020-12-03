@@ -32,7 +32,7 @@
 
         <Button x:Name="LeaveGameButton" Grid.Column="1" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.LeaveGame_Button}" Click="ClickLeaveGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Visibility="Hidden"></Button>
         <Button x:Name="StartGameButton" Grid.Column="2" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.StartGame_Button}" Click="ClickStartGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Visibility="Hidden"></Button>
-
+        
         <ListView x:Name="GamesList" Grid.RowSpan="5" Grid.ColumnSpan="4" ItemsSource="{Binding Games}" Margin="20,20,20,20" MouseDoubleClick="GamesList_IsDoubleClick" SelectionChanged="GamesList_SelectedIndexChanged">
             <ListView.View>
                 <GridView>
@@ -41,35 +41,29 @@
             </ListView.View>
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem" BasedOn="{StaticResource MaterialDesignListBoxItem}">
-                    <Setter Property="Background" Value="MediumPurple">
-
-                    </Setter>
+                    <Setter Property="Background" Value="MediumPurple"/>
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>
 
-        <ListView x:Name="PlayersList" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="5" Margin="20,20,20,20" ItemsSource="{Binding Players}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="" Width="50">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <materialDesign:PackIcon IsEnabled="False" Kind="Output" Margin="0,0,10,0" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="{x:Static p:Resources.PlayerText}" />
-                    <GridViewColumn Header="" Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <CheckBox x:Name="CheckBoxReady" Content="Ready?" IsEnabled="False" IsChecked="{Binding isReady}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <DataGrid Name="PlayersGrid" AutoGenerateColumns = "False" ItemsSource="{Binding Players}"
+                  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="5" Margin="20,20,20,20"
+                  BorderThickness="3" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" 
+                  CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn x:Name="KickPlayerColumn">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="ClickKickPlayer">
+                                <Button.Content>
+                                    <materialDesign:PackIcon Kind="Output"/>
+                                </Button.Content>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Players" IsReadOnly="True" Width="150" Binding="{Binding }"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

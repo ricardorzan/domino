@@ -196,7 +196,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Game of.
+        ///   Busca una cadena traducida similar a Game of .
         /// </summary>
         public static string GameOf {
             get {

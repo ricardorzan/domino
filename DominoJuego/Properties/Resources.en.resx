@@ -163,7 +163,7 @@
     <value>El dueño ha deshecho la partida</value>
   </data>
   <data name="GameOf" xml:space="preserve">
-    <value>Partida de</value>
+    <value>Partida de </value>
   </data>
   <data name="GameText" xml:space="preserve">
     <value>Game</value>

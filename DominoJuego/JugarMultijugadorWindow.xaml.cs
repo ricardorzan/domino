@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Domino.Proxy;
+using System.Collections.ObjectModel;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,7 +17,6 @@ namespace Domino
         private string gameName;
         private bool isHost = false;
         private int numberOfPlayers = 0;
-        private bool isReady = false;
 
         private readonly Proxy.LobbyServiceClient server = null;
         private readonly InstanceContext context = null;
@@ -40,7 +40,8 @@ namespace Domino
             Players = new ObservableCollection<string>();
             DataContext = this;
 
-            PlayersList.Visibility = Visibility.Hidden;
+            PlayersGrid.Visibility = Visibility.Hidden;
+            //PlayersGrid.ItemsSource = Players;
 
             context = new InstanceContext(this);
             server = new Proxy.LobbyServiceClient(context);
@@ -98,7 +99,8 @@ namespace Domino
 
         private void ClickStartGame(object sender, RoutedEventArgs e)
         {
-            //  implementa el juego
+            //  implementa el juegos
+            // server.StartGame(gameName);
         }
 
         public void ReciveGame(string gameName)
@@ -111,7 +113,7 @@ namespace Domino
         {
             Players.Add(newMember);
             DataContext = this;
-            
+
         }
 
         public string SendUsername()
@@ -142,9 +144,13 @@ namespace Domino
         public void LeaveGame(bool isKickedOut)
         {
             if (isKickedOut)
+            {
+                server.MemberLeftGame(gameName);
                 MessageBox.Show(Properties.Resources.KickedOut);
+            }
             else
                 MessageBox.Show(Properties.Resources.GameBroke);
+
             ResetComponents();
         }
 
@@ -160,7 +166,7 @@ namespace Domino
             server.GetGames();
         }
 
-        public void AdjustComponents(bool esDueño)
+        public void AdjustComponents(bool isHost)
         {
             GoBackButton.IsEnabled = false;
 
@@ -170,17 +176,17 @@ namespace Domino
             NumberOfPlayersComboBox.Visibility = Visibility.Hidden;
             TextBoxGameName.Visibility = Visibility.Hidden;
 
-            PlayersList.Visibility = Visibility.Visible;
+            PlayersGrid.Visibility = Visibility.Visible;
             LeaveGameButton.Visibility = Visibility.Visible;
-
-            if (esDueño)
+            if (isHost)
                 StartGameButton.Visibility = Visibility.Visible;
+            else
+                KickPlayerColumn.Visibility = Visibility.Hidden;
         }
 
         public void ResetComponents()
         {
             GoBackButton.IsEnabled = true;
-
             GamesList.Visibility = Visibility.Visible;
             CreateGameButton.Visibility = Visibility.Visible;
             CreateGameButton.IsEnabled = false;
@@ -191,9 +197,10 @@ namespace Domino
             TextBoxGameName.Visibility = Visibility.Visible;
             TextBoxGameName.Clear();
             Games.Clear();
+            KickPlayerColumn.Visibility = Visibility.Visible;
             server.GetGames();
 
-            PlayersList.Visibility = Visibility.Hidden;
+            PlayersGrid.Visibility = Visibility.Hidden;
             StartGameButton.Visibility = Visibility.Hidden;
             LeaveGameButton.Visibility = Visibility.Hidden;
             Players.Clear();
@@ -226,6 +233,49 @@ namespace Domino
                 return;
             }
             CreateGameButton.IsEnabled = true;
+        }
+
+        private void ClickKickPlayer(object sender, RoutedEventArgs e)
+        {
+            string player = ((FrameworkElement)sender).DataContext as string;
+            server.KickPlayer(player, gameName);
+        }
+
+        private void IsReadyCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = ((CheckBox)sender);
+            string player = ((FrameworkElement)sender).DataContext as string;
+            if (username == player)
+            {
+                server.PlayerChangedHisReady(gameName);
+            }
+            else
+            {
+                if (checkBox.IsChecked == true)
+                    checkBox.IsChecked = false;
+                else
+                    checkBox.IsChecked = true;
+            }
+        }
+
+        // ¿Por qué esta necesita que sea declarada de forma explicita?
+        void ILobbyServiceCallback.SomeoneChangedHisReady(string username)
+        {
+            foreach (string member in PlayersGrid.Items)
+            {
+                if (member == username)
+                {
+                    //int row = PlayersGrid.Items.IndexOf(member);
+                    MessageBox.Show(member + " changed its ready status");
+                }
+            }
+        }
+
+        public void StartRound(string gameName)
+        {
+            GameWindow gameWindow = new GameWindow(gameName);
+            gameWindow.Show();
+            (Application.Current.MainWindow as MenuWindow).Close();
         }
     }
 }
