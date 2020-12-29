@@ -1,0 +1,11 @@
+U
+JC:\Users\ricar\Documents\GitHub\domino\DominoModelo\DominoModel.Context.csutf-8M
+BC:\Users\ricar\Documents\GitHub\domino\DominoModelo\DominoModel.csutf-8V
+KC:\Users\ricar\Documents\GitHub\domino\DominoModelo\DominoModel.Designer.csutf-8G
+<C:\Users\ricar\Documents\GitHub\domino\DominoModelo\Juego.csutf-8I
+>C:\Users\ricar\Documents\GitHub\domino\DominoModelo\Jugador.csutf-8G
+>C:\Users\ricar\Documents\GitHub\domino\DominoModelo\Program.csutf-8W
+NC:\Users\ricar\Documents\GitHub\domino\DominoModelo\Properties\AssemblyInfo.csutf-8G
+<C:\Users\ricar\Documents\GitHub\domino\DominoModelo\Ronda.csutf-8I
+>C:\Users\ricar\Documents\GitHub\domino\DominoModelo\Usuario.csutf-8{
+pC:\Users\ricar\Documents\GitHub\domino\DominoModelo\obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.csutf-8

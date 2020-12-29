@@ -11,6 +11,7 @@ namespace DominoContracts
     [ServiceContract(CallbackContract = typeof(IGameClient))]
     public interface IGameService
     {
-
+        [OperationContract(IsOneWay = true)]
+        void JoinCurrentGame(int idGame, string username);
     }
 }

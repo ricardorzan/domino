@@ -24,9 +24,7 @@ namespace DominoContracts
         [OperationContract(IsOneWay = true)]
         void UpdateGames();
         [OperationContract(IsOneWay = true)]
-        void SomeoneChangedHisReady(string username);
-        [OperationContract(IsOneWay = true)]
-        void StartRound(string gameName);
+        void StartRound(int idGame);
     }
 
     [ServiceContract(CallbackContract = typeof(ILobbyClient))]
@@ -46,8 +44,6 @@ namespace DominoContracts
         void MemberLeftGame(string gameName);
         [OperationContract(IsOneWay = true)]
         void KickPlayer(string username, string gameName);
-        [OperationContract(IsOneWay = true)]
-        void PlayerChangedHisReady(string gameName);
         [OperationContract(IsOneWay = true)]
         void StartGame(string gameName);
     }

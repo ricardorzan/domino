@@ -180,16 +180,16 @@ namespace Domino.Proxy {
     public interface IChatService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/JoinChat")]
-        void JoinChat(string username);
+        void JoinChat(int room, string username);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/JoinChat")]
-        System.Threading.Tasks.Task JoinChatAsync(string username);
+        System.Threading.Tasks.Task JoinChatAsync(int room, string username);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/SendMessage")]
-        void SendMessage(string message);
+        void SendMessage(int room, string message);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/SendMessage")]
-        System.Threading.Tasks.Task SendMessageAsync(string message);
+        System.Threading.Tasks.Task SendMessageAsync(int room, string message);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -227,20 +227,20 @@ namespace Domino.Proxy {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void JoinChat(string username) {
-            base.Channel.JoinChat(username);
+        public void JoinChat(int room, string username) {
+            base.Channel.JoinChat(room, username);
         }
         
-        public System.Threading.Tasks.Task JoinChatAsync(string username) {
-            return base.Channel.JoinChatAsync(username);
+        public System.Threading.Tasks.Task JoinChatAsync(int room, string username) {
+            return base.Channel.JoinChatAsync(room, username);
         }
         
-        public void SendMessage(string message) {
-            base.Channel.SendMessage(message);
+        public void SendMessage(int room, string message) {
+            base.Channel.SendMessage(room, message);
         }
         
-        public System.Threading.Tasks.Task SendMessageAsync(string message) {
-            return base.Channel.SendMessageAsync(message);
+        public System.Threading.Tasks.Task SendMessageAsync(int room, string message) {
+            return base.Channel.SendMessageAsync(room, message);
         }
     }
     
@@ -290,12 +290,6 @@ namespace Domino.Proxy {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/KickPlayer")]
         System.Threading.Tasks.Task KickPlayerAsync(string username, string gameName);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/PlayerChangedHisReady")]
-        void PlayerChangedHisReady(string gameName);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/PlayerChangedHisReady")]
-        System.Threading.Tasks.Task PlayerChangedHisReadyAsync(string gameName);
-        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/StartGame")]
         void StartGame(string gameName);
         
@@ -333,11 +327,8 @@ namespace Domino.Proxy {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/UpdateGames")]
         void UpdateGames();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/SomeoneChangedHisReady")]
-        void SomeoneChangedHisReady(string username);
-        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/StartRound")]
-        void StartRound(string gameName);
+        void StartRound(int idGame);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -424,20 +415,59 @@ namespace Domino.Proxy {
             return base.Channel.KickPlayerAsync(username, gameName);
         }
         
-        public void PlayerChangedHisReady(string gameName) {
-            base.Channel.PlayerChangedHisReady(gameName);
-        }
-        
-        public System.Threading.Tasks.Task PlayerChangedHisReadyAsync(string gameName) {
-            return base.Channel.PlayerChangedHisReadyAsync(gameName);
-        }
-        
         public void StartGame(string gameName) {
             base.Channel.StartGame(gameName);
         }
         
         public System.Threading.Tasks.Task StartGameAsync(string gameName) {
             return base.Channel.StartGameAsync(gameName);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Proxy.IGameService")]
+    public interface IGameService {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/JoinCurrentGame")]
+        void JoinCurrentGame(int idGame, string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/JoinCurrentGame")]
+        System.Threading.Tasks.Task JoinCurrentGameAsync(int idGame, string username);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IGameServiceChannel : Domino.Proxy.IGameService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GameServiceClient : System.ServiceModel.ClientBase<Domino.Proxy.IGameService>, Domino.Proxy.IGameService {
+        
+        public GameServiceClient() {
+        }
+        
+        public GameServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public GameServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public GameServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public GameServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public void JoinCurrentGame(int idGame, string username) {
+            base.Channel.JoinCurrentGame(idGame, username);
+        }
+        
+        public System.Threading.Tasks.Task JoinCurrentGameAsync(int idGame, string username) {
+            return base.Channel.JoinCurrentGameAsync(idGame, username);
         }
     }
 }

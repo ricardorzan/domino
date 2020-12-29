@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("recursos/dominoes.ico")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("recursos/dominoes.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("00.png")]
 
 

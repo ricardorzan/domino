@@ -38,6 +38,7 @@ namespace Domino
 
             Games = new ObservableCollection<string>();
             Players = new ObservableCollection<string>();
+            Players.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(LoadingRow);
             DataContext = this;
 
             PlayersGrid.Visibility = Visibility.Hidden;
@@ -99,8 +100,7 @@ namespace Domino
 
         private void ClickStartGame(object sender, RoutedEventArgs e)
         {
-            //  implementa el juegos
-            // server.StartGame(gameName);
+            server.StartGame(gameName);
         }
 
         public void ReciveGame(string gameName)
@@ -202,6 +202,7 @@ namespace Domino
 
             PlayersGrid.Visibility = Visibility.Hidden;
             StartGameButton.Visibility = Visibility.Hidden;
+            StartGameButton.IsEnabled = false;
             LeaveGameButton.Visibility = Visibility.Hidden;
             Players.Clear();
 
@@ -241,41 +242,28 @@ namespace Domino
             server.KickPlayer(player, gameName);
         }
 
-        private void IsReadyCheckBox_Checked(object sender, RoutedEventArgs e)
+        public void StartRound(int idGame)
         {
-            CheckBox checkBox = ((CheckBox)sender);
-            string player = ((FrameworkElement)sender).DataContext as string;
-            if (username == player)
-            {
-                server.PlayerChangedHisReady(gameName);
-            }
-            else
-            {
-                if (checkBox.IsChecked == true)
-                    checkBox.IsChecked = false;
-                else
-                    checkBox.IsChecked = true;
-            }
-        }
-
-        // ¿Por qué esta necesita que sea declarada de forma explicita?
-        void ILobbyServiceCallback.SomeoneChangedHisReady(string username)
-        {
-            foreach (string member in PlayersGrid.Items)
-            {
-                if (member == username)
-                {
-                    //int row = PlayersGrid.Items.IndexOf(member);
-                    MessageBox.Show(member + " changed its ready status");
-                }
-            }
-        }
-
-        public void StartRound(string gameName)
-        {
-            GameWindow gameWindow = new GameWindow(gameName);
+            GameWindow gameWindow = new GameWindow(idGame, username);
             gameWindow.Show();
-            (Application.Current.MainWindow as MenuWindow).Close();
+            this.menuWindow.Close();
+        }
+
+        private void LoadingRow(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs args)
+        {
+            if (isHost)
+            {
+                if (PlayersGrid.Items.Count == numberOfPlayers)
+                    StartGameButton.IsEnabled = true;
+                else
+                    StartGameButton.IsEnabled = false;
+            }
+        }
+
+        // A eliminar
+        public void SomeoneChangedHisReady(string username)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

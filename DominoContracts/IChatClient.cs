@@ -12,8 +12,8 @@ namespace DominoContracts
     public interface IChatService
     {
         [OperationContract(IsOneWay = true)]
-        void JoinChat(string username);
+        void JoinChat(int room, string username);
         [OperationContract(IsOneWay = true)]
-        void SendMessage(string message);
+        void SendMessage(int room, string message);
     }
 }

@@ -11,8 +11,15 @@ using shortid;
 namespace DominoServer
 {
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, InstanceContextMode = InstanceContextMode.Single)]
-    public partial class DominoService : ILoginService, IMenuService, IChatService, ILobbyService
+    public partial class DominoService : ILoginService, IMenuService, IChatService, ILobbyService, IGameService
     {
+        readonly Dictionary<int, Dictionary<IGameClient, string>> _currentGames = new Dictionary<int, Dictionary<IGameClient, string>>();
+        public void JoinCurrentGame(int idGame, string username)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
+            ((Dictionary<IGameClient, string>)_currentGames[idGame]).Add(connection, username);
+        }
+
         readonly Dictionary<ILobbyClient, string> _lobbies = new Dictionary<ILobbyClient, string>();
         public void JoinLobby(string username)
         {
@@ -154,24 +161,6 @@ namespace DominoServer
             }
         }
 
-        public void PlayerChangedHisReady(string gameName)
-        {
-            var connection = OperationContext.Current.GetCallbackChannel<ILobbyClient>();
-            if (!_lobbies.TryGetValue(connection, out string memberWhoChangedHisReady))
-                return;
-
-            if (!_games.TryGetValue(gameName, out Dictionary<ILobbyClient, string> _members))
-                return;
-
-            foreach (var other in _members.Keys)
-            {
-                if (other == connection)
-                    continue;
-                other.SomeoneChangedHisReady(memberWhoChangedHisReady);
-            }
-
-        }
-
         public void StartGame(string gameName)
         {
             try
@@ -218,8 +207,16 @@ namespace DominoServer
                         context.Jugador.Add(player);
                         context.SaveChanges();
 
-                        other.StartRound(gameName);
+                        other.StartRound(round.RondaID);
                     }
+
+                    Dictionary<IGameClient, string> _membersGame = new Dictionary<IGameClient, string>();
+                    _currentGames.Add(round.RondaID, _membersGame);
+
+                    Dictionary<IChatClient, string> _membersRoomGame = new Dictionary<IChatClient, string>();
+                    _rooms.Add(round.RondaID, _membersRoomGame);
+
+                    _games.Remove(gameName);
                 }
             }
             catch (Exception ex)
@@ -228,19 +225,27 @@ namespace DominoServer
             }
         }
 
-        readonly Dictionary<IChatClient, string> _users = new Dictionary<IChatClient, string>();
-        public void JoinChat(string username)
+        readonly Dictionary<int, Dictionary<IChatClient, string>> _rooms = new Dictionary<int, Dictionary<IChatClient, string>>();
+        public void JoinChat(int room, string username)
         {
             var connection = OperationContext.Current.GetCallbackChannel<IChatClient>();
-            _users[connection] = username;
+            if (!_rooms.TryGetValue(room, out Dictionary<IChatClient, string> _membersRoom))
+            {
+                _membersRoom = new Dictionary<IChatClient, string>();
+                _rooms.Add(0, _membersRoom);
+            }
+            ((Dictionary<IChatClient, string>)_rooms[room]).Add(connection, username);
         }
 
-        public void SendMessage(string message)
+        public void SendMessage(int room, string message)
         {
             var connection = OperationContext.Current.GetCallbackChannel<IChatClient>();
-            if (!_users.TryGetValue(connection, out string user))
+            if (!_rooms.TryGetValue(room, out Dictionary<IChatClient, string> _membersRoom))
                 return;
-            foreach (var other in _users.Keys)
+            if (!_membersRoom.TryGetValue(connection, out string user))
+                return;
+
+            foreach (var other in _membersRoom.Keys)
             {
                 if (other == connection)
                     continue;

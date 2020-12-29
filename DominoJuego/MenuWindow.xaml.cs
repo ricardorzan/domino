@@ -28,7 +28,7 @@ namespace Domino
             Proxy.LoginServiceClient verificator = new Proxy.LoginServiceClient();
 
             if (verificator.IsVerified(username))
-                server.JoinChat(username);
+                server.JoinChat(0, username);
             else
                 UserNotVerified();
 
@@ -37,7 +37,7 @@ namespace Domino
 
         public void ReciveMessage(string user, string message)
         {
-            string format = "\n " + user + ": " + message;
+            string format = "\n" + user + ": " + message;
             ChatBox.AppendText(format);
             ChatBox.ScrollToEnd();
         }
@@ -79,7 +79,7 @@ namespace Domino
             string message = TextBoxChat.Text;
             if (!message.Equals(""))
             {
-                server.SendMessage(message);
+                server.SendMessage(0, message);
 
                 string format = "\n" + Properties.Resources.You + ": " + message;
                 ChatBox.AppendText(format);
@@ -140,7 +140,7 @@ namespace Domino
                     ButtonValidate.Visibility = Visibility.Collapsed;
                     LabelAlert.Content = Properties.Resources.AccountHasBeenVerifiedText;
 
-                    server.JoinChat(username);
+                    server.JoinChat(0, username);
                 }
                 else
                     MessageBox.Show(Properties.Resources.UnsuccessfulVerification);

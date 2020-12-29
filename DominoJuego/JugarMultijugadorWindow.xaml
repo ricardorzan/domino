@@ -31,7 +31,7 @@
         <Button x:Name="JoinGameButton" Grid.Column="1" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.JoinGame_Button}" Click="ClickJoinGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" IsEnabled="False"/>
 
         <Button x:Name="LeaveGameButton" Grid.Column="1" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.LeaveGame_Button}" Click="ClickLeaveGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Visibility="Hidden"></Button>
-        <Button x:Name="StartGameButton" Grid.Column="2" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.StartGame_Button}" Click="ClickStartGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Visibility="Hidden"></Button>
+        <Button x:Name="StartGameButton" Grid.Column="2" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.StartGame_Button}" Click="ClickStartGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Visibility="Hidden" IsEnabled="False"></Button>
         
         <ListView x:Name="GamesList" Grid.RowSpan="5" Grid.ColumnSpan="4" ItemsSource="{Binding Games}" Margin="20,20,20,20" MouseDoubleClick="GamesList_IsDoubleClick" SelectionChanged="GamesList_SelectedIndexChanged">
             <ListView.View>
@@ -46,7 +46,7 @@
             </ListView.ItemContainerStyle>
         </ListView>
 
-        <DataGrid Name="PlayersGrid" AutoGenerateColumns = "False" ItemsSource="{Binding Players}"
+        <DataGrid Name="PlayersGrid" AutoGenerateColumns = "False" ItemsSource="{Binding Players, NotifyOnSourceUpdated=True}"
                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="5" Margin="20,20,20,20"
                   BorderThickness="3" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" 
                   CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False">
