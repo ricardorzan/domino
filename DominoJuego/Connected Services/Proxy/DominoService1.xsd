@@ -268,4 +268,103 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetFirstSevenTiles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idGame" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPlayersName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idGame" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHighestTile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idGame" type="xs:int" />
+        <xs:element minOccurs="0" name="hostHighestTile" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PutATile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idGame" type="xs:int" />
+        <xs:element minOccurs="0" name="tile" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TakeFromTheBank">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idGame" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PassTurn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idGame" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDominoes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="dominoes" nillable="true" type="q3:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReciveNewMember">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReciveMembersInGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="members" nillable="true" type="q4:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendHighestTile">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendHighestTileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SendHighestTileResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsYourTurn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="isFirstTurn" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SomeonePutATile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tile" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTheTile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tile" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

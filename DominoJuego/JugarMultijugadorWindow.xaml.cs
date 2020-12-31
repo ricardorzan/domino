@@ -244,7 +244,7 @@ namespace Domino
 
         public void StartRound(int idGame)
         {
-            GameWindow gameWindow = new GameWindow(idGame, username);
+            GameWindow gameWindow = new GameWindow(idGame, username, isHost);
             gameWindow.Show();
             this.menuWindow.Close();
         }
@@ -258,12 +258,6 @@ namespace Domino
                 else
                     StartGameButton.IsEnabled = false;
             }
-        }
-
-        // A eliminar
-        public void SomeoneChangedHisReady(string username)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

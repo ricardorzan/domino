@@ -425,7 +425,7 @@ namespace Domino.Proxy {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Proxy.IGameService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Proxy.IGameService", CallbackContract=typeof(Domino.Proxy.IGameServiceCallback))]
     public interface IGameService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/JoinCurrentGame")]
@@ -433,6 +433,67 @@ namespace Domino.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/JoinCurrentGame")]
         System.Threading.Tasks.Task JoinCurrentGameAsync(int idGame, string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GetFirstSevenTiles")]
+        void GetFirstSevenTiles(int idGame);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GetFirstSevenTiles")]
+        System.Threading.Tasks.Task GetFirstSevenTilesAsync(int idGame);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GetPlayersName")]
+        void GetPlayersName(int idGame);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GetPlayersName")]
+        System.Threading.Tasks.Task GetPlayersNameAsync(int idGame);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GetHighestTile")]
+        void GetHighestTile(int idGame, string hostHighestTile);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GetHighestTile")]
+        System.Threading.Tasks.Task GetHighestTileAsync(int idGame, string hostHighestTile);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/PutATile")]
+        void PutATile(int idGame, string tile);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/PutATile")]
+        System.Threading.Tasks.Task PutATileAsync(int idGame, string tile);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/TakeFromTheBank")]
+        void TakeFromTheBank(int idGame);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/TakeFromTheBank")]
+        System.Threading.Tasks.Task TakeFromTheBankAsync(int idGame);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/PassTurn")]
+        void PassTurn(int idGame);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/PassTurn")]
+        System.Threading.Tasks.Task PassTurnAsync(int idGame);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IGameServiceCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GetDominoes")]
+        void GetDominoes(string[] dominoes);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/ReciveNewMember")]
+        void ReciveNewMember(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/ReciveMembersInGame")]
+        void ReciveMembersInGame(string[] members);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/SendHighestTile", ReplyAction="http://tempuri.org/IGameService/SendHighestTileResponse")]
+        string SendHighestTile();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/IsYourTurn")]
+        void IsYourTurn(bool isFirstTurn);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/SomeonePutATile")]
+        void SomeonePutATile(string username, string tile);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GetTheTile")]
+        void GetTheTile(string tile);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -441,25 +502,26 @@ namespace Domino.Proxy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GameServiceClient : System.ServiceModel.ClientBase<Domino.Proxy.IGameService>, Domino.Proxy.IGameService {
+    public partial class GameServiceClient : System.ServiceModel.DuplexClientBase<Domino.Proxy.IGameService>, Domino.Proxy.IGameService {
         
-        public GameServiceClient() {
+        public GameServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public GameServiceClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public GameServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public GameServiceClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public GameServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public GameServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public GameServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public GameServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public GameServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
         public void JoinCurrentGame(int idGame, string username) {
@@ -468,6 +530,54 @@ namespace Domino.Proxy {
         
         public System.Threading.Tasks.Task JoinCurrentGameAsync(int idGame, string username) {
             return base.Channel.JoinCurrentGameAsync(idGame, username);
+        }
+        
+        public void GetFirstSevenTiles(int idGame) {
+            base.Channel.GetFirstSevenTiles(idGame);
+        }
+        
+        public System.Threading.Tasks.Task GetFirstSevenTilesAsync(int idGame) {
+            return base.Channel.GetFirstSevenTilesAsync(idGame);
+        }
+        
+        public void GetPlayersName(int idGame) {
+            base.Channel.GetPlayersName(idGame);
+        }
+        
+        public System.Threading.Tasks.Task GetPlayersNameAsync(int idGame) {
+            return base.Channel.GetPlayersNameAsync(idGame);
+        }
+        
+        public void GetHighestTile(int idGame, string hostHighestTile) {
+            base.Channel.GetHighestTile(idGame, hostHighestTile);
+        }
+        
+        public System.Threading.Tasks.Task GetHighestTileAsync(int idGame, string hostHighestTile) {
+            return base.Channel.GetHighestTileAsync(idGame, hostHighestTile);
+        }
+        
+        public void PutATile(int idGame, string tile) {
+            base.Channel.PutATile(idGame, tile);
+        }
+        
+        public System.Threading.Tasks.Task PutATileAsync(int idGame, string tile) {
+            return base.Channel.PutATileAsync(idGame, tile);
+        }
+        
+        public void TakeFromTheBank(int idGame) {
+            base.Channel.TakeFromTheBank(idGame);
+        }
+        
+        public System.Threading.Tasks.Task TakeFromTheBankAsync(int idGame) {
+            return base.Channel.TakeFromTheBankAsync(idGame);
+        }
+        
+        public void PassTurn(int idGame) {
+            base.Channel.PassTurn(idGame);
+        }
+        
+        public System.Threading.Tasks.Task PassTurnAsync(int idGame) {
+            return base.Channel.PassTurnAsync(idGame);
         }
     }
 }

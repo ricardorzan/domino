@@ -14,10 +14,241 @@ namespace DominoServer
     public partial class DominoService : ILoginService, IMenuService, IChatService, ILobbyService, IGameService
     {
         readonly Dictionary<int, Dictionary<IGameClient, string>> _currentGames = new Dictionary<int, Dictionary<IGameClient, string>>();
+        readonly Dictionary<int, string[]> _dominoes = new Dictionary<int, string[]>();
+
         public void JoinCurrentGame(int idGame, string username)
         {
             var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
+
+            if (!_currentGames.TryGetValue(idGame, out Dictionary<IGameClient, string> _members))
+                return;
+
+            int nextMember = 0;
+            string[] members = new string[_members.Count];
+            foreach (var other in _members)
+            {
+                if (other.Key == connection)
+                    continue;
+                members[nextMember] = other.Value;
+                nextMember++;
+                other.Key.ReciveNewMember(username);
+            }
             ((Dictionary<IGameClient, string>)_currentGames[idGame]).Add(connection, username);
+            try
+            {
+                connection.ReciveMembersInGame(members);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message);
+            }
+        }
+
+        public void GetFirstSevenTiles(int idGame)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
+
+            string[] dominoesPerPlayer = new string[20];
+            if (!_dominoes.TryGetValue(idGame, out string[] dominoesInGame))
+                return;
+
+            Array.Copy(dominoesInGame, 0, dominoesPerPlayer, 0, 7);
+
+            var myList = dominoesInGame.ToList();
+            myList.RemoveRange(0, 7);
+            dominoesInGame = myList.ToArray();
+
+            Shuffle(dominoesInGame);
+
+            _dominoes.Remove(idGame);
+            _dominoes.Add(idGame, dominoesInGame);
+
+            try
+            {
+                connection.GetDominoes(dominoesPerPlayer);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message);
+            }
+        }
+
+        public void GetPlayersName(int idGame)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
+
+            if (!_currentGames.TryGetValue(idGame, out Dictionary<IGameClient, string> _members))
+                return;
+
+            int nextMember = 0;
+            string[] members = new string[_members.Count - 1];
+            foreach (var other in _members)
+            {
+                if (other.Key == connection)
+                    continue;
+                members[nextMember] = other.Value;
+                nextMember++;
+            }
+            try
+            {
+                connection.ReciveMembersInGame(members);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message);
+            }
+        }
+
+        public void GetHighestTile(int idGame, string hostHighestTile)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
+            if (!_currentGames.TryGetValue(idGame, out Dictionary<IGameClient, string> _members))
+                return;
+            string highestTile = hostHighestTile;
+            string[] highestOfEachPlayer = new string[4];
+            int count = 0;
+            highestOfEachPlayer[count] = highestTile;
+            int whoIsGonnaStart = 0;
+            foreach (var other in _members.Keys)
+            {
+                if (other == connection)
+                    continue;
+                count++;
+                highestOfEachPlayer[count] = other.SendHighestTile();
+            }
+            for (int i = 0; i < _members.Count; i++)
+            {
+                if (highestTile == null)
+                {
+                    highestTile = highestOfEachPlayer[i];
+                    whoIsGonnaStart = i;
+                }
+                else
+                {
+                    int highestNumberOne = int.Parse(highestTile.Substring(0, 1));
+                    int highestNumberTwo = int.Parse(highestTile.Substring(1, 1));
+                    bool highestIsMule = highestNumberOne == highestNumberTwo;
+
+                    int numberOne = int.Parse(highestOfEachPlayer[i].Substring(0, 1));
+                    int numberTwo = int.Parse(highestOfEachPlayer[i].Substring(1, 1));
+                    bool isMule = numberOne == numberTwo;
+
+                    if (highestIsMule)
+                    {
+                        if (isMule)
+                        {
+                            if (numberOne > highestNumberOne)
+                            {
+                                highestTile = highestOfEachPlayer[i];
+                                whoIsGonnaStart = i;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (isMule)
+                        {
+                            highestTile = highestOfEachPlayer[i];
+                            whoIsGonnaStart = i;
+                        }
+                        else
+                        {
+                            int weight = int.Parse(highestOfEachPlayer[i]);
+                            int highestWeight = int.Parse(highestTile);
+                            if (weight > highestWeight)
+                            {
+                                highestTile = highestOfEachPlayer[i];
+                                whoIsGonnaStart = i;
+                            }
+                        }
+                    }
+                }
+            }
+            count = 0;
+            foreach (var other in _members.Keys)
+            {
+                if (count == whoIsGonnaStart)
+                {
+                    other.IsYourTurn(isFirstTurn: true);
+                }
+                count++;
+            }
+        }
+
+        public void PutATile(int idGame, string tile)
+            {
+            var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
+            if (!_currentGames.TryGetValue(idGame, out Dictionary<IGameClient, string> _members))
+                return;
+            if (!_members.TryGetValue(connection, out string whoPutTheTile))
+                return;
+            bool nextTurn = false;
+            foreach (var other in _members.Keys)
+            {
+                if (other == connection)
+                {
+                    nextTurn = true;
+                    continue;
+                }
+                other.SomeonePutATile(whoPutTheTile, tile);
+                if (nextTurn)
+                {
+                    other.IsYourTurn(isFirstTurn: false);
+                    nextTurn = false;
+                }
+            }
+            if (nextTurn)           
+                _members.First().Key.IsYourTurn(isFirstTurn: false);            
+        }
+
+        public void PassTurn(int idGame)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
+            if (!_currentGames.TryGetValue(idGame, out Dictionary<IGameClient, string> _members))
+                return;
+            bool nextTurn = false;
+            foreach (var other in _members.Keys)
+            {
+                if (other == connection)
+                {
+                    nextTurn = true;
+                    continue;
+                }
+                if (nextTurn)
+                {
+                    other.IsYourTurn(isFirstTurn: false);
+                    nextTurn = false;
+                }
+            }
+            if (nextTurn)
+                _members.First().Key.IsYourTurn(isFirstTurn: false);
+        }
+
+        public void TakeFromTheBank(int idGame)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
+            if (!_dominoes.TryGetValue(idGame, out string[] dominoesInGame))
+                return;
+
+            string newTile = dominoesInGame[0];
+
+            var myList = dominoesInGame.ToList();
+            myList.RemoveRange(0, 1);
+            dominoesInGame = myList.ToArray();
+
+            Shuffle(dominoesInGame);
+
+            _dominoes.Remove(idGame);
+            _dominoes.Add(idGame, dominoesInGame);
+
+            try
+            {
+                connection.GetTheTile(newTile);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message);
+            }
         }
 
         readonly Dictionary<ILobbyClient, string> _lobbies = new Dictionary<ILobbyClient, string>();
@@ -209,13 +440,26 @@ namespace DominoServer
 
                         other.StartRound(round.RondaID);
                     }
-
+                    // Agrega el juego al diccionario de juego actuales
                     Dictionary<IGameClient, string> _membersGame = new Dictionary<IGameClient, string>();
                     _currentGames.Add(round.RondaID, _membersGame);
 
+                    // Agrega a un diccionario con el ID del juego las fichas totales
+                    string[] dominoes = new string[] { "00", "01", "02", "03", "04", "05", "06",
+                                                       "11", "12", "13", "14", "15", "16",
+                                                       "22", "23", "24", "25", "26",
+                                                       "33", "34", "35", "36",
+                                                       "44", "45", "46",
+                                                       "55", "56",
+                                                       "66", };
+                    Shuffle(dominoes);
+                    _dominoes.Add(round.RondaID, dominoes);
+
+                    // Agrega el juego al diccionario de chats
                     Dictionary<IChatClient, string> _membersRoomGame = new Dictionary<IChatClient, string>();
                     _rooms.Add(round.RondaID, _membersRoomGame);
 
+                    // Remueve el juego de la lista de espera
                     _games.Remove(gameName);
                 }
             }
@@ -439,7 +683,6 @@ namespace DominoServer
                         {
                             Console.WriteLine("The user " + user.Nombreusuario + " has just connected");
                             return user.Nombreusuario;
-
                         }
                     }
                     return ("");
@@ -482,6 +725,19 @@ namespace DominoServer
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+        }
+
+        public static void Shuffle<T>(IList<T> values)
+        {
+            var n = values.Count;
+            var rnd = new Random();
+            for (int i = n - 1; i > 0; i--)
+            {
+                var j = rnd.Next(0, i);
+                var temp = values[i];
+                values[i] = values[j];
+                values[j] = temp;
             }
         }
     }
