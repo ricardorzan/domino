@@ -88,12 +88,41 @@
                 </StackPanel>
             </StackPanel>
 
-            <ScrollViewer Grid.Row="2">
+            <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
                 <StackPanel x:Name="Board" Grid.Row="2" AllowDrop="True" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </ScrollViewer>
             
             <Border Grid.Row="3" Background="Black" Opacity=".3"/>
             <StackPanel x:Name="TilesPlayer1" Grid.Row="3" AllowDrop="True" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" />
+            
         </Grid>
+
+        <StackPanel x:Name="EndPanel" Margin="20" Background="White" Grid.ColumnSpan="2" Visibility="Hidden">
+            
+            <TextBlock Foreground="DarkCyan" HorizontalAlignment="Center" FontSize="76.2"  FontFamily="Rockwell" VerticalAlignment="Center" Text="{x:Static p:Resources.Title}" Margin="40"></TextBlock>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock x:Name="TextBlockWinnerUsername" Text="username " Foreground="DarkCyan" FontSize="56.2" FontFamily="Rockwell" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="TextBlockWinner" Text="ha ganado" FontSize="56.2" FontFamily="Rockwell" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <TextBlock Text="Tus puntos ganados son:" FontSize="56.2" FontFamily="Rockwell" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="TextBlockFinalPoints" Text="+100" FontSize="56.2" Foreground="DarkCyan" HorizontalAlignment="Center" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock x:Name="TextBlockExtrapointsMessage" Text="Por haber ganado acumulaste " FontSize="36.2" FontFamily="Rockwell" HorizontalAlignment="Center" Margin="0 0 0 30"/>
+                <TextBlock x:Name="TextBlockExtrapoints" Text="+250" FontSize="36.2" Foreground="DarkCyan" FontFamily="Rockwell" HorizontalAlignment="Center" Margin="0 0 0 30"/>
+            </StackPanel>
+
+            <TextBlock Text="Sigue jugando para ganar puntos y aparecer en la tabla de posiciones" FontSize="26.2" FontFamily="Rockwell" HorizontalAlignment="Center"/>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Width="270" Height="70" Margin="35" Click="ClickGoBackToMenu">
+                    <materialDesign:PackIcon Kind="Menu" Width="250" Height="50"/>
+                </Button>
+                <Button Width="270" Height="70" Margin="35" Click="ClickExit">
+                    <materialDesign:PackIcon Kind="EmergencyExit" Width="250" Height="50"/>
+                </Button>
+            </StackPanel> 
+        </StackPanel>
     </Grid>
 </Window>

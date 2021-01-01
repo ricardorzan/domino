@@ -19,6 +19,10 @@ namespace DominoContracts
         void SomeonePutATile(string username, string tile);
         [OperationContract(IsOneWay = true)]
         void GetTheTile(string tile);
+        [OperationContract(IsOneWay = true)]
+        void SomeoneTookATile(string username);
+        [OperationContract(IsOneWay = true)]
+        void SomeoneWonTheRound(string username);
     }
     [ServiceContract(CallbackContract = typeof(IGameClient))]
     public interface IGameService
@@ -37,5 +41,9 @@ namespace DominoContracts
         void TakeFromTheBank(int idGame);
         [OperationContract(IsOneWay = true)]
         void PassTurn(int idGame);
+        [OperationContract(IsOneWay = true)]
+        void Win(int idGame);
+        [OperationContract(IsOneWay = true)]
+        void UploadPoints(int idGame, int points);
     }
 }

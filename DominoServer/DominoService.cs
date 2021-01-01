@@ -176,29 +176,19 @@ namespace DominoServer
         }
 
         public void PutATile(int idGame, string tile)
-            {
+        {
             var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
             if (!_currentGames.TryGetValue(idGame, out Dictionary<IGameClient, string> _members))
                 return;
             if (!_members.TryGetValue(connection, out string whoPutTheTile))
                 return;
-            bool nextTurn = false;
             foreach (var other in _members.Keys)
             {
+
                 if (other == connection)
-                {
-                    nextTurn = true;
                     continue;
-                }
                 other.SomeonePutATile(whoPutTheTile, tile);
-                if (nextTurn)
-                {
-                    other.IsYourTurn(isFirstTurn: false);
-                    nextTurn = false;
-                }
             }
-            if (nextTurn)           
-                _members.First().Key.IsYourTurn(isFirstTurn: false);            
         }
 
         public void PassTurn(int idGame)
@@ -241,6 +231,17 @@ namespace DominoServer
             _dominoes.Remove(idGame);
             _dominoes.Add(idGame, dominoesInGame);
 
+            if (!_currentGames.TryGetValue(idGame, out Dictionary<IGameClient, string> _members))
+                return;
+            if (!_members.TryGetValue(connection, out string whoTookTheTile))
+                return;
+            foreach (var other in _members)
+            {
+                if (other.Key == connection)
+                    continue;
+                other.Key.SomeoneTookATile(whoTookTheTile);
+            }
+
             try
             {
                 connection.GetTheTile(newTile);
@@ -248,6 +249,68 @@ namespace DominoServer
             catch (Exception ex)
             {
                 throw new FaultException(ex.Message);
+            }
+        }
+
+        public void Win(int idGame)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
+            if (!_currentGames.TryGetValue(idGame, out Dictionary<IGameClient, string> _members))
+                return;
+            if (!_members.TryGetValue(connection, out string theWinner))
+                return;
+            foreach (var other in _members)
+            {
+                if (other.Key == connection)
+                    continue;
+                other.Key.SomeoneWonTheRound(theWinner);
+            }
+
+            try
+            {
+                using (DominoContext context = new DominoContext())
+                {
+                    var round = context.Ronda.FirstOrDefault(r => r.RondaID == idGame);
+                    round.Ganador = theWinner;
+                    var game = round.Juego;
+                    game.Ganador = theWinner;
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void UploadPoints(int idGame, int points)
+        {
+            var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
+            if (!_currentGames.TryGetValue(idGame, out Dictionary<IGameClient, string> _members))
+                return;
+            if (!_members.TryGetValue(connection, out string username))
+                return;
+            try
+            {
+                using (DominoContext context = new DominoContext())
+                {
+                    var player = context.Jugador.FirstOrDefault(p => p.RondaID == idGame && p.Usuario.Nombreusuario == username);
+                    player.Puntaje = points;
+                    var user = player.Usuario; // context.Usuario.FirstOrDefault(u => u.Nombreusuario == username);
+                    user.Puntajeacumulado = user.Puntajeacumulado + points;
+                    context.SaveChanges();
+                }
+                _members.Remove(connection);
+                if (_members.Count == 0)
+                {
+                    _rooms.Remove(idGame);
+                    _currentGames.Remove(idGame);
+                    _dominoes.Remove(idGame);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
 

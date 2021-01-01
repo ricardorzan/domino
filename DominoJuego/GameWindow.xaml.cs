@@ -21,13 +21,13 @@ namespace Domino
         private string player2 = null;
         private string player3 = null;
         private string player4 = null;
-        bool isThereOneMule = false;
-        string highestTile = null;
-        int highestTilePosition;
-        int leftNumber = -1;
-        int rightNumber = -1;
-        int Points = 0;
-        int TalesInBank = 21;
+        private bool isThereOneMule = false;
+        private string highestTile = null;
+        private int highestTilePosition;
+        private int leftNumber = -1;
+        private int rightNumber = -1;
+        private int Points = 0;
+        private int TalesInBank = 21;
 
         private readonly Proxy.ChatServiceClient serverChat = null;
         private readonly Proxy.GameServiceClient serverGame = null;
@@ -70,7 +70,7 @@ namespace Domino
                     {
                         player3 = username;
                         PlayerUsername3.Content = player3;
-                        TalesInBank = TalesInBank - 7;
+                        TalesInBank -= 7;
                         TextBoxBank.Text = TalesInBank.ToString();
                     }
                     else
@@ -142,47 +142,68 @@ namespace Domino
 
             if (leftNumber == -1 && rightNumber == -1)
             {
-                leftNumber = numberOne;
                 rightNumber = numberTwo;
+                leftNumber = numberOne;
                 Board.Children.Add(tileToPut);
             }
             else
             {
                 if (numberOne == leftNumber || numberTwo == leftNumber)
                 {
-                    // Se pone a la izquierda
                     if (numberOne == leftNumber)
                     {
-                        // Se coloca correctamente y el numero dos pasa a ser el izquierdo
                         leftNumber = numberTwo;
                     }
                     else
                     {
-                        // Se coloca correctamente y el numero uno pasa a ser el izquierdo
-                        RotateTransform rotateTransform = new RotateTransform(-90);
-                        tileToPut.RenderTransform = rotateTransform;
+                        if (numberOne != numberTwo)
+                        {
+                            RotateTransform rotateTransform = new RotateTransform(-90);
+                            tileToPut.RenderTransform = rotateTransform;
+                        }
                         leftNumber = numberOne;
                     }
                     Board.Children.Insert(0, tileToPut);
                 }
                 else
                 {
-                    // Se pone a la derecha
                     if (numberOne == rightNumber)
                     {
-                        // Se coloca correctamente y el numero dos pasa a ser el derecho
-                        RotateTransform rotateTransform = new RotateTransform(-90);
-                        tileToPut.RenderTransform = rotateTransform;
+                        if (numberOne != numberTwo)
+                        {
+                            RotateTransform rotateTransform = new RotateTransform(-90);
+                            tileToPut.RenderTransform = rotateTransform;
+                        }
                         rightNumber = numberTwo;
                     }
                     else
                     {
-                        // Se coloca correctamente y el numero uno pasa a ser el derecho
                         rightNumber = numberOne;
                     }
                     Board.Children.Add(tileToPut);
                 }
             }
+        }
+
+        public void SomeoneTookATile(string username)
+        {
+            var converter = new ImageSourceConverter();
+            Image tileToPut = new Image();
+            tileToPut.Source = (ImageSource)converter.ConvertFromString("Images/TeammateTile.png");
+            tileToPut.Width = 40;
+
+            if (player2 == username)
+                TilesPlayer2.Children.Add(tileToPut);
+            else
+            {
+                if (player3 == username)
+                    TilesPlayer3.Children.Add(tileToPut);
+                else
+                    TilesPlayer4.Children.Add(tileToPut);
+            }
+
+            TalesInBank -= 1;
+            TextBoxBank.Text = TalesInBank.ToString();
         }
 
         public string SendHighestTile()
@@ -264,6 +285,8 @@ namespace Domino
                 else
                 {
                     serverGame.TakeFromTheBank(GameId);
+                    TalesInBank -= 1;
+                    TextBoxBank.Text = TalesInBank.ToString();
                     LookForAPossibleTile(out numberOfTilesToPlay, out tilesToPlay);
                     if (numberOfTilesToPlay != 0)
                         EnablePossibleTiles(tilesToPlay);
@@ -440,8 +463,8 @@ namespace Domino
 
             if (leftNumber == -1 && rightNumber == -1)
             {
-                leftNumber = numberOne;
                 rightNumber = numberTwo;
+                leftNumber = numberOne;
                 Board.Children.Add(image);
             }
             else
@@ -452,8 +475,11 @@ namespace Domino
                         leftNumber = numberTwo;
                     else
                     {
-                        RotateTransform rotateTransform = new RotateTransform(-90);
-                        image.RenderTransform = rotateTransform;
+                        if(numberOne != numberTwo)
+                        {
+                            RotateTransform rotateTransform = new RotateTransform(-90);
+                            image.RenderTransform = rotateTransform;
+                        }
                         leftNumber = numberOne;
                     }
                     Board.Children.Insert(0, image);
@@ -462,14 +488,15 @@ namespace Domino
                 {
                     if (numberOne == rightNumber)
                     {
-                        RotateTransform rotateTransform = new RotateTransform(-90);
-                        image.RenderTransform = rotateTransform;
+                        if (numberOne != numberTwo)
+                        {
+                            RotateTransform rotateTransform = new RotateTransform(-90);
+                            image.RenderTransform = rotateTransform;
+                        }
                         rightNumber = numberTwo;
                     }
                     else
-                    {
                         rightNumber = numberOne;
-                    }
                     Board.Children.Add(image);
                 }
             }
@@ -482,6 +509,33 @@ namespace Domino
                 tileInHand.Opacity = 0.7;
             }
             serverGame.PutATile(GameId, tileToPut);
+            if (tilesInHand[0] == null)
+            {
+                serverGame.Win(GameId);
+                SomeoneWonTheRound(username);
+            }
+            else
+                serverGame.PassTurn(GameId);
+        }
+
+        public void SomeoneWonTheRound (string username)
+        {
+            if (username == this.username)
+            {
+                TextBlockWinnerUsername.Visibility = Visibility.Collapsed;
+                TextBlockWinner.Text = "¡Has ganado!";
+                Points = Points + 250;
+
+            }
+            else
+            {
+                TextBlockWinnerUsername.Text = username + " ";
+                TextBlockExtrapointsMessage.Text = "Cuando ganes conseguiras puntos extras";
+                TextBlockExtrapoints.Visibility = Visibility.Collapsed;
+            }
+            serverGame.UploadPoints(GameId, Points);
+            TextBlockFinalPoints.Text = "+ " + Points.ToString();
+            EndPanel.Visibility = Visibility.Visible;
         }
 
         public void ReciveMessage(string user, string message)
@@ -521,5 +575,16 @@ namespace Domino
                 ScrollViewer.ScrollToVerticalOffset(ScrollViewer.ExtentHeight);
         }
 
+        private void ClickGoBackToMenu(object sender, EventArgs e)
+        {
+            MenuWindow menuWindow = new MenuWindow(username);
+            menuWindow.Show();
+            this.Close();
+        }
+
+        private void ClickExit(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

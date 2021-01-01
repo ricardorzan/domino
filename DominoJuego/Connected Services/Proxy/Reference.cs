@@ -469,6 +469,18 @@ namespace Domino.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/PassTurn")]
         System.Threading.Tasks.Task PassTurnAsync(int idGame);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/Win")]
+        void Win(int idGame);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/Win")]
+        System.Threading.Tasks.Task WinAsync(int idGame);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/UploadPoints")]
+        void UploadPoints(int idGame, int points);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/UploadPoints")]
+        System.Threading.Tasks.Task UploadPointsAsync(int idGame, int points);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -494,6 +506,12 @@ namespace Domino.Proxy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GetTheTile")]
         void GetTheTile(string tile);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/SomeoneTookATile")]
+        void SomeoneTookATile(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/SomeoneWonTheRound")]
+        void SomeoneWonTheRound(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -578,6 +596,22 @@ namespace Domino.Proxy {
         
         public System.Threading.Tasks.Task PassTurnAsync(int idGame) {
             return base.Channel.PassTurnAsync(idGame);
+        }
+        
+        public void Win(int idGame) {
+            base.Channel.Win(idGame);
+        }
+        
+        public System.Threading.Tasks.Task WinAsync(int idGame) {
+            return base.Channel.WinAsync(idGame);
+        }
+        
+        public void UploadPoints(int idGame, int points) {
+            base.Channel.UploadPoints(idGame, points);
+        }
+        
+        public System.Threading.Tasks.Task UploadPointsAsync(int idGame, int points) {
+            return base.Channel.UploadPointsAsync(idGame, points);
         }
     }
 }

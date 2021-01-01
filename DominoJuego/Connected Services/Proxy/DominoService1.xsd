@@ -312,6 +312,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="Win">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idGame" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadPoints">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idGame" type="xs:int" />
+        <xs:element minOccurs="0" name="points" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetDominoes">
     <xs:complexType>
       <xs:sequence>
@@ -364,6 +379,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="tile" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SomeoneTookATile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SomeoneWonTheRound">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
