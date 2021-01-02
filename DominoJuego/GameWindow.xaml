@@ -41,17 +41,17 @@
             </Grid.RowDefinitions>
 
             <StackPanel x:Name="GameAnotations" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label Content="Ronda:" FontSize="17" Foreground="White" HorizontalAlignment="Center" Margin="20 10 0 10"/>
+                <Label Content="{x:Static p:Resources.Round}" FontSize="17" Foreground="White" HorizontalAlignment="Center" Margin="20 10 0 10"/>
                 <TextBox Text="1" FontSize="17" Foreground="White" Margin="0 10 20 10" Name="TextBoxRound" ></TextBox>
-                <Label Content="Tú puntaje:" FontSize="17" Foreground="White" HorizontalAlignment="Center" Margin="20 10 0 10"/>
+                <Label Content="{x:Static p:Resources.YourPoints}" FontSize="17" Foreground="White" HorizontalAlignment="Center" Margin="20 10 0 10"/>
                 <TextBox Text="0" FontSize="17" Foreground="White" Margin="0 10 20 10" Name="TextBoxPoints"></TextBox>
-                <Label Content="Fichas restantes:" FontSize="17" Foreground="White" HorizontalAlignment="Center" Margin="20 10 0 10"/>
+                <Label Content="{x:Static p:Resources.TilesInBank}" FontSize="17" Foreground="White" HorizontalAlignment="Center" Margin="20 10 0 10"/>
                 <TextBox Text="28" FontSize="17" Foreground="White" Margin="0 10 20 10" Name="TextBoxBank"></TextBox>
             </StackPanel>
             <Border Grid.Row="1" Background="Black" Opacity=".4"/>
             <StackPanel x:Name="TilesPlayers" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="10" Visibility="Collapsed" >
-                    <Label Name="PlayerUsername3" Content="Jugador 3" FontSize="17" Foreground="White" HorizontalAlignment="Center" Margin="10"/>
+                <StackPanel x:Name="StackpanelPlayer3" Grid.Row="1" HorizontalAlignment="Center" Margin="10" Visibility="Collapsed" >
+                    <Label Name="PlayerUsername3" FontSize="17" Foreground="White" HorizontalAlignment="Center" Margin="10"/>
                     <StackPanel x:Name="TilesPlayer3" Orientation="Horizontal">
                         <Image Source="Images/TeammateTile.png" Width="40"/>
                         <Image Source="Images/TeammateTile.png" Width="40"/>
@@ -63,7 +63,7 @@
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="10">
-                    <Label Name="PlayerUsername2" Content="Jugador 2" FontSize="17" Foreground="White" HorizontalAlignment="Center" Margin="10"/>
+                    <Label Name="PlayerUsername2" FontSize="17" Foreground="White" HorizontalAlignment="Center" Margin="10"/>
                     <StackPanel x:Name="TilesPlayer2" Orientation="Horizontal">
                         <Image Source="Images/TeammateTile.png" Width="40"/>
                         <Image Source="Images/TeammateTile.png" Width="40"/>
@@ -74,8 +74,8 @@
                         <Image Source="Images/TeammateTile.png" Width="40"/>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="10" Visibility="Collapsed">
-                    <Label Name="PlayerUsername4" Content="Jugador 4" FontSize="17" Foreground="White" HorizontalAlignment="Center" Margin="10"/>
+                <StackPanel x:Name="StackpanelPlayer4" Grid.Row="1" HorizontalAlignment="Center" Margin="10" Visibility="Collapsed">
+                    <Label Name="PlayerUsername4" FontSize="17" Foreground="White" HorizontalAlignment="Center" Margin="10"/>
                     <StackPanel x:Name="TilesPlayer4" Orientation="Horizontal">
                         <Image Source="Images/TeammateTile.png" Width="40"/>
                         <Image Source="Images/TeammateTile.png" Width="40"/>
@@ -102,18 +102,18 @@
             <TextBlock Foreground="DarkCyan" HorizontalAlignment="Center" FontSize="76.2"  FontFamily="Rockwell" VerticalAlignment="Center" Text="{x:Static p:Resources.Title}" Margin="40"></TextBlock>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock x:Name="TextBlockWinnerUsername" Text="username " Foreground="DarkCyan" FontSize="56.2" FontFamily="Rockwell" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="TextBlockWinner" Text="ha ganado" FontSize="56.2" FontFamily="Rockwell" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="TextBlockWinnerUsername" Foreground="DarkCyan" FontSize="56.2" FontFamily="Rockwell" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="TextBlockWinner" Text="{x:Static p:Resources.SomeoneWon}" FontSize="56.2" FontFamily="Rockwell" HorizontalAlignment="Center"/>
             </StackPanel>
 
-            <TextBlock Text="Tus puntos ganados son:" FontSize="56.2" FontFamily="Rockwell" HorizontalAlignment="Center"/>
-            <TextBlock x:Name="TextBlockFinalPoints" Text="+100" FontSize="56.2" Foreground="DarkCyan" HorizontalAlignment="Center" />
+            <TextBlock Text="{x:Static p:Resources.PointsEarned}" FontSize="56.2" FontFamily="Rockwell" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="TextBlockFinalPoints" FontSize="56.2" Foreground="DarkCyan" HorizontalAlignment="Center" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock x:Name="TextBlockExtrapointsMessage" Text="Por haber ganado acumulaste " FontSize="36.2" FontFamily="Rockwell" HorizontalAlignment="Center" Margin="0 0 0 30"/>
-                <TextBlock x:Name="TextBlockExtrapoints" Text="+250" FontSize="36.2" Foreground="DarkCyan" FontFamily="Rockwell" HorizontalAlignment="Center" Margin="0 0 0 30"/>
+                <TextBlock x:Name="TextBlockExtrapointsMessage" Text="{x:Static p:Resources.ExtraPointsMessage}" FontSize="36.2" FontFamily="Rockwell" HorizontalAlignment="Center" Margin="0 0 0 30"/>
+                <TextBlock x:Name="TextBlockExtrapoints" FontSize="36.2" Foreground="DarkCyan" FontFamily="Rockwell" HorizontalAlignment="Center" Margin="0 0 0 30"/>
             </StackPanel>
 
-            <TextBlock Text="Sigue jugando para ganar puntos y aparecer en la tabla de posiciones" FontSize="26.2" FontFamily="Rockwell" HorizontalAlignment="Center"/>
+            <TextBlock Text="{x:Static p:Resources.KeepPlaying}" FontSize="26.2" FontFamily="Rockwell" HorizontalAlignment="Center"/>
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Button Width="270" Height="70" Margin="35" Click="ClickGoBackToMenu">

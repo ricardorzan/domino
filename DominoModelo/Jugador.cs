@@ -14,8 +14,6 @@ namespace DominoModelo
     
     public partial class Jugador
     {
-        public int Enturno { get; set; }
-        public Nullable<int> Fichasenmano { get; set; }
         public Nullable<int> Puntaje { get; set; }
         public int JugadorID { get; set; }
         public int UsuarioID { get; set; }

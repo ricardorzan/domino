@@ -1,0 +1,118 @@
+File name	Line	Function	Duration[ms]	Explored nodes
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\App.g.cs	47	_Domino.App.InitializeComponent$$	0	5
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\App.g.cs	72	_Domino.App.Main$$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\CambiarContraseñaWindow.g.cs	83	_Domino.CambiarContrase.F1aWindow.InitializeComponent$$	0	5
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\CambiarContraseñaWindow.xaml.cs	25	_Domino.CambiarContrase.F1aWindow.ClickCancel$object.System.Windows.RoutedEventArgs$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\GameWindow.g.cs	275	_Domino.GameWindow.InitializeComponent$$	0	5
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\GameWindow.xaml.cs	55	_Domino.GameWindow.ReciveNewMember$string$	0	17
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\GameWindow.xaml.cs	97	_Domino.GameWindow.ReciveMembersInGame$string$$$	13	403
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\GameWindow.xaml.cs	179	_Domino.GameWindow.SomeoneTookATile$string$	0	12
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\GameWindow.xaml.cs	319	_Domino.GameWindow.EnablePossibleTiles$int$$$	54	653
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\GameWindow.xaml.cs	364	_Domino.GameWindow.GetDominoes$string$$$	0	36
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\GameWindow.xaml.cs	528	_Domino.GameWindow.SomeoneWonTheRound$string$	0	8
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\GameWindow.xaml.cs	547	_Domino.GameWindow.ReciveMessage$string.string$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\GameWindow.xaml.cs	554	_Domino.GameWindow.ClickIconChat$object.System.EventArgs$	0	5
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\GameWindow.xaml.cs	568	_Domino.GameWindow.IsEnter$object.System.Windows.Input.KeyEventArgs$	0	5
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\GameWindow.xaml.cs	584	_Domino.GameWindow.ClickGoBackToMenu$object.System.EventArgs$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\GameWindow.xaml.cs	591	_Domino.GameWindow.ClickExit$object.System.EventArgs$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\JugarMultijugadorWindow.g.cs	131	_Domino.JugarMultijugadorWindow.InitializeComponent$$	0	5
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	55	_Domino.JugarMultijugadorWindow.ClickGoBack$object.System.Windows.RoutedEventArgs$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	60	_Domino.JugarMultijugadorWindow.ClickCreateGame$object.System.Windows.RoutedEventArgs$	0	7
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	77	_Domino.JugarMultijugadorWindow.ClickJoinGame$object.System.Windows.RoutedEventArgs$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	83	_Domino.JugarMultijugadorWindow.ClickLeaveGame$object.System.Windows.RoutedEventArgs$	0	8
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	100	_Domino.JugarMultijugadorWindow.ClickStartGame$object.System.Windows.RoutedEventArgs$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	105	_Domino.JugarMultijugadorWindow.ReciveGame$string$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	111	_Domino.JugarMultijugadorWindow.ReciveMember$string$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	118	_Domino.JugarMultijugadorWindow.SendUsername$$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	125	_Domino.JugarMultijugadorWindow.ReciveMembers$string$$$	9	503
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	138	_Domino.JugarMultijugadorWindow.GameFull$$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	143	_Domino.JugarMultijugadorWindow.LeaveGame$bool$	0	8
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	156	_Domino.JugarMultijugadorWindow.SomeoneLeftGame$string$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	162	_Domino.JugarMultijugadorWindow.UpdateGames$$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	168	_Domino.JugarMultijugadorWindow.AdjustComponents$bool$	0	6
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	186	_Domino.JugarMultijugadorWindow.ResetComponents$$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	213	_Domino.JugarMultijugadorWindow.GamesList_IsDoubleClick$object.System.Windows.Input.MouseButtonEventArgs$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	218	_Domino.JugarMultijugadorWindow.GamesList_SelectedIndexChanged$object.System.Windows.Controls.SelectionChangedEventArgs$	0	5
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	228	_Domino.JugarMultijugadorWindow.ComboBox_SelectedIndexChanged$object.System.Windows.Controls.SelectionChangedEventArgs$	0	5
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	238	_Domino.JugarMultijugadorWindow.ClickKickPlayer$object.System.Windows.RoutedEventArgs$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	244	_Domino.JugarMultijugadorWindow.StartRound$int$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs	251	_Domino.JugarMultijugadorWindow.LoadingRow$object.System.Collections.Specialized.NotifyCollectionChangedEventArgs$	0	8
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\MainWindow.g.cs	75	_Domino.MainWindow.InitializeComponent$$	0	5
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\MainWindow.xaml.cs	49	_Domino.MainWindow.ClickSignUp$object.System.Windows.RoutedEventArgs$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\MainWindow.xaml.cs	55	_Domino.MainWindow.IsEnter$object.System.Windows.Input.KeyEventArgs$	0	5
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\MainWindow.xaml.cs	61	_Domino.MainWindow.ClickRecover$object.System.Windows.Input.MouseButtonEventArgs$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\MainWindow.xaml.cs	67	_Domino.MainWindow.GoBack$$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\MainWindow.xaml.cs	75	_Domino.MainWindow.Navegate$System.Windows.Controls.Page$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\MenuWindow.g.cs	147	_Domino.MenuWindow.InitializeComponent$$	0	5
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\MenuWindow.xaml.cs	37	_Domino.MenuWindow.ReciveMessage$string.string$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\MenuWindow.xaml.cs	44	_Domino.MenuWindow.ClickPlay$object.System.Windows.RoutedEventArgs$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\MenuWindow.xaml.cs	50	_Domino.MenuWindow.ClickSeeScores$object.System.Windows.RoutedEventArgs$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\MenuWindow.xaml.cs	56	_Domino.MenuWindow.ClickChangePassword$object.System.Windows.RoutedEventArgs$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\MenuWindow.xaml.cs	62	_Domino.MenuWindow.GoBack$$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\MenuWindow.xaml.cs	69	_Domino.MenuWindow.ClickLogOut$object.System.EventArgs$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\MenuWindow.xaml.cs	76	_Domino.MenuWindow.ClickIconChat$object.System.EventArgs$	0	5
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\MenuWindow.xaml.cs	90	_Domino.MenuWindow.IsEnter$object.System.Windows.Input.KeyEventArgs$	0	5
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\MenuWindow.xaml.cs	106	_Domino.MenuWindow.UserNotVerified$$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\MenuWindow.xaml.cs	120	_Domino.MenuWindow.ClickValidate$object.System.EventArgs$	0	9
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\RecuperarContraseñaWindow.g.cs	67	_Domino.RecuperarContrase.F1aWindow.InitializeComponent$$	0	5
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\RecuperarContraseñaWindow.xaml.cs	23	_Domino.RecuperarContrase.F1aWindow.ClickCancel$object.System.Windows.RoutedEventArgs$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\RecuperarContraseñaWindow.xaml.cs	28	_Domino.RecuperarContrase.F1aWindow.ClickRecover$object.System.Windows.RoutedEventArgs$	0	12
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	75	_Domino.Proxy.LoginServiceClient.LogIn$string.string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	79	_Domino.Proxy.LoginServiceClient.LogInAsync$string.string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	83	_Domino.Proxy.LoginServiceClient.SignUp$string.string.string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	87	_Domino.Proxy.LoginServiceClient.SignUpAsync$string.string.string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	91	_Domino.Proxy.LoginServiceClient.RecoverPassword$string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	95	_Domino.Proxy.LoginServiceClient.RecoverPasswordAsync$string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	99	_Domino.Proxy.LoginServiceClient.VerificateUser$string.string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	103	_Domino.Proxy.LoginServiceClient.VerificateUserAsync$string.string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	107	_Domino.Proxy.LoginServiceClient.IsVerified$string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	111	_Domino.Proxy.LoginServiceClient.IsVerifiedAsync$string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	160	_Domino.Proxy.MenuServiceClient.ChangePassword$string.string.string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	164	_Domino.Proxy.MenuServiceClient.ChangePasswordAsync$string.string.string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	168	_Domino.Proxy.MenuServiceClient.GetScores$$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	172	_Domino.Proxy.MenuServiceClient.GetScoresAsync$$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	229	_Domino.Proxy.ChatServiceClient.JoinChat$int.string$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	233	_Domino.Proxy.ChatServiceClient.JoinChatAsync$int.string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	237	_Domino.Proxy.ChatServiceClient.SendMessage$int.string$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	241	_Domino.Proxy.ChatServiceClient.SendMessageAsync$int.string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	361	_Domino.Proxy.LobbyServiceClient.JoinLobby$string$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	365	_Domino.Proxy.LobbyServiceClient.JoinLobbyAsync$string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	369	_Domino.Proxy.LobbyServiceClient.GetGames$$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	373	_Domino.Proxy.LobbyServiceClient.GetGamesAsync$$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	377	_Domino.Proxy.LobbyServiceClient.CreateGame$string$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	381	_Domino.Proxy.LobbyServiceClient.CreateGameAsync$string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	385	_Domino.Proxy.LobbyServiceClient.JoinGame$string$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	389	_Domino.Proxy.LobbyServiceClient.JoinGameAsync$string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	393	_Domino.Proxy.LobbyServiceClient.BreakGame$string$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	397	_Domino.Proxy.LobbyServiceClient.BreakGameAsync$string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	401	_Domino.Proxy.LobbyServiceClient.MemberLeftGame$string$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	405	_Domino.Proxy.LobbyServiceClient.MemberLeftGameAsync$string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	409	_Domino.Proxy.LobbyServiceClient.KickPlayer$string.string$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	413	_Domino.Proxy.LobbyServiceClient.KickPlayerAsync$string.string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	417	_Domino.Proxy.LobbyServiceClient.StartGame$string$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	421	_Domino.Proxy.LobbyServiceClient.StartGameAsync$string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	544	_Domino.Proxy.GameServiceClient.JoinCurrentGame$int.string$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	548	_Domino.Proxy.GameServiceClient.JoinCurrentGameAsync$int.string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	552	_Domino.Proxy.GameServiceClient.GetFirstSevenTiles$int$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	556	_Domino.Proxy.GameServiceClient.GetFirstSevenTilesAsync$int$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	560	_Domino.Proxy.GameServiceClient.GetPlayersName$int$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	564	_Domino.Proxy.GameServiceClient.GetPlayersNameAsync$int$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	568	_Domino.Proxy.GameServiceClient.GetHighestTile$int.string$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	572	_Domino.Proxy.GameServiceClient.GetHighestTileAsync$int.string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	576	_Domino.Proxy.GameServiceClient.PutATile$int.string$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	580	_Domino.Proxy.GameServiceClient.PutATileAsync$int.string$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	584	_Domino.Proxy.GameServiceClient.TakeFromTheBank$int$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	588	_Domino.Proxy.GameServiceClient.TakeFromTheBankAsync$int$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	592	_Domino.Proxy.GameServiceClient.PassTurn$int$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	596	_Domino.Proxy.GameServiceClient.PassTurnAsync$int$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	600	_Domino.Proxy.GameServiceClient.Win$int$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	604	_Domino.Proxy.GameServiceClient.WinAsync$int$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	608	_Domino.Proxy.GameServiceClient.UploadPoints$int.int$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs	612	_Domino.Proxy.GameServiceClient.UploadPointsAsync$int.int$	0	2
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\RegistrarseWindow.g.cs	171	_Domino.RegistrarseWindow.InitializeComponent$$	0	5
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\RegistrarseWindow.xaml.cs	26	_Domino.RegistrarseWindow.ClickCancel$object.System.Windows.RoutedEventArgs$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\RegistrarseWindow.xaml.cs	66	_Domino.RegistrarseWindow.ShowValidateSection$$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\RegistrarseWindow.xaml.cs	83	_Domino.RegistrarseWindow.ClickAnotherTime$object.System.Windows.RoutedEventArgs$	0	3
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\RegistrarseWindow.xaml.cs	88	_Domino.RegistrarseWindow.ClickValidate$object.System.Windows.RoutedEventArgs$	0	9
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\VerMarcadoresWindow.g.cs	67	_Domino.VerMarcadoresWindow.InitializeComponent$$	0	5
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\VerMarcadoresWindow.xaml.cs	29	_Domino.VerMarcadoresWindow.ClickRegresar$object.System.Windows.RoutedEventArgs$	0	3

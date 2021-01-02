@@ -159,6 +159,9 @@
   <data name="ExistingMail" xml:space="preserve">
     <value>There is already a registered user with that email</value>
   </data>
+  <data name="ExtraPointsMessage" xml:space="preserve">
+    <value>For having won you accumulated </value>
+  </data>
   <data name="GameBroke" xml:space="preserve">
     <value>The owner has undone the game</value>
   </data>
@@ -183,6 +186,9 @@
   <data name="JoinGame_Button" xml:space="preserve">
     <value>Join game</value>
   </data>
+  <data name="KeepPlaying" xml:space="preserve">
+    <value>Keep playing to earn points and appear in the leaderboard</value>
+  </data>
   <data name="KickedOut" xml:space="preserve">
     <value>The owner of the game kicked you out</value>
   </data>
@@ -198,8 +204,14 @@
   <data name="NewPassword" xml:space="preserve">
     <value>New password</value>
   </data>
+  <data name="NoExtraPoints" xml:space="preserve">
+    <value>When you win you will get extra points</value>
+  </data>
   <data name="NoMatch" xml:space="preserve">
     <value>Your login credentials do not match an account in our system</value>
+  </data>
+  <data name="NoMoreTilesInBank" xml:space="preserve">
+    <value>There are no more tiles in the bank</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
@@ -219,6 +231,9 @@
   <data name="PlayMultiplayer_Button" xml:space="preserve">
     <value>Play multiplayer</value>
   </data>
+  <data name="PointsEarned" xml:space="preserve">
+    <value>Your points earned are:</value>
+  </data>
   <data name="PositionText" xml:space="preserve">
     <value>Position</value>
   </data>
@@ -228,6 +243,9 @@
   <data name="Recover_Button" xml:space="preserve">
     <value>Recover</value>
   </data>
+  <data name="Round" xml:space="preserve">
+    <value>Round:</value>
+  </data>
   <data name="ScoreText" xml:space="preserve">
     <value>Score</value>
   </data>
@@ -236,6 +254,9 @@
   </data>
   <data name="SignUp_Button" xml:space="preserve">
     <value>Sing up</value>
+  </data>
+  <data name="SomeoneWon" xml:space="preserve">
+    <value>has won</value>
   </data>
   <data name="StartGame_Button" xml:space="preserve">
     <value>Start game</value>
@@ -248,6 +269,9 @@
   </data>
   <data name="TextRecover" xml:space="preserve">
     <value>Did you forget your password? Click here</value>
+  </data>
+  <data name="TilesInBank" xml:space="preserve">
+    <value>Tiles in bank:</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Domino</value>
@@ -269,5 +293,11 @@
   </data>
   <data name="You" xml:space="preserve">
     <value>You</value>
+  </data>
+  <data name="YourPoints" xml:space="preserve">
+    <value>Your points:</value>
+  </data>
+  <data name="YouWon" xml:space="preserve">
+    <value>You've won!</value>
   </data>
 </root>

@@ -14,9 +14,9 @@ namespace Domino
     public partial class GameWindow : Window, Proxy.IGameServiceCallback, Proxy.IChatServiceCallback
     {
         private readonly object content;
-        private int GameId;
-        private string username;
-        private bool isHost;
+        private readonly int GameId;
+        private readonly string username;
+        private readonly bool isHost;
         private string[] tilesInHand = new string[20];
         private string player2 = null;
         private string player3 = null;
@@ -61,55 +61,45 @@ namespace Domino
                 {
                     player2 = username;
                     PlayerUsername2.Content = player2;
-                    TalesInBank = TalesInBank - 7;
+                    TalesInBank -= 7;
                     TextBoxBank.Text = TalesInBank.ToString();
                 }
                 else
                 {
-                    if (player3 == null)
+                    if (player2 != username)
                     {
-                        player3 = username;
-                        PlayerUsername3.Content = player3;
-                        TalesInBank -= 7;
-                        TextBoxBank.Text = TalesInBank.ToString();
+                        if (player3 == null)
+                        {
+                            player3 = username;
+                            PlayerUsername3.Content = player3;
+                            TalesInBank -= 7;
+                            TextBoxBank.Text = TalesInBank.ToString();
+                            StackpanelPlayer3.Visibility = Visibility.Visible;
+                        }
+                        else
+                        {
+                            if (player3 != username)
+                            {
+                                if (player4 == null)
+                                {
+                                    player4 = username;
+                                    PlayerUsername4.Content = player4;
+                                    TalesInBank -= 7;
+                                    TextBoxBank.Text = TalesInBank.ToString();
+                                    StackpanelPlayer4.Visibility = Visibility.Visible;
+                                }
+                            }
+                        }
                     }
-                    else
-                    {
-                        player4 = username;
-                        PlayerUsername4.Content = player4;
-                        TalesInBank = TalesInBank - 7;
-                        TextBoxBank.Text = TalesInBank.ToString();
-                    }
-
                 }
             }
         }
 
         public void ReciveMembersInGame(string[] members)
         {
-            if (members.Length != 0)
+            for (int i = 0; i < members.Length; i++)
             {
-                int numOfPlayers = members.Length;
-                player2 = members[0];
-                PlayerUsername2.Content = player2;
-                TalesInBank = TalesInBank - 7;
-                TextBoxBank.Text = TalesInBank.ToString();
-                if (numOfPlayers >= 2)
-                {
-                    player3 = members[1];
-                    PlayerUsername3.Content = player3;
-                    TalesInBank = TalesInBank - 7;
-                    TextBoxBank.Text = TalesInBank.ToString();
-                    TilesPlayer3.Visibility = Visibility.Visible;
-                }
-                if (numOfPlayers >= 3)
-                {
-                    player4 = members[2];
-                    PlayerUsername4.Content = player4;
-                    TalesInBank = TalesInBank - 7;
-                    TextBoxBank.Text = TalesInBank.ToString();
-                    TilesPlayer4.Visibility = Visibility.Visible;
-                }
+                ReciveNewMember(members[i]);
             }
         }
 
@@ -128,9 +118,11 @@ namespace Domino
             int numberOne = int.Parse(tile.Substring(0, 1));
             int numberTwo = int.Parse(tile.Substring(1, 1));
             var converter = new ImageSourceConverter();
-            Image tileToPut = new Image();
-            tileToPut.Source = (ImageSource)converter.ConvertFromString("Images/" + tile + ".png");
-            tileToPut.Width = 45;
+            Image tileToPut = new Image
+            {
+                Source = (ImageSource)converter.ConvertFromString("Images/" + tile + ".png"),
+                Width = 45
+            };
 
             if (numberOne != numberTwo)
             {
@@ -188,9 +180,11 @@ namespace Domino
         public void SomeoneTookATile(string username)
         {
             var converter = new ImageSourceConverter();
-            Image tileToPut = new Image();
-            tileToPut.Source = (ImageSource)converter.ConvertFromString("Images/TeammateTile.png");
-            tileToPut.Width = 40;
+            Image tileToPut = new Image
+            {
+                Source = (ImageSource)converter.ConvertFromString("Images/TeammateTile.png"),
+                Width = 40
+            };
 
             if (player2 == username)
                 TilesPlayer2.Children.Add(tileToPut);
@@ -260,7 +254,6 @@ namespace Domino
 
         public void IsYourTurn(bool isFirstTurn)
         {
-            int[] tilesToPlay;
             int numberOfTilesToPlay = 0;
             int count = 0;
             if (isFirstTurn)
@@ -279,24 +272,28 @@ namespace Domino
             }
             else
             {
-                LookForAPossibleTile(out numberOfTilesToPlay, out tilesToPlay);
+                LookForAPossibleTile(out numberOfTilesToPlay, out int[] tilesToPlay);
                 if (numberOfTilesToPlay != 0)
                     EnablePossibleTiles(tilesToPlay);
                 else
                 {
-                    serverGame.TakeFromTheBank(GameId);
-                    TalesInBank -= 1;
-                    TextBoxBank.Text = TalesInBank.ToString();
-                    LookForAPossibleTile(out numberOfTilesToPlay, out tilesToPlay);
-                    if (numberOfTilesToPlay != 0)
-                        EnablePossibleTiles(tilesToPlay);
+                    if (TalesInBank > 0)
+                    {
+                        serverGame.TakeFromTheBank(GameId);
+                        TalesInBank -= 1;
+                        TextBoxBank.Text = TalesInBank.ToString();
+                    }
                     else
+                    {
+                        ChatBox.AppendText(Properties.Resources.NoMoreTilesInBank);
+                        ChatBox.ScrollToEnd();
                         serverGame.PassTurn(GameId);
+                    }
                 }
             }
         }
 
-        public void LookForAPossibleTile(out int numberOfTilesToPlay, out int[]  tilesToPlay)
+        public void LookForAPossibleTile(out int numberOfTilesToPlay, out int[] tilesToPlay)
         {
             tilesToPlay = new int[tilesInHand.Length];
             numberOfTilesToPlay = 0;
@@ -314,7 +311,7 @@ namespace Domino
                 }
                 else
                 {
-                    tilesToPlay[i] = -1;
+                    tilesToPlay[numberOfTilesToPlay] = -1;
                     break;
                 }
             }
@@ -339,7 +336,7 @@ namespace Domino
 
         public void GetTheTile(string tile)
         {
-            for(int i = 0; i < tilesInHand.Length; i++)
+            for (int i = 0; i < tilesInHand.Length; i++)
             {
                 if (tilesInHand[i] == null)
                 {
@@ -349,14 +346,20 @@ namespace Domino
             }
 
             var converter = new ImageSourceConverter();
-            Image tile1 = new Image();
-            tile1.Source = (ImageSource)converter.ConvertFromString("Images/" + tile + ".png");
-            tile1.Width = 60;
-            tile1.Opacity = .7;
-            tile1.AllowDrop = false;
+            Image tile1 = new Image
+            {
+                Source = (ImageSource)converter.ConvertFromString("Images/" + tile + ".png"),
+                Width = 60,
+                Opacity = .7,
+                AllowDrop = false
+            };
+            TilesPlayer1.Children.Add(tile1);
 
-            StackPanel stackPanel = TilesPlayer1;
-            stackPanel.Children.Add(tile1);
+            LookForAPossibleTile(out int numberOfTilesToPlay, out int[] tilesToPlay);
+            if (numberOfTilesToPlay != 0)
+                EnablePossibleTiles(tilesToPlay);
+            else
+                serverGame.PassTurn(GameId);
         }
 
         public void GetDominoes(string[] dominoes)
@@ -365,50 +368,63 @@ namespace Domino
                 tilesInHand[i] = dominoes[i];
 
             var converter = new ImageSourceConverter();
-            Image tile1 = new Image();
-            tile1.Source = (ImageSource)converter.ConvertFromString("Images/" + dominoes[0] + ".png");
-            tile1.Width = 60;
-            tile1.Opacity = .7;
-            tile1.AllowDrop = false;
-            Image tile2 = new Image();
-            tile2.Source = (ImageSource)converter.ConvertFromString("Images/" + dominoes[1] + ".png");
-            tile2.Width = 60;
-            tile2.Opacity = .7;
-            tile2.AllowDrop = false;
-            Image tile3 = new Image();
-            tile3.Source = (ImageSource)converter.ConvertFromString("Images/" + dominoes[2] + ".png");
-            tile3.Width = 60;
-            tile3.Opacity = .7;
-            tile3.AllowDrop = false;
-            Image tile4 = new Image();
-            tile4.Source = (ImageSource)converter.ConvertFromString("Images/" + dominoes[3] + ".png");
-            tile4.Width = 60;
-            tile4.Opacity = .7;
-            tile4.AllowDrop = false;
-            Image tile5 = new Image();
-            tile5.Source = (ImageSource)converter.ConvertFromString("Images/" + dominoes[4] + ".png");
-            tile5.Width = 60;
-            tile5.Opacity = .7;
-            tile5.AllowDrop = false;
-            Image tile6 = new Image();
-            tile6.Source = (ImageSource)converter.ConvertFromString("Images/" + dominoes[5] + ".png");
-            tile6.Width = 60;
-            tile6.Opacity = .7;
-            tile6.AllowDrop = false;
-            Image tile7 = new Image();
-            tile7.Source = (ImageSource)converter.ConvertFromString("Images/" + dominoes[6] + ".png");
-            tile7.Width = 60;
-            tile7.Opacity = .7;
-            tile7.AllowDrop = false;
+            Image tile1 = new Image
+            {
+                Source = (ImageSource)converter.ConvertFromString("Images/" + dominoes[0] + ".png"),
+                Width = 60,
+                Opacity = .7,
+                AllowDrop = false
+            };
+            Image tile2 = new Image
+            {
+                Source = (ImageSource)converter.ConvertFromString("Images/" + dominoes[1] + ".png"),
+                Width = 60,
+                Opacity = .7,
+                AllowDrop = false
+            };
+            Image tile3 = new Image
+            {
+                Source = (ImageSource)converter.ConvertFromString("Images/" + dominoes[2] + ".png"),
+                Width = 60,
+                Opacity = .7,
+                AllowDrop = false
+            };
+            Image tile4 = new Image
+            {
+                Source = (ImageSource)converter.ConvertFromString("Images/" + dominoes[3] + ".png"),
+                Width = 60,
+                Opacity = .7,
+                AllowDrop = false
+            };
+            Image tile5 = new Image
+            {
+                Source = (ImageSource)converter.ConvertFromString("Images/" + dominoes[4] + ".png"),
+                Width = 60,
+                Opacity = .7,
+                AllowDrop = false
+            };
+            Image tile6 = new Image
+            {
+                Source = (ImageSource)converter.ConvertFromString("Images/" + dominoes[5] + ".png"),
+                Width = 60,
+                Opacity = .7,
+                AllowDrop = false
+            };
+            Image tile7 = new Image
+            {
+                Source = (ImageSource)converter.ConvertFromString("Images/" + dominoes[6] + ".png"),
+                Width = 60,
+                Opacity = .7,
+                AllowDrop = false
+            };
 
-            StackPanel stackPanel = TilesPlayer1;
-            stackPanel.Children.Add(tile1);
-            stackPanel.Children.Add(tile2);
-            stackPanel.Children.Add(tile3);
-            stackPanel.Children.Add(tile4);
-            stackPanel.Children.Add(tile5);
-            stackPanel.Children.Add(tile6);
-            stackPanel.Children.Add(tile7);
+            TilesPlayer1.Children.Add(tile1);
+            TilesPlayer1.Children.Add(tile2);
+            TilesPlayer1.Children.Add(tile3);
+            TilesPlayer1.Children.Add(tile4);
+            TilesPlayer1.Children.Add(tile5);
+            TilesPlayer1.Children.Add(tile6);
+            TilesPlayer1.Children.Add(tile7);
 
             if (isHost)
             {
@@ -422,16 +438,8 @@ namespace Domino
             string tileToPut = null;
             int placeInTheHand = TilesPlayer1.Children.IndexOf(image);
             if (placeInTheHand == -1)
-            {
-                string format = "Error al seleccionar, por favor intente de nuevo.";
-                ChatBox.AppendText(format);
-                ChatBox.ScrollToEnd();
-                TextBoxChat.Clear();
                 return;
-            }
-
             TilesPlayer1.Children.Remove(image);
-
             string[] newTilesInHand = new string[tilesInHand.Length - 1];
             for (int i = 0; i < tilesInHand.Length - 1; i++)
             {
@@ -451,7 +459,7 @@ namespace Domino
 
             int numberOne = int.Parse(tileToPut.Substring(0, 1));
             int numberTwo = int.Parse(tileToPut.Substring(1, 1));
-            if(numberOne != numberTwo)
+            if (numberOne != numberTwo)
             {
                 RotateTransform rotateTransform = new RotateTransform(90);
                 image.RenderTransform = rotateTransform;
@@ -475,7 +483,7 @@ namespace Domino
                         leftNumber = numberTwo;
                     else
                     {
-                        if(numberOne != numberTwo)
+                        if (numberOne != numberTwo)
                         {
                             RotateTransform rotateTransform = new RotateTransform(-90);
                             image.RenderTransform = rotateTransform;
@@ -501,7 +509,7 @@ namespace Domino
                 }
             }
 
-            Points = Points + (numberOne + numberTwo);
+            Points += (numberOne + numberTwo);
             TextBoxPoints.Text = Points.ToString();
             foreach (Image tileInHand in TilesPlayer1.Children)
             {
@@ -518,19 +526,18 @@ namespace Domino
                 serverGame.PassTurn(GameId);
         }
 
-        public void SomeoneWonTheRound (string username)
+        public void SomeoneWonTheRound(string username)
         {
             if (username == this.username)
             {
                 TextBlockWinnerUsername.Visibility = Visibility.Collapsed;
-                TextBlockWinner.Text = "¡Has ganado!";
-                Points = Points + 250;
-
+                TextBlockWinner.Text = Properties.Resources.YouWon;
+                Points += 250;
             }
             else
             {
                 TextBlockWinnerUsername.Text = username + " ";
-                TextBlockExtrapointsMessage.Text = "Cuando ganes conseguiras puntos extras";
+                TextBlockExtrapointsMessage.Text = Properties.Resources.NoExtraPoints;
                 TextBlockExtrapoints.Visibility = Visibility.Collapsed;
             }
             serverGame.UploadPoints(GameId, Points);

@@ -159,6 +159,9 @@
   <data name="ExistingMail" xml:space="preserve">
     <value>Ya hay un usuario registrado con ese correo</value>
   </data>
+  <data name="ExtraPointsMessage" xml:space="preserve">
+    <value>Por haber ganado acumulaste </value>
+  </data>
   <data name="GameBroke" xml:space="preserve">
     <value>El dueño ha deshecho la partida</value>
   </data>
@@ -183,6 +186,9 @@
   <data name="JoinGame_Button" xml:space="preserve">
     <value>Unirse a partida</value>
   </data>
+  <data name="KeepPlaying" xml:space="preserve">
+    <value>Sigue jugando para ganar puntos y aparecer en la tabla de posiciones</value>
+  </data>
   <data name="KickedOut" xml:space="preserve">
     <value>El dueño de la partida te ha expulsado</value>
   </data>
@@ -198,8 +204,14 @@
   <data name="NewPassword" xml:space="preserve">
     <value>Nueva contraseña</value>
   </data>
+  <data name="NoExtraPoints" xml:space="preserve">
+    <value>Cuando ganes conseguirás puntos extras</value>
+  </data>
   <data name="NoMatch" xml:space="preserve">
     <value>Tus credenciales de inicio de sesión no coinciden con una cuenta en nuestro sistema</value>
+  </data>
+  <data name="NoMoreTilesInBank" xml:space="preserve">
+    <value>No hay más fichas en el banco</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Contraseña</value>
@@ -219,6 +231,9 @@
   <data name="PlayMultiplayer_Button" xml:space="preserve">
     <value>Jugar multijugador</value>
   </data>
+  <data name="PointsEarned" xml:space="preserve">
+    <value>Tus puntos ganados son:</value>
+  </data>
   <data name="PositionText" xml:space="preserve">
     <value>Posición</value>
   </data>
@@ -228,6 +243,9 @@
   <data name="Recover_Button" xml:space="preserve">
     <value>Recuperar</value>
   </data>
+  <data name="Round" xml:space="preserve">
+    <value>Ronda:</value>
+  </data>
   <data name="ScoreText" xml:space="preserve">
     <value>Puntaje</value>
   </data>
@@ -236,6 +254,9 @@
   </data>
   <data name="SignUp_Button" xml:space="preserve">
     <value>Registrarse</value>
+  </data>
+  <data name="SomeoneWon" xml:space="preserve">
+    <value>ha ganado</value>
   </data>
   <data name="StartGame_Button" xml:space="preserve">
     <value>Iniciar partida</value>
@@ -248,6 +269,9 @@
   </data>
   <data name="TextRecover" xml:space="preserve">
     <value>¿Olvidaste tu contraseña? Has clic aquí</value>
+  </data>
+  <data name="TilesInBank" xml:space="preserve">
+    <value>Fichas en el banco:</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Domino</value>
@@ -269,5 +293,11 @@
   </data>
   <data name="You" xml:space="preserve">
     <value>Tu</value>
+  </data>
+  <data name="YourPoints" xml:space="preserve">
+    <value>Tus puntos:</value>
+  </data>
+  <data name="YouWon" xml:space="preserve">
+    <value>¡Has ganado!</value>
   </data>
 </root>

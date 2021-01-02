@@ -41,52 +41,10 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
                 "region": {
-                  "startLine": 197,
-                  "startColumn": 21,
-                  "endLine": 197,
-                  "endColumn": 49
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S125",
-          "level": "warning",
-          "message": "Remove this commented out code.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
-                "region": {
-                  "startLine": 208,
-                  "startColumn": 21,
-                  "endLine": 208,
-                  "endColumn": 51
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1186",
-          "level": "warning",
-          "message": "Add a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
-                "region": {
-                  "startLine": 16,
-                  "startColumn": 21,
-                  "endLine": 16,
-                  "endColumn": 31
+                  "startLine": 309,
+                  "startColumn": 48,
+                  "endLine": 309,
+                  "endColumn": 116
                 }
               }
             }
@@ -104,9 +62,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
                 "region": {
-                  "startLine": 455,
+                  "startLine": 773,
                   "startColumn": 17,
-                  "endLine": 455,
+                  "endLine": 773,
                   "endColumn": 21
                 }
               }
@@ -119,15 +77,133 @@
         {
           "ruleId": "S1905",
           "level": "warning",
+          "message": "Remove this unnecessary cast to 'Dictionary<IGameClient, string>'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 42,
+                  "startColumn": 15,
+                  "endLine": 42,
+                  "endColumn": 46
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1128",
+          "level": "warning",
+          "message": "Remove this unnecessary 'using'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 1,
+                  "endLine": 10,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1066",
+          "level": "warning",
+          "message": "Merge this if statement with the enclosing one.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 149,
+                  "startColumn": 29,
+                  "endLine": 149,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 147,
+                  "startColumn": 25,
+                  "endLine": 147,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1905",
+          "level": "warning",
           "message": "Remove this unnecessary cast to 'Dictionary<ILobbyClient, string>'.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
                 "region": {
-                  "startLine": 91,
+                  "startLine": 353,
+                  "startColumn": 15,
+                  "endLine": 353,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1905",
+          "level": "warning",
+          "message": "Remove this unnecessary cast to 'Dictionary<ILobbyClient, string>'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 435,
+                  "startColumn": 15,
+                  "endLine": 435,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1905",
+          "level": "warning",
+          "message": "Remove this unnecessary cast to 'Dictionary<ILobbyClient, string>'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 397,
                   "startColumn": 19,
-                  "endLine": 91,
+                  "endLine": 397,
                   "endColumn": 51
                 }
               }
@@ -140,16 +216,16 @@
         {
           "ruleId": "S1905",
           "level": "warning",
-          "message": "Remove this unnecessary cast to 'Dictionary<ILobbyClient, string>'.",
+          "message": "Remove this unnecessary cast to 'Dictionary<IChatClient, string>'.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
                 "region": {
-                  "startLine": 47,
+                  "startLine": 544,
                   "startColumn": 15,
-                  "endLine": 47,
-                  "endColumn": 47
+                  "endLine": 544,
+                  "endColumn": 46
                 }
               }
             }
@@ -159,18 +235,18 @@
           }
         },
         {
-          "ruleId": "S1905",
+          "ruleId": "S112",
           "level": "warning",
-          "message": "Remove this unnecessary cast to 'Dictionary<ILobbyClient, string>'.",
+          "message": "'System.Exception' should not be thrown by user code.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
                 "region": {
-                  "startLine": 129,
-                  "startColumn": 15,
-                  "endLine": 129,
-                  "endColumn": 47
+                  "startLine": 292,
+                  "startColumn": 23,
+                  "endLine": 292,
+                  "endColumn": 48
                 }
               }
             }
@@ -188,44 +264,10 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
                 "region": {
-                  "startLine": 276,
+                  "startLine": 582,
                   "startColumn": 13,
-                  "endLine": 278,
+                  "endLine": 584,
                   "endColumn": 14
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1066",
-          "level": "warning",
-          "message": "Merge this if statement with the enclosing one.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
-                "region": {
-                  "startLine": 266,
-                  "startColumn": 25,
-                  "endLine": 266,
-                  "endColumn": 27
-                }
-              }
-            }
-          ],
-          "relatedLocations": [
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
-                "region": {
-                  "startLine": 264,
-                  "startColumn": 21,
-                  "endLine": 264,
-                  "endColumn": 23
                 }
               }
             }
@@ -243,31 +285,10 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
                 "region": {
-                  "startLine": 295,
+                  "startLine": 601,
                   "startColumn": 88,
-                  "endLine": 295,
+                  "endLine": 601,
                   "endColumn": 91
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1123",
-          "level": "warning",
-          "message": "Add an explanation.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
-                "region": {
-                  "startLine": 335,
-                  "startColumn": 10,
-                  "endLine": 335,
-                  "endColumn": 18
                 }
               }
             }
@@ -285,9 +306,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
                 "region": {
-                  "startLine": 439,
+                  "startLine": 572,
                   "startColumn": 25,
-                  "endLine": 439,
+                  "endLine": 572,
                   "endColumn": 27
                 }
               }
@@ -298,9 +319,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
                 "region": {
-                  "startLine": 437,
+                  "startLine": 570,
                   "startColumn": 21,
-                  "endLine": 437,
+                  "endLine": 570,
                   "endColumn": 23
                 }
               }
@@ -311,18 +332,223 @@
           }
         },
         {
-          "ruleId": "S2068",
+          "ruleId": "S3776",
           "level": "warning",
-          "message": "Please review this hard-coded password.",
+          "message": "Refactor this method to reduce its Cognitive Complexity from 34 to the 15 allowed.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
                 "region": {
-                  "startLine": 477,
-                  "startColumn": 42,
-                  "endLine": 477,
-                  "endColumn": 120
+                  "startLine": 108,
+                  "startColumn": 21,
+                  "endLine": 108,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 111,
+                  "startColumn": 13,
+                  "endLine": 111,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 117,
+                  "startColumn": 13,
+                  "endLine": 117,
+                  "endColumn": 20
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 119,
+                  "startColumn": 17,
+                  "endLine": 119,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 128,
+                  "startColumn": 13,
+                  "endLine": 128,
+                  "endColumn": 16
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 130,
+                  "startColumn": 17,
+                  "endLine": 130,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 135,
+                  "startColumn": 17,
+                  "endLine": 135,
+                  "endColumn": 21
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 145,
+                  "startColumn": 21,
+                  "endLine": 145,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 147,
+                  "startColumn": 25,
+                  "endLine": 147,
+                  "endColumn": 27
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 149,
+                  "startColumn": 29,
+                  "endLine": 149,
+                  "endColumn": 31
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 156,
+                  "startColumn": 21,
+                  "endLine": 156,
+                  "endColumn": 25
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 158,
+                  "startColumn": 25,
+                  "endLine": 158,
+                  "endColumn": 27
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 163,
+                  "startColumn": 25,
+                  "endLine": 163,
+                  "endColumn": 29
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 167,
+                  "startColumn": 29,
+                  "endLine": 167,
+                  "endColumn": 31
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 177,
+                  "startColumn": 13,
+                  "endLine": 177,
+                  "endColumn": 20
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 179,
+                  "startColumn": 17,
+                  "endLine": 179,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "+1",
+              "1": "+1",
+              "10": "+4 (incl 3 for nesting)",
+              "11": "+1",
+              "12": "+5 (incl 4 for nesting)",
+              "13": "+1",
+              "14": "+2 (incl 1 for nesting)",
+              "2": "+2 (incl 1 for nesting)",
+              "3": "+1",
+              "4": "+2 (incl 1 for nesting)",
+              "5": "+1",
+              "6": "+3 (incl 2 for nesting)",
+              "7": "+4 (incl 3 for nesting)",
+              "8": "+5 (incl 4 for nesting)",
+              "9": "+1"
+            }
+          }
+        },
+        {
+          "ruleId": "S1123",
+          "level": "warning",
+          "message": "Add an explanation.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 641,
+                  "startColumn": 10,
+                  "endLine": 641,
+                  "endColumn": 18
                 }
               }
             }
@@ -340,9 +566,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
                 "region": {
-                  "startLine": 308,
+                  "startLine": 323,
                   "startColumn": 23,
-                  "endLine": 308,
+                  "endLine": 323,
                   "endColumn": 48
                 }
               }
@@ -353,18 +579,18 @@
           }
         },
         {
-          "ruleId": "S112",
+          "ruleId": "S2245",
           "level": "warning",
-          "message": "'System.Exception' should not be thrown by user code.",
+          "message": "Make sure that using this pseudorandom number generator is safe here.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
                 "region": {
-                  "startLine": 485,
+                  "startLine": 810,
                   "startColumn": 23,
-                  "endLine": 485,
-                  "endColumn": 48
+                  "endLine": 810,
+                  "endColumn": 35
                 }
               }
             }
@@ -382,114 +608,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
                 "region": {
-                  "startLine": 402,
+                  "startLine": 614,
                   "startColumn": 23,
-                  "endLine": 402,
-                  "endColumn": 48
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S112",
-          "level": "warning",
-          "message": "'System.Exception' should not be thrown by user code.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
-                "region": {
-                  "startLine": 370,
-                  "startColumn": 23,
-                  "endLine": 370,
-                  "endColumn": 48
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S112",
-          "level": "warning",
-          "message": "'System.Exception' should not be thrown by user code.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
-                "region": {
-                  "startLine": 331,
-                  "startColumn": 23,
-                  "endLine": 331,
-                  "endColumn": 48
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S112",
-          "level": "warning",
-          "message": "'System.Exception' should not be thrown by user code.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
-                "region": {
-                  "startLine": 425,
-                  "startColumn": 23,
-                  "endLine": 425,
-                  "endColumn": 48
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S112",
-          "level": "warning",
-          "message": "'System.Exception' should not be thrown by user code.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
-                "region": {
-                  "startLine": 451,
-                  "startColumn": 23,
-                  "endLine": 451,
-                  "endColumn": 48
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S112",
-          "level": "warning",
-          "message": "'System.Exception' should not be thrown by user code.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
-                "region": {
-                  "startLine": 233,
-                  "startColumn": 23,
-                  "endLine": 233,
+                  "endLine": 614,
                   "endColumn": 48
                 }
               }
@@ -508,10 +629,178 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
                 "region": {
-                  "startLine": 275,
+                  "startLine": 581,
                   "startColumn": 13,
-                  "endLine": 278,
+                  "endLine": 584,
                   "endColumn": 14
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 743,
+                  "startColumn": 23,
+                  "endLine": 743,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 637,
+                  "startColumn": 23,
+                  "endLine": 637,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 531,
+                  "startColumn": 23,
+                  "endLine": 531,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 769,
+                  "startColumn": 23,
+                  "endLine": 769,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 720,
+                  "startColumn": 23,
+                  "endLine": 720,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2068",
+          "level": "warning",
+          "message": "Please review this hard-coded password.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 795,
+                  "startColumn": 42,
+                  "endLine": 795,
+                  "endColumn": 120
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'userPassword'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 757,
+                  "startColumn": 32,
+                  "endLine": 757,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoServer/DominoService.cs",
+                "region": {
+                  "startLine": 803,
+                  "startColumn": 23,
+                  "endLine": 803,
+                  "endColumn": 48
                 }
               }
             }
@@ -614,14 +903,14 @@
             ]
           }
         },
-        "S1186": {
-          "id": "S1186",
-          "shortDescription": "Methods should not be empty",
-          "fullDescription": "There are several reasons for a method not to have a method body:",
+        "S1128": {
+          "id": "S1128",
+          "shortDescription": "Unused \"using\" should be removed",
+          "fullDescription": "Although unnecessary using won't change anything to the produced application, removing them:",
           "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1186",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1128",
           "properties": {
-            "category": "Critical Code Smell",
+            "category": "Minor Code Smell",
             "isEnabledByDefault": true,
             "tags": [
               "C#",
@@ -639,6 +928,23 @@
           "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-125",
           "properties": {
             "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope"
+            ]
+          }
+        },
+        "S1481": {
+          "id": "S1481",
+          "shortDescription": "Unused local variables should be removed",
+          "fullDescription": "If a local variable is declared but not used, it is dead code and should be removed. Doing so will improve maintainability because developers will not wonder what the variable is used for.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1481",
+          "properties": {
+            "category": "Minor Code Smell",
             "isEnabledByDefault": true,
             "tags": [
               "C#",
@@ -682,6 +988,23 @@
             ]
           }
         },
+        "S2245": {
+          "id": "S2245",
+          "shortDescription": "Using pseudorandom number generators (PRNGs) is security-sensitive",
+          "fullDescription": "Using pseudorandom number generators (PRNGs) is security-sensitive. For example, it has led in the past to the following vulnerabilities:",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2245",
+          "properties": {
+            "category": "Critical Security Hotspot",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "NotConfigurable"
+            ]
+          }
+        },
         "S2486": {
           "id": "S2486",
           "shortDescription": "Generic exceptions should not be ignored",
@@ -707,6 +1030,23 @@
           "properties": {
             "category": "Minor Code Smell",
             "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope"
+            ]
+          }
+        },
+        "S3776": {
+          "id": "S3776",
+          "shortDescription": "Cognitive Complexity of methods should not be too high",
+          "fullDescription": "Cognitive Complexity is a measure of how hard the control flow of a method is to understand. Methods with high Cognitive Complexity will be difficult to maintain.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3776",
+          "properties": {
+            "category": "Critical Code Smell",
+            "isEnabledByDefault": false,
             "tags": [
               "C#",
               "SonarWay",

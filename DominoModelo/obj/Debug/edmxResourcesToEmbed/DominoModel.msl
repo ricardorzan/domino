@@ -14,8 +14,6 @@
     <EntitySetMapping Name="Jugador">
       <EntityTypeMapping TypeName="DominoModel.Jugador">
         <MappingFragment StoreEntitySet="Jugador">
-          <ScalarProperty Name="Enturno" ColumnName="Enturno" />
-          <ScalarProperty Name="Fichasenmano" ColumnName="Fichasenmano" />
           <ScalarProperty Name="Puntaje" ColumnName="Puntaje" />
           <ScalarProperty Name="JugadorID" ColumnName="JugadorID" />
           <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
@@ -27,8 +25,6 @@
       <EntityTypeMapping TypeName="DominoModel.Ronda">
         <MappingFragment StoreEntitySet="Ronda">
           <ScalarProperty Name="Ganador" ColumnName="Ganador" />
-          <ScalarProperty Name="Valorfichaizquierda" ColumnName="Valorfichaizquierda" />
-          <ScalarProperty Name="Valorfichaderecha" ColumnName="Valorfichaderecha" />
           <ScalarProperty Name="RondaID" ColumnName="RondaID" />
           <ScalarProperty Name="JuegoID" ColumnName="JuegoID" />
         </MappingFragment>

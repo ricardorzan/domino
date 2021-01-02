@@ -1,0 +1,106 @@
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\IChatClient.cs
+ReciveMessage 2
+ReciveMessage -1
+JoinChat 2
+JoinChat -1
+SendMessage 2
+SendMessage -1
+
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\IGameClient.cs
+GetDominoes 2
+GetDominoes -1
+ReciveNewMember 2
+ReciveNewMember -1
+ReciveMembersInGame 2
+ReciveMembersInGame -1
+SendHighestTile 2
+SendHighestTile -1
+IsYourTurn 1
+IsYourTurn -1
+SomeonePutATile 1
+SomeonePutATile -1
+GetTheTile 2
+GetTheTile -1
+SomeoneTookATile 2
+SomeoneTookATile -1
+SomeoneWonTheRound 2
+SomeoneWonTheRound -1
+JoinCurrentGame 1
+JoinCurrentGame -1
+GetFirstSevenTiles 1
+GetFirstSevenTiles -1
+GetPlayersName 1
+GetPlayersName -1
+GetHighestTile 1
+GetHighestTile -1
+PutATile 2
+PutATile -1
+TakeFromTheBank 2
+TakeFromTheBank -1
+PassTurn 2
+PassTurn -1
+Win 2
+Win -1
+UploadPoints 2
+UploadPoints -1
+
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\ILobbyClient.cs
+ReciveGame 1
+ReciveGame -1
+ReciveMember 1
+ReciveMember -1
+SendUsername 1
+SendUsername -1
+SendNumberOfPlayers 1
+SendNumberOfPlayers -1
+ReciveMembers 1
+ReciveMembers -1
+GameFull 1
+GameFull -1
+LeaveGame 1
+LeaveGame -1
+SomeoneLeftGame 1
+SomeoneLeftGame -1
+UpdateGames 1
+UpdateGames -1
+StartRound 1
+StartRound -1
+JoinLobby 1
+JoinLobby -1
+GetGames 1
+GetGames -1
+CreateGame 1
+CreateGame -1
+JoinGame 1
+JoinGame -1
+BreakGame 1
+BreakGame -1
+MemberLeftGame 1
+MemberLeftGame -1
+KickPlayer 1
+KickPlayer -1
+StartGame 1
+StartGame -1
+
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\ILoginService.cs
+LogIn 1
+LogIn -1
+SignUp 1
+SignUp -1
+RecoverPassword 2
+RecoverPassword -1
+VerificateUser 2
+VerificateUser -1
+IsVerified 1
+IsVerified -1
+
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\IMenuService.cs
+ChangePassword 1
+ChangePassword -1
+GetScores 1
+GetScores -1
+
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\Properties\AssemblyInfo.cs
+
+C:\Users\ricar\Documents\GitHub\domino\DominoContracts\obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs
+

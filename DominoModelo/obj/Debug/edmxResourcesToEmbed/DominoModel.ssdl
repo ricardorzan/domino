@@ -13,8 +13,6 @@
     <Key>
       <PropertyRef Name="JugadorID" />
     </Key>
-    <Property Name="Enturno" Type="int" Nullable="false" />
-    <Property Name="Fichasenmano" Type="int" />
     <Property Name="Puntaje" Type="int" />
     <Property Name="JugadorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UsuarioID" Type="int" Nullable="false" />
@@ -25,8 +23,6 @@
       <PropertyRef Name="RondaID" />
     </Key>
     <Property Name="Ganador" Type="varchar" MaxLength="15" />
-    <Property Name="Valorfichaizquierda" Type="int" />
-    <Property Name="Valorfichaderecha" Type="int" />
     <Property Name="RondaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="JuegoID" Type="int" Nullable="false" />
   </EntityType>
@@ -34,7 +30,7 @@
     <Key>
       <PropertyRef Name="UsuarioID" />
     </Key>
-    <Property Name="Contraseña" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Contraseña" Type="varchar" MaxLength="70" Nullable="false" />
     <Property Name="Correo" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Estatus" Type="int" Nullable="false" />
     <Property Name="Nombreusuario" Type="varchar" MaxLength="50" Nullable="false" />

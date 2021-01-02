@@ -14,8 +14,6 @@
     <Key>
       <PropertyRef Name="JugadorID" />
     </Key>
-    <Property Name="Enturno" Type="Int32" Nullable="false" />
-    <Property Name="Fichasenmano" Type="Int32" />
     <Property Name="Puntaje" Type="Int32" />
     <Property Name="JugadorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UsuarioID" Type="Int32" Nullable="false" />
@@ -28,8 +26,6 @@
       <PropertyRef Name="RondaID" />
     </Key>
     <Property Name="Ganador" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="Valorfichaizquierda" Type="Int32" />
-    <Property Name="Valorfichaderecha" Type="Int32" />
     <Property Name="RondaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="JuegoID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Juego" Relationship="Self.FK_Ronda_Juego" FromRole="Ronda" ToRole="Juego" />
@@ -39,7 +35,7 @@
     <Key>
       <PropertyRef Name="UsuarioID" />
     </Key>
-    <Property Name="Contraseña" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Contraseña" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Estatus" Type="Int32" Nullable="false" />
     <Property Name="Nombreusuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />

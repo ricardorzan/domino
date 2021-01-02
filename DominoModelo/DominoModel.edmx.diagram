@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c7e965d79a38421db81189cd1d9aca14" Name="Diagram1">
-        <EntityTypeShape EntityType="DominoModel.Juego" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DominoModel.Jugador" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="f904c4f4e5cc4ba7b5c8910082833882" Name="Diagram1">
+        <EntityTypeShape EntityType="DominoModel.Juego" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DominoModel.Jugador" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DominoModel.Ronda" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DominoModel.Usuario" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DominoModel.Usuario" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
         <AssociationConnector Association="DominoModel.FK_Ronda_Juego" ManuallyRouted="false" />
         <AssociationConnector Association="DominoModel.FK_Jugador_Ronda" ManuallyRouted="false" />
         <AssociationConnector Association="DominoModel.FK_Jugador_Usuario" ManuallyRouted="false" />

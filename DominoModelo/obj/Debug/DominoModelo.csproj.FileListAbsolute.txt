@@ -5,7 +5,6 @@ C:\Users\ricar\Documents\GitHub\domino\DominoModelo\bin\Debug\EntityFramework.dl
 C:\Users\ricar\Documents\GitHub\domino\DominoModelo\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\ricar\Documents\GitHub\domino\DominoModelo\bin\Debug\EntityFramework.xml
 C:\Users\ricar\Documents\GitHub\domino\DominoModelo\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\ricar\Documents\GitHub\domino\DominoModelo\obj\Debug\DominoModelo.csprojAssemblyReference.cache
 C:\Users\ricar\Documents\GitHub\domino\DominoModelo\obj\Debug\DominoModelo.csproj.CoreCompileInputs.cache
 C:\Users\ricar\Documents\GitHub\domino\DominoModelo\obj\Debug\DominoModelo.csproj.CopyComplete
 C:\Users\ricar\Documents\GitHub\domino\DominoModelo\obj\Debug\DominoModelo.exe

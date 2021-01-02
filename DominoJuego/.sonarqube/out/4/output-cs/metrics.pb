@@ -1,12 +1,21 @@
-]
-EC:\Users\ricar\Documents\GitHub\domino\DominoContracts\IChatClient.csr	
-Y
-EC:\Users\ricar\Documents\GitHub\domino\DominoContracts\IGameClient.csr	€
-FC:\Users\ricar\Documents\GitHub\domino\DominoContracts\ILobbyClient.csr4	
- !"#$%&'()*+,-./0123456_
-GC:\Users\ricar\Documents\GitHub\domino\DominoContracts\ILoginService.csr	
-v
-FC:\Users\ricar\Documents\GitHub\domino\DominoContracts\IMenuService.cs 8r	
- !‚u
-QC:\Users\ricar\Documents\GitHub\domino\DominoContracts\Properties\AssemblyInfo.csj !"r	
-#$
+­
+SC:\Users\ricar\Documents\GitHub\domino\DominoJuego\CambiarContraseÃ±aWindow.xaml.cs 8	jr2	
+ !"#$%&'()*+,-./0123456789:x
+‚!"#$&)*+-.147ú
+EC:\Users\ricar\Documents\GitHub\domino\DominoJuego\GameWindow.xaml.cs 8Wjrä	
+ !"$%&'()*,-./135689:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`bcdefghjklmnopqrstvwxyz{|}€‚ƒ„…‡ˆ‰Š‹Œ‘’“”•–—˜™š›œŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²´µ¶·¸¹º»½¾¿ÀÁÂÃÄÅÇÈÉËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüıÿ€‚ƒ„…†‡ˆ‰Š‹Œ‘’“”•–—˜™š›œŸ ¡¢£¤¥¦¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖ×ØÙÚÜİŞßàáâãäæçèéêëíîïğòóôõö÷øùúûüışÿ€‚ƒ„…†‡ˆ‰Š‹Œ‘’“”•–—˜™š›œŸ ¡¢£¥¦§¨©ª«­®¯°±³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊÌÍÎÏĞÑÒÓÔÕÖØÙÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüış€‚ƒ„…†‡ˆ‰Š‹Œ‘’“”•–—˜™š›œŸ ¡¢¤¥¦§¨©«¬­®¯°²³´µ¶·¹º»¼½¿ÀÁÂÃÅÆÇÉÊËÌÍÎĞÑÒÓÔÕx ‚·&'()*,-./135:<>?@AEGIJKLMQSUVWXYdflmpqsvw{‚ƒ„‡‰Š‹‘“—šœ¢¤§©­¯¹½¾ÁÂÄÇÈÍÎĞÒÓÔÕÖØÚÛİŞãäåèêëïñòóõöúüƒ…‡‰Š‹Œ“”•˜š›œ ¡¢ª«¬®°±²´µº»ÂÄÆÇÈÉÊÍÓÕ×ØßäæçèêïğõüƒŠ‘˜Ÿ¥¦§¨©ª«­¯µ·¸¹º»¼¾ÀÁÂÃÅÈÊÌÍÎÑÒÓÕÖØÚÛÜàâãæéëíñóöøûü€‚„…‡ˆŠ‹“•–—›œŸ ¡§¨­®°²³´µ»¼ÂÃÅÆÌÍÒâ
+RC:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.csh 8(j
+-rÎ	!"#$%'()*,/0245689:;=>?@BCEFGIJLNOPQRTUVWXYZ[\]^_`abcefghjklmnpqrsuwxyz|~€ƒ„…†‡ˆ‰‹Œ‘’“”•–—˜š›Ÿ ¡£¤¥¦§©ª«­®¯°±³´µ¶·¸¹»¼½¾¿ÀÁÂÃÄÅÆÇÈÉËÌÍÎÏÑÒÓÔÖ×ØÙÛÜİŞßàáâãåæçèéêëìíïğñòóõö÷øùúüışÿ€‚ƒ„…†‡x‚©#$%'()*,/0245:?@BCEFGIJPQVXZ[`aglmrsy|€ƒ…‡ˆ’”•˜šŸ ¥¦«­®¯°±³´µ¶¸½¾¿ÀÁÂÃÄÅÆÇÈÉËÌÍÎÏÑÒÓØİßàâçéêìñòøùş€ƒ¸
+EC:\Users\ricar\Documents\GitHub\domino\DominoJuego\MenuWindow.xaml.csA 8j
+r” !#$&'()*+-./01345679:;<=?@ABCDFGHIJKMNOPQRTUVWXY[\]^_abcdeghiklmnopqstuvwyz{|}~€‚ƒ„…†‡ˆŠ‹Œ‘’“”•–—˜x‚H!#)*06<ABCIJOPRTUVW]^deghmnopqstuv{|€‚„…†‡ˆŠ‹Œ’•ª
+UC:\Users\ricar\Documents\GitHub\domino\DominoJuego\RecuperarContraseÃ±aWindow.xaml.cs 8j	
+r0 !"#$%&'()*+,-./0123456x	‚ #&'(*+-03ì
+LC:\Users\ricar\Documents\GitHub\domino\DominoJuego\RegistrarseWindow.xaml.cs- 8j	
+r` !"#$%'()*+,-./0123456789:;<=>?@ACDEFGHJKLMNOPQRTUVWYZ[\]^_`bcdefghijklmnx‚*"#$%'*,/01347:=@EFGHJKLMNOPQV[\_`bdehkƒ
+NC:\Users\ricar\Documents\GitHub\domino\DominoJuego\VerMarcadoresWindow.xaml.cs 8jr	
+ !"#‚ ^
+>C:\Users\ricar\Documents\GitHub\domino\DominoJuego\App.xaml.cs 8jr	¸
+EC:\Users\ricar\Documents\GitHub\domino\DominoJuego\MainWindow.xaml.cs 8j	
+rF !"#$%&'()*+,-./02345689:;<>?@ABDEFGHIJLMNOPQx‚ !"%&),/5:;AFGHIN‚
+MC:\Users\ricar\Documents\GitHub\domino\DominoJuego\Properties\AssemblyInfo.csj	#$%&'(,./01345r
+"#&)67

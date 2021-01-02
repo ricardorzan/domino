@@ -11,6 +11,7 @@ namespace Domino
     public partial class RegistrarseWindow : Page
     {
         private readonly MainWindow mainWindow;
+        string user;
 
         public RegistrarseWindow()
         {
@@ -47,8 +48,8 @@ namespace Domino
                         server.Close();
                         if (isValid)
                         {
-                            VerficacionWindow verficationWindow = new VerficacionWindow(mainWindow, username);
-                            (Application.Current.MainWindow as MainWindow).Navegate(verficationWindow);
+                            user = username;
+                            ShowValidateSection();
                         }
                         else
                             LabelAlert.Content = Properties.Resources.ExistingMail;
@@ -58,6 +59,49 @@ namespace Domino
                 }
                 else
                     LabelAlert.Content = Properties.Resources.InvalidEmail;
+            }
+            else
+                LabelAlert.Content = Properties.Resources.EmptyFields;
+        }
+
+        private void ShowValidateSection()
+        {
+            ValidateButton.Visibility = Visibility.Visible;
+            ValidateIcon.Visibility = Visibility.Visible;
+            TextBoxToken.Visibility = Visibility.Visible;
+            AnotherTimeButton.Visibility = Visibility.Visible;
+
+            UsernameIcon.Visibility = Visibility.Hidden;
+            TextBoxUsername.Visibility = Visibility.Hidden;
+            EmailIcon.Visibility = Visibility.Hidden;
+            TextBoxEmail.Visibility = Visibility.Hidden;
+            PasswordIcon.Visibility = Visibility.Hidden;
+            TextBoxPassword.Visibility = Visibility.Hidden;
+            PasswordConfirmationIcon.Visibility = Visibility.Hidden;
+            TextBoxPasswordConfirmation.Visibility = Visibility.Hidden;
+        }
+
+        private void ClickAnotherTime(object sender, RoutedEventArgs e)
+        {
+            mainWindow.GoBack();
+        }
+
+        private void ClickValidate(object sender, RoutedEventArgs e)
+        {
+            string token = TextBoxToken.Text;
+            if (!token.Equals(""))
+            {
+                Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
+                bool isVerified = server.VerificateUser(user, token);
+                server.Close();
+
+                if (isVerified)
+                {
+                    MessageBox.Show(Properties.Resources.SuccessfulVerification);
+                    mainWindow.GoBack();
+                }
+                else
+                    LabelAlert.Content = Properties.Resources.UnsuccessfulVerification;
             }
             else
                 LabelAlert.Content = Properties.Resources.EmptyFields;

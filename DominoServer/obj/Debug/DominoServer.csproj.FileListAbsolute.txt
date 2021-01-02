@@ -16,3 +16,4 @@ C:\Users\ricar\Documents\GitHub\domino\DominoServer\bin\Debug\DominoModelo.exe.c
 C:\Users\ricar\Documents\GitHub\domino\DominoServer\bin\Debug\EntityFramework.xml
 C:\Users\ricar\Documents\GitHub\domino\DominoServer\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\ricar\Documents\GitHub\domino\DominoServer\bin\Debug\shortid.dll
+C:\Users\ricar\Documents\GitHub\domino\DominoServer\bin\Debug\DominoContracts.dll.config

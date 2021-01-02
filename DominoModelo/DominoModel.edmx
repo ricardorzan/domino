@@ -18,8 +18,6 @@
           <Key>
             <PropertyRef Name="JugadorID" />
           </Key>
-          <Property Name="Enturno" Type="int" Nullable="false" />
-          <Property Name="Fichasenmano" Type="int" />
           <Property Name="Puntaje" Type="int" />
           <Property Name="JugadorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UsuarioID" Type="int" Nullable="false" />
@@ -30,8 +28,6 @@
             <PropertyRef Name="RondaID" />
           </Key>
           <Property Name="Ganador" Type="varchar" MaxLength="15" />
-          <Property Name="Valorfichaizquierda" Type="int" />
-          <Property Name="Valorfichaderecha" Type="int" />
           <Property Name="RondaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="JuegoID" Type="int" Nullable="false" />
         </EntityType>
@@ -39,7 +35,7 @@
           <Key>
             <PropertyRef Name="UsuarioID" />
           </Key>
-          <Property Name="Contraseña" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Contraseña" Type="varchar" MaxLength="70" Nullable="false" />
           <Property Name="Correo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Estatus" Type="int" Nullable="false" />
           <Property Name="Nombreusuario" Type="varchar" MaxLength="50" Nullable="false" />
@@ -120,8 +116,6 @@
           <Key>
             <PropertyRef Name="JugadorID" />
           </Key>
-          <Property Name="Enturno" Type="Int32" Nullable="false" />
-          <Property Name="Fichasenmano" Type="Int32" />
           <Property Name="Puntaje" Type="Int32" />
           <Property Name="JugadorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UsuarioID" Type="Int32" Nullable="false" />
@@ -134,8 +128,6 @@
             <PropertyRef Name="RondaID" />
           </Key>
           <Property Name="Ganador" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Valorfichaizquierda" Type="Int32" />
-          <Property Name="Valorfichaderecha" Type="Int32" />
           <Property Name="RondaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="JuegoID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Juego" Relationship="Self.FK_Ronda_Juego" FromRole="Ronda" ToRole="Juego" />
@@ -145,7 +137,7 @@
           <Key>
             <PropertyRef Name="UsuarioID" />
           </Key>
-          <Property Name="Contraseña" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Estatus" Type="Int32" Nullable="false" />
           <Property Name="Nombreusuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -227,8 +219,6 @@
           <EntitySetMapping Name="Jugador">
             <EntityTypeMapping TypeName="DominoModel.Jugador">
               <MappingFragment StoreEntitySet="Jugador">
-                <ScalarProperty Name="Enturno" ColumnName="Enturno" />
-                <ScalarProperty Name="Fichasenmano" ColumnName="Fichasenmano" />
                 <ScalarProperty Name="Puntaje" ColumnName="Puntaje" />
                 <ScalarProperty Name="JugadorID" ColumnName="JugadorID" />
                 <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
@@ -240,8 +230,6 @@
             <EntityTypeMapping TypeName="DominoModel.Ronda">
               <MappingFragment StoreEntitySet="Ronda">
                 <ScalarProperty Name="Ganador" ColumnName="Ganador" />
-                <ScalarProperty Name="Valorfichaizquierda" ColumnName="Valorfichaizquierda" />
-                <ScalarProperty Name="Valorfichaderecha" ColumnName="Valorfichaderecha" />
                 <ScalarProperty Name="RondaID" ColumnName="RondaID" />
                 <ScalarProperty Name="JuegoID" ColumnName="JuegoID" />
               </MappingFragment>

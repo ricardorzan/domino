@@ -21,8 +21,6 @@ namespace DominoModelo
         }
     
         public string Ganador { get; set; }
-        public Nullable<int> Valorfichaizquierda { get; set; }
-        public Nullable<int> Valorfichaderecha { get; set; }
         public int RondaID { get; set; }
         public int JuegoID { get; set; }
     

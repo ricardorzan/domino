@@ -18,111 +18,6 @@
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoModelo/Program.cs",
-                "region": {
-                  "startLine": 1,
-                  "startColumn": 1,
-                  "endLine": 1,
-                  "endColumn": 14
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1128",
-          "level": "warning",
-          "message": "Remove this unnecessary 'using'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoModelo/Program.cs",
-                "region": {
-                  "startLine": 2,
-                  "startColumn": 1,
-                  "endLine": 2,
-                  "endColumn": 34
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1128",
-          "level": "warning",
-          "message": "Remove this unnecessary 'using'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoModelo/Program.cs",
-                "region": {
-                  "startLine": 3,
-                  "startColumn": 1,
-                  "endLine": 3,
-                  "endColumn": 19
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1128",
-          "level": "warning",
-          "message": "Remove this unnecessary 'using'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoModelo/Program.cs",
-                "region": {
-                  "startLine": 4,
-                  "startColumn": 1,
-                  "endLine": 4,
-                  "endColumn": 19
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1128",
-          "level": "warning",
-          "message": "Remove this unnecessary 'using'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoModelo/Program.cs",
-                "region": {
-                  "startLine": 5,
-                  "startColumn": 1,
-                  "endLine": 5,
-                  "endColumn": 30
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1128",
-          "level": "warning",
-          "message": "Remove this unnecessary 'using'.",
-          "locations": [
-            {
-              "resultFile": {
                 "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoModelo/Properties/AssemblyInfo.cs",
                 "region": {
                   "startLine": 2,
@@ -146,9 +41,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoModelo/Program.cs",
                 "region": {
-                  "startLine": 9,
+                  "startLine": 3,
                   "startColumn": 11,
-                  "endLine": 9,
+                  "endLine": 3,
                   "endColumn": 18
                 }
               }
@@ -167,9 +62,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/DominoModelo/Program.cs",
                 "region": {
-                  "startLine": 11,
+                  "startLine": 5,
                   "startColumn": 21,
-                  "endLine": 11,
+                  "endLine": 5,
                   "endColumn": 25
                 }
               }

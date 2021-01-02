@@ -1,5 +1,0 @@
-File name	Line	Function	Duration[ms]	Explored nodes
-C:\Users\ricar\Documents\GitHub\domino\DominoServer\DominoService.cs	15	_DominoServer.DominoService.JustToTest$$	0	2
-C:\Users\ricar\Documents\GitHub\domino\DominoServer\DominoService.cs	21	_DominoServer.DominoService.JoinLobby$string$	0	3
-C:\Users\ricar\Documents\GitHub\domino\DominoServer\DominoService.cs	237	_DominoServer.DominoService.JoinChat$string$	0	3
-C:\Users\ricar\Documents\GitHub\domino\DominoServer\Program.cs	7	_DominoServer.Program.Main$$	0	3

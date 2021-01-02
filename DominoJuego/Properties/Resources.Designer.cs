@@ -187,6 +187,15 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a For having won you accumulated .
+        /// </summary>
+        public static string ExtraPointsMessage {
+            get {
+                return ResourceManager.GetString("ExtraPointsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a The owner has undone the game.
         /// </summary>
         public static string GameBroke {
@@ -259,6 +268,15 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Keep playing to earn points and appear in the leaderboard.
+        /// </summary>
+        public static string KeepPlaying {
+            get {
+                return ResourceManager.GetString("KeepPlaying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a The owner of the game kicked you out.
         /// </summary>
         public static string KickedOut {
@@ -304,11 +322,29 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a When you win you will get extra points.
+        /// </summary>
+        public static string NoExtraPoints {
+            get {
+                return ResourceManager.GetString("NoExtraPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Your login credentials do not match an account in our system.
         /// </summary>
         public static string NoMatch {
             get {
                 return ResourceManager.GetString("NoMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a There are no more tiles in the bank.
+        /// </summary>
+        public static string NoMoreTilesInBank {
+            get {
+                return ResourceManager.GetString("NoMoreTilesInBank", resourceCulture);
             }
         }
         
@@ -367,6 +403,15 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Your points earned are:.
+        /// </summary>
+        public static string PointsEarned {
+            get {
+                return ResourceManager.GetString("PointsEarned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Position.
         /// </summary>
         public static string PositionText {
@@ -394,6 +439,15 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Round:.
+        /// </summary>
+        public static string Round {
+            get {
+                return ResourceManager.GetString("Round", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Score.
         /// </summary>
         public static string ScoreText {
@@ -417,6 +471,15 @@ namespace Domino.Properties {
         public static string SignUp_Button {
             get {
                 return ResourceManager.GetString("SignUp_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a has won.
+        /// </summary>
+        public static string SomeoneWon {
+            get {
+                return ResourceManager.GetString("SomeoneWon", resourceCulture);
             }
         }
         
@@ -453,6 +516,15 @@ namespace Domino.Properties {
         public static string TextRecover {
             get {
                 return ResourceManager.GetString("TextRecover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Tiles in bank:.
+        /// </summary>
+        public static string TilesInBank {
+            get {
+                return ResourceManager.GetString("TilesInBank", resourceCulture);
             }
         }
         
@@ -516,6 +588,24 @@ namespace Domino.Properties {
         public static string You {
             get {
                 return ResourceManager.GetString("You", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Your points:.
+        /// </summary>
+        public static string YourPoints {
+            get {
+                return ResourceManager.GetString("YourPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You&apos;ve won!.
+        /// </summary>
+        public static string YouWon {
+            get {
+                return ResourceManager.GetString("YouWon", resourceCulture);
             }
         }
     }
