@@ -35,9 +35,9 @@ namespace Domino
             verificator.Close();
         }
 
-        public void ReciveMessage(string user, string message)
+        public void ReciveMessage(string username, string message)
         {
-            string format = "\n" + user + ": " + message;
+            string format = "\n" + username + ": " + message;
             ChatBox.AppendText(format);
             ChatBox.ScrollToEnd();
         }
@@ -77,7 +77,7 @@ namespace Domino
         private void ClickIconChat(object sender, EventArgs e)
         {
             string message = TextBoxChat.Text;
-            if (!message.Equals(""))
+            if (!string.IsNullOrEmpty(message))
             {
                 server.SendMessage(0, message);
 
@@ -121,7 +121,7 @@ namespace Domino
         private void ClickValidate(object sender, EventArgs e)
         {
             string token = TextBoxToken.Text;
-            if (!token.Equals(""))
+            if (!string.IsNullOrEmpty(token))
             {
                 Proxy.LoginServiceClient verificator = new Proxy.LoginServiceClient();
                 bool isVerified = verificator.VerificateUser(username, token);

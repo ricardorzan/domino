@@ -86,7 +86,7 @@ EC:\Users\ricar\Documents\GitHub\domino\DominoContracts\IChatClient.cs
 )1 2
 ;2 3
 } 
-} —-
+} ….
 EC:\Users\ricar\Documents\GitHub\domino\DominoContracts\IGameClient.cs
 	namespace 	
 DominoContracts
@@ -205,8 +205,11 @@ IsYourTurn 
 ,, -
 string. 4
 tile5 9
-)9 :
-;: ;
+,9 :
+bool; ?
+decision@ H
+)H I
+;I J
 [ 	
 OperationContract	 
 ( 
@@ -352,8 +355,11 @@ GetTheTile 
 ,''  !
 string''" (
 tile'') -
-)''- .
-;''. /
+,''- .
+bool''/ 3
+decision''4 <
+)''< =
+;''= >
 [(( 	
 OperationContract((	 
 ((( 
@@ -418,7 +424,7 @@ GetTheTile 
 )//0 1
 ;//1 2
 }00 
-}11 Þ)
+}11 ê)
 FC:\Users\ricar\Documents\GitHub\domino\DominoContracts\ILobbyClient.cs
 	namespace 	
 DominoContracts
@@ -445,7 +451,7 @@ FC:\Users\ricar\Documents\GitHub\domino\DominoContracts\ILobbyClient.cs
 ReciveGame		 
 (		 
 string		 
-username		 '
+gameName		 '
 )		' (
 ;		( )
 [
@@ -539,10 +545,10 @@ ReciveGame		 
 void 
 	LeaveGame 
 ( 
-bool 
-reason "
-)" #
-;# $
+bool 
+isKickedOut '
+)' (
+;( )
 [ 	
 OperationContract	 
 ( 
@@ -554,10 +560,10 @@ ReciveGame		 
 void 
 SomeoneLeftGame 
 ( 
-string #
-member$ *
-)* +
-;+ ,
+string #
+memberWhoLeft$ 1
+)1 2
+;2 3
 [ 	
 OperationContract	 
 ( 
@@ -936,24 +942,33 @@ DataMember	 
 }   
 }!! ü
 QC:\Users\ricar\Documents\GitHub\domino\DominoContracts\Properties\AssemblyInfo.cs
+[ 
+assembly 	
+:	 
+
+AssemblyTitle 
+( 
+$str *
+)* +
+]+ ,
 [ 
 assembly 	
 :	 
-
-AssemblyTitle 
-( 
-$str *
-)* +
-]+ ,
+
+AssemblyDescription 
+( 
+$str !
+)! "
+]" #
 [		 
 assembly		 	
 :			 
-
-AssemblyDescription		 
-(		 
-$str		 !
-)		! "
-]		" #
+!
+AssemblyConfiguration		  
+(		  !
+$str		! #
+)		# $
+]		$ %
 [
 
  
@@ -963,101 +978,92 @@ QC:\Users\ricar\Documents\GitHub\domino\DominoContracts\Properties\AssemblyInfo.
 :
 
 	 
-!
-AssemblyConfiguration
+
+AssemblyCompany
 
-  
+ 
 (
 
-  !
+ 
 $str
 
-! #
+ $
 )
 
-# $
+$ %
 ]
 
-$ %
+% &
 [ 
 assembly 	
 :	 
 
-AssemblyCompany 
+AssemblyProduct 
 ( 
-$str $
-)$ %
-]% &
+$str ,
+), -
+]- .
 [ 
 assembly 	
 :	 
-
-AssemblyProduct 
-( 
-$str ,
-), -
-]- .
+
+AssemblyCopyright 
+( 
+$str 7
+)7 8
+]8 9
 [ 
 assembly 	
 :	 
 
-AssemblyCopyright 
+AssemblyTrademark 
 ( 
-$str 7
-)7 8
-]8 9
+$str 
+)  
+]  !
 [ 
 assembly 	
 :	 
-
-AssemblyTrademark 
-( 
-$str 
-)  
-]  !
-[ 
-assembly 	
-:	 
 
-AssemblyCulture 
-( 
-$str 
-) 
-] 
-[ 
-assembly 	
-:	 
+AssemblyCulture 
+( 
+$str 
+) 
+] 
+[ 
+assembly 	
+:	 
 
 
-ComVisible 
-( 
-false 
-) 
-] 
-[ 
-assembly 	
-:	 
+ComVisible 
+( 
+false 
+) 
+] 
+[ 
+assembly 	
+:	 
 
-Guid 
-( 
-$str 6
-)6 7
-]7 8
+Guid 
+( 
+$str 6
+)6 7
+]7 8
+["" 
+assembly"" 	
+:""	 
+
+AssemblyVersion"" 
+("" 
+$str"" $
+)""$ %
+]""% &
 [## 
 assembly## 	
 :##	 
-
-AssemblyVersion## 
-(## 
-$str## $
-)##$ %
-]##% &
-[$$ 
-assembly$$ 	
-:$$	 
 
-AssemblyFileVersion$$ 
-($$ 
-$str$$ (
-)$$( )
-]$$) *
+AssemblyFileVersion## 
+(## 
+$str## (
+)##( )
+]##) *

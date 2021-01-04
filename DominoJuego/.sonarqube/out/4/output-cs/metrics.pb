@@ -1,11 +1,11 @@
 ­
 SC:\Users\ricar\Documents\GitHub\domino\DominoJuego\CambiarContraseÃ±aWindow.xaml.cs 8	jr2	
  !"#$%&'()*+,-./0123456789:x
-‚!"#$&)*+-.147ú
-EC:\Users\ricar\Documents\GitHub\domino\DominoJuego\GameWindow.xaml.cs 8Wjrä	
- !"$%&'()*,-./135689:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`bcdefghjklmnopqrstvwxyz{|}€‚ƒ„…‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²´µ¶·¸¹º»½¾¿ÀÁÂÃÄÅÇÈÉËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýÿ€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ ¡¢£¤¥¦¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖ×ØÙÚÜÝÞßàáâãäæçèéêëíîïðòóôõö÷øùúûüýþÿ€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ ¡¢£¥¦§¨©ª«­®¯°±³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþ€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ ¡¢¤¥¦§¨©«¬­®¯°²³´µ¶·¹º»¼½¿ÀÁÂÃÅÆÇÉÊËÌÍÎÐÑÒÓÔÕx ‚·&'()*,-./135:<>?@AEGIJKLMQSUVWXYdflmpqsvw{‚ƒ„‡‰Š‹‘“—šœž¢¤§©­¯¹½¾ÁÂÄÇÈÍÎÐÒÓÔÕÖØÚÛÝÞãäåèêëïñòóõöúüƒ…‡‰Š‹ŒŽ“”•˜š›œ ¡¢ª«¬®°±²´µº»ÂÄÆÇÈÉÊÍÓÕ×ØßäæçèêïðõüƒŠ‘˜Ÿ¥¦§¨©ª«­¯µ·¸¹º»¼¾ÀÁÂÃÅÈÊÌÍÎÑÒÓÕÖØÚÛÜàâãæéëíñóöøûü€‚„…‡ˆŠ‹Ž“•–—›œŸ ¡§¨­®°²³´µ»¼ÂÃÅÆÌÍÒâ
-RC:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.csh 8(j
--rÎ	!"#$%'()*,/0245689:;=>?@BCEFGIJLNOPQRTUVWXYZ[\]^_`abcefghjklmnpqrsuwxyz|~€ƒ„…†‡ˆ‰‹ŒŽ‘’“”•–—˜š›žŸ ¡£¤¥¦§©ª«­®¯°±³´µ¶·¸¹»¼½¾¿ÀÁÂÃÄÅÆÇÈÉËÌÍÎÏÑÒÓÔÖ×ØÙÛÜÝÞßàáâãåæçèéêëìíïðñòóõö÷øùúüýþÿ€‚ƒ„…†‡x‚©#$%'()*,/0245:?@BCEFGIJPQVXZ[`aglmrsy|€ƒ…‡ˆ’”•˜šŸ ¥¦«­®¯°±³´µ¶¸½¾¿ÀÁÂÃÄÅÆÇÈÉËÌÍÎÏÑÒÓØÝßàâçéêìñòøùþ€ƒ¸
+‚!"#$&)*+-.147÷
+EC:\Users\ricar\Documents\GitHub\domino\DominoJuego\GameWindow.xaml.cs† 8cjrã	
+ !"$%&'()*,-./135689:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWYZ[\]^_abcdefghijkmnopqrstuvwxyz{|}~€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘“”•–—˜™š›œžŸ ¡¢£¤¥¦§¨ª«¬­®¯°±²³´µ¶·¸º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊÌÍÎÏÐÑÒÓÔÕÖ×ÙÚÛÜÝÞßàâãäåæçèéêìíîðñòóôõö÷øùúüþÿ€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘“”•–—˜™š›œŸ ¡¢£¤¥¦§¨©ª¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëíîïðñòóôõö÷øùúûüþÿ€‚ƒ„…†‡‰Š‹ŒŽ‘“”•–—˜š›œŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÒÓÔÕÖ×ØÚÛÜÝÞàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýÿ€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“•–—˜™š›œžŸ ¡¢£¤¥¦¨©ª«¬­¯°±²³´¶·¸¹º»½¾¿ÀÁÃÄÅÆÇÉÊËÍÎÏÐÑÒÔÕÖ×ØÙx‚µ&'()*,-./135:?ABCDFHIJKLNPQRST[]cgjopqtuvy{|}„†Š‹•—˜™œ¢£¥§¬­°³µ·¼¾ÁÃÇÉÎÏÒÓÕÞâãæçéìíòóõ÷øùúþÿ‚ƒ…‡‰ŠŒŽ•—˜™šœ¡£¤¥¨©°²´¶·¸¹»ÀÁÂÅÇÈÉÍÎÏ×ØÙÛÝÞßáâçèïñóôõö÷ú€‚„…Œ‘“”•—œ¢©°·¾ÅÌÒÓÔÕÖ×ØÚÜâãäåæçèéêìíîïñòôõ÷øû‚ƒ…‡ˆ‰ŠŒ‘’—™š›Ÿ ¡£¤¥«¬±²´¶·¸¹¿ÀÆÇÉÊÐÑÖÙ
+RC:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.csh 8(j
+rÈ	!"#$%'()*,./1345789:<=>?ABDEFHIJLMNOPRSTUVWXYZ[\]^_`acdefhijklnopqrtuvwy{|}~€‚ƒ„†‡ˆ‰‹ŒŽ‘’“•–˜™š›œžŸ ¡¢¤¥¦¨©ª«¬®¯°±²³´¶·¸¹º»¼½¾¿ÀÁÂÃÄÆÇÈÉÊÌÍÎÏÑÒÓÔÖ×ØÙÚÛÜÝÞàáâãäåæçèêëìíîðñòóôõ÷øùúûüýþÿ€‚x‚§#$%'()*,./1349>?ABDEFHINOTVXY^_ejkpqvy}~€‚ƒˆ“•š› ¡¦¨©ª«¬®¯°±³¸¹º»¼½¾¿ÀÁÂÃÄÆÇÈÉÊÌÍÎÓØÚÛÝâäåçìíóôùûüþ¸
 EC:\Users\ricar\Documents\GitHub\domino\DominoJuego\MenuWindow.xaml.csA 8j
 r” !#$&'()*+-./01345679:;<=?@ABCDFGHIJKMNOPQRTUVWXY[\]^_abcdeghiklmnopqstuvwyz{|}~€‚ƒ„…†‡ˆŠ‹Œ‘’“”•–—˜x‚H!#)*06<ABCIJOPRTUVW]^deghmnopqstuv{|€‚„…†‡ˆŠ‹Œ’•ª
 UC:\Users\ricar\Documents\GitHub\domino\DominoJuego\RecuperarContraseÃ±aWindow.xaml.cs 8j	
@@ -13,9 +13,9 @@ r0 !"#$%&'()*+,-./0123456x	‚ #&'(*+-03ì
 LC:\Users\ricar\Documents\GitHub\domino\DominoJuego\RegistrarseWindow.xaml.cs- 8j	
 r` !"#$%'()*+,-./0123456789:;<=>?@ACDEFGHJKLMNOPQRTUVWYZ[\]^_`bcdefghijklmnx‚*"#$%'*,/01347:=@EFGHJKLMNOPQV[\_`bdehkƒ
 NC:\Users\ricar\Documents\GitHub\domino\DominoJuego\VerMarcadoresWindow.xaml.cs 8jr	
- !"#‚ ^
->C:\Users\ricar\Documents\GitHub\domino\DominoJuego\App.xaml.cs 8jr	¸
+ !"#‚ e
+>C:\Users\ricar\Documents\GitHub\domino\DominoJuego\App.xaml.cs 8j	rx‚¸
 EC:\Users\ricar\Documents\GitHub\domino\DominoJuego\MainWindow.xaml.cs 8j	
-rF !"#$%&'()*+,-./02345689:;<>?@ABDEFGHIJLMNOPQx‚ !"%&),/5:;AFGHIN‚
-MC:\Users\ricar\Documents\GitHub\domino\DominoJuego\Properties\AssemblyInfo.csj	#$%&'(,./01345r
-"#&)67
+rF !"#$%&'()*+,-./02345689:;<>?@ABDEFGHIJLMNOPQx‚ !"%&),/5:;AFGHIN€
+MC:\Users\ricar\Documents\GitHub\domino\DominoJuego\Properties\AssemblyInfo.csj!"#$%&*,-./123r	
+ !$'45

@@ -6,6 +6,7 @@ C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\DominoContracts.dll
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\DominoServer.exe
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\MaterialDesignColors.dll
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\WPFCustomMessageBox.dll
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\DominoModelo.exe
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\EntityFramework.dll
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\shortid.dll
@@ -16,6 +17,7 @@ C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\DominoServer.exe.co
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\MaterialDesignColors.pdb
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\WPFCustomMessageBox.xml
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\DominoModelo.pdb
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\DominoModelo.exe.config
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\EntityFramework.xml

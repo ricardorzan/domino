@@ -6,7 +6,7 @@ namespace DominoContracts
     public interface ILobbyClient
     {
         [OperationContract(IsOneWay = true)]
-        void ReciveGame(string username);
+        void ReciveGame(string gameName);
         [OperationContract(IsOneWay = true)]
         void ReciveMember(string newMember);
         [OperationContract]
@@ -18,9 +18,9 @@ namespace DominoContracts
         [OperationContract(IsOneWay = true)]
         void GameFull();
         [OperationContract(IsOneWay = true)]
-        void LeaveGame(bool reason);
+        void LeaveGame(bool isKickedOut);
         [OperationContract(IsOneWay = true)]
-        void SomeoneLeftGame(string member);
+        void SomeoneLeftGame(string memberWhoLeft);
         [OperationContract(IsOneWay = true)]
         void UpdateGames();
         [OperationContract(IsOneWay = true)]

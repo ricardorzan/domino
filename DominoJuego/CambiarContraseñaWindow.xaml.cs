@@ -33,7 +33,7 @@ namespace Domino
             string currentPassword = TextBoxCurrentPassword.Password;
             string newPassword = TextBoxNewPassword.Password;
             string confirmation = TextBoxConfirmation.Password;
-            if (!currentPassword.Equals("") && !newPassword.Equals("") && !confirmation.Equals(""))
+            if (!string.IsNullOrEmpty(currentPassword) && !string.IsNullOrEmpty(newPassword) && !string.IsNullOrEmpty(confirmation))
             {
                 if (newPassword.Equals(confirmation))
                 {

@@ -301,7 +301,7 @@ namespace Domino.Proxy {
     public interface ILobbyServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/ReciveGame")]
-        void ReciveGame(string username);
+        void ReciveGame(string gameName);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/ReciveMember")]
         void ReciveMember(string newMember);
@@ -319,10 +319,10 @@ namespace Domino.Proxy {
         void GameFull();
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/LeaveGame")]
-        void LeaveGame(bool reason);
+        void LeaveGame(bool isKickedOut);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/SomeoneLeftGame")]
-        void SomeoneLeftGame(string member);
+        void SomeoneLeftGame(string memberWhoLeft);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyService/UpdateGames")]
         void UpdateGames();
@@ -453,10 +453,10 @@ namespace Domino.Proxy {
         System.Threading.Tasks.Task GetHighestTileAsync(int idGame, string hostHighestTile);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/PutATile")]
-        void PutATile(int idGame, string tile);
+        void PutATile(int idGame, string tile, bool decision);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/PutATile")]
-        System.Threading.Tasks.Task PutATileAsync(int idGame, string tile);
+        System.Threading.Tasks.Task PutATileAsync(int idGame, string tile, bool decision);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/TakeFromTheBank")]
         void TakeFromTheBank(int idGame);
@@ -502,7 +502,7 @@ namespace Domino.Proxy {
         void IsYourTurn(bool isFirstTurn);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/SomeonePutATile")]
-        void SomeonePutATile(string username, string tile);
+        void SomeonePutATile(string username, string tile, bool decision);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/GetTheTile")]
         void GetTheTile(string tile);
@@ -574,12 +574,12 @@ namespace Domino.Proxy {
             return base.Channel.GetHighestTileAsync(idGame, hostHighestTile);
         }
         
-        public void PutATile(int idGame, string tile) {
-            base.Channel.PutATile(idGame, tile);
+        public void PutATile(int idGame, string tile, bool decision) {
+            base.Channel.PutATile(idGame, tile, decision);
         }
         
-        public System.Threading.Tasks.Task PutATileAsync(int idGame, string tile) {
-            return base.Channel.PutATileAsync(idGame, tile);
+        public System.Threading.Tasks.Task PutATileAsync(int idGame, string tile, bool decision) {
+            return base.Channel.PutATileAsync(idGame, tile, decision);
         }
         
         public void TakeFromTheBank(int idGame) {

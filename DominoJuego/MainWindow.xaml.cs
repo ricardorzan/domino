@@ -23,7 +23,7 @@ namespace Domino
         {
             string email = TextBoxEmail.Text;
             string password = TextBoxPassword.Password;
-            if (!email.Equals("") && !password.Equals(""))
+            if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
             {
                 String emailFormat = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
                 if (Regex.IsMatch(email, emailFormat))
@@ -31,7 +31,7 @@ namespace Domino
                     Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
                     string isValid = server.LogIn(email, password);
                     server.Close();
-                    if (!(isValid).Equals(""))
+                    if (!string.IsNullOrEmpty(isValid))
                     {
                         MenuWindow sesion = new MenuWindow(isValid);
                         sesion.Show();

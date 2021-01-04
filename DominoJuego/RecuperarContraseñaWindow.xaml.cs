@@ -29,7 +29,7 @@ namespace Domino
         private void ClickRecover(object sender, RoutedEventArgs e)
         {
             string email = TextBoxEmail.Text;
-            if (!email.Equals(""))
+            if (!string.IsNullOrEmpty(email))
             {
                 String emailFormat = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
                 if (Regex.IsMatch(email, emailFormat))

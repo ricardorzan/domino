@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using System.Windows;
 
 namespace Domino
@@ -18,7 +13,9 @@ namespace Domino
 
         App()
         {
-            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");       
+            string currentLanguage = System.Globalization.CultureInfo.CurrentCulture.EnglishName;
+            if (currentLanguage.Contains("Spanish"))
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");       
         }
     }
 }

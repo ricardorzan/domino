@@ -36,7 +36,7 @@ namespace Domino
             string password = TextBoxPassword.Password;
             string passwordConfirmation = TextBoxPasswordConfirmation.Password;
 
-            if (!username.Equals("") && !email.Equals("") && !password.Equals("") && !passwordConfirmation.Equals(""))
+            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(passwordConfirmation))
             {
                 String sFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
                 if (Regex.IsMatch(email, sFormato))
@@ -89,7 +89,7 @@ namespace Domino
         private void ClickValidate(object sender, RoutedEventArgs e)
         {
             string token = TextBoxToken.Text;
-            if (!token.Equals(""))
+            if (!string.IsNullOrEmpty(token))
             {
                 Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
                 bool isVerified = server.VerificateUser(user, token);

@@ -16,7 +16,7 @@ namespace DominoContracts
         [OperationContract(IsOneWay = true)]
         void IsYourTurn(bool isFirstTurn);
         [OperationContract(IsOneWay = true)]
-        void SomeonePutATile(string username, string tile);
+        void SomeonePutATile(string username, string tile, bool decision);
         [OperationContract(IsOneWay = true)]
         void GetTheTile(string tile);
         [OperationContract(IsOneWay = true)]
@@ -36,7 +36,7 @@ namespace DominoContracts
         [OperationContract(IsOneWay = true)]
         void GetHighestTile(int idGame, string hostHighestTile);
         [OperationContract(IsOneWay = true)]
-        void PutATile(int idGame, string tile);
+        void PutATile(int idGame, string tile, bool decision);
         [OperationContract(IsOneWay = true)]
         void TakeFromTheBank(int idGame);
         [OperationContract(IsOneWay = true)]

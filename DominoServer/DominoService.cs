@@ -7,8 +7,6 @@ using DominoModelo;
 using System.Net.Mail;
 using System.Collections.ObjectModel;
 using shortid;
-using System.Security.Cryptography;
-using System.Text;
 using System.Data.Entity.Validation;
 
 namespace DominoServer
@@ -39,7 +37,7 @@ namespace DominoServer
                 nextMember++;
                 other.Key.ReciveNewMember(username);
             }
-            ((Dictionary<IGameClient, string>)_currentGames[idGame]).Add(connection, username);
+            _currentGames[idGame].Add(connection, username);
             try
             {
                 connection.ReciveMembersInGame(members);
@@ -127,11 +125,9 @@ namespace DominoServer
             }
             for (int i = 0; i < _members.Count; i++)
             {
+                bool replace;
                 if (highestTile == null)
-                {
-                    highestTile = highestOfEachPlayer[i];
-                    whoIsGonnaStart = i;
-                }
+                    replace = true;
                 else
                 {
                     int highestNumberOne = int.Parse(highestTile.Substring(0, 1));
@@ -144,33 +140,19 @@ namespace DominoServer
 
                     if (highestIsMule)
                     {
-                        if (isMule)
-                        {
-                            if (numberOne > highestNumberOne)
-                            {
-                                highestTile = highestOfEachPlayer[i];
-                                whoIsGonnaStart = i;
-                            }
-                        }
+                        replace = HighestIsMule(isMule, numberOne, highestNumberOne);
                     }
                     else
                     {
-                        if (isMule)
-                        {
-                            highestTile = highestOfEachPlayer[i];
-                            whoIsGonnaStart = i;
-                        }
-                        else
-                        {
-                            int weight = numberOne + numberTwo;
-                            int highestWeight = highestNumberOne + highestNumberTwo;
-                            if (weight > highestWeight)
-                            {
-                                highestTile = highestOfEachPlayer[i];
-                                whoIsGonnaStart = i;
-                            }
-                        }
+                        int weight = numberOne + numberTwo;
+                        int highestWeight = highestNumberOne + highestNumberTwo;
+                        replace = HighestIsNotMule(isMule, weight, highestWeight);
                     }
+                }
+                if (replace)
+                {
+                    highestTile = highestOfEachPlayer[i];
+                    whoIsGonnaStart = i;
                 }
             }
             count = 0;
@@ -183,9 +165,29 @@ namespace DominoServer
                 }
                 count++;
             }
+
         }
 
-        public void PutATile(int idGame, string tile)
+        private bool HighestIsNotMule(bool isMule, int weight, int highestWeight)
+        {
+            if (isMule)
+                return true;
+            else
+            {
+                if (weight > highestWeight)
+                    return true;
+            }
+            return false;
+        }
+
+        private bool HighestIsMule(bool isMule, int numberOne, int highestNumberOne)
+        {
+            if (isMule && numberOne > highestNumberOne)
+                return true;
+            return false;
+        }
+
+        public void PutATile(int idGame, string tile, bool decision)
         {
             var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
             if (!_currentGames.TryGetValue(idGame, out Dictionary<IGameClient, string> _members))
@@ -197,7 +199,7 @@ namespace DominoServer
 
                 if (other == connection)
                     continue;
-                other.SomeonePutATile(whoPutTheTile, tile);
+                other.SomeonePutATile(whoPutTheTile, tile, decision);
             }
         }
 
@@ -306,7 +308,7 @@ namespace DominoServer
                 {
                     var player = context.Jugador.FirstOrDefault(p => p.RondaID == idGame && p.Usuario.Nombreusuario == username);
                     player.Puntaje = points;
-                    var user = player.Usuario; // context.Usuario.FirstOrDefault(u => u.Nombreusuario == username);
+                    var user = player.Usuario;
                     user.Puntajeacumulado += points;
                     context.SaveChanges();
                 }
@@ -350,7 +352,7 @@ namespace DominoServer
             if (!_lobbies.TryGetValue(connection, out string host))
                 return;
 
-            ((Dictionary<ILobbyClient, string>)_games[gameName]).Add(connection, host);
+            _games[gameName].Add(connection, host);
 
             foreach (var other in _lobbies.Keys)
             {
@@ -394,7 +396,7 @@ namespace DominoServer
                     nextMember++;
                     other.ReciveMember(newMember);
                 }
-                ((Dictionary<ILobbyClient, string>)_games[gameName]).Add(connection, newMember);
+                _games[gameName].Add(connection, newMember);
                 connection.ReciveMembers(members);
             }
             else
@@ -432,7 +434,7 @@ namespace DominoServer
             if (!_lobbies.TryGetValue(connection, out string memberWhoLeft))
                 return;
 
-            ((Dictionary<ILobbyClient, string>)_games[gameName]).Remove(connection);
+            _games[gameName].Remove(connection);
 
             if (!_games.TryGetValue(gameName, out Dictionary<ILobbyClient, string> _members))
                 return;
@@ -541,7 +543,7 @@ namespace DominoServer
                 Dictionary<IChatClient, string> _membersRoom = new Dictionary<IChatClient, string>();
                 _rooms.Add(0, _membersRoom);
             }
-            ((Dictionary<IChatClient, string>)_rooms[room]).Add(connection, username);
+            _rooms[room].Add(connection, username);
         }
 
         public void SendMessage(int room, string message)
@@ -567,14 +569,11 @@ namespace DominoServer
                 using (DominoContext context = new DominoContext())
                 {
                     var user = context.Usuario.FirstOrDefault(u => u.Nombreusuario == username);
-                    if (user != null)
-                    {
-                        if (user.Contraseña.Equals(currentPassword))
+                    if (user != null && (user.Contraseña.Equals(currentPassword)))
                         {
-                            user.Contraseña = newPassword;
-                            context.SaveChanges();
-                            return true;
-                        }
+                        user.Contraseña = newPassword;
+                        context.SaveChanges();
+                        return true;
                     }
                 }
             }
@@ -598,7 +597,7 @@ namespace DominoServer
                     {
                         if (user != null)
                         {
-                            scores.Add(new UsuarioPuntajes(lugar, user.Nombreusuario, (int)user.Puntajeacumulado));
+                            scores.Add(new UsuarioPuntajes(lugar, user.Nombreusuario, user.Puntajeacumulado));
                         }
                         else
                             return scores;
@@ -638,7 +637,7 @@ namespace DominoServer
             }
         }
 
-        [Obsolete]
+        [Obsolete ("Reemplazado por el arrancador automático")]
         public bool SignUp(string username, string email, string password)
         {
             try
@@ -754,7 +753,6 @@ namespace DominoServer
                     var user = context.Usuario.FirstOrDefault(u => u.Correo == email);
                     if (user != null)
                     {
-                        string userPassword = user.Contraseña;
                         if (user.Contraseña == password.GetHashCode().ToString())
                         {
                             Console.WriteLine("The user " + user.Nombreusuario + " has just connected");
@@ -770,7 +768,7 @@ namespace DominoServer
             }
         }
 
-        private bool SendEmail(Usuario user, bool isSignUp)
+        private void SendEmail(Usuario user, bool isSignUp)
         {
             try
             {
@@ -795,7 +793,6 @@ namespace DominoServer
                 SmtpServer.Credentials = new System.Net.NetworkCredential("domino.juego.re@gmail.com", "gatodeportivo");
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Send(mail);
-                return true;
 
             }
             catch (Exception ex)

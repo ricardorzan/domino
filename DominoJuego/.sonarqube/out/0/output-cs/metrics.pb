@@ -8,6 +8,6 @@ FC:\Users\ricar\Documents\GitHub\domino\DominoContracts\ILobbyClient.csr0
 GC:\Users\ricar\Documents\GitHub\domino\DominoContracts\ILoginService.csr	
 v
 FC:\Users\ricar\Documents\GitHub\domino\DominoContracts\IMenuService.cs 8r	
- !‚u
-QC:\Users\ricar\Documents\GitHub\domino\DominoContracts\Properties\AssemblyInfo.csj !"r	
-#$
+ !‚t
+QC:\Users\ricar\Documents\GitHub\domino\DominoContracts\Properties\AssemblyInfo.csj !r	
+"#

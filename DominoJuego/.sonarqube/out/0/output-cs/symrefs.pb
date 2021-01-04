@@ -20,7 +20,7 @@ EC:\Users\ricar\Documents\GitHub\domino\DominoContracts\IChatClient.cs
 
  !
 
-* 1É
+* 1á
 EC:\Users\ricar\Documents\GitHub\domino\DominoContracts\IGameClient.cs
   / :
 
@@ -47,6 +47,8 @@ EC:\Users\ricar\Documents\GitHub\domino\DominoContracts\IGameClient.cs
 $ ,
 
 5 9
+
+@ H
 
  
 
@@ -87,6 +89,8 @@ EC:\Users\ricar\Documents\GitHub\domino\DominoContracts\IGameClient.cs
 ''  
 
 '') -
+
+''4 <
 
 )) 
 
@@ -130,11 +134,11 @@ FC:\Users\ricar\Documents\GitHub\domino\DominoContracts\ILobbyClient.cs
 
  
 
- "
+ '
 
  
 
-$ *
+$ 1
 
  
 

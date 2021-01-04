@@ -439,6 +439,15 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a The room is full.
+        /// </summary>
+        public static string RoomFull {
+            get {
+                return ResourceManager.GetString("RoomFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Round:.
         /// </summary>
         public static string Round {

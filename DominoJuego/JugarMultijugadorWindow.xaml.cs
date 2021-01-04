@@ -42,7 +42,6 @@ namespace Domino
             DataContext = this;
 
             PlayersGrid.Visibility = Visibility.Hidden;
-            //PlayersGrid.ItemsSource = Players;
 
             context = new InstanceContext(this);
             server = new Proxy.LobbyServiceClient(context);
@@ -67,12 +66,11 @@ namespace Domino
             DataContext = this;
 
             gameName = TextBoxGameName.Text;
-            if (gameName.Equals(""))
+            if (string.IsNullOrEmpty(gameName))
                 gameName = Properties.Resources.GameOf + username;
 
             numberOfPlayers = int.Parse(NumberOfPlayersComboBox.SelectedItem.ToString());
             server.CreateGame(gameName);
-
         }
 
         private void ClickJoinGame(object sender, RoutedEventArgs e)
@@ -83,7 +81,7 @@ namespace Domino
 
         private void ClickLeaveGame(object sender, RoutedEventArgs e)
         {
-            if (isHost == true)
+            if (isHost)
             {
                 if (MessageBox.Show(Properties.Resources.BreakGame, Properties.Resources.Confirmation, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
@@ -113,7 +111,6 @@ namespace Domino
         {
             Players.Add(newMember);
             DataContext = this;
-
         }
 
         public string SendUsername()
@@ -129,16 +126,14 @@ namespace Domino
             AdjustComponents(isHost);
 
             for (int i = 0; i < members.Length; i++)
-            {
                 Players.Add(members[i]);
-            }
             Players.Add(username);
             DataContext = this;
         }
 
         public void GameFull()
         {
-            MessageBox.Show("La sala esta llena");
+            MessageBox.Show(Properties.Resources.RoomFull);
         }
 
         public void LeaveGame(bool isKickedOut)

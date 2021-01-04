@@ -1,5 +1,0 @@
-File name	Line	Function	Duration[ms]	Explored nodes
-C:\Users\ricar\Documents\GitHub\domino\DominoServer\DominoService.cs	327	_DominoServer.DominoService.JoinLobby$string$	0	3
-C:\Users\ricar\Documents\GitHub\domino\DominoServer\DominoService.cs	535	_DominoServer.DominoService.JoinChat$int.string$	0	7
-C:\Users\ricar\Documents\GitHub\domino\DominoServer\DominoService.cs	806	_DominoServer.DominoService.Shuffle$T$$System.Collections.Generic.IList$T$$	21	403
-C:\Users\ricar\Documents\GitHub\domino\DominoServer\Program.cs	7	_DominoServer.Program.Main$$	0	3

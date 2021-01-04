@@ -23,7 +23,9 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="GoBackButton" Grid.Column="0" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.GoBack_Button}" Click="ClickGoBack" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3"></Button>
+        <Button x:Name="GoBackButton" Grid.Column="0" Grid.Row="5" Margin="20 5" Click="ClickGoBack" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3">
+            <materialDesign:PackIcon Kind="StepBackward" Width="25" Height="25"/>
+        </Button>
 
         <TextBox x:Name="TextBoxGameName" Grid.Column="2" Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Right" materialDesign:HintAssist.Hint="Insert the name of your game"/>
         <ComboBox x:Name="NumberOfPlayersComboBox" Grid.Column="2" Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Right" materialDesign:HintAssist.Hint="Max players" ItemsSource="{Binding NumPlayers}" SelectionChanged="ComboBox_SelectedIndexChanged"/>

@@ -243,6 +243,9 @@
   <data name="Recover_Button" xml:space="preserve">
     <value>Recuperar</value>
   </data>
+  <data name="RoomFull" xml:space="preserve">
+    <value>La sala esta llena</value>
+  </data>
   <data name="Round" xml:space="preserve">
     <value>Ronda:</value>
   </data>

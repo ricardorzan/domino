@@ -1,10 +1,10 @@
 ﻿using System;
 using System.ServiceModel;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using WPFCustomMessageBox;
 
 namespace Domino
 {
@@ -57,40 +57,31 @@ namespace Domino
         {
             if (username != this.username)
             {
-                if (player2 == null)
+                bool isPlayer2 = player2 == null;
+                bool isPlayer3 = !isPlayer2 && player2 != username && player3 == null;
+                bool isPlayer4 = !isPlayer2 && !isPlayer3 && player2 != username && player3 != username && player4 == null;
+                if (isPlayer2)
                 {
                     player2 = username;
                     PlayerUsername2.Content = player2;
                     TalesInBank -= 7;
                     TextBoxBank.Text = TalesInBank.ToString();
                 }
-                else
+                if (isPlayer3)
                 {
-                    if (player2 != username)
-                    {
-                        if (player3 == null)
-                        {
-                            player3 = username;
-                            PlayerUsername3.Content = player3;
-                            TalesInBank -= 7;
-                            TextBoxBank.Text = TalesInBank.ToString();
-                            StackpanelPlayer3.Visibility = Visibility.Visible;
-                        }
-                        else
-                        {
-                            if (player3 != username)
-                            {
-                                if (player4 == null)
-                                {
-                                    player4 = username;
-                                    PlayerUsername4.Content = player4;
-                                    TalesInBank -= 7;
-                                    TextBoxBank.Text = TalesInBank.ToString();
-                                    StackpanelPlayer4.Visibility = Visibility.Visible;
-                                }
-                            }
-                        }
-                    }
+                    player3 = username;
+                    PlayerUsername3.Content = player3;
+                    TalesInBank -= 7;
+                    TextBoxBank.Text = TalesInBank.ToString();
+                    StackpanelPlayer3.Visibility = Visibility.Visible;
+                }
+                if (isPlayer4)
+                {
+                    player4 = username;
+                    PlayerUsername4.Content = player4;
+                    TalesInBank -= 7;
+                    TextBoxBank.Text = TalesInBank.ToString();
+                    StackpanelPlayer4.Visibility = Visibility.Visible;
                 }
             }
         }
@@ -103,7 +94,114 @@ namespace Domino
             }
         }
 
-        public void SomeonePutATile(string username, string tile)
+        public void SomeonePutATile(string username, string tile, bool decision)
+        {
+            RemoveTileFromPlayer(username);
+            var converter = new ImageSourceConverter();
+            Image tileToPut = new Image
+            {
+                Source = (ImageSource)converter.ConvertFromString("Images/" + tile + ".png"),
+                Width = 45
+            };
+            DrawInBoard(tile, tileToPut, false, decision);
+        }
+
+        private bool DrawInBoard(string tile, Image tileToPut, bool tileOwner, bool decision)
+        {
+            int numberOne = int.Parse(tile.Substring(0, 1));
+            int numberTwo = int.Parse(tile.Substring(1, 1));
+            if (numberOne != numberTwo)
+            {
+                RotateTransform rotateTransform = new RotateTransform(90);
+                tileToPut.RenderTransform = rotateTransform;
+                tileToPut.RenderTransformOrigin = new Point(0.5, 0.5);
+                tileToPut.Margin = new Thickness(22);
+            }
+            bool isFirstTurn = leftNumber == -1 && rightNumber == -1;
+            if (isFirstTurn)
+            {
+                rightNumber = numberTwo;
+                leftNumber = numberOne;
+                Board.Children.Add(tileToPut);
+            }
+            else
+            {
+                bool isLeft = numberOne == leftNumber || numberTwo == leftNumber;
+                bool isRight = numberOne == rightNumber || numberTwo == rightNumber;
+                bool isBoth = isLeft && isRight;
+                if (isBoth)
+                {
+                    decision = ChoseLeftOrRight(tileOwner, decision, numberOne, numberTwo, tileToPut);
+                }
+                else
+                {
+                    if (isLeft)
+                        DrawInLeft(numberOne, numberTwo, tileToPut);
+                    else
+                        DrawInRight(numberOne, numberTwo, tileToPut);
+                }
+            }
+            return decision;
+        }
+
+        private bool ChoseLeftOrRight(bool tileOwner, bool decision, int numberOne, int numberTwo, Image tileToPut)
+        {
+            if (tileOwner)
+            {
+                MessageBoxResult result = CustomMessageBox.ShowYesNo("Selection", "Select between " + numberOne + " and " + numberTwo, "Left", "Right");
+                if (result == MessageBoxResult.Yes)
+                    DrawInLeft(numberOne, numberTwo, tileToPut);
+                else
+                {
+                    DrawInRight(numberOne, numberTwo, tileToPut);
+                    return true;
+                }
+            }
+            else
+            {
+                if (decision)
+                    DrawInRight(numberOne, numberTwo, tileToPut);
+                else
+                    DrawInLeft(numberOne, numberTwo, tileToPut);
+            }
+            return false;
+        }
+
+        private void DrawInLeft(int numberOne, int numberTwo, Image tileToPut)
+        {
+            if (numberOne == leftNumber)
+                leftNumber = numberTwo;
+            else
+            {
+                if (numberOne != numberTwo)
+                {
+                    RotateTransform rotateTransform = new RotateTransform(-90);
+                    tileToPut.RenderTransform = rotateTransform;
+                }
+                leftNumber = numberOne;
+            }
+            Board.Children.Insert(0, tileToPut);
+        }
+
+        private void DrawInRight(int numberOne, int numberTwo, Image tileToPut)
+        {
+            if (numberOne == rightNumber)
+            {
+                if (numberOne != numberTwo)
+                {
+                    RotateTransform rotateTransform = new RotateTransform(-90);
+                    tileToPut.RenderTransform = rotateTransform;
+                }
+                rightNumber = numberTwo;
+            }
+            else
+            {
+                rightNumber = numberOne;
+            }
+            Board.Children.Add(tileToPut);
+        }
+
+        private void RemoveTileFromPlayer(string username)
         {
             if (player2 == username)
                 TilesPlayer2.Children.RemoveAt(TilesPlayer2.Children.Count - 1);
@@ -113,67 +211,6 @@ namespace Domino
                     TilesPlayer3.Children.RemoveAt(TilesPlayer3.Children.Count - 1);
                 else
                     TilesPlayer4.Children.RemoveAt(TilesPlayer4.Children.Count - 1);
-            }
-
-            int numberOne = int.Parse(tile.Substring(0, 1));
-            int numberTwo = int.Parse(tile.Substring(1, 1));
-            var converter = new ImageSourceConverter();
-            Image tileToPut = new Image
-            {
-                Source = (ImageSource)converter.ConvertFromString("Images/" + tile + ".png"),
-                Width = 45
-            };
-
-            if (numberOne != numberTwo)
-            {
-                RotateTransform rotateTransform = new RotateTransform(90);
-                tileToPut.RenderTransform = rotateTransform;
-                tileToPut.RenderTransformOrigin = new Point(0.5, 0.5);
-                tileToPut.Margin = new Thickness(22);
-            }
-
-            if (leftNumber == -1 && rightNumber == -1)
-            {
-                rightNumber = numberTwo;
-                leftNumber = numberOne;
-                Board.Children.Add(tileToPut);
-            }
-            else
-            {
-                if (numberOne == leftNumber || numberTwo == leftNumber)
-                {
-                    if (numberOne == leftNumber)
-                    {
-                        leftNumber = numberTwo;
-                    }
-                    else
-                    {
-                        if (numberOne != numberTwo)
-                        {
-                            RotateTransform rotateTransform = new RotateTransform(-90);
-                            tileToPut.RenderTransform = rotateTransform;
-                        }
-                        leftNumber = numberOne;
-                    }
-                    Board.Children.Insert(0, tileToPut);
-                }
-                else
-                {
-                    if (numberOne == rightNumber)
-                    {
-                        if (numberOne != numberTwo)
-                        {
-                            RotateTransform rotateTransform = new RotateTransform(-90);
-                            tileToPut.RenderTransform = rotateTransform;
-                        }
-                        rightNumber = numberTwo;
-                    }
-                    else
-                    {
-                        rightNumber = numberOne;
-                    }
-                    Board.Children.Add(tileToPut);
-                }
             }
         }
 
@@ -211,45 +248,53 @@ namespace Domino
                     break;
                 int numberOne = int.Parse(tile.Substring(0, 1));
                 int numberTwo = int.Parse(tile.Substring(1, 1));
-                if (numberOne == numberTwo)
-                {
-                    if (isThereOneMule)
-                    {
-                        int highestNumberOne = int.Parse(highestTile.Substring(0, 1));
-                        if (numberOne > highestNumberOne)
-                        {
-                            highestTile = tile;
-                            highestTilePosition = count;
-                        }
-                    }
-                    else
-                    {
-                        isThereOneMule = true;
-                        highestTile = tile;
-                        highestTilePosition = count;
-                    }
-                }
+
+                bool replace = false;
+
                 if (highestTile == null)
+                    replace = true;
+                else
+                {
+                    if (numberOne == numberTwo)
+                        replace = ThisIsMule(numberOne);
+                    else
+                        replace = ThisIsNotMule(tile);
+                }
+                if (replace)
                 {
                     highestTile = tile;
                     highestTilePosition = count;
                 }
-                else
-                {
-                    if (!isThereOneMule)
-                    {
-                        int weight = int.Parse(tile);
-                        int highestWeight = int.Parse(highestTile);
-                        if (weight > highestWeight)
-                        {
-                            highestTile = tile;
-                            highestTilePosition = count;
-                        }
-                    }
-                }
+                if(numberOne == numberTwo)
+                    isThereOneMule = true;
                 count++;
             }
             return highestTile;
+        }
+
+        private bool ThisIsNotMule(string tile)
+        {
+            if (!isThereOneMule)
+            {
+                int weight = int.Parse(tile);
+                int highestWeight = int.Parse(highestTile);
+                if (weight > highestWeight)
+                    return true;
+            }
+            return false;
+        }
+
+        private bool ThisIsMule(int numberOne)
+        {
+            if (isThereOneMule)
+            {
+                int highestNumberOne = int.Parse(highestTile.Substring(0, 1));
+                if (numberOne > highestNumberOne)
+                    return true;
+            }
+            else
+                return true;
+            return false;
         }
 
         public void IsYourTurn(bool isFirstTurn)
@@ -435,11 +480,37 @@ namespace Domino
         private void TileSelected(object sender, RoutedEventArgs e)
         {
             Image image = e.Source as Image;
-            string tileToPut = null;
+            image.IsEnabled = false;
+            image.Width = image.ActualWidth - 15;
             int placeInTheHand = TilesPlayer1.Children.IndexOf(image);
             if (placeInTheHand == -1)
                 return;
             TilesPlayer1.Children.Remove(image);
+            string tileToPut = TakeTileFromTheHand(placeInTheHand);
+            if (tileToPut != null)
+            {
+                bool decision = DrawInBoard(tileToPut, image, true, false);
+                Points += int.Parse(tileToPut.Substring(0, 1)) + int.Parse(tileToPut.Substring(1, 1));
+                TextBoxPoints.Text = Points.ToString();
+                foreach (Image tileInHand in TilesPlayer1.Children)
+                {
+                    tileInHand.IsEnabled = false;
+                    tileInHand.Opacity = 0.7;
+                }
+                serverGame.PutATile(GameId, tileToPut, decision);
+                if (tilesInHand[0] == null)
+                {
+                    serverGame.Win(GameId);
+                    SomeoneWonTheRound(username);
+                }
+                else
+                    serverGame.PassTurn(GameId);
+            }
+        }
+
+        private string TakeTileFromTheHand(int placeInTheHand)
+        {
+            string tileToPut = null;
             string[] newTilesInHand = new string[tilesInHand.Length - 1];
             for (int i = 0; i < tilesInHand.Length - 1; i++)
             {
@@ -456,74 +527,7 @@ namespace Domino
                     break;
             }
             tilesInHand = newTilesInHand;
-
-            int numberOne = int.Parse(tileToPut.Substring(0, 1));
-            int numberTwo = int.Parse(tileToPut.Substring(1, 1));
-            if (numberOne != numberTwo)
-            {
-                RotateTransform rotateTransform = new RotateTransform(90);
-                image.RenderTransform = rotateTransform;
-                image.RenderTransformOrigin = new Point(0.5, 0.5);
-                image.Margin = new Thickness(22);
-            }
-            image.IsEnabled = false;
-            image.Width = image.ActualWidth - 15;
-
-            if (leftNumber == -1 && rightNumber == -1)
-            {
-                rightNumber = numberTwo;
-                leftNumber = numberOne;
-                Board.Children.Add(image);
-            }
-            else
-            {
-                if (numberOne == leftNumber || numberTwo == leftNumber)
-                {
-                    if (numberOne == leftNumber)
-                        leftNumber = numberTwo;
-                    else
-                    {
-                        if (numberOne != numberTwo)
-                        {
-                            RotateTransform rotateTransform = new RotateTransform(-90);
-                            image.RenderTransform = rotateTransform;
-                        }
-                        leftNumber = numberOne;
-                    }
-                    Board.Children.Insert(0, image);
-                }
-                else
-                {
-                    if (numberOne == rightNumber)
-                    {
-                        if (numberOne != numberTwo)
-                        {
-                            RotateTransform rotateTransform = new RotateTransform(-90);
-                            image.RenderTransform = rotateTransform;
-                        }
-                        rightNumber = numberTwo;
-                    }
-                    else
-                        rightNumber = numberOne;
-                    Board.Children.Add(image);
-                }
-            }
-
-            Points += (numberOne + numberTwo);
-            TextBoxPoints.Text = Points.ToString();
-            foreach (Image tileInHand in TilesPlayer1.Children)
-            {
-                tileInHand.IsEnabled = false;
-                tileInHand.Opacity = 0.7;
-            }
-            serverGame.PutATile(GameId, tileToPut);
-            if (tilesInHand[0] == null)
-            {
-                serverGame.Win(GameId);
-                SomeoneWonTheRound(username);
-            }
-            else
-                serverGame.PassTurn(GameId);
+            return tileToPut;
         }
 
         public void SomeoneWonTheRound(string username)
@@ -545,9 +549,9 @@ namespace Domino
             EndPanel.Visibility = Visibility.Visible;
         }
 
-        public void ReciveMessage(string user, string message)
+        public void ReciveMessage(string username, string message)
         {
-            string format = "\n" + user + ": " + message;
+            string format = "\n" + username + ": " + message;
             ChatBox.AppendText(format);
             ChatBox.ScrollToEnd();
         }
@@ -555,7 +559,7 @@ namespace Domino
         private void ClickIconChat(object sender, EventArgs e)
         {
             string message = TextBoxChat.Text;
-            if (!message.Equals(""))
+            if (!string.IsNullOrEmpty(message))
             {
                 serverChat.SendMessage(GameId, message);
 
@@ -595,3 +599,4 @@ namespace Domino
         }
     }
 }
+
