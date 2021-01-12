@@ -9,3 +9,6 @@ C:\Users\ricar\Documents\GitHub\domino\DominoModelo\obj\Debug\DominoModelo.cspro
 C:\Users\ricar\Documents\GitHub\domino\DominoModelo\obj\Debug\DominoModelo.csproj.CopyComplete
 C:\Users\ricar\Documents\GitHub\domino\DominoModelo\obj\Debug\DominoModelo.exe
 C:\Users\ricar\Documents\GitHub\domino\DominoModelo\obj\Debug\DominoModelo.pdb
+C:\Users\ricar\Documents\GitHub\domino\DominoModelo\obj\Debug\DominoModelo.csprojAssemblyReference.cache
+C:\Users\ricar\Documents\GitHub\domino\DominoModelo\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\ricar\Documents\GitHub\domino\DominoModelo\bin\Debug\Microsoft.AspNet.Identity.Core.xml

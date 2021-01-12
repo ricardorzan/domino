@@ -1,0 +1,386 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DominoContracts</name>
+    </assembly>
+    <members>
+        <member name="T:DominoContracts.IChatClient">
+            <summary>
+            Interface that represents the client's methods for communication in chat.
+            </summary>
+        </member>
+        <member name="M:DominoContracts.IChatClient.ReciveMessage(System.String,System.String)">
+            <summary>
+            Callback that allows the entry of messages from any user in the chat.
+            </summary>
+            <param name="username"> The username of the user who is sending the incoming message. </param>
+            <param name="message"> The incoming message. </param>
+        </member>
+        <member name="T:DominoContracts.IChatService">
+            <summary>
+            Interface that represents the server's methods for communication in chat.
+            </summary>
+        </member>
+        <member name="M:DominoContracts.IChatService.JoinChat(System.Int32,System.String)">
+            <summary>
+            This method adds the user to a specific room chat.
+            </summary>
+            <param name="room"> The number of the room chat to join in. </param>
+            <param name="username"> The user who is joining. </param>
+        </member>
+        <member name="M:DominoContracts.IChatService.SendMessage(System.Int32,System.String)">
+            <summary>
+            This method sends a message from an user to the server.
+            </summary>
+            <param name="room"> The number of the room where the message was send. </param>
+            <param name="message"> The incoming message. </param>
+        </member>
+        <member name="T:DominoContracts.IGameClient">
+            <summary>
+            Interface that represents the client's methods for communication in game.
+            </summary>
+        </member>
+        <member name="M:DominoContracts.IGameClient.GetDominoes(System.String[])">
+            <summary>
+            This method adds the first seven tiles to the hand.
+            </summary>
+            <param name="dominoes"> An array of the first seven tiles. </param>
+        </member>
+        <member name="M:DominoContracts.IGameClient.ReciveNewMember(System.String)">
+            <summary>
+            This method adds to the game the players as they enter to the game.
+            </summary>
+            <param name="username"> Username of the user who is enter. </param>
+        </member>
+        <member name="M:DominoContracts.IGameClient.ReciveMembersInGame(System.String[])">
+            <summary>
+            Callback that allows adding to the game players who were already in game.
+            </summary>
+            <param name="members"> An array of the usernames of the players within the game. </param>
+        </member>
+        <member name="M:DominoContracts.IGameClient.SendHighestTile">
+            <summary>
+            This method sends the highest tile in hand to the server.
+            </summary>
+            <returns> The highest tile in hand. </returns>
+        </member>
+        <member name="M:DominoContracts.IGameClient.IsYourTurn(System.Boolean)">
+            <summary>
+            Callback invoked when the user takes the turn.
+            </summary>
+            <param name="isFirstTurn"> A Boolean value that deremines if it's first turn or not. </param>
+        </member>
+        <member name="M:DominoContracts.IGameClient.SomeonePutATile(System.String,System.String,System.Boolean)">
+            <summary>
+            Callback invoked when someone places a tile on the board and passes his turn.
+            </summary>
+            <param name="username"> The user who put the tile. </param>
+            <param name="tile"> The tile placed on the board. </param>
+            <param name="decision"> A Boolean value that allows to know if the tile could be in left
+            or right side. </param>
+        </member>
+        <member name="M:DominoContracts.IGameClient.GetTheTile(System.String)">
+            <summary>
+            Callback invoked when the user takes a tile from the bank.
+            </summary>
+            <param name="tile"> Tile taken. </param>
+        </member>
+        <member name="M:DominoContracts.IGameClient.SomeoneTookATile(System.String)">
+            <summary>
+            Callback invoked when someone took a tile frome the bank.
+            </summary>
+            <param name="username"> The user who took the tile. </param>
+        </member>
+        <member name="M:DominoContracts.IGameClient.SomeoneWonTheRound(System.String)">
+            <summary>
+            Callback that ends the game when someone doesn't have more tiles in hand.
+            </summary>
+            <param name="username"> The user who won the game. </param>
+        </member>
+        <member name="T:DominoContracts.IGameService">
+            <summary>
+            Interface that represents the server's methods for communication in game.
+            </summary>
+        </member>
+        <member name="M:DominoContracts.IGameService.JoinCurrentGame(System.Int32,System.String)">
+            <summary>
+            This method adds the user to the specific game.
+            </summary>
+            <param name="idGame"> Game identifier. </param>
+            <param name="username"> The user who is joining. </param>
+        </member>
+        <member name="M:DominoContracts.IGameService.GetFirstSevenTiles(System.Int32)">
+            <summary>
+            This method distributes to each player their initial seven tiles.
+            </summary>
+            <param name="idGame"> Game identifier. </param>
+        </member>
+        <member name="M:DominoContracts.IGameService.GetPlayersName(System.Int32)">
+            <summary>
+            This method sends each player the names of the members of the game.
+            </summary>
+            <param name="idGame"> Game identifier. </param>
+        </member>
+        <member name="M:DominoContracts.IGameService.GetHighestTile(System.Int32,System.String)">
+            <summary>
+            This method asks each player for their highest tile so that the one with the highest tile has
+            the first turn.
+            </summary>
+            <param name="idGame"> Game identifier. </param>
+            <param name="hostHighestTile"> Host's highest tile. </param>
+        </member>
+        <member name="M:DominoContracts.IGameService.PutATile(System.Int32,System.String,System.Boolean)">
+            <summary>
+            This method is invoked when the player who has the turn put a tile on the board.
+            </summary>
+            <param name="idGame"> Game identifier. </param>
+            <param name="tile"> The tile put on the board. </param>
+            <param name="decision"> A Boolean value that determines if the tile
+            could be place in left and right side. </param>
+        </member>
+        <member name="M:DominoContracts.IGameService.TakeFromTheBank(System.Int32)">
+            <summary>
+            This method is invoked when the player who has the turn take a tile from the bank.
+            </summary>
+            <param name="idGame"> Game identifier. </param>
+        </member>
+        <member name="M:DominoContracts.IGameService.PassTurn(System.Int32)">
+            <summary>
+            This method is invoked when the player who has the turn can not do another action.
+            </summary>
+            <param name="idGame"></param>
+        </member>
+        <member name="M:DominoContracts.IGameService.Win(System.Int32)">
+            <summary>
+            This method is invoked when the player who has the turn put his last tile in hand on
+            the board.
+            </summary>
+            <param name="idGame"> Game identifier. </param>
+        </member>
+        <member name="M:DominoContracts.IGameService.UploadPoints(System.Int32,System.Int32)">
+            <summary>
+            This method is invoked when at the end of the game and updates the points in the data
+            base.
+            </summary>
+            <param name="idGame"></param>
+            <param name="points"></param>
+        </member>
+        <member name="T:DominoContracts.ILobbyClient">
+            <summary>
+            Interface that represents the client's methods for communication in lobbies game.
+            </summary>
+        </member>
+        <member name="M:DominoContracts.ILobbyClient.ReciveGame(System.String)">
+            <summary>
+            Callback that allows adding a new game room to the games collection when a new one is
+            created.
+            </summary>
+            <param name="gameName"> The name of the new game room. </param>
+        </member>
+        <member name="M:DominoContracts.ILobbyClient.ReciveMember(System.String)">
+            <summary>
+            Callback that allows adding a player to the players collection when a new one is joined to
+            the specific game room.
+            </summary>
+            <param name="newMember"></param>
+        </member>
+        <member name="M:DominoContracts.ILobbyClient.SendUsername">
+            <summary>
+            This method sends the username to the server.
+            </summary>
+            <returns> The username of who is in this session. </returns>
+        </member>
+        <member name="M:DominoContracts.ILobbyClient.SendNumberOfPlayers(System.Int32@)">
+            <summary>
+            This method send the number of players for the specific room to the server.
+            </summary>
+            <param name="numberOfPlayers"> Number of players required to start the game. </param>
+            <returns> The number of players for the specific room. </returns>
+        </member>
+        <member name="M:DominoContracts.ILobbyClient.ReciveMembers(System.String[])">
+            <summary>
+            Callback that allows adding to the players collection players who were already waiting in
+            the specific game room.
+            </summary>
+            <param name="members"> An array of the usernames of the players within the specific game
+            room. </param>
+        </member>
+        <member name="M:DominoContracts.ILobbyClient.GameFull">
+            <summary>
+            Callback that represents that the game room to which the user tried to join was full.
+            </summary>
+        </member>
+        <member name="M:DominoContracts.ILobbyClient.LeaveGame(System.Boolean)">
+            <summary>
+            Callback that expels the user from the specific game room in which he was already.
+            </summary>
+            <param name="isKickedOut"> A Boolean value that lets the user know if he was kicked out by
+            the room owner or it was because the room owner broke the room. </param>
+        </member>
+        <member name="M:DominoContracts.ILobbyClient.SomeoneLeftGame(System.String)">
+            <summary>
+            Callback that allows a player to be removed from the players collection when the player in
+            question leaves the specific game room.
+            </summary>
+            <param name="memberWhoLeft"> The player who leaves the game room. </param>
+        </member>
+        <member name="M:DominoContracts.ILobbyClient.UpdateGames">
+            <summary>
+            This method updates the games collection.
+            </summary>
+        </member>
+        <member name="M:DominoContracts.ILobbyClient.StartRound(System.Int32)">
+            <summary>
+            Callback that allows the user to start the game.
+            </summary>
+            <param name="idGame"> Game identifier to which the user is going to enter. </param>
+        </member>
+        <member name="T:DominoContracts.ILobbyService">
+            <summary>
+            Interface that represents the server's methods for communication in lobbies game.
+            </summary>
+        </member>
+        <member name="M:DominoContracts.ILobbyService.JoinLobby(System.String)">
+            <summary>
+            This method is invoked when an user joins the lobby.
+            </summary>
+            <param name="username"> The user who joins. </param>
+        </member>
+        <member name="M:DominoContracts.ILobbyService.GetGames">
+            <summary>
+            This method sends to the user all the games room in the server.
+            </summary>
+        </member>
+        <member name="M:DominoContracts.ILobbyService.CreateGame(System.String)">
+            <summary>
+            This method create a new game room.
+            </summary>
+            <param name="gameName"> The name of the new game room. </param>
+        </member>
+        <member name="M:DominoContracts.ILobbyService.JoinGame(System.String)">
+            <summary>
+            This method is invoked when an user try to join to a room game.
+            </summary>
+            <param name="gameName"> The name of the game room. </param>
+        </member>
+        <member name="M:DominoContracts.ILobbyService.BreakGame(System.String)">
+            <summary>
+            This method is invoked when the owner of the game room leaves the room
+            expelling the other members in the room and deleting it.
+            </summary>
+            <param name="gameName"> The name of the game room. </param>
+        </member>
+        <member name="M:DominoContracts.ILobbyService.MemberLeftGame(System.String)">
+            <summary>
+            This method take out an user from the game room.
+            </summary>
+            <param name="gameName"> The name of the game room. </param>
+        </member>
+        <member name="M:DominoContracts.ILobbyService.KickPlayer(System.String,System.String)">
+            <summary>
+            This method is invoked when the owner of the game room expell another player.
+            </summary>
+            <param name="username"> The player who was expell.</param>
+            <param name="gameName"> The name of the game room. </param>
+        </member>
+        <member name="M:DominoContracts.ILobbyService.StartGame(System.String)">
+            <summary>
+            This method starts the game once the room is full and deletes the room.
+            </summary>
+            <param name="gameName"> The name of the game room. </param>
+        </member>
+        <member name="T:DominoContracts.ILoginService">
+            <summary>
+            Interface that represents the server's methods for communication in login screen.
+            </summary>
+        </member>
+        <member name="M:DominoContracts.ILoginService.LogIn(System.String,System.String)">
+            <summary>
+            This method validates that the login credentials of the user are correct.
+            </summary>
+            <param name="email"> Email of the user. </param>
+            <param name="password"> Password of the user. </param>
+            <returns> Username of the user. </returns>
+        </member>
+        <member name="M:DominoContracts.ILoginService.SignUp(System.String,System.String,System.String)">
+            <summary>
+            This method allows the registration of a new user in the database.
+            </summary>
+            <param name="username"> The username of the new user. </param>
+            <param name="email"> The email of the new user. </param>
+            <param name="password"> The password of the new user. </param>
+            <returns> Username of the user. </returns>
+        </member>
+        <member name="M:DominoContracts.ILoginService.RecoverPassword(System.String)">
+            <summary>
+            This method allows recover the password of a registered user through his email.
+            </summary>
+            <param name="email"> The email of the user. </param>
+            <returns> A Boolean value that represents if the email exists in the data base. </returns>
+        </member>
+        <member name="M:DominoContracts.ILoginService.VerificateUser(System.String,System.String)">
+            <summary>
+            This method validates if the token send it by the user is the correct to verificate
+            him in the data base.
+            </summary>
+            <param name="username"> The userneme of the user. </param>
+            <param name="token"> The verification token. </param>
+            <returns> A Boolean value that represents if the token was right or wrong. </returns>
+        </member>
+        <member name="M:DominoContracts.ILoginService.IsVerified(System.String)">
+            <summary>
+            This method checks if an user is already verified or not.
+            </summary>
+            <param name="username"> The username of the user. </param>
+            <returns> A Boolean value that represents if the user is verified or not. </returns>
+        </member>
+        <member name="T:DominoContracts.IMenuService">
+            <summary>
+            Interface that represents the server's methods for communication in the main menu.
+            </summary>
+        </member>
+        <member name="M:DominoContracts.IMenuService.ChangePassword(System.String,System.String,System.String)">
+            <summary>
+            This method allows the user change his current password.
+            </summary>
+            <param name="username"> The username of the user. </param>
+            <param name="currentPassword"> The current password of the user in the database. </param>
+            <param name="newPassword"> The new password of the user. </param>
+            <returns> A Boolean value that represents if the operation was complete or not. </returns>
+        </member>
+        <member name="M:DominoContracts.IMenuService.GetScores">
+            <summary>
+            This method gets the five highest scores in the database.
+            </summary>
+            <returns> A collection of the users with the highest scores. </returns>
+        </member>
+        <member name="T:DominoContracts.UsuarioPuntajes">
+            <summary>
+            Class used to represents the scores.
+            </summary>
+        </member>
+        <member name="P:DominoContracts.UsuarioPuntajes.Position">
+            <summary>
+            Position in the highest score, from one to five.
+            </summary>
+        </member>
+        <member name="P:DominoContracts.UsuarioPuntajes.Username">
+            <summary>
+            Username of the user.
+            </summary>
+        </member>
+        <member name="P:DominoContracts.UsuarioPuntajes.Score">
+            <summary>
+            Points of the user in the database.
+            </summary>
+        </member>
+        <member name="M:DominoContracts.UsuarioPuntajes.#ctor(System.Int32,System.String,System.Int32)">
+            <summary>
+            The class constructor.
+            </summary>
+            <param name="place"> Position in the highest score, from one to five. </param>
+            <param name="username"> Username of the user. </param>
+            <param name="score"> Points of the user in the database. </param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,484 @@
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\CambiarContraseñaWindow.xaml.cs
+ClickCancel 4
+ClickCancel 0
+ClickChangePassword 3
+ClickChangePassword 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Connected Services\Proxy\Reference.cs
+LogIn 3
+LogIn 0
+LogInAsync 3
+LogInAsync 0
+SignUp 3
+SignUp 0
+SignUpAsync 3
+SignUpAsync 0
+RecoverPassword 3
+RecoverPassword 0
+RecoverPasswordAsync 3
+RecoverPasswordAsync 0
+VerificateUser 3
+VerificateUser 0
+VerificateUserAsync 3
+VerificateUserAsync 0
+IsVerified 3
+IsVerified 0
+IsVerifiedAsync 3
+IsVerifiedAsync 0
+LogIn 4
+LogIn 0
+LogInAsync 3
+LogInAsync 0
+SignUp 5
+SignUp 0
+SignUpAsync 3
+SignUpAsync 0
+RecoverPassword 4
+RecoverPassword 0
+RecoverPasswordAsync 4
+RecoverPasswordAsync 0
+VerificateUser 4
+VerificateUser 0
+VerificateUserAsync 4
+VerificateUserAsync 0
+IsVerified 3
+IsVerified 0
+IsVerifiedAsync 3
+IsVerifiedAsync 0
+ChangePassword 3
+ChangePassword 0
+ChangePasswordAsync 3
+ChangePasswordAsync 0
+GetScores 3
+GetScores 0
+GetScoresAsync 3
+GetScoresAsync 0
+ChangePassword 3
+ChangePassword 0
+ChangePasswordAsync 3
+ChangePasswordAsync 0
+GetScores 4
+GetScores 0
+GetScoresAsync 4
+GetScoresAsync 0
+JoinChat 3
+JoinChat 0
+JoinChatAsync 3
+JoinChatAsync 0
+SendMessage 3
+SendMessage 0
+SendMessageAsync 3
+SendMessageAsync 0
+ReciveMessage 3
+ReciveMessage 0
+JoinChat 4
+JoinChat 0
+JoinChatAsync 4
+JoinChatAsync 0
+SendMessage 3
+SendMessage 0
+SendMessageAsync 3
+SendMessageAsync 0
+JoinLobby 3
+JoinLobby 0
+JoinLobbyAsync 3
+JoinLobbyAsync 0
+GetGames 3
+GetGames 0
+GetGamesAsync 11
+GetGamesAsync 0
+CreateGame 3
+CreateGame 0
+CreateGameAsync 3
+CreateGameAsync 0
+JoinGame 4
+JoinGame 0
+JoinGameAsync 5
+JoinGameAsync 0
+BreakGame 5
+BreakGame 0
+BreakGameAsync 8
+BreakGameAsync 0
+MemberLeftGame 3
+MemberLeftGame 0
+MemberLeftGameAsync 3
+MemberLeftGameAsync 0
+KickPlayer 4
+KickPlayer 0
+KickPlayerAsync 3
+KickPlayerAsync 0
+StartGame 3
+StartGame 0
+StartGameAsync 3
+StartGameAsync 0
+ReciveGame 4
+ReciveGame 0
+ReciveMember 12
+ReciveMember 0
+SendUsername 4
+SendUsername 0
+SendNumberOfPlayers 5
+SendNumberOfPlayers 0
+ReciveMembers 3
+ReciveMembers 0
+GameFull 4
+GameFull 0
+LeaveGame 3
+LeaveGame 0
+SomeoneLeftGame 3
+SomeoneLeftGame 0
+UpdateGames 3
+UpdateGames 0
+StartRound 3
+StartRound 0
+JoinLobby 3
+JoinLobby 0
+JoinLobbyAsync 4
+JoinLobbyAsync 0
+GetGames 3
+GetGames 0
+GetGamesAsync 3
+GetGamesAsync 0
+CreateGame 5
+CreateGame 0
+CreateGameAsync 4
+CreateGameAsync 0
+JoinGame 4
+JoinGame 0
+JoinGameAsync 3
+JoinGameAsync 0
+BreakGame 3
+BreakGame 0
+BreakGameAsync 3
+BreakGameAsync 0
+MemberLeftGame 3
+MemberLeftGame 0
+MemberLeftGameAsync 3
+MemberLeftGameAsync 0
+KickPlayer 4
+KickPlayer 0
+KickPlayerAsync 3
+KickPlayerAsync 0
+StartGame 4
+StartGame 0
+StartGameAsync 5
+StartGameAsync 0
+JoinCurrentGame 3
+JoinCurrentGame 0
+JoinCurrentGameAsync 3
+JoinCurrentGameAsync 0
+GetFirstSevenTiles 3
+GetFirstSevenTiles 0
+GetFirstSevenTilesAsync 3
+GetFirstSevenTilesAsync 0
+GetPlayersName 3
+GetPlayersName 0
+GetPlayersNameAsync 3
+GetPlayersNameAsync 0
+GetHighestTile 3
+GetHighestTile 0
+GetHighestTileAsync 3
+GetHighestTileAsync 0
+PutATile 4
+PutATile 0
+PutATileAsync 3
+PutATileAsync 0
+TakeFromTheBank 3
+TakeFromTheBank 0
+TakeFromTheBankAsync 3
+TakeFromTheBankAsync 0
+PassTurn 3
+PassTurn 0
+PassTurnAsync 3
+PassTurnAsync 0
+Win 3
+Win 0
+WinAsync 3
+WinAsync 0
+UploadPoints 9
+UploadPoints 0
+UploadPointsAsync 3
+UploadPointsAsync 0
+GetDominoes 4
+GetDominoes 0
+ReciveNewMember 3
+ReciveNewMember 0
+ReciveMembersInGame 3
+ReciveMembersInGame 0
+SendHighestTile 4
+SendHighestTile 0
+IsYourTurn 3
+IsYourTurn 0
+SomeonePutATile 3
+SomeonePutATile 0
+GetTheTile 3
+GetTheTile 0
+SomeoneTookATile 3
+SomeoneTookATile 0
+SomeoneWonTheRound 3
+SomeoneWonTheRound 0
+JoinCurrentGame 5
+JoinCurrentGame 0
+JoinCurrentGameAsync 4
+JoinCurrentGameAsync 0
+GetFirstSevenTiles 3
+GetFirstSevenTiles 0
+GetFirstSevenTilesAsync 4
+GetFirstSevenTilesAsync 0
+GetPlayersName 3
+GetPlayersName 0
+GetPlayersNameAsync 3
+GetPlayersNameAsync 0
+GetHighestTile 3
+GetHighestTile 0
+GetHighestTileAsync 3
+GetHighestTileAsync 0
+PutATile 3
+PutATile 0
+PutATileAsync 3
+PutATileAsync 0
+TakeFromTheBank 2
+TakeFromTheBank 0
+TakeFromTheBankAsync 3
+TakeFromTheBankAsync 0
+PassTurn 3
+PassTurn 0
+PassTurnAsync 5
+PassTurnAsync 0
+Win 3
+Win 0
+WinAsync 3
+WinAsync 0
+UploadPoints 2
+UploadPoints 0
+UploadPointsAsync 3
+UploadPointsAsync 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\GameWindow.xaml.cs
+ReciveNewMember 2
+ReciveNewMember 0
+ReciveMembersInGame 3
+ReciveMembersInGame 0
+SomeonePutATile 3
+SomeonePutATile 0
+DrawInBoard 3
+DrawInBoard 0
+ChoseLeftOrRight 3
+ChoseLeftOrRight 0
+DrawInLeft 4
+DrawInLeft 15
+DrawInRight 6
+DrawInRight 0
+RemoveTileFromPlayer 6
+RemoveTileFromPlayer 0
+SomeoneTookATile 4
+SomeoneTookATile 0
+SendHighestTile 3
+SendHighestTile 0
+ThisIsNotMule 3
+ThisIsNotMule 0
+ThisIsMule 3
+ThisIsMule 0
+IsYourTurn 3
+IsYourTurn 0
+LookForAPossibleTile 2
+LookForAPossibleTile 0
+EnablePossibleTiles 3
+EnablePossibleTiles 0
+GetTheTile 2
+GetTheTile 0
+GetDominoes 6
+GetDominoes 15
+TileSelected 3
+TileSelected 0
+TakeTileFromTheHand 3
+TakeTileFromTheHand 0
+SomeoneWonTheRound 3
+SomeoneWonTheRound 0
+ReciveMessage 3
+ReciveMessage 15
+ClickIconChat 3
+ClickIconChat 0
+IsEnter 3
+IsEnter 0
+ScrollViewer_OnScrollChanged 2
+ScrollViewer_OnScrollChanged 0
+ClickGoBackToMenu 2
+ClickGoBackToMenu 0
+ClickExit 3
+ClickExit 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\JugarMultijugadorWindow.xaml.cs
+ClickGoBack 3
+ClickGoBack 0
+ClickCreateGame 2
+ClickCreateGame 0
+ClickJoinGame 2
+ClickJoinGame 0
+ClickLeaveGame 2
+ClickLeaveGame 0
+ClickStartGame 2
+ClickStartGame 0
+ReciveGame 3
+ReciveGame 0
+ReciveMember 3
+ReciveMember 0
+SendUsername 2
+SendUsername 0
+SendNumberOfPlayers 2
+SendNumberOfPlayers 0
+ReciveMembers 3
+ReciveMembers 15
+GameFull 2
+GameFull 0
+LeaveGame 2
+LeaveGame 0
+SomeoneLeftGame 2
+SomeoneLeftGame 0
+UpdateGames 2
+UpdateGames 0
+AdjustComponents 3
+AdjustComponents 0
+ResetComponents 5
+ResetComponents 0
+GamesList_IsDoubleClick 3
+GamesList_IsDoubleClick 0
+GamesList_SelectedIndexChanged 3
+GamesList_SelectedIndexChanged 0
+ComboBox_SelectedIndexChanged 3
+ComboBox_SelectedIndexChanged 0
+ClickKickPlayer 3
+ClickKickPlayer 0
+StartRound 3
+StartRound 0
+LoadingRow 3
+LoadingRow 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\MenuWindow.xaml.cs
+ReciveMessage 3
+ReciveMessage 0
+ClickPlay 2
+ClickPlay 0
+ClickSeeScores 6
+ClickSeeScores 0
+ClickChangePassword 3
+ClickChangePassword 0
+GoBack 3
+GoBack 0
+ClickLogOut 4
+ClickLogOut 0
+ClickIconChat 2
+ClickIconChat 0
+IsEnter 3
+IsEnter 0
+ScrollViewer_OnScrollChanged 2
+ScrollViewer_OnScrollChanged 0
+UserNotVerified 3
+UserNotVerified 0
+ClickValidate 2
+ClickValidate 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Properties\Resources.Designer.cs
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\RecuperarContraseñaWindow.xaml.cs
+ClickCancel 3
+ClickCancel 0
+ClickRecover 2
+ClickRecover 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\RegistrarseWindow.xaml.cs
+ClickCancel 3
+ClickCancel 0
+ClickRegister 3
+ClickRegister 0
+ShowValidateSection 4
+ShowValidateSection 0
+ClickAnotherTime 4
+ClickAnotherTime 0
+ClickValidate 2
+ClickValidate 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\VerMarcadoresWindow.xaml.cs
+ClickRegresar 3
+ClickRegresar 15
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\App.xaml.cs
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\MainWindow.xaml.cs
+ClickLogIn 2
+ClickLogIn 0
+ClickSignUp 2
+ClickSignUp 0
+IsEnter 3
+IsEnter 0
+ClickRecover 3
+ClickRecover 0
+GoBack 3
+GoBack 0
+Navegate 3
+Navegate 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Properties\AssemblyInfo.cs
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Properties\Resources.en.Designer.cs
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\Properties\Settings.Designer.cs
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\CambiarContraseñaWindow.g.cs
+InitializeComponent 3
+InitializeComponent 0
+Connect 2
+Connect 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\GameWindow.g.cs
+InitializeComponent 3
+InitializeComponent 0
+Connect 2
+Connect 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\JugarMultijugadorWindow.g.cs
+InitializeComponent 3
+InitializeComponent 0
+Connect 2
+Connect 0
+Connect 2
+Connect 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\MainWindow.g.cs
+InitializeComponent 3
+InitializeComponent 0
+Connect 3
+Connect 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\MenuWindow.g.cs
+InitializeComponent 3
+InitializeComponent 0
+Connect 2
+Connect 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\RecuperarContraseñaWindow.g.cs
+InitializeComponent 2
+InitializeComponent 0
+Connect 2
+Connect 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\RegistrarseWindow.g.cs
+InitializeComponent 3
+InitializeComponent 0
+Connect 2
+Connect 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\VerMarcadoresWindow.g.cs
+InitializeComponent 3
+InitializeComponent 0
+Connect 2
+Connect 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\App.g.cs
+InitializeComponent 3
+InitializeComponent 0
+Main 2
+Main 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs
+

@@ -204,6 +204,9 @@
   <data name="NewPassword" xml:space="preserve">
     <value>Nueva contraseña</value>
   </data>
+  <data name="NoDatabase" xml:space="preserve">
+    <value>La base de datos está apagada. Intenta despues.</value>
+  </data>
   <data name="NoExtraPoints" xml:space="preserve">
     <value>Cuando ganes conseguirás puntos extras</value>
   </data>
@@ -255,6 +258,9 @@
   <data name="SeeScores_Button" xml:space="preserve">
     <value>Ver marcadores</value>
   </data>
+  <data name="ServerIsOff" xml:space="preserve">
+    <value>El servidor no responde. Intenta despues.</value>
+  </data>
   <data name="SignUp_Button" xml:space="preserve">
     <value>Registrarse</value>
   </data>
@@ -286,7 +292,7 @@
     <value>Nombre de usuario</value>
   </data>
   <data name="ValidateText" xml:space="preserve">
-    <value>Ingresa la clave mandada a tu correo para completar tu registro y poder jugar</value>
+    <value>Ingresa la clave mandada a tu correo para completar tu registro</value>
   </data>
   <data name="Validate_Button" xml:space="preserve">
     <value>Validar</value>

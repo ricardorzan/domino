@@ -7,12 +7,16 @@ using System.Windows.Input;
 namespace Domino
 {
     /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml, which is the main screen you start the game with.
+    /// This window is in charge of the login credentials validation.
     /// </summary>
     public partial class MainWindow : Window
     {
         private readonly object content;
 
+        /// <summary>
+        /// The class constructor.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -28,17 +32,25 @@ namespace Domino
                 String emailFormat = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
                 if (Regex.IsMatch(email, emailFormat))
                 {
-                    Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
-                    string isValid = server.LogIn(email, password);
-                    server.Close();
-                    if (!string.IsNullOrEmpty(isValid))
+                    try
                     {
-                        MenuWindow sesion = new MenuWindow(isValid);
-                        sesion.Show();
-                        this.Close();
+                        Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
+                        string isValid = server.LogIn(email, password);
+                        server.Close();
+                        if (!string.IsNullOrEmpty(isValid))
+                        {
+                            MenuWindow sesion = new MenuWindow(isValid);
+                            sesion.Show();
+                            this.Close();
+                        }
+                        else
+                            LabelAlert.Content = Properties.Resources.NoMatch;
                     }
-                    else
-                        LabelAlert.Content = Properties.Resources.NoMatch;
+                    catch (System.ServiceModel.EndpointNotFoundException ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                        LabelAlert.Content = Properties.Resources.ServerIsOff;
+                    }
                 }
                 else
                     LabelAlert.Content = Properties.Resources.InvalidEmail;
@@ -65,6 +77,9 @@ namespace Domino
             Navegate(recoverWindow);
         }
 
+        /// <summary>
+        /// Allows the other pages to return to this initial screen.
+        /// </summary>
         public void GoBack()
         {
             TextBoxEmail.Clear();
@@ -73,6 +88,10 @@ namespace Domino
             Content = content;
         }
 
+        /// <summary>
+        /// Allows other pages to navigate between them without changing windows.
+        /// </summary>
+        /// <param name="page"> The page to which the page invoking the method wants to navigate. </param>
         public void Navegate(Page page)
         {
             this.Content = page;

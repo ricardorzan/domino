@@ -9,11 +9,11 @@ using WPFCustomMessageBox;
 namespace Domino
 {
     /// <summary>
-    /// Lógica de interacción para GameWindow.xaml
+    /// Interaction logic for GameWindow.xaml
+    /// This window represents a domino game and allows its playability.
     /// </summary>
     public partial class GameWindow : Window, Proxy.IGameServiceCallback, Proxy.IChatServiceCallback
     {
-        private readonly object content;
         private readonly int GameId;
         private readonly string username;
         private readonly bool isHost;
@@ -33,10 +33,15 @@ namespace Domino
         private readonly Proxy.GameServiceClient serverGame = null;
         private readonly InstanceContext context = null;
 
+        /// <summary>
+        /// The class constructor that initialize the game values.
+        /// </summary>
+        /// <param name="idGame"> Game identifier to which the user is in. </param>
+        /// <param name="username"> The username of the user logged in sesion. </param>
+        /// <param name="isHost"> A Boolean value that determines if the user is the owner of the game. </param>
         public GameWindow(int idGame, string username, bool isHost)
         {
             InitializeComponent();
-            content = Content;
             this.GameId = idGame;
             this.username = username;
             this.isHost = isHost;
@@ -53,6 +58,10 @@ namespace Domino
             serverGame.GetFirstSevenTiles(idGame);
         }
 
+        /// <summary>
+        /// This method adds to the game the players as they enter to the game.
+        /// </summary>
+        /// <param name="username"> Username of the user who is enter. </param>
         public void ReciveNewMember(string username)
         {
             if (username != this.username)
@@ -86,6 +95,10 @@ namespace Domino
             }
         }
 
+        /// <summary>
+        /// Callback that allows adding to the game players who were already in game.
+        /// </summary>
+        /// <param name="members"> An array of the usernames of the players within the game. </param>
         public void ReciveMembersInGame(string[] members)
         {
             for (int i = 0; i < members.Length; i++)
@@ -94,6 +107,13 @@ namespace Domino
             }
         }
 
+        /// <summary>
+        /// Callback invoked when someone places a tile on the board and passes his turn.
+        /// </summary>
+        /// <param name="username"> The user who put the tile. </param>
+        /// <param name="tile"> The tile placed on the board. </param>
+        /// <param name="decision"> A Boolean value that allows to know if the tile could be in left
+        /// or right side. </param>
         public void SomeonePutATile(string username, string tile, bool decision)
         {
             RemoveTileFromPlayer(username);
@@ -214,6 +234,10 @@ namespace Domino
             }
         }
 
+        /// <summary>
+        /// Callback invoked when someone took a tile frome the bank.
+        /// </summary>
+        /// <param name="username"> The user who took the tile. </param>
         public void SomeoneTookATile(string username)
         {
             var converter = new ImageSourceConverter();
@@ -237,6 +261,10 @@ namespace Domino
             TextBoxBank.Text = TalesInBank.ToString();
         }
 
+        /// <summary>
+        /// This method sends the highest tile in hand to the server.
+        /// </summary>
+        /// <returns> The highest tile in hand. </returns>
         public string SendHighestTile()
         {
             highestTilePosition = 0;
@@ -265,7 +293,7 @@ namespace Domino
                     highestTile = tile;
                     highestTilePosition = count;
                 }
-                if(numberOne == numberTwo)
+                if (numberOne == numberTwo)
                     isThereOneMule = true;
                 count++;
             }
@@ -297,6 +325,10 @@ namespace Domino
             return false;
         }
 
+        /// <summary>
+        /// Callback invoked when the user takes the turn.
+        /// </summary>
+        /// <param name="isFirstTurn"> A Boolean value that deremines if it's first turn or not. </param>
         public void IsYourTurn(bool isFirstTurn)
         {
             int numberOfTilesToPlay = 0;
@@ -338,7 +370,7 @@ namespace Domino
             }
         }
 
-        public void LookForAPossibleTile(out int numberOfTilesToPlay, out int[] tilesToPlay)
+        private void LookForAPossibleTile(out int numberOfTilesToPlay, out int[] tilesToPlay)
         {
             tilesToPlay = new int[tilesInHand.Length];
             numberOfTilesToPlay = 0;
@@ -362,7 +394,7 @@ namespace Domino
             }
         }
 
-        public void EnablePossibleTiles(int[] tilesToPlay)
+        private void EnablePossibleTiles(int[] tilesToPlay)
         {
             for (int j = 0; j < tilesToPlay.Length; j++)
             {
@@ -379,6 +411,10 @@ namespace Domino
             }
         }
 
+        /// <summary>
+        /// Callback invoked when the user takes a tile from the bank.
+        /// </summary>
+        /// <param name="tile"> Tile taken. </param>
         public void GetTheTile(string tile)
         {
             for (int i = 0; i < tilesInHand.Length; i++)
@@ -407,6 +443,10 @@ namespace Domino
                 serverGame.PassTurn(GameId);
         }
 
+        /// <summary>
+        /// This method adds the first seven tiles to the hand.
+        /// </summary>
+        /// <param name="dominoes"> An array of the first seven tiles. </param>
         public void GetDominoes(string[] dominoes)
         {
             for (int i = 0; i < 7; i++)
@@ -530,6 +570,10 @@ namespace Domino
             return tileToPut;
         }
 
+        /// <summary>
+        /// Callback that ends the game when someone doesn't have more tiles in hand.
+        /// </summary>
+        /// <param name="username"> The user who won the game. </param>
         public void SomeoneWonTheRound(string username)
         {
             if (username == this.username)
@@ -549,6 +593,11 @@ namespace Domino
             EndPanel.Visibility = Visibility.Visible;
         }
 
+        /// <summary>
+        /// Callback that allows the entry of messages from any user in the game chat.
+        /// </summary>
+        /// <param name="username"> The username of the user who is sending the incoming message. </param>
+        /// <param name="message"> The incoming message. </param>
         public void ReciveMessage(string username, string message)
         {
             string format = "\n" + username + ": " + message;
@@ -577,6 +626,7 @@ namespace Domino
         }
 
         private bool _autoScroll = true;
+
         private void ScrollViewer_OnScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             if (e.ExtentHeightChange == 0)
@@ -599,4 +649,3 @@ namespace Domino
         }
     }
 }
-

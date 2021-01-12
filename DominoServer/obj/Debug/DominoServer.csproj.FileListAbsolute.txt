@@ -17,3 +17,5 @@ C:\Users\ricar\Documents\GitHub\domino\DominoServer\obj\Debug\DominoServer.cspro
 C:\Users\ricar\Documents\GitHub\domino\DominoServer\obj\Debug\DominoServer.csproj.CopyComplete
 C:\Users\ricar\Documents\GitHub\domino\DominoServer\obj\Debug\DominoServer.exe
 C:\Users\ricar\Documents\GitHub\domino\DominoServer\obj\Debug\DominoServer.pdb
+C:\Users\ricar\Documents\GitHub\domino\DominoServer\bin\Debug\DominoServer.xml
+C:\Users\ricar\Documents\GitHub\domino\DominoServer\bin\Debug\DominoContracts.xml

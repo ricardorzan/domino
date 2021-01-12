@@ -1,21 +1,31 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Domino
 {
     /// <summary>
-    /// Lógica de interacción para CambiarContraseñaWindow.xaml
+    /// Interaction logic for CambiarContraseñaWindow.xaml
+    /// This page is in charge of changing the password of the user in session through a confirmation form.
     /// </summary>
     public partial class CambiarContraseñaWindow : Page
     {
         private readonly MenuWindow menuWindow;
         private readonly string username;
 
+        /// <summary>
+        /// The class constructor.
+        /// </summary>
         public CambiarContraseñaWindow()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// The class constructor that is invoked to replace the contents of the window.
+        /// </summary>
+        /// <param name="menuWindow"> The window that is showing this page. </param>
+        /// <param name="username"> The user in logged in session. </param>
         public CambiarContraseñaWindow(MenuWindow menuWindow, string username)
         {
             InitializeComponent();
@@ -37,16 +47,24 @@ namespace Domino
             {
                 if (newPassword.Equals(confirmation))
                 {
-                    Proxy.MenuServiceClient server = new Proxy.MenuServiceClient();
-                    bool isPasswordChanged = server.ChangePassword(username, currentPassword, newPassword);
-                    server.Close();
-                    if (isPasswordChanged)
+                    try
                     {
-                        MessageBox.Show(Properties.Resources.PasswordChanged);
-                        menuWindow.GoBack();
+                        Proxy.MenuServiceClient server = new Proxy.MenuServiceClient();
+                        bool isPasswordChanged = server.ChangePassword(username, currentPassword, newPassword);
+                        server.Close();
+                        if (isPasswordChanged)
+                        {
+                            MessageBox.Show(Properties.Resources.PasswordChanged);
+                            menuWindow.GoBack();
+                        }
+                        else
+                            LabelAlert.Content = Properties.Resources.IncorrectPassword;
                     }
-                    else
-                        LabelAlert.Content = Properties.Resources.IncorrectPassword;
+                    catch (System.ServiceModel.EndpointNotFoundException ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                        LabelAlert.Content = Properties.Resources.ServerIsOff;
+                    }
                 }
                 else
                     LabelAlert.Content = Properties.Resources.PasswordsDoNotMatch;

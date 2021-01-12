@@ -1,56 +1,56 @@
 ﻿<Page x:Class="Domino.JugarMultijugadorWindow"
-   xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-   xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml" 
+   xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+   xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-   xmlns:local = "clr-namespace:Domino" 
+   xmlns:local = "clr-namespace:Domino"
    xmlns:p = "clr-namespace:Domino.Properties"
    Title = "{x:Static p:Resources.Title}" Height="400" Width="600">
 
     <Grid Margin="20 10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Button x:Name="GoBackButton" Grid.Column="0" Grid.Row="5" Margin="20 5" Click="ClickGoBack" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3">
-            <materialDesign:PackIcon Kind="StepBackward" Width="25" Height="25"/>
+        <Button x:Name="GoBackButton" Grid.Column="0" Grid.Row="5" Margin="15 5" Click="ClickGoBack" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3">
+            <materialDesign:PackIcon Kind="StepBackward" Width="Auto" Height="Auto" />
         </Button>
 
-        <TextBox x:Name="TextBoxGameName" Grid.Column="2" Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Right" materialDesign:HintAssist.Hint="Insert the name of your game"/>
-        <ComboBox x:Name="NumberOfPlayersComboBox" Grid.Column="2" Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Right" materialDesign:HintAssist.Hint="Max players" ItemsSource="{Binding NumPlayers}" SelectionChanged="ComboBox_SelectedIndexChanged"/>
-        <Button x:Name="CreateGameButton" Grid.Column="3" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.CreateGame_Button}" Click="ClickCreateGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3"  IsEnabled="False"/>
-        <Button x:Name="JoinGameButton" Grid.Column="1" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.JoinGame_Button}" Click="ClickJoinGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" IsEnabled="False"/>
+        <TextBox x:Name="TextBoxGameName" Grid.Column="2" Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Right" materialDesign:HintAssist.Hint="Name of your game" />
+        <ComboBox x:Name="NumberOfPlayersComboBox" Grid.Column="2" Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Right" materialDesign:HintAssist.Hint="Max players" ItemsSource="{Binding NumPlayers}" SelectionChanged="ComboBox_SelectedIndexChanged" />
+        <Button x:Name="CreateGameButton" Grid.Column="3" Grid.Row="5" Margin="15 5" Content="{x:Static p:Resources.CreateGame_Button}" Click="ClickCreateGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3"  IsEnabled="False" />
+        <Button x:Name="JoinGameButton" Grid.Column="1" Grid.Row="5" Margin="15 5" Content="{x:Static p:Resources.JoinGame_Button}" Click="ClickJoinGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" IsEnabled="False" />
 
         <Button x:Name="LeaveGameButton" Grid.Column="1" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.LeaveGame_Button}" Click="ClickLeaveGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Visibility="Hidden"></Button>
-        <Button x:Name="StartGameButton" Grid.Column="2" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.StartGame_Button}" Click="ClickStartGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Visibility="Hidden" IsEnabled="False"></Button>
-        
+        <Button x:Name="StartGameButton" Grid.Column="3" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.StartGame_Button}" Click="ClickStartGame" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3" Visibility="Hidden" IsEnabled="False"></Button>
+
         <ListView x:Name="GamesList" Grid.RowSpan="5" Grid.ColumnSpan="4" ItemsSource="{Binding Games}" Margin="20,20,20,20" MouseDoubleClick="GamesList_IsDoubleClick" SelectionChanged="GamesList_SelectedIndexChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="{x:Static p:Resources.GameText}"/>
+                    <GridViewColumn Header="{x:Static p:Resources.GameText}" />
                 </GridView>
             </ListView.View>
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem" BasedOn="{StaticResource MaterialDesignListBoxItem}">
-                    <Setter Property="Background" Value="MediumPurple"/>
+                    <Setter Property="Background" Value="MediumPurple" />
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>
 
         <DataGrid Name="PlayersGrid" AutoGenerateColumns = "False" ItemsSource="{Binding Players, NotifyOnSourceUpdated=True}"
                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="5" Margin="20,20,20,20"
-                  BorderThickness="3" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" 
+                  BorderThickness="3" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False"
                   CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False">
             <DataGrid.Columns>
                 <DataGridTemplateColumn x:Name="KickPlayerColumn">
@@ -58,13 +58,13 @@
                         <DataTemplate>
                             <Button Click="ClickKickPlayer">
                                 <Button.Content>
-                                    <materialDesign:PackIcon Kind="Output"/>
+                                    <materialDesign:PackIcon Kind="Output" />
                                 </Button.Content>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Players" IsReadOnly="True" Width="150" Binding="{Binding }"/>
+                <DataGridTextColumn Header="Players" IsReadOnly="True" Width="150" Binding="{Binding }" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

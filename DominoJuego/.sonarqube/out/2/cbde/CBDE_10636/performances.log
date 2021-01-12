@@ -1,0 +1,68 @@
+C:\Users\ricar\Documents\GitHub\domino\DominoServer\DominoService.cs
+JoinCurrentGame 8
+JoinCurrentGame 0
+GetFirstSevenTiles 4
+GetFirstSevenTiles 0
+GetPlayersName 3
+GetPlayersName 0
+GetHighestTile 3
+GetHighestTile 0
+HighestIsNotMule 16
+HighestIsNotMule 15
+HighestIsMule 4
+HighestIsMule 0
+PutATile 4
+PutATile 0
+PassTurn 5
+PassTurn 0
+TakeFromTheBank 5
+TakeFromTheBank 0
+Win 9
+Win 0
+UploadPoints 6
+UploadPoints 0
+JoinLobby 9
+JoinLobby 0
+GetGames 4
+GetGames 0
+CreateGame 4
+CreateGame 0
+JoinGame 4
+JoinGame 0
+BreakGame 3
+BreakGame 0
+MemberLeftGame 4
+MemberLeftGame 0
+KickPlayer 6
+KickPlayer 0
+StartGame 5
+StartGame 0
+JoinChat 11
+JoinChat 15
+SendMessage 4
+SendMessage 0
+ChangePassword 4
+ChangePassword 0
+GetScores 4
+GetScores 0
+RecoverPassword 5
+RecoverPassword 0
+SignUp 5
+SignUp 0
+VerificateUser 4
+VerificateUser 0
+IsVerified 5
+IsVerified 0
+LogIn 4
+LogIn 0
+SendEmail 3
+SendEmail 0
+Shuffle 11
+Shuffle 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoServer\Program.cs
+Main 4
+Main 0
+
+C:\Users\ricar\Documents\GitHub\domino\DominoServer\obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs
+

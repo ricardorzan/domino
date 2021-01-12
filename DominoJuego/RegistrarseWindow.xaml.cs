@@ -2,22 +2,31 @@
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using WPFCustomMessageBox;
 
 namespace Domino
 {
     /// <summary>
-    /// Lógica de interacción para Window1.xaml
+    /// Interaction logic for Window1.xaml.
+    /// This page is responsible for registering a new user through a form and validation.
     /// </summary>
     public partial class RegistrarseWindow : Page
     {
         private readonly MainWindow mainWindow;
-        string user;
+        private string user;
 
+        /// <summary>
+        /// The class constructor.
+        /// </summary>
         public RegistrarseWindow()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// The class constructor that is invoked to replace the contents of the window.
+        /// </summary>
+        /// <param name="mainWindow"> The window that is showing this page. </param>
         public RegistrarseWindow(MainWindow mainWindow)
         {
             InitializeComponent();
@@ -35,13 +44,18 @@ namespace Domino
             string email = TextBoxEmail.Text;
             string password = TextBoxPassword.Password;
             string passwordConfirmation = TextBoxPasswordConfirmation.Password;
+            if (!password.Equals(passwordConfirmation))
+            {
+                LabelAlert.Content = Properties.Resources.PasswordsDoNotMatch;
+                return;
+            }
 
-            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(passwordConfirmation))
+            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
             {
                 String sFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
                 if (Regex.IsMatch(email, sFormato))
                 {
-                    if (password.Equals(passwordConfirmation))
+                    try
                     {
                         Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
                         bool isValid = server.SignUp(username, email, password);
@@ -54,8 +68,11 @@ namespace Domino
                         else
                             LabelAlert.Content = Properties.Resources.ExistingMail;
                     }
-                    else
-                        LabelAlert.Content = Properties.Resources.PasswordsDoNotMatch;
+                    catch (System.ServiceModel.EndpointNotFoundException ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                        LabelAlert.Content = Properties.Resources.ServerIsOff;
+                    }
                 }
                 else
                     LabelAlert.Content = Properties.Resources.InvalidEmail;
@@ -70,7 +87,7 @@ namespace Domino
             ValidateIcon.Visibility = Visibility.Visible;
             TextBoxToken.Visibility = Visibility.Visible;
             AnotherTimeButton.Visibility = Visibility.Visible;
-
+            LabelAlert.Content = "";
             UsernameIcon.Visibility = Visibility.Hidden;
             TextBoxUsername.Visibility = Visibility.Hidden;
             EmailIcon.Visibility = Visibility.Hidden;
@@ -91,17 +108,24 @@ namespace Domino
             string token = TextBoxToken.Text;
             if (!string.IsNullOrEmpty(token))
             {
-                Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
-                bool isVerified = server.VerificateUser(user, token);
-                server.Close();
-
-                if (isVerified)
+                try
                 {
-                    MessageBox.Show(Properties.Resources.SuccessfulVerification);
-                    mainWindow.GoBack();
+                    Proxy.LoginServiceClient server = new Proxy.LoginServiceClient();
+                    bool isVerified = server.VerificateUser(user, token);
+                    server.Close();
+                    if (isVerified)
+                    {
+                        CustomMessageBox.Show(Properties.Resources.SuccessfulVerification);
+                        mainWindow.GoBack();
+                    }
+                    else
+                        LabelAlert.Content = Properties.Resources.UnsuccessfulVerification;
                 }
-                else
-                    LabelAlert.Content = Properties.Resources.UnsuccessfulVerification;
+                catch (System.ServiceModel.EndpointNotFoundException ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    LabelAlert.Content = Properties.Resources.ServerIsOff;
+                }
             }
             else
                 LabelAlert.Content = Properties.Resources.EmptyFields;

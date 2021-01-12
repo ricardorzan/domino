@@ -19,7 +19,7 @@ namespace DominoModelo
             : base("name=DominoContext")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

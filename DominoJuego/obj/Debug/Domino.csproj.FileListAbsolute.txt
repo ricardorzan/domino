@@ -1,4 +1,5 @@
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\Domino.exe.config
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\Domino.xml
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\Domino.exe
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\Domino.pdb
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\en\Domino.resources.dll
@@ -11,8 +12,10 @@ C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\DominoModelo.exe
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\EntityFramework.dll
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\shortid.dll
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\DominoContracts.pdb
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\DominoContracts.xml
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\DominoContracts.dll.config
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\DominoServer.pdb
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\DominoServer.xml
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\DominoServer.exe.config
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\MaterialDesignColors.pdb
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\MaterialDesignThemes.Wpf.pdb
@@ -22,6 +25,7 @@ C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\DominoModelo.pdb
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\DominoModelo.exe.config
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\bin\Debug\EntityFramework.xml
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\Domino.csprojAssemblyReference.cache
+C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\App.baml
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\CambiarContraseñaWindow.g.cs
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\GameWindow.g.cs
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\JugarMultijugadorWindow.g.cs
@@ -33,7 +37,6 @@ C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\VerMarcadoresWindow
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\App.g.cs
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\Domino_MarkupCompile.cache
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\Domino_MarkupCompile.lref
-C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\App.baml
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\CambiarContraseñaWindow.baml
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\GameWindow.baml
 C:\Users\ricar\Documents\GitHub\domino\DominoJuego\obj\Debug\JugarMultijugadorWindow.baml

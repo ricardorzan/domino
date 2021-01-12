@@ -6,9 +6,10 @@ using System.Windows.Input;
 
 namespace Domino
 {
-
     /// <summary>
-    /// Lógica de interacción para MenuWindow.xaml
+    /// Interaction logic for MenuWindow.xaml
+    /// This window contains the main menu once entered the game, allows global
+    /// chat communication and change pages according to the user chooses.
     /// </summary>
     public partial class MenuWindow : Window, Proxy.IChatServiceCallback
     {
@@ -17,6 +18,10 @@ namespace Domino
         private readonly Proxy.ChatServiceClient server = null;
         private readonly InstanceContext context = null;
 
+        /// <summary>
+        /// The class constructor initializes the menu and verifies that the user is registered.
+        /// </summary>
+        /// <param name="username"> The user in logged in session. </param>
         public MenuWindow(string username)
         {
             InitializeComponent();
@@ -35,6 +40,11 @@ namespace Domino
             verificator.Close();
         }
 
+        /// <summary>
+        /// Callback that allows the entry of messages from any user in the global chat.
+        /// </summary>
+        /// <param name="username"> The username of the user who is sending the incoming message. </param>
+        /// <param name="message"> The incoming message. </param>
         public void ReciveMessage(string username, string message)
         {
             string format = "\n" + username + ": " + message;
@@ -44,22 +54,49 @@ namespace Domino
 
         private void ClickPlay(object sender, RoutedEventArgs e)
         {
-            JugarMultijugadorWindow playMultiplayerWindow = new JugarMultijugadorWindow(this, username);
-            this.Content = playMultiplayerWindow;
+            try
+            {
+                JugarMultijugadorWindow playMultiplayerWindow = new JugarMultijugadorWindow(this, username);
+                this.Content = playMultiplayerWindow;
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                Console.WriteLine(ex.ToString());
+                LabelAlert.Content = Properties.Resources.ServerIsOff;
+            }
         }
 
         private void ClickSeeScores(object sender, RoutedEventArgs e)
         {
-            VerMarcadoresWindow seeScoresWindow = new VerMarcadoresWindow(this);
-            this.Content = seeScoresWindow;
+            try
+            {
+                VerMarcadoresWindow seeScoresWindow = new VerMarcadoresWindow(this);
+                this.Content = seeScoresWindow;
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                Console.WriteLine(ex.ToString());
+                LabelAlert.Content = Properties.Resources.ServerIsOff;
+            }
         }
 
         private void ClickChangePassword(object sender, RoutedEventArgs e)
         {
-            CambiarContraseñaWindow changePasswordWindow = new CambiarContraseñaWindow(this, username);
-            this.Content = changePasswordWindow;
+            try
+            {
+                CambiarContraseñaWindow changePasswordWindow = new CambiarContraseñaWindow(this, username);
+                this.Content = changePasswordWindow;
+            }
+            catch (System.ServiceModel.EndpointNotFoundException ex)
+            {
+                Console.WriteLine(ex.ToString());
+                LabelAlert.Content = Properties.Resources.ServerIsOff;
+            }
         }
 
+        /// <summary>
+        /// Allows the other pages to return to this menu screen.
+        /// </summary>
         public void GoBack()
         {
             TextBoxChat.Clear();
@@ -79,12 +116,20 @@ namespace Domino
             string message = TextBoxChat.Text;
             if (!string.IsNullOrEmpty(message))
             {
-                server.SendMessage(0, message);
+                try
+                {
+                    server.SendMessage(0, message);
 
-                string format = "\n" + Properties.Resources.You + ": " + message;
-                ChatBox.AppendText(format);
-                ChatBox.ScrollToEnd();
-                TextBoxChat.Clear();
+                    string format = "\n" + Properties.Resources.You + ": " + message;
+                    ChatBox.AppendText(format);
+                    ChatBox.ScrollToEnd();
+                    TextBoxChat.Clear();
+                }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    LabelAlert.Content = Properties.Resources.ServerIsOff;
+                }
             }
         }
 
@@ -95,6 +140,7 @@ namespace Domino
         }
 
         private bool _autoScroll = true;
+
         private void ScrollViewer_OnScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             if (e.ExtentHeightChange == 0)
@@ -123,27 +169,35 @@ namespace Domino
             string token = TextBoxToken.Text;
             if (!string.IsNullOrEmpty(token))
             {
-                Proxy.LoginServiceClient verificator = new Proxy.LoginServiceClient();
-                bool isVerified = verificator.VerificateUser(username, token);
-                verificator.Close();
-
-                if (isVerified)
+                try
                 {
-                    ButtonChat.IsEnabled = true;
-                    TextBoxChat.IsEnabled = true;
-                    ButtonSeeScores.IsEnabled = true;
-                    ButtonChangePassword.IsEnabled = true;
-                    ButtonPlay.IsEnabled = true;
+                    Proxy.LoginServiceClient verificator = new Proxy.LoginServiceClient();
+                    bool isVerified = verificator.VerificateUser(username, token);
+                    verificator.Close();
 
-                    TextBoxToken.Visibility = Visibility.Collapsed;
-                    IconToken.Visibility = Visibility.Collapsed;
-                    ButtonValidate.Visibility = Visibility.Collapsed;
-                    LabelAlert.Content = Properties.Resources.AccountHasBeenVerifiedText;
+                    if (isVerified)
+                    {
+                        ButtonChat.IsEnabled = true;
+                        TextBoxChat.IsEnabled = true;
+                        ButtonSeeScores.IsEnabled = true;
+                        ButtonChangePassword.IsEnabled = true;
+                        ButtonPlay.IsEnabled = true;
 
-                    server.JoinChat(0, username);
+                        TextBoxToken.Visibility = Visibility.Collapsed;
+                        IconToken.Visibility = Visibility.Collapsed;
+                        ButtonValidate.Visibility = Visibility.Collapsed;
+                        LabelAlert.Content = Properties.Resources.AccountHasBeenVerifiedText;
+
+                        server.JoinChat(0, username);
+                    }
+                    else
+                        MessageBox.Show(Properties.Resources.UnsuccessfulVerification);
                 }
-                else
-                    MessageBox.Show(Properties.Resources.UnsuccessfulVerification);
+                catch (System.ServiceModel.EndpointNotFoundException ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    LabelAlert.Content = Properties.Resources.ServerIsOff;
+                }
             }
             else
                 MessageBox.Show(Properties.Resources.EmptyFields);

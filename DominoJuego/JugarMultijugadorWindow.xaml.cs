@@ -1,14 +1,17 @@
-﻿using Domino.Proxy;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using WPFCustomMessageBox;
 
 namespace Domino
 {
     /// <summary>
-    /// Lógica de interacción para JugarMultijugadorWindow.xaml
+    /// Interaction logic for JugarMultijugadorWindow.xaml
+    /// This page is in charge of allowing the creation of rooms as well as the entrance of the
+    /// user to them, in order to allow the beginning of a domino game.
     /// </summary>
     public partial class JugarMultijugadorWindow : Page, Proxy.ILobbyServiceCallback
     {
@@ -21,15 +24,34 @@ namespace Domino
         private readonly Proxy.LobbyServiceClient server = null;
         private readonly InstanceContext context = null;
 
+        /// <summary>
+        /// Collection containing game rooms created waiting to start the game.
+        /// </summary>
         public ObservableCollection<string> Games { get; private set; }
+
+        /// <summary>
+        /// Collection containing players in a specific game room waiting to start the game.
+        /// </summary>
         public ObservableCollection<string> Players { get; private set; }
+
+        /// <summary>
+        /// Collection containing the different numbers of players that can be in a game.
+        /// </summary>
         public ObservableCollection<int> NumPlayers { get; private set; }
 
+        /// <summary>
+        /// The class constructor.
+        /// </summary>
         public JugarMultijugadorWindow()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// The class constructor that is invoked to replace the contents of the window.
+        /// </summary>
+        /// <param name="menuWindow"> The window that is showing this page. </param>
+        /// <param name="username"> The user in logged in session. </param>
         public JugarMultijugadorWindow(MenuWindow menuWindow, string username)
         {
             InitializeComponent();
@@ -59,67 +81,126 @@ namespace Domino
 
         private void ClickCreateGame(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                gameName = TextBoxGameName.Text;
+                if (string.IsNullOrEmpty(gameName))
+                    gameName = Properties.Resources.GameOf + username;
+                numberOfPlayers = int.Parse(NumberOfPlayersComboBox.SelectedItem.ToString());
+                server.CreateGame(gameName);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                Console.WriteLine(ex.ToString());
+                CustomMessageBox.ShowOK(Properties.Resources.ServerIsOff, Properties.Resources.ServerIsOff, Properties.Resources.GoBack_Button);
+                ClickGoBack(sender, e);
+            }
             isHost = true;
             AdjustComponents(isHost);
-
             Players.Insert(0, username);
             DataContext = this;
-
-            gameName = TextBoxGameName.Text;
-            if (string.IsNullOrEmpty(gameName))
-                gameName = Properties.Resources.GameOf + username;
-
-            numberOfPlayers = int.Parse(NumberOfPlayersComboBox.SelectedItem.ToString());
-            server.CreateGame(gameName);
         }
 
         private void ClickJoinGame(object sender, RoutedEventArgs e)
         {
-            gameName = (string)GamesList.SelectedItem;
-            server.JoinGame(gameName);
+            try
+            {
+                gameName = (string)GamesList.SelectedItem;
+                if (gameName != null)
+                    server.JoinGame(gameName);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                Console.WriteLine(ex.ToString());
+                CustomMessageBox.ShowOK(Properties.Resources.ServerIsOff, Properties.Resources.ServerIsOff, Properties.Resources.GoBack_Button);
+                ClickGoBack(sender, e);
+            }
         }
 
         private void ClickLeaveGame(object sender, RoutedEventArgs e)
         {
-            if (isHost)
+            try
             {
-                if (MessageBox.Show(Properties.Resources.BreakGame, Properties.Resources.Confirmation, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (isHost)
                 {
-                    server.BreakGame(gameName);
+                    if (CustomMessageBox.Show(Properties.Resources.BreakGame, Properties.Resources.Confirmation, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        server.BreakGame(gameName);
+                        ResetComponents();
+                    }
+                }
+                else
+                {
+                    server.MemberLeftGame(gameName);
                     ResetComponents();
                 }
             }
-            else
+            catch (CommunicationObjectFaultedException ex)
             {
-                server.MemberLeftGame(gameName);
-                ResetComponents();
+                Console.WriteLine(ex.ToString());
+                CustomMessageBox.ShowOK(Properties.Resources.ServerIsOff, Properties.Resources.ServerIsOff, Properties.Resources.GoBack_Button);
+                ClickGoBack(sender, e);
             }
         }
 
         private void ClickStartGame(object sender, RoutedEventArgs e)
         {
-            server.StartGame(gameName);
+            try
+            {
+                server.StartGame(gameName);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                Console.WriteLine(ex.ToString());
+                CustomMessageBox.ShowOK(Properties.Resources.ServerIsOff, Properties.Resources.ServerIsOff, Properties.Resources.GoBack_Button);
+                ClickGoBack(sender, e);
+            }
         }
 
+        /// <summary>
+        /// Callback that allows adding a new game room to the games collection when a new one is
+        /// created.
+        /// </summary>
+        /// <param name="gameName"> The name of the new game room. </param>
         public void ReciveGame(string gameName)
         {
             Games.Insert(0, gameName);
             DataContext = this;
         }
 
+        /// <summary>
+        /// Callback that allows adding a player to the players collection when a new one is joined to
+        /// the specific game room.
+        /// </summary>
+        /// <param name="newMember"></param>
         public void ReciveMember(string newMember)
         {
             Players.Add(newMember);
             DataContext = this;
         }
 
+        /// <summary>
+        /// This method sends the username to the server.
+        /// </summary>
+        /// <returns> The username of who is in this session. </returns>
         public string SendUsername()
         {
             return username;
         }
 
+        /// <summary>
+        /// This method send the number of players for the specific room to the server.
+        /// </summary>
+        /// <param name="numberOfPlayers"> Number of players required to start the game. </param>
+        /// <returns> The number of players for the specific room. </returns>
         public int SendNumberOfPlayers(out int numberOfPlayers) => numberOfPlayers = this.numberOfPlayers;
 
+        /// <summary>
+        /// Callback that allows adding to the players collection players who were already waiting in
+        /// the specific game room.
+        /// </summary>
+        /// <param name="members"> An array of the usernames of the players within the specific game
+        /// room. </param>
         public void ReciveMembers(string[] members)
         {
             isHost = false;
@@ -131,37 +212,70 @@ namespace Domino
             DataContext = this;
         }
 
+        /// <summary>
+        /// Callback that represents that the game room to which the user tried to join was full.
+        /// </summary>
         public void GameFull()
         {
-            MessageBox.Show(Properties.Resources.RoomFull);
+            CustomMessageBox.Show(Properties.Resources.RoomFull);
         }
 
+        /// <summary>
+        /// Callback that expels the user from the specific game room in which he was already.
+        /// </summary>
+        /// <param name="isKickedOut"> A Boolean value that lets the user know if he was kicked out by
+        /// the room owner or it was because the room owner broke the room. </param>
         public void LeaveGame(bool isKickedOut)
         {
             if (isKickedOut)
             {
-                server.MemberLeftGame(gameName);
-                MessageBox.Show(Properties.Resources.KickedOut);
+                try
+                {
+                    server.MemberLeftGame(gameName);
+                    CustomMessageBox.Show(Properties.Resources.KickedOut);
+                }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    CustomMessageBox.ShowOK(Properties.Resources.ServerIsOff, Properties.Resources.ServerIsOff, Properties.Resources.GoBack_Button);
+                    ClickGoBack(this, new RoutedEventArgs());
+                }
             }
             else
-                MessageBox.Show(Properties.Resources.GameBroke);
-
+                CustomMessageBox.Show(Properties.Resources.GameBroke);
             ResetComponents();
         }
 
+        /// <summary>
+        /// Callback that allows a player to be removed from the players collection when the player in
+        /// question leaves the specific game room.
+        /// </summary>
+        /// <param name="memberWhoLeft"> The player who leaves the game room. </param>
         public void SomeoneLeftGame(string memberWhoLeft)
         {
             Players.Remove(memberWhoLeft);
             DataContext = this;
         }
 
+        /// <summary>
+        /// This method updates the games collection.
+        /// </summary>
         public void UpdateGames()
         {
             Games.Clear();
-            server.GetGames();
+            try
+            {
+                server.GetGames();
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                Console.WriteLine(ex.ToString());
+                CustomMessageBox.ShowOK(Properties.Resources.ServerIsOff, Properties.Resources.ServerIsOff, Properties.Resources.GoBack_Button);
+                ClickGoBack(this, new RoutedEventArgs());
+            }
         }
 
-        public void AdjustComponents(bool isHost)
+        private void AdjustComponents(bool isHost)
         {
             GoBackButton.IsEnabled = false;
 
@@ -179,7 +293,7 @@ namespace Domino
                 KickPlayerColumn.Visibility = Visibility.Hidden;
         }
 
-        public void ResetComponents()
+        private void ResetComponents()
         {
             GoBackButton.IsEnabled = true;
             GamesList.Visibility = Visibility.Visible;
@@ -237,11 +351,24 @@ namespace Domino
             server.KickPlayer(player, gameName);
         }
 
+        /// <summary>
+        /// Callback that allows the user to start the game.
+        /// </summary>
+        /// <param name="idGame"> Game identifier to which the user is going to enter. </param>
         public void StartRound(int idGame)
         {
-            GameWindow gameWindow = new GameWindow(idGame, username, isHost);
-            gameWindow.Show();
-            this.menuWindow.Close();
+            try
+            {
+                GameWindow gameWindow = new GameWindow(idGame, username, isHost);
+                gameWindow.Show();
+                this.menuWindow.Close();
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                Console.WriteLine(ex.ToString());
+                CustomMessageBox.ShowOK(Properties.Resources.ServerIsOff, Properties.Resources.ServerIsOff, Properties.Resources.GoBack_Button);
+                ClickGoBack(this, new RoutedEventArgs());
+            }
         }
 
         private void LoadingRow(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs args)

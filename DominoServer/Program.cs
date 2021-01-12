@@ -3,9 +3,9 @@ using System.ServiceModel;
 
 namespace DominoServer
 {
-    static class Program
+    internal static class Program
     {
-        static void Main()
+        private static void Main()
         {
             ServiceHost host = new ServiceHost(typeof(DominoService));
 

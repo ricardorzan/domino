@@ -1,0 +1,719 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Domino</name>
+    </assembly>
+    <members>
+        <member name="T:Domino.CambiarContraseñaWindow">
+            <summary>
+            Interaction logic for CambiarContraseñaWindow.xaml
+            This page is in charge of changing the password of the user in session through a confirmation form.
+            </summary>
+            <summary>
+            CambiarContraseñaWindow
+            </summary>
+        </member>
+        <member name="M:Domino.CambiarContraseñaWindow.#ctor">
+            <summary>
+            The class constructor.
+            </summary>
+        </member>
+        <member name="M:Domino.CambiarContraseñaWindow.#ctor(Domino.MenuWindow,System.String)">
+            <summary>
+            The class constructor that is invoked to replace the contents of the window.
+            </summary>
+            <param name="menuWindow"> The window that is showing this page. </param>
+            <param name="username"> The user in logged in session. </param>
+        </member>
+        <member name="M:Domino.CambiarContraseñaWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Domino.GameWindow">
+            <summary>
+            Interaction logic for GameWindow.xaml
+            This window represents a domino game and allows its playability.
+            </summary>
+            <summary>
+            GameWindow
+            </summary>
+        </member>
+        <member name="M:Domino.GameWindow.#ctor(System.Int32,System.String,System.Boolean)">
+            <summary>
+            The class constructor that initialize the game values.
+            </summary>
+            <param name="idGame"> Game identifier to which the user is in. </param>
+            <param name="username"> The username of the user logged in sesion. </param>
+            <param name="isHost"> A Boolean value that determines if the user is the owner of the game. </param>
+        </member>
+        <member name="M:Domino.GameWindow.ReciveNewMember(System.String)">
+            <summary>
+            This method adds to the game the players as they enter to the game.
+            </summary>
+            <param name="username"> Username of the user who is enter. </param>
+        </member>
+        <member name="M:Domino.GameWindow.ReciveMembersInGame(System.String[])">
+            <summary>
+            Callback that allows adding to the game players who were already in game.
+            </summary>
+            <param name="members"> An array of the usernames of the players within the game. </param>
+        </member>
+        <member name="M:Domino.GameWindow.SomeonePutATile(System.String,System.String,System.Boolean)">
+            <summary>
+            Callback invoked when someone places a tile on the board and passes his turn.
+            </summary>
+            <param name="username"> The user who put the tile. </param>
+            <param name="tile"> The tile placed on the board. </param>
+            <param name="decision"> A Boolean value that allows to know if the tile could be in left
+            or right side. </param>
+        </member>
+        <member name="M:Domino.GameWindow.SomeoneTookATile(System.String)">
+            <summary>
+            Callback invoked when someone took a tile frome the bank.
+            </summary>
+            <param name="username"> The user who took the tile. </param>
+        </member>
+        <member name="M:Domino.GameWindow.SendHighestTile">
+            <summary>
+            This method sends the highest tile in hand to the server.
+            </summary>
+            <returns> The highest tile in hand. </returns>
+        </member>
+        <member name="M:Domino.GameWindow.IsYourTurn(System.Boolean)">
+            <summary>
+            Callback invoked when the user takes the turn.
+            </summary>
+            <param name="isFirstTurn"> A Boolean value that deremines if it's first turn or not. </param>
+        </member>
+        <member name="M:Domino.GameWindow.GetTheTile(System.String)">
+            <summary>
+            Callback invoked when the user takes a tile from the bank.
+            </summary>
+            <param name="tile"> Tile taken. </param>
+        </member>
+        <member name="M:Domino.GameWindow.GetDominoes(System.String[])">
+            <summary>
+            This method adds the first seven tiles to the hand.
+            </summary>
+            <param name="dominoes"> An array of the first seven tiles. </param>
+        </member>
+        <member name="M:Domino.GameWindow.SomeoneWonTheRound(System.String)">
+            <summary>
+            Callback that ends the game when someone doesn't have more tiles in hand.
+            </summary>
+            <param name="username"> The user who won the game. </param>
+        </member>
+        <member name="M:Domino.GameWindow.ReciveMessage(System.String,System.String)">
+            <summary>
+            Callback that allows the entry of messages from any user in the game chat.
+            </summary>
+            <param name="username"> The username of the user who is sending the incoming message. </param>
+            <param name="message"> The incoming message. </param>
+        </member>
+        <member name="M:Domino.GameWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Domino.JugarMultijugadorWindow">
+            <summary>
+            Interaction logic for JugarMultijugadorWindow.xaml
+            This page is in charge of allowing the creation of rooms as well as the entrance of the
+            user to them, in order to allow the beginning of a domino game.
+            </summary>
+            <summary>
+            JugarMultijugadorWindow
+            </summary>
+        </member>
+        <member name="P:Domino.JugarMultijugadorWindow.Games">
+            <summary>
+            Collection containing game rooms created waiting to start the game.
+            </summary>
+        </member>
+        <member name="P:Domino.JugarMultijugadorWindow.Players">
+            <summary>
+            Collection containing players in a specific game room waiting to start the game.
+            </summary>
+        </member>
+        <member name="P:Domino.JugarMultijugadorWindow.NumPlayers">
+            <summary>
+            Collection containing the different numbers of players that can be in a game.
+            </summary>
+        </member>
+        <member name="M:Domino.JugarMultijugadorWindow.#ctor">
+            <summary>
+            The class constructor.
+            </summary>
+        </member>
+        <member name="M:Domino.JugarMultijugadorWindow.#ctor(Domino.MenuWindow,System.String)">
+            <summary>
+            The class constructor that is invoked to replace the contents of the window.
+            </summary>
+            <param name="menuWindow"> The window that is showing this page. </param>
+            <param name="username"> The user in logged in session. </param>
+        </member>
+        <member name="M:Domino.JugarMultijugadorWindow.ReciveGame(System.String)">
+            <summary>
+            Callback that allows adding a new game room to the games collection when a new one is
+            created.
+            </summary>
+            <param name="gameName"> The name of the new game room. </param>
+        </member>
+        <member name="M:Domino.JugarMultijugadorWindow.ReciveMember(System.String)">
+            <summary>
+            Callback that allows adding a player to the players collection when a new one is joined to
+            the specific game room.
+            </summary>
+            <param name="newMember"></param>
+        </member>
+        <member name="M:Domino.JugarMultijugadorWindow.SendUsername">
+            <summary>
+            This method sends the username to the server.
+            </summary>
+            <returns> The username of who is in this session. </returns>
+        </member>
+        <member name="M:Domino.JugarMultijugadorWindow.SendNumberOfPlayers(System.Int32@)">
+            <summary>
+            This method send the number of players for the specific room to the server.
+            </summary>
+            <param name="numberOfPlayers"> Number of players required to start the game. </param>
+            <returns> The number of players for the specific room. </returns>
+        </member>
+        <member name="M:Domino.JugarMultijugadorWindow.ReciveMembers(System.String[])">
+            <summary>
+            Callback that allows adding to the players collection players who were already waiting in
+            the specific game room.
+            </summary>
+            <param name="members"> An array of the usernames of the players within the specific game
+            room. </param>
+        </member>
+        <member name="M:Domino.JugarMultijugadorWindow.GameFull">
+            <summary>
+            Callback that represents that the game room to which the user tried to join was full.
+            </summary>
+        </member>
+        <member name="M:Domino.JugarMultijugadorWindow.LeaveGame(System.Boolean)">
+            <summary>
+            Callback that expels the user from the specific game room in which he was already.
+            </summary>
+            <param name="isKickedOut"> A Boolean value that lets the user know if he was kicked out by
+            the room owner or it was because the room owner broke the room. </param>
+        </member>
+        <member name="M:Domino.JugarMultijugadorWindow.SomeoneLeftGame(System.String)">
+            <summary>
+            Callback that allows a player to be removed from the players collection when the player in
+            question leaves the specific game room.
+            </summary>
+            <param name="memberWhoLeft"> The player who leaves the game room. </param>
+        </member>
+        <member name="M:Domino.JugarMultijugadorWindow.UpdateGames">
+            <summary>
+            This method updates the games collection.
+            </summary>
+        </member>
+        <member name="M:Domino.JugarMultijugadorWindow.StartRound(System.Int32)">
+            <summary>
+            Callback that allows the user to start the game.
+            </summary>
+            <param name="idGame"> Game identifier to which the user is going to enter. </param>
+        </member>
+        <member name="M:Domino.JugarMultijugadorWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Domino.MenuWindow">
+            <summary>
+            Interaction logic for MenuWindow.xaml
+            This window contains the main menu once entered the game, allows global
+            chat communication and change pages according to the user chooses.
+            </summary>
+            <summary>
+            MenuWindow
+            </summary>
+        </member>
+        <member name="M:Domino.MenuWindow.#ctor(System.String)">
+            <summary>
+            The class constructor initializes the menu and verifies that the user is registered.
+            </summary>
+            <param name="username"> The user in logged in session. </param>
+        </member>
+        <member name="M:Domino.MenuWindow.ReciveMessage(System.String,System.String)">
+            <summary>
+            Callback that allows the entry of messages from any user in the global chat.
+            </summary>
+            <param name="username"> The username of the user who is sending the incoming message. </param>
+            <param name="message"> The incoming message. </param>
+        </member>
+        <member name="M:Domino.MenuWindow.GoBack">
+            <summary>
+            Allows the other pages to return to this menu screen.
+            </summary>
+        </member>
+        <member name="M:Domino.MenuWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Domino.Properties.Resources">
+            <summary>
+              Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.ResourceManager">
+            <summary>
+              Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.Culture">
+            <summary>
+              Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+              búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.AccountHasBeenVerifiedText">
+            <summary>
+              Busca una cadena traducida similar a Your account not been verified.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.AccountHasNotBeenVerifiedText">
+            <summary>
+              Busca una cadena traducida similar a Your account has not been verified.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.AccountNotFound">
+            <summary>
+              Busca una cadena traducida similar a An account associated with that email was not found.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.AnotherTime_Button">
+            <summary>
+              Busca una cadena traducida similar a Another time.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.BreakGame">
+            <summary>
+              Busca una cadena traducida similar a You are about to undo the game, do you want to continue?.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.Cancel_Button">
+            <summary>
+              Busca una cadena traducida similar a Cancel.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.ChangePassword_Button">
+            <summary>
+              Busca una cadena traducida similar a Change password.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.Confirmation">
+            <summary>
+              Busca una cadena traducida similar a Confirmation.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.CreateGame_Button">
+            <summary>
+              Busca una cadena traducida similar a Create game.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.CurrentPassword">
+            <summary>
+              Busca una cadena traducida similar a Current password.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.Email">
+            <summary>
+              Busca una cadena traducida similar a Email.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.EmailSent">
+            <summary>
+              Busca una cadena traducida similar a An email with your password has been sent to you.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.EmptyFields">
+            <summary>
+              Busca una cadena traducida similar a Please fill in all the gaps.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.ExistingMail">
+            <summary>
+              Busca una cadena traducida similar a There is already a registered user with that email.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.ExtraPointsMessage">
+            <summary>
+              Busca una cadena traducida similar a For having won you accumulated .
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.GameBroke">
+            <summary>
+              Busca una cadena traducida similar a The owner has undone the game.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.GameOf">
+            <summary>
+              Busca una cadena traducida similar a Game of .
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.GameText">
+            <summary>
+              Busca una cadena traducida similar a Game.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.GoBack_Button">
+            <summary>
+              Busca una cadena traducida similar a Back.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.IncorrectPassword">
+            <summary>
+              Busca una cadena traducida similar a The current password is wrong.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.InsertTokenText">
+            <summary>
+              Busca una cadena traducida similar a Enter the key sent to your email.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.InvalidEmail">
+            <summary>
+              Busca una cadena traducida similar a Introduce a valid email.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.JoinGame_Button">
+            <summary>
+              Busca una cadena traducida similar a Join game.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.KeepPlaying">
+            <summary>
+              Busca una cadena traducida similar a Keep playing to earn points and appear in the leaderboard.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.KickedOut">
+            <summary>
+              Busca una cadena traducida similar a The owner of the game kicked you out.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.LeaveGame_Button">
+            <summary>
+              Busca una cadena traducida similar a Leave game.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.LogIn_Button">
+            <summary>
+              Busca una cadena traducida similar a Log in.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.LogOut_Button">
+            <summary>
+              Busca una cadena traducida similar a Log out.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.NewPassword">
+            <summary>
+              Busca una cadena traducida similar a New password.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.NoDatabase">
+            <summary>
+              Busca una cadena traducida similar a The database is off. Try later..
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.NoExtraPoints">
+            <summary>
+              Busca una cadena traducida similar a When you win you will get extra points.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.NoMatch">
+            <summary>
+              Busca una cadena traducida similar a Your login credentials do not match an account in our system.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.NoMoreTilesInBank">
+            <summary>
+              Busca una cadena traducida similar a There are no more tiles in the bank.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.Password">
+            <summary>
+              Busca una cadena traducida similar a Password.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.PasswordChanged">
+            <summary>
+              Busca una cadena traducida similar a Password changed successfully.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.PasswordConfirmation">
+            <summary>
+              Busca una cadena traducida similar a Password confirmation.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.PasswordsDoNotMatch">
+            <summary>
+              Busca una cadena traducida similar a The passwords do not match.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.PlayerText">
+            <summary>
+              Busca una cadena traducida similar a Player.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.PlayMultiplayer_Button">
+            <summary>
+              Busca una cadena traducida similar a Play multiplayer.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.PointsEarned">
+            <summary>
+              Busca una cadena traducida similar a Your points earned are:.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.PositionText">
+            <summary>
+              Busca una cadena traducida similar a Position.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.Recover_Button">
+            <summary>
+              Busca una cadena traducida similar a Recover.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.RecoverPasswordText">
+            <summary>
+              Busca una cadena traducida similar a Enter your email with which you registered to which we will send you your password.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.RoomFull">
+            <summary>
+              Busca una cadena traducida similar a The room is full.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.Round">
+            <summary>
+              Busca una cadena traducida similar a Round:.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.ScoreText">
+            <summary>
+              Busca una cadena traducida similar a Score.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.SeeScores_Button">
+            <summary>
+              Busca una cadena traducida similar a See scores.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.ServerIsOff">
+            <summary>
+              Busca una cadena traducida similar a The server does not respond. Try later..
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.SignUp_Button">
+            <summary>
+              Busca una cadena traducida similar a Sing up.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.SomeoneWon">
+            <summary>
+              Busca una cadena traducida similar a has won.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.StartGame_Button">
+            <summary>
+              Busca una cadena traducida similar a Start game.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.SuccessfulRegistration">
+            <summary>
+              Busca una cadena traducida similar a You have been registered.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.SuccessfulVerification">
+            <summary>
+              Busca una cadena traducida similar a Your account has been verified, log in to play.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.TextRecover">
+            <summary>
+              Busca una cadena traducida similar a Did you forget your password? Click here.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.TilesInBank">
+            <summary>
+              Busca una cadena traducida similar a Tiles in bank:.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.Title">
+            <summary>
+              Busca una cadena traducida similar a Domino.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.UnsuccessfulVerification">
+            <summary>
+              Busca una cadena traducida similar a Unsuccessful verification, wrong key.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.Username">
+            <summary>
+              Busca una cadena traducida similar a Username.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.Validate_Button">
+            <summary>
+              Busca una cadena traducida similar a Validate.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.ValidateText">
+            <summary>
+              Busca una cadena traducida similar a Enter the key sent to your email to complete your registration.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.WriteInChatText">
+            <summary>
+              Busca una cadena traducida similar a Write something in the chat.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.You">
+            <summary>
+              Busca una cadena traducida similar a You.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.YourPoints">
+            <summary>
+              Busca una cadena traducida similar a Your points:.
+            </summary>
+        </member>
+        <member name="P:Domino.Properties.Resources.YouWon">
+            <summary>
+              Busca una cadena traducida similar a You&apos;ve won!.
+            </summary>
+        </member>
+        <member name="T:Domino.RecuperarContraseñaWindow">
+            <summary>
+            Interaction logic for RecuperarContrseñaWindow.xaml
+            This page will recover a password of a user through his registered email.
+            </summary>
+            <summary>
+            RecuperarContraseñaWindow
+            </summary>
+        </member>
+        <member name="M:Domino.RecuperarContraseñaWindow.#ctor">
+            <summary>
+            The class constructor.
+            </summary>
+        </member>
+        <member name="M:Domino.RecuperarContraseñaWindow.#ctor(Domino.MainWindow)">
+            <summary>
+            The class constructor that is invoked to replace the contents of the window.
+            </summary>
+            <param name="mainWindow"> The window that is showing this page. </param>
+        </member>
+        <member name="M:Domino.RecuperarContraseñaWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Domino.RegistrarseWindow">
+            <summary>
+            Interaction logic for Window1.xaml.
+            This page is responsible for registering a new user through a form and validation.
+            </summary>
+            <summary>
+            RegistrarseWindow
+            </summary>
+        </member>
+        <member name="M:Domino.RegistrarseWindow.#ctor">
+            <summary>
+            The class constructor.
+            </summary>
+        </member>
+        <member name="M:Domino.RegistrarseWindow.#ctor(Domino.MainWindow)">
+            <summary>
+            The class constructor that is invoked to replace the contents of the window.
+            </summary>
+            <param name="mainWindow"> The window that is showing this page. </param>
+        </member>
+        <member name="M:Domino.RegistrarseWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Domino.VerMarcadoresWindow">
+            <summary>
+            Interaction logic for VerMarcadoresWindow.xaml
+            The page is responsible for consulting users with the highest scores in the database.
+            </summary>
+            <summary>
+            VerMarcadoresWindow
+            </summary>
+        </member>
+        <member name="M:Domino.VerMarcadoresWindow.#ctor">
+            <summary>
+            The class constructor.
+            </summary>
+        </member>
+        <member name="M:Domino.VerMarcadoresWindow.#ctor(Domino.MenuWindow)">
+            <summary>
+            The class constructor that is invoked to replace the contents of the window.
+            </summary>
+            <param name="menuWindow"> The window that is showing this page. </param>
+        </member>
+        <member name="M:Domino.VerMarcadoresWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Domino.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:Domino.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Domino.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:Domino.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml, which is the main screen you start the game with.
+            This window is in charge of the login credentials validation.
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:Domino.MainWindow.#ctor">
+            <summary>
+            The class constructor.
+            </summary>
+        </member>
+        <member name="M:Domino.MainWindow.GoBack">
+            <summary>
+            Allows the other pages to return to this initial screen.
+            </summary>
+        </member>
+        <member name="M:Domino.MainWindow.Navegate(System.Windows.Controls.Page)">
+            <summary>
+            Allows other pages to navigate between them without changing windows.
+            </summary>
+            <param name="page"> The page to which the page invoking the method wants to navigate. </param>
+        </member>
+        <member name="M:Domino.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>

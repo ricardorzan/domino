@@ -1,22 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel;
-using DominoContracts;
+﻿using DominoContracts;
 using DominoModelo;
-using System.Net.Mail;
-using System.Collections.ObjectModel;
 using shortid;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Entity.Validation;
+using System.Linq;
+using System.Net.Mail;
+using System.ServiceModel;
 
 namespace DominoServer
 {
+    /// <summary>
+    /// This class represents the server logic, includes all the contracts needed to its correct functionallity.
+    /// </summary>
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, InstanceContextMode = InstanceContextMode.Single)]
     public partial class DominoService : ILoginService, IMenuService, IChatService, ILobbyService, IGameService
     {
-        readonly Dictionary<int, Dictionary<IGameClient, string>> _currentGames = new Dictionary<int, Dictionary<IGameClient, string>>();
-        readonly Dictionary<int, string[]> _dominoes = new Dictionary<int, string[]>();
+        private readonly Dictionary<int, Dictionary<IGameClient, string>> _currentGames = new Dictionary<int, Dictionary<IGameClient, string>>();
+        private readonly Dictionary<int, string[]> _dominoes = new Dictionary<int, string[]>();
 
+        /// <summary>
+        /// This method adds the user to the specific game.
+        /// </summary>
+        /// <param name="idGame"> Game identifier. </param>
+        /// <param name="username"> The user who is joining. </param>
         public void JoinCurrentGame(int idGame, string username)
         {
             var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
@@ -48,6 +56,10 @@ namespace DominoServer
             }
         }
 
+        /// <summary>
+        /// This method distributes to each player their initial seven tiles.
+        /// </summary>
+        /// <param name="idGame"> Game identifier. </param>
         public void GetFirstSevenTiles(int idGame)
         {
             var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
@@ -77,6 +89,10 @@ namespace DominoServer
             }
         }
 
+        /// <summary>
+        /// This method sends each player the names of the members of the game.
+        /// </summary>
+        /// <param name="idGame"> Game identifier. </param>
         public void GetPlayersName(int idGame)
         {
             var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
@@ -103,6 +119,12 @@ namespace DominoServer
             }
         }
 
+        /// <summary>
+        /// This method asks each player for their highest tile so that the one with the highest tile has
+        /// the first turn.
+        /// </summary>
+        /// <param name="idGame"> Game identifier. </param>
+        /// <param name="hostHighestTile"> Host's highest tile. </param>
         public void GetHighestTile(int idGame, string hostHighestTile)
         {
             var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
@@ -160,12 +182,11 @@ namespace DominoServer
             {
                 if (count == whoIsGonnaStart)
                 {
-                    other.IsYourTurn(isFirstTurn: true);
+                    other.IsYourTurn(true);
                     break;
                 }
                 count++;
             }
-
         }
 
         private bool HighestIsNotMule(bool isMule, int weight, int highestWeight)
@@ -187,6 +208,13 @@ namespace DominoServer
             return false;
         }
 
+        /// <summary>
+        /// This method is invoked when the player who has the turn put a tile on the board.
+        /// </summary>
+        /// <param name="idGame"> Game identifier. </param>
+        /// <param name="tile"> The tile put on the board. </param>
+        /// <param name="decision"> A Boolean value that determines if the tile
+        /// could be place in left and right side. </param>
         public void PutATile(int idGame, string tile, bool decision)
         {
             var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
@@ -196,13 +224,16 @@ namespace DominoServer
                 return;
             foreach (var other in _members.Keys)
             {
-
                 if (other == connection)
                     continue;
                 other.SomeonePutATile(whoPutTheTile, tile, decision);
             }
         }
 
+        /// <summary>
+        /// This method is invoked when the player who has the turn can not do another action.
+        /// </summary>
+        /// <param name="idGame"></param>
         public void PassTurn(int idGame)
         {
             var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
@@ -218,14 +249,18 @@ namespace DominoServer
                 }
                 if (nextTurn)
                 {
-                    other.IsYourTurn(isFirstTurn: false);
+                    other.IsYourTurn(false);
                     nextTurn = false;
                 }
             }
             if (nextTurn)
-                _members.First().Key.IsYourTurn(isFirstTurn: false);
+                _members.First().Key.IsYourTurn(false);
         }
 
+        /// <summary>
+        /// This method is invoked when the player who has the turn take a tile from the bank.
+        /// </summary>
+        /// <param name="idGame"> Game identifier. </param>
         public void TakeFromTheBank(int idGame)
         {
             var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
@@ -264,6 +299,11 @@ namespace DominoServer
             }
         }
 
+        /// <summary>
+        /// This method is invoked when the player who has the turn put his last tile in hand on
+        /// the board.
+        /// </summary>
+        /// <param name="idGame"> Game identifier. </param>
         public void Win(int idGame)
         {
             var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
@@ -295,6 +335,12 @@ namespace DominoServer
             }
         }
 
+        /// <summary>
+        /// This method is invoked when at the end of the game and updates the points in the data
+        /// base.
+        /// </summary>
+        /// <param name="idGame"></param>
+        /// <param name="points"></param>
         public void UploadPoints(int idGame, int points)
         {
             var connection = OperationContext.Current.GetCallbackChannel<IGameClient>();
@@ -326,13 +372,21 @@ namespace DominoServer
             }
         }
 
-        readonly Dictionary<ILobbyClient, string> _lobbies = new Dictionary<ILobbyClient, string>();
+        private readonly Dictionary<ILobbyClient, string> _lobbies = new Dictionary<ILobbyClient, string>();
+
+        /// <summary>
+        /// This method is invoked when an user joins the lobby.
+        /// </summary>
+        /// <param name="username"> The user who joins. </param>
         public void JoinLobby(string username)
         {
             var connection = OperationContext.Current.GetCallbackChannel<ILobbyClient>();
             _lobbies[connection] = username;
         }
 
+        /// <summary>
+        /// This method sends to the user all the games room in the server.
+        /// </summary>
         public void GetGames()
         {
             var connection = OperationContext.Current.GetCallbackChannel<ILobbyClient>();
@@ -342,7 +396,12 @@ namespace DominoServer
             }
         }
 
-        readonly Dictionary<string, Dictionary<ILobbyClient, string>> _games = new Dictionary<string, Dictionary<ILobbyClient, string>>();
+        private readonly Dictionary<string, Dictionary<ILobbyClient, string>> _games = new Dictionary<string, Dictionary<ILobbyClient, string>>();
+
+        /// <summary>
+        /// This method create a new game room.
+        /// </summary>
+        /// <param name="gameName"> The name of the new game room. </param>
         public void CreateGame(string gameName)
         {
             var connection = OperationContext.Current.GetCallbackChannel<ILobbyClient>();
@@ -362,6 +421,10 @@ namespace DominoServer
             }
         }
 
+        /// <summary>
+        /// This method is invoked when an user try to join to a room game.
+        /// </summary>
+        /// <param name="gameName"> The name of the game room. </param>
         public void JoinGame(string gameName)
         {
             var connection = OperationContext.Current.GetCallbackChannel<ILobbyClient>();
@@ -403,6 +466,11 @@ namespace DominoServer
                 connection.GameFull();
         }
 
+        /// <summary>
+        /// This method is invoked when the owner of the game room leaves the room
+        /// expelling the other members in the room and deleting it.
+        /// </summary>
+        /// <param name="gameName"> The name of the game room. </param>
         public void BreakGame(string gameName)
         {
             var connection = OperationContext.Current.GetCallbackChannel<ILobbyClient>();
@@ -428,6 +496,10 @@ namespace DominoServer
             }
         }
 
+        /// <summary>
+        /// This method take out an user from the game room.
+        /// </summary>
+        /// <param name="gameName"> The name of the game room. </param>
         public void MemberLeftGame(string gameName)
         {
             var connection = OperationContext.Current.GetCallbackChannel<ILobbyClient>();
@@ -447,6 +519,11 @@ namespace DominoServer
             }
         }
 
+        /// <summary>
+        /// This method is invoked when the owner of the game room expell another player.
+        /// </summary>
+        /// <param name="username"> The player who was expell.</param>
+        /// <param name="gameName"> The name of the game room. </param>
         public void KickPlayer(string username, string gameName)
         {
             var connection = OperationContext.Current.GetCallbackChannel<ILobbyClient>();
@@ -467,6 +544,10 @@ namespace DominoServer
             }
         }
 
+        /// <summary>
+        /// This method starts the game once the room is full and deletes the room.
+        /// </summary>
+        /// <param name="gameName"> The name of the game room. </param>
         public void StartGame(string gameName)
         {
             try
@@ -534,7 +615,13 @@ namespace DominoServer
             }
         }
 
-        readonly Dictionary<int, Dictionary<IChatClient, string>> _rooms = new Dictionary<int, Dictionary<IChatClient, string>>();
+        private readonly Dictionary<int, Dictionary<IChatClient, string>> _rooms = new Dictionary<int, Dictionary<IChatClient, string>>();
+
+        /// <summary>
+        /// This method adds the user to a specific room chat.
+        /// </summary>
+        /// <param name="room"> The number of the room chat to join in. </param>
+        /// <param name="username"> The user who is joining. </param>
         public void JoinChat(int room, string username)
         {
             var connection = OperationContext.Current.GetCallbackChannel<IChatClient>();
@@ -546,6 +633,11 @@ namespace DominoServer
             _rooms[room].Add(connection, username);
         }
 
+        /// <summary>
+        /// This method sends a message from an user to the server.
+        /// </summary>
+        /// <param name="room"> The number of the room where the message was send. </param>
+        /// <param name="message"> The incoming message. </param>
         public void SendMessage(int room, string message)
         {
             var connection = OperationContext.Current.GetCallbackChannel<IChatClient>();
@@ -562,6 +654,13 @@ namespace DominoServer
             }
         }
 
+        /// <summary>
+        /// This method allows the user change his current password.
+        /// </summary>
+        /// <param name="username"> The username of the user. </param>
+        /// <param name="currentPassword"> The current password of the user in the database. </param>
+        /// <param name="newPassword"> The new password of the user. </param>
+        /// <returns> A Boolean value that represents if the operation was complete or not. </returns>
         public bool ChangePassword(string username, string currentPassword, string newPassword)
         {
             try
@@ -569,21 +668,25 @@ namespace DominoServer
                 using (DominoContext context = new DominoContext())
                 {
                     var user = context.Usuario.FirstOrDefault(u => u.Nombreusuario == username);
-                    if (user != null && (user.Contraseña.Equals(currentPassword)))
-                        {
-                        user.Contraseña = newPassword;
+                    if (user != null && (user.Contraseña.Equals(currentPassword.GetHashCode().ToString())))
+                    {
+                        user.Contraseña = newPassword.GetHashCode().ToString();
                         context.SaveChanges();
                         return true;
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
             }
             return false;
         }
 
+        /// <summary>
+        /// This method gets the five highest scores in the database.
+        /// </summary>
+        /// <returns> A collection of the users with the highest scores. </returns>
         public ObservableCollection<UsuarioPuntajes> GetScores()
         {
             ObservableCollection<UsuarioPuntajes> scores = new ObservableCollection<UsuarioPuntajes>();
@@ -615,6 +718,11 @@ namespace DominoServer
             return scores;
         }
 
+        /// <summary>
+        /// This method allows recover the password of a registered user through his email.
+        /// </summary>
+        /// <param name="email"> The email of the user. </param>
+        /// <returns> A Boolean value that represents if the email exists in the data base. </returns>
         public bool RecoverPassword(string email)
         {
             try
@@ -637,7 +745,14 @@ namespace DominoServer
             }
         }
 
-        [Obsolete ("Reemplazado por el arrancador automático")]
+        /// <summary>
+        /// This method allows the registration of a new user in the database.
+        /// </summary>
+        /// <param name="username"> The username of the new user. </param>
+        /// <param name="email"> The email of the new user. </param>
+        /// <param name="password"> The password of the new user. </param>
+        /// <returns> Username of the user. </returns>
+        [Obsolete("Replaced by the automatic starter")]
         public bool SignUp(string username, string email, string password)
         {
             try
@@ -689,6 +804,13 @@ namespace DominoServer
             return false;
         }
 
+        /// <summary>
+        /// This method validates if the token send it by the user is the correct to verificate
+        /// him in the data base.
+        /// </summary>
+        /// <param name="username"> The userneme of the user. </param>
+        /// <param name="token"> The verification token. </param>
+        /// <returns> A Boolean value that represents if the token was right or wrong. </returns>
         public bool VerificateUser(string username, string token)
         {
             try
@@ -721,6 +843,11 @@ namespace DominoServer
             return false;
         }
 
+        /// <summary>
+        /// This method checks if an user is already verified or not.
+        /// </summary>
+        /// <param name="username"> The username of the user. </param>
+        /// <returns> A Boolean value that represents if the user is verified or not. </returns>
         public bool IsVerified(string username)
         {
             try
@@ -744,6 +871,12 @@ namespace DominoServer
             return false;
         }
 
+        /// <summary>
+        /// This method validates that the login credentials of the user are correct.
+        /// </summary>
+        /// <param name="email"> Email of the user. </param>
+        /// <param name="password"> Password of the user. </param>
+        /// <returns> Username of the user. </returns>
         public string LogIn(string email, string password)
         {
             try
@@ -751,13 +884,10 @@ namespace DominoServer
                 using (DominoContext context = new DominoContext())
                 {
                     var user = context.Usuario.FirstOrDefault(u => u.Correo == email);
-                    if (user != null)
+                    if ((user != null) && (user.Contraseña == password.GetHashCode().ToString()))
                     {
-                        if (user.Contraseña == password.GetHashCode().ToString())
-                        {
-                            Console.WriteLine("The user " + user.Nombreusuario + " has just connected");
-                            return user.Nombreusuario;
-                        }
+                        Console.WriteLine("The user " + user.Nombreusuario + " has just connected");
+                        return user.Nombreusuario;
                     }
                     return ("");
                 }
@@ -779,21 +909,20 @@ namespace DominoServer
                 mail.To.Add(user.Correo);
                 if (isSignUp)
                 {
-                    mail.Subject = "Domino: Verificación de cuenta"; //Asunto
+                    mail.Subject = "Domino: Verificación de cuenta";
                     mail.Body = "¡Hola " + user.Nombreusuario + "! Gracias por registrarte, tu clave de verificación es: " +
-                        user.Token; //Mensaje del correo
+                        user.Token;
                 }
                 else
                 {
-                    mail.Subject = "Domino: Recuperación de contraseña"; //Asunto
+                    mail.Subject = "Domino: Recuperación de contraseña";
                     mail.Body = "¡Hola " + user.Nombreusuario + "! Al parecer olvidaste tu contraseña, anotala bien porque es: " +
-                        user.Contraseña + ". Puedes cambiarla dentro del juego una vez que inicies sesión."; //Mensaje del correo
+                        user.Contraseña + ". Puedes cambiarla dentro del juego una vez que inicies sesión.";
                 }
                 SmtpServer.Port = 587;
                 SmtpServer.Credentials = new System.Net.NetworkCredential("domino.juego.re@gmail.com", "gatodeportivo");
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Send(mail);
-
             }
             catch (Exception ex)
             {
@@ -801,7 +930,7 @@ namespace DominoServer
             }
         }
 
-        public static void Shuffle<T>(IList<T> values)
+        private static void Shuffle<T>(IList<T> values)
         {
             var n = values.Count;
             var rnd = new Random();

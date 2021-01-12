@@ -322,6 +322,15 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a The database is off. Try later..
+        /// </summary>
+        public static string NoDatabase {
+            get {
+                return ResourceManager.GetString("NoDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a When you win you will get extra points.
         /// </summary>
         public static string NoExtraPoints {
@@ -475,6 +484,15 @@ namespace Domino.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a The server does not respond. Try later..
+        /// </summary>
+        public static string ServerIsOff {
+            get {
+                return ResourceManager.GetString("ServerIsOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Sing up.
         /// </summary>
         public static string SignUp_Button {
@@ -574,7 +592,7 @@ namespace Domino.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Enter the key sent to your email to complete your registration and be able to play.
+        ///   Busca una cadena traducida similar a Enter the key sent to your email to complete your registration.
         /// </summary>
         public static string ValidateText {
             get {

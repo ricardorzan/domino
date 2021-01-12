@@ -1,40 +1,40 @@
 ﻿<Page x:Class="Domino.VerMarcadoresWindow"
-      xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-   xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml" 
+      xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+   xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-   xmlns:local = "clr-namespace:Domino" 
+   xmlns:local = "clr-namespace:Domino"
    xmlns:p = "clr-namespace:Domino.Properties"
    Title = "{x:Static p:Resources.Title}" Height = "400" Width = "600">
 
     <Grid Margin="20 10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <DataGrid Name="PlayersGrid" AutoGenerateColumns = "False" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="False"
                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="5" Margin="20,20,20,20"
-                  BorderThickness="3" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" 
-                  CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False">
+                  BorderThickness="3" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False"
+                  CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserSortColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="{x:Static p:Resources.PositionText}" Binding="{Binding Path=Position}"/>
-                <DataGridTextColumn Header="{x:Static p:Resources.PlayerText}" Binding="{Binding Path=Username}"/>
-                <DataGridTextColumn Header="{x:Static p:Resources.ScoreText}" Binding="{Binding Path=Score}"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.PositionText}" Binding="{Binding Path=Position}" />
+                <DataGridTextColumn Header="{x:Static p:Resources.PlayerText}" Binding="{Binding Path=Username}" />
+                <DataGridTextColumn Header="{x:Static p:Resources.ScoreText}" Binding="{Binding Path=Score}" />
             </DataGrid.Columns>
         </DataGrid>
-        
+
         <Button Grid.Column="2" Grid.Row="5" Margin="20 5" Content="{x:Static p:Resources.GoBack_Button}" Click="ClickRegresar" materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="3"></Button>
 
-        <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="3" HorizontalAlignment="Right" VerticalAlignment="Center" Content="" Name="LabelAlert"/>
+        <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="3" HorizontalAlignment="Right" VerticalAlignment="Center" Content="" Name="LabelAlert" />
     </Grid>
 </Page>

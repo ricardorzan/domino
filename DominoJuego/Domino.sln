@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominoContracts", "..\Domin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominoModelo", "..\DominoModelo\DominoModelo.csproj", "{A7790F62-9179-411B-BA1B-4306C5B0A1FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "..\Test\Test.csproj", "{4A9D83ED-2180-4430-8A14-BDE044AA66DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A7790F62-9179-411B-BA1B-4306C5B0A1FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7790F62-9179-411B-BA1B-4306C5B0A1FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7790F62-9179-411B-BA1B-4306C5B0A1FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A9D83ED-2180-4430-8A14-BDE044AA66DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A9D83ED-2180-4430-8A14-BDE044AA66DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A9D83ED-2180-4430-8A14-BDE044AA66DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A9D83ED-2180-4430-8A14-BDE044AA66DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

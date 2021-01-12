@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Compilador de Microsoft (R) Visual C#",
+        "version": "3.8.0.0",
+        "fileVersion": "3.8.0-5.20604.10 (9ed4b774)",
+        "semanticVersion": "3.8.0",
+        "language": "es-MX"
+      },
+      "results": [
+        {
+          "ruleId": "CS0114",
+          "level": "warning",
+          "message": "'FakeDbSet<T>.Create<TDerivedEntity>()' oculta el miembro heredado 'DbSet<T>.Create<TDerivedEntity>()'. Para hacer que el miembro actual invalide esa implementación, agregue la palabra clave override. Si no, agregue la palabra clave new.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/Test/DatabaseTest/FakeDbSet.cs",
+                "region": {
+                  "startLine": 55,
+                  "startColumn": 31,
+                  "endLine": 55,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 2
+          }
+        },
+        {
+          "ruleId": "CS0114",
+          "level": "warning",
+          "message": "'FakeDbSet<T>.Local' oculta el miembro heredado 'DbSet<T>.Local'. Para hacer que el miembro actual invalide esa implementación, agregue la palabra clave override. Si no, agregue la palabra clave new.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/ricar/Documents/GitHub/domino/Test/DatabaseTest/FakeDbSet.cs",
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 24,
+                  "endLine": 60,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 2
+          }
+        }
+      ],
+      "rules": {
+        "CS0114": {
+          "id": "CS0114",
+          "shortDescription": "El miembro oculta el miembro heredado. Falta una contraseña de invalidación",
+          "defaultLevel": "warning",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
